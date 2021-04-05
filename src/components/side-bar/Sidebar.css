@@ -3,6 +3,8 @@
   top: 0;
   display: flex;
   flex-direction: column;
+  margin-left: auto;
+  margin-right: 15px;
   gap: 30px;
   text-align: end;
   width: max-content;

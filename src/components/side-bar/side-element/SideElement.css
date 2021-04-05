@@ -1,5 +1,4 @@
 .sidebar__nav_item {
-  grid-area: 'leftside';
   font-size: 28px;
   cursor: pointer;
 }

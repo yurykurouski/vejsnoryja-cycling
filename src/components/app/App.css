@@ -1,5 +1,4 @@
-.App{
+.App {
   display: grid;
-  grid-template-areas: 'topcap content topcap'
-                       'leftside content rightside'
+  grid-template-columns: 20% 1fr 20%;
 }
