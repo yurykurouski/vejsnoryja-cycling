@@ -1,0 +1,5 @@
+.App{
+  display: grid;
+  grid-template-areas: 'topcap content topcap'
+                       'leftside content rightside'
+}
