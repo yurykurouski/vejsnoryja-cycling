@@ -1,17 +1,25 @@
 import React from 'react';
 import './FloatCard.css'
-import FloatElement from "./float-element/FloatElement";
-
 
 export default function FloatCard() {
   return (
     <aside className='float-card'>
-      <ul>
-        <FloatElement name='Strava'/>
-        <FloatElement name='Bot'/>
-        <FloatElement name='Join club'/>
-        <FloatElement name='Instagramm'/>
-        <FloatElement name='GitHub'/>
+      <ul className="float-card__elements">
+        <li className='float-card__element'>
+          <a href='#!' className='float-card__link link'>Strava</a>
+        </li>
+        <li className='float-card__element'>
+          <a href='#!' className='float-card__link link'>Bot</a>
+        </li>
+        <li className='float-card__element'>
+          <a href='#!' className='float-card__link link'>Join club</a>
+        </li>
+        <li className='float-card__element'>
+          <a href='#!' className='float-card__link link'>Instagramm</a>
+        </li>
+        <li className='float-card__element'>
+          <a href='#!' className='float-card__link link'>GitHub</a>
+        </li>
       </ul>
     </aside>
   )

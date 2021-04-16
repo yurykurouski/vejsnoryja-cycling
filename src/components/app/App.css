@@ -1,4 +1,9 @@
-.App {
+.app {
   display: grid;
-  grid-template-columns: 20% 1fr 20%;
+  grid-template-areas: "logo main float"
+                      "menu main float"
+                      "res main rest";
+  grid-template-columns: minmax(min-content, 20%) 1fr max-content;
+  grid-template-rows: max-content max-content 1fr;
+  column-gap: 10px;
 }

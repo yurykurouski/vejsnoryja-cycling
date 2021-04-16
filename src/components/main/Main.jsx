@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import './Content.css'
+import './Main.css'
 
-export default class Content extends Component {
+export default class Main extends Component {
   render() {
     return (
-      <div className='content'>
+      <div className='main'>
         Hello
       </div>
     )

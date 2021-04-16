@@ -1,13 +1,38 @@
-.sidebar__elements{
+.sidebar__nav {
+  grid-area: menu;
+}
+
+.sidebar__elements {
   position: sticky;
-  top: 0;
   display: flex;
   flex-direction: column;
   margin-left: auto;
-  margin-right: 15px;
+  margin-right: 10px;
   gap: 30px;
   text-align: end;
-  width: max-content;
 
   list-style-type: none;
+}
+
+.sidebar__nav_item{
+  width: 100%;
+}
+
+.nav_item__link {
+  display: inline-block;
+  width: 100%;
+  font-size: 28px;
+  height: 1.5em;
+  font-weight: 500;
+  color: var(--font-color-main);
+  border-radius: 30px;
+
+  padding-right: 10px;
+  transition: color .3s ease-out;
+}
+
+.nav_item__link:hover {
+  color: var(--font-color-main_active);
+
+  background-color: var(--font-color-main_hover-bg);
 }

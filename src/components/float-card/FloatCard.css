@@ -1,2 +1,27 @@
-.float-card{
+.float-card {
+  grid-area: float;
+}
+
+.float-card__elements {
+  list-style-type: none;
+  margin-left: 10px;
+}
+
+.float-card__element{
+  margin-bottom: 10px;
+}
+
+.float-card__element:last-child{
+  margin-bottom: 0;
+}
+
+.float-card__link{
+  color: var(--font-color-main);
+  font-size: 18px;
+  font-weight: 500;
+  transition: color .3s ease-out;
+}
+
+.float-card__link:hover{
+  color: var(--font-color-main_active);
 }
