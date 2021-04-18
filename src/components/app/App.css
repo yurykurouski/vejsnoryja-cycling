@@ -1,9 +1,10 @@
 .app {
   display: grid;
-  grid-template-areas: "logo main float"
-                      "menu main float"
-                      "res main rest";
-  grid-template-columns: minmax(min-content, 20%) 1fr max-content;
-  grid-template-rows: max-content max-content 1fr;
+  grid-template-areas: "menu main float"
+    "empty main float";
+  grid-template-columns: minmax(max-content, 15%) 1fr max-content;
+  grid-template-rows: max-content 1fr;
+  height: 100vh;
   column-gap: 10px;
+  /* margin-top: 5px; */
 }

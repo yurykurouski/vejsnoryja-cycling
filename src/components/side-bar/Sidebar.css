@@ -14,7 +14,7 @@
   list-style-type: none;
 }
 
-.sidebar__nav_item{
+.sidebar__nav_item {
   width: 100%;
 }
 
@@ -31,8 +31,9 @@
   transition: color .3s ease-out;
 }
 
+.nav_item__link:focus,
+.nav_item__link:active,
 .nav_item__link:hover {
   color: var(--font-color-main_active);
-
   background-color: var(--font-color-main_hover-bg);
 }

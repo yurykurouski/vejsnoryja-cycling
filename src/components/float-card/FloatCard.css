@@ -1,27 +1,42 @@
 .float-card {
   grid-area: float;
+  height: fit-content;
+  padding: 5px;
+  border-radius: 6px;
 }
 
 .float-card__elements {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
   list-style-type: none;
-  margin-left: 10px;
 }
 
-.float-card__element{
-  margin-bottom: 10px;
+.float-card__element {
+  height: 24px;
+  width: 24px;
 }
 
-.float-card__element:last-child{
-  margin-bottom: 0;
-}
-
-.float-card__link{
+.float-card__link {
+  display: inline-block;
   color: var(--font-color-main);
-  font-size: 18px;
-  font-weight: 500;
+  height: 100%;
+  border-radius: 25%;
   transition: color .3s ease-out;
 }
 
-.float-card__link:hover{
-  color: var(--font-color-main_active);
+.float-card__link:focus {
+  background-color: var(--font-color-main_hover-bg);
+}
+
+.float-card__icon {
+  height: 100%;
+  width: 100%;
+  fill: var(--font-color-main);
+  transition: fill .3s ease-out;
+}
+
+.float-card__icon:focus,
+.float-card__icon:hover {
+  fill: var(--font-color-main_active);
 }

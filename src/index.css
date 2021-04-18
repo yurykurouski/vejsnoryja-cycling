@@ -6,9 +6,20 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
+  --background-main-color:#ffffff;
+
   --font-color-main: black;
   --font-color-main_active: #ff0000;
   --font-color-main_hover-bg: rgba(255, 0, 0, .1);
+
+  --accent-color_light-blue: #146bff;
+
+  background-color: var(--background-main-color);
+}
+
+:focus{
+  outline: none;
+  box-shadow: 0 0 0 1px red;
 }
 
 h1,h2,h3,h4,h5,ul,li,p{
