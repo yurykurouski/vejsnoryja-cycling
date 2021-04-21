@@ -18,7 +18,7 @@
 
 .add-btn__add-icon {
   fill: var(--accent-color_light-blue);
-  opacity: .8;
+  opacity: .9;
 
   border-radius: 50%;
   width: 80%;
@@ -31,4 +31,8 @@
 .add-btn__add-icon:hover {
   opacity: 1;
   transform: rotate(90deg) scale(1.3);
+}
+
+.add-btn-icon_clicked {
+  transform: rotate(45deg) scale(1.3) !important;
 }

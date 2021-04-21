@@ -1,10 +1,16 @@
 .app {
   display: grid;
   grid-template-areas: "menu main float"
-    "empty main float";
-  grid-template-columns: minmax(max-content, 15%) 1fr max-content;
+    "empty main addbtn";
+  grid-template-columns: minmax(max-content, 15%) minmax(min-content, 1fr) max-content;
   grid-template-rows: max-content 1fr;
   height: 100vh;
   column-gap: 10px;
-  /* margin-top: 5px; */
+}
+
+.add-btn {
+
+  grid-area: addbtn;
+  margin-top: auto;
+  margin-bottom: 15px;
 }
