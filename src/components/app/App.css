@@ -8,9 +8,12 @@
   column-gap: 10px;
 }
 
-.add-btn {
-
+.add-btn_container {
   grid-area: addbtn;
   margin-top: auto;
   margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
 }

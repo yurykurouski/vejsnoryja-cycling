@@ -10,9 +10,13 @@ body {
 
   --font-color-main: black;
   --font-color-main_active: #ff0000;
-  --font-color-main_hover-bg: rgba(255, 0, 0, .1);
+  --font-color-main_hover-bg: rgba(255, 0, 0, .08);
 
   --accent-color_light-blue: #146bff;
+
+  --fab-bgr-color: #ffffff;
+
+  --surface-overlay-color: rgba(33, 33, 33, .08);
 
   background-color: var(--background-main-color);
 }
