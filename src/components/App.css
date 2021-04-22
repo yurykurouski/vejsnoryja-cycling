@@ -1,7 +1,7 @@
 .app {
   display: grid;
-  grid-template-areas: "menu main float"
-    "empty main addbtn";
+  grid-template-areas: "menu content float"
+    "empty content addbtn";
   grid-template-columns: minmax(max-content, 15%) minmax(min-content, 1fr) max-content;
   grid-template-rows: max-content 1fr;
   height: 100vh;
