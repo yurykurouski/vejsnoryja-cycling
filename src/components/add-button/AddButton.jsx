@@ -39,8 +39,18 @@ export default class AddButton extends Component {
       <ClickAwayListener onClickAway={this.handleClickAway}>
 
         <div className='add-btn_container'>
-          <NewEvent name='Create smthg' expanded={expanded} type='create_new_folder'/>
-          <NewEvent name='New event' expanded={expanded} type='edit' linkTo='new-event'/>
+          <NewEvent
+            name='Create smthg'
+            expanded={expanded}
+            type='create_new_folder'
+            linkTo='register'
+          />
+          <NewEvent
+            name='New event'
+            expanded={expanded}
+            type='edit'
+            linkTo='new-event'
+          />
 
           <button className='add-btn' onClick={this.handleClick}>
             <svg className={`add-btn__add-icon ${clickedClass}`} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">

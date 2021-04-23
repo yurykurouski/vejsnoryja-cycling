@@ -1,5 +1,6 @@
 import React from 'react';
 import SidebarLogo from './sidebar-logo/SidebarLogo'
+import { Link } from 'react-router-dom';
 import './Sidebar.css';
 
 export default function Sidebar() {
@@ -10,7 +11,7 @@ export default function Sidebar() {
         <nav>
           <ul className='sidebar__elements'>
             <li className='sidebar__nav_item'>
-              <a href="#!" className='nav_item__link link'>Profile</a>
+              <Link to='/profile' className='nav_item__link link'>My profile</Link>
             </li>
             <li className='sidebar__nav_item'>
               <a href="#!" className='nav_item__link link'>Workshop</a>
