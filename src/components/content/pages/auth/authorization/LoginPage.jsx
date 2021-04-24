@@ -24,8 +24,8 @@ export default class AuthorizationPage extends Component {
   }
 
   async submitForm(values) {
-    const res = await authService.userRegister(values);
-
+    const res = await authService.userLogin(values);
+    
     if (res) {
       this.setState({
         authError: res
