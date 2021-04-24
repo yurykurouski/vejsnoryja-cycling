@@ -3,7 +3,7 @@ import { Formik } from 'formik';
 import authService from '../../../../services/auth-service';
 import { MIN_PASSWORD_LENGTH, PASSWORD_REGEX } from '../../../../constants';
 import * as Yup from 'yup';
-
+import ValidationErrMsg from '../../../validation-err-msg/ValidationErrMsg';
 import sha256 from 'crypto-js/sha256';
 
 export default class RegistrationPage extends Component {
@@ -23,11 +23,16 @@ export default class RegistrationPage extends Component {
       repeatPass: Yup
         .string()
         .oneOf([Yup.ref('password'), null], 'Passwords does not match.')
-    })
+    });
   }
 
   async submitForm(values) {
-    authService.userRegister(values)
+
+    try {
+      authService.userRegister(values)
+    } catch (err) {
+      console.log(err)
+    }
   }
 
   render() {
@@ -41,7 +46,7 @@ export default class RegistrationPage extends Component {
           onSubmit={this.submitForm}
           validationSchema={this.validationSchema}
         >
-          {({ handleSubmit, handleChange, values }) => (
+          {({ handleSubmit, handleChange, values, errors, touched }) => (
             <form
               onSubmit={handleSubmit}
             >
@@ -51,7 +56,11 @@ export default class RegistrationPage extends Component {
                 value={values.email}
                 placeholder='Email'
                 autoFocus
-              ></input>
+              />
+
+              {errors.email && touched.email ? (
+                <ValidationErrMsg errorMsg={errors.email} />
+              ) : null}
 
               <input
                 onChange={handleChange}
@@ -59,7 +68,12 @@ export default class RegistrationPage extends Component {
                 type='password'
                 value={values.password}
                 placeholder='Password'
-              ></input>
+                autoComplete="on"
+              />
+
+              {errors.password && touched.password ? (
+                <ValidationErrMsg errorMsg={errors.password} />
+              ) : null}
 
               <input
                 onChange={handleChange}
@@ -67,7 +81,12 @@ export default class RegistrationPage extends Component {
                 type='password'
                 value={values.repeatPass}
                 placeholder='Repeat password'
-              ></input>
+                autoComplete="on"
+              />
+
+              {errors.repeatPass && touched.repeatPass ? (
+                <ValidationErrMsg errorMsg={errors.repeatPass} />
+              ) : null}
 
               <button type='submit'>Submit</button>
             </form>
