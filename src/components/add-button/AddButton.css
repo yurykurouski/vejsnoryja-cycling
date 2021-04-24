@@ -18,8 +18,10 @@
 }
 
 .add-btn:focus,
+.add-btn:active,
 .add-btn:hover {
   background-color: var(--font-color-main_hover-bg);
+  outline: none;
 }
 
 .add-btn__add-icon {
