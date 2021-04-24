@@ -9,9 +9,14 @@ class RequestService {
         }
       });
 
+      const json = await response.json();
+
       if (!response.ok) {
-        const json = await response.json();
+        
         return json.message;
+      } else if (json.token) {
+        
+        return json
       }
 
     } catch (err) {

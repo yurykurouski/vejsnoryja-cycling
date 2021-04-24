@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import * as Yup from 'yup';
 import { Formik } from 'formik';
+import React, { Component } from 'react';
 import authService from '../../../../../services/auth-service';
 import { MIN_PASSWORD_LENGTH, PASSWORD_REGEX } from '../../../../../constants';
-import * as Yup from 'yup';
 import ValidationErrMsg from '../../../../elements/validation-err-msg/ValidationErrMsg';
 
 export default class RegistrationPage extends Component {
@@ -46,7 +46,7 @@ export default class RegistrationPage extends Component {
     return (
       <div className='content__registration-page'>
 
-        <h2>Be prepared for amazing journey, Vejsnorian!</h2>
+        <h2>RegistrationPage</h2>
 
         <Formik
           initialValues={{ email: '', password: '', repeatPass: '' }}

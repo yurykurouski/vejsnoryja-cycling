@@ -26,7 +26,9 @@ export default class AuthorizationPage extends Component {
   async submitForm(values) {
     const res = await authService.userLogin(values);
     
-    if (res) {
+    if (res.token) {
+      localStorage.setItem('token', res.token);
+    } else if (res) {
       this.setState({
         authError: res
       });
@@ -38,6 +40,8 @@ export default class AuthorizationPage extends Component {
 
     return (
       <div className='content__authorization-page'>
+
+        <h2>LoginPage</h2>
 
         <Formik
           initialValues={{ email: '', password: '' }}
