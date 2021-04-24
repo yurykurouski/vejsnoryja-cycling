@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { Formik } from 'formik';
-import authService from '../../../../services/auth-service';
-import { MIN_PASSWORD_LENGTH, PASSWORD_REGEX } from '../../../../constants';
+import authService from '../../../../../services/auth-service';
+import { MIN_PASSWORD_LENGTH, PASSWORD_REGEX } from '../../../../../constants';
 import * as Yup from 'yup';
-import ValidationErrMsg from '../../../validation-err-msg/ValidationErrMsg';
+import ValidationErrMsg from '../../../../elements/validation-err-msg/ValidationErrMsg';
 
 export default class RegistrationPage extends Component {
   constructor() {

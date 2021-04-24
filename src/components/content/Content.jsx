@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import './Content.css'
 import { Switch, Route } from 'react-router-dom';
-import MainPage from "../pages/main-page/MainPage";
-import NewEventPage from "../pages/new-event/NewEventPage";
-import UserProfile from "../pages/user-profile/UserProfile";
-import RegistrationPage from "../pages/auth/registration/RegistrationPage";
+import MainPage from "./pages/main-page/MainPage";
+import NewEventPage from "./pages/new-event/NewEventPage";
+import UserProfile from "./pages/user-profile/UserProfile";
+import RegistrationPage from "./pages/auth/registration/RegistrationPage";
 
 
 export default class Content extends Component {
