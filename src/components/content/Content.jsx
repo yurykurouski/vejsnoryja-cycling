@@ -5,7 +5,7 @@ import MainPage from "./pages/main-page/MainPage";
 import NewEventPage from "./pages/new-event/NewEventPage";
 import UserProfile from "./pages/user-profile/UserProfile";
 import RegistrationPage from "./pages/auth/registration/RegistrationPage";
-
+import AuthorizationPage from "./pages/auth/authorization/AuthorizationPage";
 
 export default class Content extends Component {
 
@@ -20,6 +20,7 @@ export default class Content extends Component {
             <Route path='/new-event' component={NewEventPage}/>
             <Route path='/profile' component={UserProfile}/>
             <Route path='/register' component={RegistrationPage}/>
+            <Route path='/authorization' component={AuthorizationPage}/>
           </Switch>
 
         </div>
