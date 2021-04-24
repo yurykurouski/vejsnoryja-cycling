@@ -4,7 +4,6 @@ import authService from '../../../../services/auth-service';
 import { MIN_PASSWORD_LENGTH, PASSWORD_REGEX } from '../../../../constants';
 import * as Yup from 'yup';
 import ValidationErrMsg from '../../../validation-err-msg/ValidationErrMsg';
-import sha256 from 'crypto-js/sha256';
 
 export default class RegistrationPage extends Component {
   constructor() {
@@ -27,7 +26,6 @@ export default class RegistrationPage extends Component {
   }
 
   async submitForm(values) {
-
     try {
       authService.userRegister(values)
     } catch (err) {
