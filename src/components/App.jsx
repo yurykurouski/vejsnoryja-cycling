@@ -9,8 +9,8 @@ function App() {
     <div className='app'>
       <Sidebar />
 
-      <Content/>
-  
+        <Content />
+
       <FloatCard />
       <AddButton />
     </div>

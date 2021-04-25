@@ -1,1 +1,1 @@
-# Vejsnorian, be prepare for amazing journey
+# Vejsnorian, be prepared for amazing journey

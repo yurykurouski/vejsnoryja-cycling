@@ -3,6 +3,7 @@ import { Formik } from 'formik';
 import authService from '../../../../../services/auth-service';
 import * as Yup from 'yup';
 import ValidationErrMsg from '../../../../elements/validation-err-msg/ValidationErrMsg';
+import { connect } from 'react-redux';
 
 export default class AuthorizationPage extends Component {
   constructor() {

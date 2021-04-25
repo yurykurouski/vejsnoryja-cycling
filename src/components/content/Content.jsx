@@ -5,7 +5,7 @@ import MainPage from "./pages/main-page/MainPage";
 import NewEventPage from "./pages/new-event/NewEventPage";
 import UserProfile from "./pages/user-profile/UserProfile";
 import RegistrationPage from "./pages/auth/registration/RegistrationPage";
-import LoginPage from "./pages/auth/authorization/LoginPage";
+import LoginPage from "./pages/auth/login/LoginPage";
 
 export default class Content extends Component {
 
