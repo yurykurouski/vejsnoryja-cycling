@@ -23,7 +23,7 @@ export default class AddButton extends Component {
       clickedClass: clicked,
       expanded: !this.state.expanded
     });
-  };
+  }
 
   handleClickAway() {
     this.setState({

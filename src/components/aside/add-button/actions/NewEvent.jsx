@@ -2,6 +2,7 @@ import React from 'react';
 import './NewEvent.css'
 import Icon from '@material-ui/core/Icon';
 import { Link } from "react-router-dom";
+import PropTypes from 'prop-types';
 
 
 export default function NewEvent(props) {
@@ -12,4 +13,11 @@ export default function NewEvent(props) {
       <Icon>{type}</Icon>
     </Link>
   )
+}
+
+NewEvent.propTypes = {
+  name: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
+  linkTo: PropTypes.string.isRequired,
+  expanded: PropTypes.bool
 }

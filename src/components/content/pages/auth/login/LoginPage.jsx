@@ -4,8 +4,9 @@ import authService from '../../../../../services/auth-service';
 import * as Yup from 'yup';
 import ValidationErrMsg from '../../../../elements/validation-err-msg/ValidationErrMsg';
 import { connect } from 'react-redux';
+import { authUser } from '../../../../../store/current-user/actions'
 
-export default class AuthorizationPage extends Component {
+class AuthorizationPage extends Component {
   constructor() {
     super();
 
@@ -14,6 +15,7 @@ export default class AuthorizationPage extends Component {
     }
 
     this.submitForm = this.submitForm.bind(this);
+    this.pressButton = this.pressButton.bind(this);
     this.validationSchema = Yup.object().shape({
       email: Yup
         .string()
@@ -24,11 +26,23 @@ export default class AuthorizationPage extends Component {
     });
   }
 
+    async pressButton() {
+    const { authUser, currentUser } = this.props;
+    // console.log(await currentUser)
+    //  await authUser();
+     console.log(await currentUser)
+
+  }
+
   async submitForm(values) {
-    const res = await authService.userLogin(values);
+    const { authUser } = this.props;
     
+    const res = await authService.userLogin(values);
+
     if (res.token) {
-      localStorage.setItem('token', res.token);
+      localStorage.setItem('token', await res.token);
+
+      await authUser();
     } else if (res) {
       this.setState({
         authError: res
@@ -41,8 +55,9 @@ export default class AuthorizationPage extends Component {
 
     return (
       <div className='content__authorization-page'>
-
+        <button onClick={this.pressButton}>PRESSSSSSSSS</button>
         <h2>LoginPage</h2>
+        
 
         <Formik
           initialValues={{ email: '', password: '' }}
@@ -88,3 +103,18 @@ export default class AuthorizationPage extends Component {
     )
   }
 }
+
+
+function mapStateToProps(state) {
+  return {
+    currentUser: state.currentUser
+  }
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    authUser: () => dispatch(authUser())
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(AuthorizationPage);

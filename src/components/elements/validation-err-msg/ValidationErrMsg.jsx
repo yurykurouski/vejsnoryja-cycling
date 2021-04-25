@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import React from 'react'
 
 export default function ValidationErrMsg(props) {
@@ -7,4 +8,12 @@ export default function ValidationErrMsg(props) {
       {errorMsg}
     </div>
   )
+}
+
+ValidationErrMsg.defaultProps = {
+  errorMsg: ''
+}
+
+ValidationErrMsg.propTypes = {
+  errorMsg: PropTypes.string
 }
