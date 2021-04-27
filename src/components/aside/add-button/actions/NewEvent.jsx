@@ -9,7 +9,7 @@ export default function NewEvent(props) {
   const { name, expanded, type, linkTo } = props;
 
   return (
-    <Link to={`/${linkTo}`} className={`add-btn__action-btn ${expanded ? 'action-btn_active' : ''}`} new-event-btn event-name={name}>
+    <Link to={`/${linkTo}`} className={`add-btn__action-btn ${expanded ? 'action-btn_active' : ''}`} data-event-name={name}>
       <Icon>{type}</Icon>
     </Link>
   )
@@ -19,5 +19,5 @@ NewEvent.propTypes = {
   name: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
   linkTo: PropTypes.string.isRequired,
-  expanded: PropTypes.bool
+  expanded: PropTypes.bool.isRequired
 }

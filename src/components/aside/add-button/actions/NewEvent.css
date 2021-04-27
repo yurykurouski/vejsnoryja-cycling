@@ -34,7 +34,7 @@
 }
 
 .add-btn__action-btn::before {
-  content: attr(event-name);
+  content: attr(data-event-name);
   position: absolute;
   display: inline-block;
   padding-left: 2px;

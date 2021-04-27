@@ -4,7 +4,7 @@ import authService from '../../../../../services/auth-service';
 import * as Yup from 'yup';
 import ValidationErrMsg from '../../../../elements/validation-err-msg/ValidationErrMsg';
 import { connect } from 'react-redux';
-import { authUser } from '../../../../../store/current-user/actions'
+import { authUser, logoutUser } from '../../../../../store/current-user/actions'
 
 class AuthorizationPage extends Component {
   constructor() {
@@ -14,29 +14,35 @@ class AuthorizationPage extends Component {
       authError: null,
     }
 
-    this.submitForm = this.submitForm.bind(this);
     this.pressButton = this.pressButton.bind(this);
+    this.logOut = this.logOut.bind(this);
+    
+    this.submitForm = this.submitForm.bind(this);
     this.validationSchema = Yup.object().shape({
       email: Yup
         .string()
-        .required('Email cannot be empty.'),
+        .required('Email can not be empty.'),
       password: Yup
         .string()
         .required('Password can not be empty.'),
     });
   }
 
-    async pressButton() {
-    const { authUser, currentUser } = this.props;
-    // console.log(await currentUser)
-    //  await authUser();
-     console.log(await currentUser)
+   pressButton() {
+    const { currentUser } = this.props;
 
+    console.log( currentUser);
+  }
+
+  logOut() {
+    const { logoutUser } = this.props;
+
+    logoutUser();
   }
 
   async submitForm(values) {
     const { authUser } = this.props;
-    
+
     const res = await authService.userLogin(values);
 
     if (res.token) {
@@ -45,7 +51,7 @@ class AuthorizationPage extends Component {
       await authUser();
     } else if (res) {
       this.setState({
-        authError: res
+        authError: await res
       });
     }
   }
@@ -55,9 +61,9 @@ class AuthorizationPage extends Component {
 
     return (
       <div className='content__authorization-page'>
-        <button onClick={this.pressButton}>PRESSSSSSSSS</button>
+        <button onClick={this.pressButton}>authentication state</button>
+        <button onClick={this.logOut}>logout</button>
         <h2>LoginPage</h2>
-        
 
         <Formik
           initialValues={{ email: '', password: '' }}
@@ -104,7 +110,6 @@ class AuthorizationPage extends Component {
   }
 }
 
-
 function mapStateToProps(state) {
   return {
     currentUser: state.currentUser
@@ -113,7 +118,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    authUser: () => dispatch(authUser())
+    authUser: () => dispatch(authUser()),
+    logoutUser: () => dispatch(logoutUser())
   }
 }
 

@@ -1,7 +1,8 @@
 import React from 'react';
 import SidebarLogo from './sidebar-logo/SidebarLogo'
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import './Sidebar.css';
+import SidebarProfile from "./sidebar-profile/SidebarProfile";
 
 export default function Sidebar() {
   return (
@@ -10,9 +11,7 @@ export default function Sidebar() {
       <header>
         <nav>
           <ul className='sidebar__elements'>
-            <li className='sidebar__nav_item'>
-              <Link to='/profile' className='nav_item__link link'>My profile</Link>
-            </li>
+            <SidebarProfile/>
             <li className='sidebar__nav_item'>
               <a href="#!" className='nav_item__link link'>Workshop</a>
             </li>
@@ -28,3 +27,4 @@ export default function Sidebar() {
     </aside>
   )
 }
+

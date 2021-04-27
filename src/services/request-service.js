@@ -15,8 +15,7 @@ class RequestService {
         
         return json.message;
       } else if (json.token) {
-        
-        return json
+        return json;
       }
 
     } catch (err) {
