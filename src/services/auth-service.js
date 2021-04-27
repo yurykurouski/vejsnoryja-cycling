@@ -24,7 +24,9 @@ class AuthService {
     return result;
   }
 
-  async userAuth(token) {
+  async userAuth() {
+    const token = localStorage.getItem('token');
+
     const result = fetch(AUTH_URL, {
       method: 'GET',
       headers: {
@@ -38,7 +40,7 @@ class AuthService {
       .then(data => {
         return data;
       })
-      .catch(localStorage.removeItem('token'));
+      // .catch(localStorage.removeItem('token'));
     
     return await result;
   }

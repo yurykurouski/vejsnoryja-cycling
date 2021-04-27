@@ -4,7 +4,6 @@ import Icon from '@material-ui/core/Icon';
 import { Link } from "react-router-dom";
 import PropTypes from 'prop-types';
 
-
 export default function NewEvent(props) {
   const { name, expanded, type, linkTo } = props;
 

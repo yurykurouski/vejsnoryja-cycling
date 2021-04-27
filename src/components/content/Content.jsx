@@ -20,7 +20,7 @@ export default class Content extends Component {
             <Route path='/new-event' component={NewEventPage}/>
             <Route path='/profile' component={UserProfile}/>
             <Route path='/register' component={RegistrationPage}/>
-            <Route path='/authorization' component={LoginPage}/>
+            <Route path='/login' component={LoginPage}/>
           </Switch>
 
         </div>

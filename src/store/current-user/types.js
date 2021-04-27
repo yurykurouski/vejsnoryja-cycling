@@ -9,6 +9,3 @@ export const AUTH_USER_SUCESS = 'AUTH_USER/fulfilled';
 export const AUTH_USER_FAILURE = 'AUTH_USER/rejected';
 
 export const LOGOUT_USER = 'LOGOUT_USER';
-export const LOGOUT_USER_REQUEST = 'LOGOUT_USER/pending';
-export const LOGOUT_USER_SUCESS = 'LOGOUT_USER/fulfilled';
-export const LOGOUT_USER_FAILURE = 'LOGOUT_USER/rejected';

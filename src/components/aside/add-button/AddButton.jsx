@@ -39,16 +39,16 @@ export default class AddButton extends Component {
 
       <div className='add-btn_container'>
         <NewEvent
-          name='Register'
+          name='Smthng'
           expanded={expanded}
           type='create_new_folder'
           linkTo='register'
         />
         <NewEvent
-          name='Auth'
+          name='New event'
           expanded={expanded}
           type='edit'
-          linkTo='authorization'
+          linkTo='new-event'
         />
         <ClickAwayListener onClickAway={this.handleClickAway}>
           <button className='add-btn' onClick={this.handleClick}>

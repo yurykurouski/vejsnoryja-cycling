@@ -3,6 +3,7 @@ import { Formik } from 'formik';
 import authService from '../../../../../services/auth-service';
 import * as Yup from 'yup';
 import ValidationErrMsg from '../../../../elements/validation-err-msg/ValidationErrMsg';
+import { Link } from "react-router-dom";
 import { connect } from 'react-redux';
 import { authUser, logoutUser } from '../../../../../store/current-user/actions'
 
@@ -16,7 +17,7 @@ class AuthorizationPage extends Component {
 
     this.pressButton = this.pressButton.bind(this);
     this.logOut = this.logOut.bind(this);
-    
+
     this.submitForm = this.submitForm.bind(this);
     this.validationSchema = Yup.object().shape({
       email: Yup
@@ -28,11 +29,11 @@ class AuthorizationPage extends Component {
     });
   }
 
-   pressButton() {
+  pressButton() {
     const { currentUser } = this.props;
 
-    console.log( currentUser);
-  }
+    console.log(currentUser);
+  }1
 
   logOut() {
     const { logoutUser } = this.props;
@@ -46,7 +47,7 @@ class AuthorizationPage extends Component {
     const res = await authService.userLogin(values);
 
     if (res.token) {
-      localStorage.setItem('token', await res.token);
+      await localStorage.setItem('token', await res.token);
 
       await authUser();
     } else if (res) {
@@ -104,7 +105,7 @@ class AuthorizationPage extends Component {
           )}
 
         </Formik>
-
+        <Link to='register'>REGISTER</Link>
       </div>
     )
   }

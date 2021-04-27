@@ -1,9 +1,21 @@
-import React from 'react'
+import React from 'react';
+import { connect } from 'react-redux';
+import { logoutUser } from "../../../../store/current-user/actions";
 
-export default function UserProfile() {
+function UserProfile(props) {
+  const { logoutUser } = props;
+
   return (
     <div className='content__user-profile'>
-      
+      <button onClick={logoutUser}>LOGOUT</button>
     </div>
   )
 }
+
+function mapDispatchToProps(dispatch) {
+  return {
+    logoutUser: () => dispatch(logoutUser())
+  }
+}
+
+export default connect(null, mapDispatchToProps)(UserProfile);
