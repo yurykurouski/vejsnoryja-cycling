@@ -6,13 +6,13 @@ import SidebarProfile from "./sidebar-profile/SidebarProfile";
 export default function Sidebar() {
   return (
     <aside className='sidebar__nav'>
-      <SidebarLogo />
-      <header>
-        <nav>
+      <header className='header'>
+        <nav className='header__nav'>
+          <SidebarLogo />
           <ul className='sidebar__elements'>
 
             <SidebarProfile />
-            
+
             <li className='sidebar__nav_item'>
               <a href="#!" className='nav_item__link link'>Workshop</a>
             </li>

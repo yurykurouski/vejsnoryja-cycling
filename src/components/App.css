@@ -3,7 +3,7 @@
   grid-template-areas: "menu content float"
     "empty content addbtn";
   grid-template-columns: minmax(max-content, 15%) minmax(min-content, 1fr) max-content;
-  grid-template-rows: max-content 1fr;
+  /* grid-template-rows: max-content 1fr; */
   height: 100vh;
   column-gap: 10px;
 }

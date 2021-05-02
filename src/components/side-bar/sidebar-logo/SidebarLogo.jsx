@@ -4,10 +4,6 @@ import './SidebarLogo.css';
 
 export default function SidebarLogo() {
   return (
-    <Link to='/'>
-    <div className='logo_container' title='Go to main'>
-      <div className='logo'></div>
-      </div>
-    </Link>
+    <Link to='/' className='header__logo' title='Go to main'/>
   );
 }

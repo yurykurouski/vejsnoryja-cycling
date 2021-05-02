@@ -1,8 +1,8 @@
 import './App.css';
 import Content from './content/Content';
 import Sidebar from './side-bar/Sidebar';
-import FloatCard from './aside/float-card/FloatCard';
-import AddButton from './aside/add-button/AddButton';
+import FloatCard from './common/float-card/FloatCard';
+import AddButton from './common/add-button/AddButton';
 import { authUser } from "../store/current-user/actions";
 import { connect } from "react-redux";
 

@@ -1,5 +1,5 @@
+import ContentType from "../constants/content-type.js";
 import requestService from './request-service.js';
-import { REGISTRATION_URL, LOGIN_URL, AUTH_URL } from '../constants';
 
 class AuthService {
   constructor(requestService) {
@@ -7,7 +7,7 @@ class AuthService {
   }
 
   async userRegister(data) {
-    const result = await requestService.post(REGISTRATION_URL, data)
+    const result = await requestService.post(process.env.REACT_APP_REGISTRATION_URL, data)
       .then((response) => {
         return response;
       });
@@ -16,7 +16,7 @@ class AuthService {
   }
 
   async userLogin(data) {
-    const result = await requestService.post(LOGIN_URL, data)
+    const result = await requestService.post(process.env.REACT_APP_LOGIN_URL, data)
       .then((response) => {
         return response;
       });
@@ -27,11 +27,11 @@ class AuthService {
   async userAuth() {
     const token = localStorage.getItem('token');
 
-    const result = fetch(AUTH_URL, {
+    const result = fetch(process.env.REACT_APP_AUTH_URL, {
       method: 'GET',
       headers: {
-        'Content-Type': 'application/json',
-        Accept: 'application/json',
+        'Content-Type': ContentType.APPLICATION_JSON,
+        Accept: ContentType.APPLICATION_JSON,
         'Authorization': token
       }
     }).then(response => {

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Formik } from 'formik';
 import authService from '../../../../../services/auth-service';
 import * as Yup from 'yup';
-import ValidationErrMsg from '../../../../elements/validation-err-msg/ValidationErrMsg';
+import ValidationErrMsg from '../../../../common/validation-err-msg/ValidationErrMsg';
 import { Link } from "react-router-dom";
 import { connect } from 'react-redux';
 import { authUser, logoutUser } from '../../../../../store/current-user/actions'
@@ -15,7 +15,6 @@ class AuthorizationPage extends Component {
       authError: null,
     }
 
-    this.pressButton = this.pressButton.bind(this);
     this.logOut = this.logOut.bind(this);
 
     this.submitForm = this.submitForm.bind(this);
@@ -28,12 +27,6 @@ class AuthorizationPage extends Component {
         .required('Password can not be empty.'),
     });
   }
-
-  pressButton() {
-    const { currentUser } = this.props;
-
-    console.log(currentUser);
-  }1
 
   logOut() {
     const { logoutUser } = this.props;
@@ -62,7 +55,6 @@ class AuthorizationPage extends Component {
 
     return (
       <div className='content__authorization-page'>
-        <button onClick={this.pressButton}>authentication state</button>
         <button onClick={this.logOut}>logout</button>
         <h2>LoginPage</h2>
 

@@ -1,6 +1,8 @@
 .sidebar__nav {
   grid-area: menu;
   min-width: 200px;
+  margin-top: 5px;
+  height: fit-content;
 }
 
 .sidebar__elements {
@@ -30,6 +32,17 @@
 
   padding-right: 10px;
   transition: color .3s ease-out;
+  animation: .3s linear fadein;
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+
+  to{
+    opacity: 1;
+  }
 }
 
 .nav_item__link:focus,
