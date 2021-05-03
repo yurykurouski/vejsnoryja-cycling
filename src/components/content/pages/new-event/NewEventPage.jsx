@@ -3,25 +3,30 @@ import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { connect } from 'react-redux';
 import { addEvent } from "../../../../store/events/actions";
-
-import EventTitle from './new-event-inputs/EventTitle';
-import EventAdress from './new-event-inputs/EventAdress';
-import EventTerrain from './new-event-inputs/EventTerrain';
-import EventLevel from './new-event-inputs/EventLevel';
-import EventDescription from './new-event-inputs/EventDescription';
-import EventDate from './new-event-inputs/EventDate';
+import NewEventForm from "./new-event-form/NewEventForm";
 
 class NewEventPage extends Component {
   constructor() {
     super();
 
-    this.submitForm = this.submitForm.bind(this);
+    this.validationSchema = Yup.object().shape({
+      title: Yup
+        .string()
+        .required('Title cannot be blank'),
+      adress: Yup
+        .string()
+        .required('Adress cannot be blank'),
+      date: Yup
+      .date()
+    })
   }
 
-  submitForm(newEvent) {
+  submitForm = (newEvent, actions) => {
     const { addEvent } = this.props;
 
     addEvent(newEvent);
+    
+    actions.resetForm();
   }
 
   render() {
@@ -35,55 +40,29 @@ class NewEventPage extends Component {
             title: '',
             adress: '',
             description: '',
-            date: '',
+            date: '2021-03-25T11:00',
             terrain: '',
             level: '',
             author: currentUser.user
           }}
           onSubmit={this.submitForm}
+          validationSchema={this.validationSchema}
         >
           {({ handleSubmit, handleChange, values, errors, touched }) => (
-            <form
-              onSubmit={handleSubmit}
-              className='new-event__form'
-            >
+            <NewEventForm
+              handleSubmit={handleSubmit}
+              handleChange={handleChange}
 
-              <EventTitle
-                onChange={handleChange}
-                value={values.title}
-              />
+              errors={errors}
+              touched={touched}
 
-              <EventAdress
-                onChange={handleChange}
-                value={values.adress}
-              />
-
-              <EventDate
-                value={values.date}
-                onChange={handleChange}
-              />
-
-              <EventTerrain
-                value={values.terrain}
-                onChange={handleChange}
-              />
-
-              <EventLevel
-                value={values.level}
-                onChange={handleChange}
-              />
-
-              <EventDescription
-                value={values.description}
-                onChange={handleChange}
-              />
-
-              <section>
-                <button type="submit">Save Event</button> or
-                Cancel
-              </section>
-
-            </form>
+              title={values.title}
+              adress={values.adress}
+              date={values.date}
+              terrain={values.terrain}
+              level={values.level}
+              description={values.description}
+            />
           )}
 
         </Formik>

@@ -10,6 +10,7 @@ export default function EventDate(props) {
       <input
         name="date"
         type="datetime-local"
+        step="01"
         id="meeting-time"
         value={value}
         onChange={onChange}
