@@ -15,7 +15,6 @@ class NewEventPage extends Component {
   constructor() {
     super();
 
-
     this.submitForm = this.submitForm.bind(this);
   }
 
@@ -31,7 +30,6 @@ class NewEventPage extends Component {
     return (
       <div className='content__new-event'>
         <h3>New event page</h3>
-        <h4>Форма данные собирает, но в стейт не записывает почему-то. Серв еще тоже не дописан для новых ивентов</h4>
         <Formik
           initialValues={{
             title: '',

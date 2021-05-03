@@ -6,12 +6,13 @@ class EventsService {
   }
 
   async createEvent(data) {
-    const result = await requestService.postSecured(process.env.REACT_APP_API_NEW_EVENT_URL, data)
-      .then((response) => {
-        return response;
-      });
-
-    return result;
+    try {
+      requestService.postSecured(process.env.REACT_APP_API_NEW_EVENT_URL, data);
+      
+      return data;
+    } catch (err) {
+      console.log(err);
+    }
   }
 }
 

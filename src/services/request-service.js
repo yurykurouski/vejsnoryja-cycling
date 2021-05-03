@@ -34,9 +34,9 @@ class RequestService {
         method: HttpMethod.POST,
         body: JSON.stringify(data),
         headers: {
-          'Content-Type': ContentType.APPLICATION_JSON
+          "Content-Type": ContentType.APPLICATION_JSON,
+          'Authorization': token
         },
-        'Authorization': token
       });
 
       const json = await response.json();
