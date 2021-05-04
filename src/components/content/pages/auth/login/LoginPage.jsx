@@ -5,7 +5,7 @@ import * as Yup from 'yup';
 import ValidationErrMsg from '../../../../common/validation-err-msg/ValidationErrMsg';
 import { Link } from "react-router-dom";
 import { connect } from 'react-redux';
-import { authUser, logoutUser } from '../../../../../store/current-user/actions'
+import { authUser, logoutUser, loginUser } from '../../../../../store/current-user/actions';
 
 class AuthorizationPage extends Component {
   constructor() {
@@ -35,19 +35,32 @@ class AuthorizationPage extends Component {
   }
 
   async submitForm(values) {
-    const { authUser } = this.props;
+    const { loginUser } = this.props;
 
-    const res = await authService.userLogin(values);
+    const err = await loginUser(values);
 
-    if (res.token) {
-      await localStorage.setItem('token', await res.token);
+    console.log(err)
 
-      await authUser();
-    } else if (res) {
-      this.setState({
-        authError: await res
-      });
-    }
+ /*    this.setState({
+      authError: errors
+    }); */
+
+
+
+
+    /*     const { authUser } = this.props;
+    
+        const res = await authService.userLogin(values);
+    
+        if (res.token) {
+          await localStorage.setItem('token', await res.token);
+    
+          await authUser();
+        } else if (res) {
+          this.setState({
+            authError: await res
+          });
+        } */
   }
 
   render() {
@@ -111,6 +124,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
+    loginUser: (data) => dispatch(loginUser(data)),
     authUser: () => dispatch(authUser()),
     logoutUser: () => dispatch(logoutUser())
   }

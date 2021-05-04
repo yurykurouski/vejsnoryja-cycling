@@ -10,8 +10,8 @@ function SidebarProfile(props) {
     <li className='sidebar__nav_item'>
 
       {isAuthenticated
-        ? <Link to='/profile' className='nav_item__link link'>Profile</Link>
-        : <Link to='/login' className='nav_item__link link'>Login/register</Link>
+        ? <Link to='/profile' className='nav_item__link profile_logined link'>Profile</Link>
+        : <Link to='/login' className='nav_item__link profile_notlogined link'>Login/register</Link>
       }
 
     </li>

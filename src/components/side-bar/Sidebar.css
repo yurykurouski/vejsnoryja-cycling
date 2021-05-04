@@ -35,12 +35,17 @@
   animation: .3s linear fadein;
 }
 
+.profile_logined,
+.profile_notlogined {
+  animation: .3s linear fadein;
+}
+
 @keyframes fadein {
   from {
     opacity: 0;
   }
 
-  to{
+  to {
     opacity: 1;
   }
 }

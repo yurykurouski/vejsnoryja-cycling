@@ -21,7 +21,12 @@ class AuthService {
         return response;
       });
 
-    return result;
+    if (result.token) {
+      localStorage.setItem('token', result.token);
+
+    } else if (result) {
+      return result.message;
+    }
   }
 
   async userAuth() {
@@ -40,8 +45,8 @@ class AuthService {
       .then(data => {
         return data;
       })
-      // .catch(localStorage.removeItem('token'));
-    
+    // .catch(localStorage.removeItem('token'));
+
     return await result;
   }
 }

@@ -13,16 +13,10 @@ class RequestService {
       });
 
       const json = await response.json();
-
-      if (!response.ok) {
-        
-        return json.message;
-      } else if (json.token) {
-        return json;
-      }
-
+      
+      return json;
     } catch (err) {
-      console.log(err);
+      throw Error(err.message);
     }
   }
 
