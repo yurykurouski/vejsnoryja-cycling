@@ -4,6 +4,7 @@ import * as Yup from 'yup';
 import { connect } from 'react-redux';
 import { addEvent } from "../../../../store/events/actions";
 import NewEventForm from "./new-event-form/NewEventForm";
+import './new-event-page.css'
 
 class NewEventPage extends Component {
   constructor() {
@@ -33,14 +34,14 @@ class NewEventPage extends Component {
     const { currentUser } = this.props;
 
     return (
-      <div className='content__new-event'>
-        <h3>New event page</h3>
+      <div className="content__new-event first-layer-card">
+        <h2 className="new-event__heading card-heading">Create new Event</h2>
         <Formik
           initialValues={{
             title: '',
             adress: '',
             description: '',
-            date: '2021-03-25T11:00',
+            date: "2021-03-25T11:00",
             terrain: '',
             level: '',
             author: currentUser.user

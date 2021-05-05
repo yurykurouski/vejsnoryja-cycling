@@ -16,7 +16,8 @@ body {
 
   --fab-bgr-color: #ffffff;
 
-  --surface-overlay-color: rgba(33, 33, 33, .08);
+  --surface-overlay-color: rgba(33, 33, 33, .03);
+  --surface-overlay-color_second-level: rgba(33, 33, 33, .05);
 
   background-color: var(--background-main-color);
 }
@@ -47,4 +48,60 @@ p {
   display: grid;
   grid-template-columns: 80%;
   justify-content: center;
+}
+
+.second-layer-card,
+.first-layer-card {
+  border-radius: 5px;
+
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.14),
+    0px 2px 1px rgba(0, 0, 0, 0.12),
+    0px 1px 3px rgba(0, 0, 0, 0.2);
+
+  animation: .3s linear fadein;
+}
+
+.first-layer-card {
+  background-color: var(--surface-overlay-color);
+}
+
+.second-layer-card {
+  background-color: var(--surface-overlay-color_second-level);
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.submit-btn {
+  width: 150px;
+  height: 30px;
+
+  font-size: 18px;
+  font-weight: 500;
+  font-family: "Roboto";
+
+  color: var(--accent-color_light-blue);
+  background-color: transparent;
+  opacity: .9;
+  border: none;
+  border-radius: 2px;
+  transition: background .1s ease-out,
+    opacity .1s ease-out;
+
+  cursor: pointer;
+}
+
+.submit-btn:focus,
+.submit-btn:hover {
+  border-radius: 2em;
+
+  opacity: 1;
+  background-color: var(--font-color-main_hover-bg);
 }

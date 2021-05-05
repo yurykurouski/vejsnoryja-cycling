@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import ActionStatus from "../../../../constants/action-status";
+import ActionStatus from '../../../../constants/action-status';
 import Loader from '../../../common/loader/Loader'
 import './main-page.css';
 

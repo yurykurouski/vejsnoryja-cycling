@@ -5,7 +5,7 @@ export default function EventAdress(props) {
   const { onChange, value, errors, touched } = props;
 
   return (
-    <label>
+    <label className="input__label">
       Meet-up adress*
 
       <input
@@ -13,6 +13,7 @@ export default function EventAdress(props) {
         type='text'
         onChange={onChange}
         value={value}
+        className="form__input form__input_adress"
       />
 
       {(errors && touched) ? (

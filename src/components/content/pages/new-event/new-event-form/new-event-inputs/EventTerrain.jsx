@@ -4,7 +4,7 @@ export default function EventTerrain(props) {
   const { onChange, value } = props;
 
   return (
-    <label>
+    <label className="input__label">
       Terrain
 
       <select
@@ -12,6 +12,7 @@ export default function EventTerrain(props) {
         type='text'
         value={value}
         onChange={onChange}
+        className="form__input form__input_terrain"
       >
 
         <option value="mostly-flat">Mostly Flat</option>

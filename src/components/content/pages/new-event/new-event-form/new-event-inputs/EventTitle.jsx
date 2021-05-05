@@ -5,7 +5,7 @@ export default function EventTitle(props) {
   const { onChange, value, errors, touched } = props;
 
   return (
-    <label>
+    <label className="input__label title-label">
       Event title*
 
       <input
@@ -13,6 +13,7 @@ export default function EventTitle(props) {
         name='title'
         type='text'
         value={value}
+        className="form__input form__input_title"
         autoFocus
       />
 

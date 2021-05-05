@@ -4,7 +4,7 @@ export default function EventLevel(props) {
   const { onChange, value } = props;
 
   return (
-    <label>
+    <label className="input__label">
       Level/Event type
 
       <select
@@ -12,9 +12,10 @@ export default function EventLevel(props) {
         type='text'
         value={value}
         onChange={onChange}
+        className="form__input form__input_level"
       >
 
-        <option value="casual">Csual/No Drop</option>
+        <option value="casual">Casual/No Drop</option>
         <option value="tempo">Tempo</option>
         <option value="race">Race Pace</option>
       </select>

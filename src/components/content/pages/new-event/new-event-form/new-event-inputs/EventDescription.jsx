@@ -4,7 +4,7 @@ export default function EventDescription(props) {
   const { onChange, value } = props;
 
   return (
-    <label>
+    <label className="input__label">
       Description
 
       <textarea
@@ -14,6 +14,7 @@ export default function EventDescription(props) {
         rows="5"
         onChange={onChange}
         value={value}
+        className="form__input form__input_description"
       />
 
     </label>
