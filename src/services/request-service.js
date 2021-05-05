@@ -2,6 +2,28 @@ import ContentType from "../constants/content-type";
 import HttpMethod from '../constants/http-method';
 
 class RequestService {
+  constructor() {
+    this.token = localStorage.getItem('token');
+  }
+
+  async getSecured(url) {
+    try {
+      const response = await fetch(url, {
+        method: HttpMethod.GET,
+        headers: {
+          'Content-Type': ContentType.APPLICATION_JSON,
+          'Authorization': this.token
+        }
+      });
+
+      const json = response.json();
+
+      return json;
+    } catch (err) {
+      throw Error(err);
+    }
+  }
+
   async post(url, data) {
     try {
       const response = await fetch(url, {
@@ -13,7 +35,7 @@ class RequestService {
       });
 
       const json = await response.json();
-      
+
       return json;
     } catch (err) {
       throw Error(err.message);
@@ -21,7 +43,7 @@ class RequestService {
   }
 
   async postSecured(url, data) {
-    const token = localStorage.getItem('token');
+    // const token = localStorage.getItem('token');
 
     try {
       const response = await fetch(url, {
@@ -29,7 +51,7 @@ class RequestService {
         body: JSON.stringify(data),
         headers: {
           "Content-Type": ContentType.APPLICATION_JSON,
-          'Authorization': token
+          'Authorization': this.token
         },
       });
 

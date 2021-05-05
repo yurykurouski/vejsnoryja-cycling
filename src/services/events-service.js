@@ -14,6 +14,16 @@ class EventsService {
       console.log(err);
     }
   }
+
+  async getAllEvents() {
+    try {
+      const response = await requestService.getSecured(process.env.REACT_APP_API_GET_ALL_EVENTS_URL);
+
+      return response;
+    } catch (err) {
+      console.log(err)
+    }
+  }
 }
 
 const eventService = new EventsService();

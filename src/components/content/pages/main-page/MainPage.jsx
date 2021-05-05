@@ -1,14 +1,27 @@
-import React from 'react'
-import Loader from "../../../common/loader/Loader"
+import React, { Component } from 'react'
+import ActionStatus from "../../../../constants/action-status";
+import Loader from '../../../common/loader/Loader'
 import './main-page.css';
 
-export default function MainPage() {
-  return (
-    <div className="content__main-page">
+export default class MainPage extends Component {
+  getEvents = () => {
+    const { getAllEvents } = this.props;
+    const events = getAllEvents();
 
-      <h3>Здесь карточки с готовыми событиями</h3>
-      <Loader />
+    console.log(events);
+  }
 
-    </div>
-  )
+  render() {
+    const { events, status } = this.props;
+
+    return (
+      <div className="content__main-page">
+        <button onClick={this.getEvents}>Click</button>
+        <h3>Здесь карточки с готовыми событиями</h3>
+
+        {status === ActionStatus.LOADING && <Loader />}
+
+      </div>
+    );
+  }
 }

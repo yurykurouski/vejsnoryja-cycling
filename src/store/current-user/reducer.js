@@ -5,7 +5,7 @@ const initialState = {
   isAuthenticated: false,
   user: null,
   authErrors: null,
-  status: 'idle'
+  status: ActionStatus.IDLE
 };
 
 export default function currentUser(state = initialState, action) {
@@ -23,10 +23,10 @@ export default function currentUser(state = initialState, action) {
       console.log(action.payload)
       return {
         ...state,
-        authErrors: action.payload
+        authErrors: action.payload,
+        status: ActionStatus.FAILED
       }
     }
-      
 
     case types.AUTH_USER_SUCESS: {
       return {
@@ -45,6 +45,11 @@ export default function currentUser(state = initialState, action) {
         user: null,
         status: ActionStatus.SUCCEDED
       };
+    }
+
+    case types.LOGIN_USER.REQUEST:
+    case types.AUTH_USER_REQUEST: {
+      return { ...state, status: ActionStatus.LOADING };
     }
 
     default: {

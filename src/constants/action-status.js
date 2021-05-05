@@ -3,7 +3,7 @@ export default class ActionStatus {
     return 'idle';
   }
 
-  static get LADING() {
+  static get LOADING() {
     return 'loading';
   }
 
