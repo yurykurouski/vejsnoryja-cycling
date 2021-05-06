@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { Formik } from 'formik';
-import authService from '../../../../../services/auth-service';
 import * as Yup from 'yup';
 import ValidationErrMsg from '../../../../common/validation-err-msg/ValidationErrMsg';
 import { Link } from "react-router-dom";
@@ -10,10 +9,6 @@ import { authUser, logoutUser, loginUser } from '../../../../../store/current-us
 class AuthorizationPage extends Component {
   constructor() {
     super();
-
-    this.state = {
-      authError: null,
-    }
 
     this.logOut = this.logOut.bind(this);
 
@@ -35,36 +30,14 @@ class AuthorizationPage extends Component {
   }
 
   async submitForm(values) {
-    const { loginUser } = this.props;
+    const { loginUser, authUser } = this.props;
 
-    const err = await loginUser(values);
-
-    console.log(err)
-
- /*    this.setState({
-      authError: errors
-    }); */
-
-
-
-
-    /*     const { authUser } = this.props;
-    
-        const res = await authService.userLogin(values);
-    
-        if (res.token) {
-          await localStorage.setItem('token', await res.token);
-    
-          await authUser();
-        } else if (res) {
-          this.setState({
-            authError: await res
-          });
-        } */
+    await loginUser(values);
+    authUser();
   }
 
   render() {
-    const { authError } = this.state;
+    const { authErrors } = this.props;
 
     return (
       <div className='content__authorization-page'>
@@ -88,8 +61,8 @@ class AuthorizationPage extends Component {
                 autoFocus
               />
 
-              {(errors.email && touched.email) || authError ? (
-                <ValidationErrMsg errorMsg={errors.email || authError} />
+              {(errors.email && touched.email) || authErrors ? (
+                <ValidationErrMsg errorMsg={errors.email || authErrors} />
               ) : null}
 
               <input
@@ -118,7 +91,8 @@ class AuthorizationPage extends Component {
 
 function mapStateToProps(state) {
   return {
-    currentUser: state.currentUser
+    currentUser: state.currentUser,
+    authErrors: state.currentUser.authErrors
   }
 }
 

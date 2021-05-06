@@ -13,6 +13,7 @@ export default function currentUser(state = initialState, action) {
     case types.LOGIN_USER_SUCESS: {
       return {
         ...state,
+        authErrors: null,
         status: ActionStatus.SUCCEDED
       }
     }
