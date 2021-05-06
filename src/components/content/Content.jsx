@@ -10,6 +10,11 @@ import { connect } from 'react-redux';
 import { getAllEvents } from "../../store/events/actions";
 
 class Content extends Component {
+  componentDidMount() {
+    const { getAllEvents } = this.props;
+
+    getAllEvents();
+  }
 
   render() {
     const { events, status, getAllEvents } = this.props;

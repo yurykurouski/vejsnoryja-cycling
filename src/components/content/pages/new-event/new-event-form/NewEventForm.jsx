@@ -7,7 +7,8 @@ import EventTerrain from './new-event-inputs/EventTerrain';
 import EventLevel from './new-event-inputs/EventLevel';
 import EventDescription from './new-event-inputs/EventDescription';
 import EventDate from './new-event-inputs/EventDate';
-import ValidationErrMsg from "../../../../common/validation-err-msg/ValidationErrMsg";
+
+import NewEventMap from './new-event-map/NewEventMap';
 
 export default function NewEventForm(props) {
   const {
@@ -34,11 +35,9 @@ export default function NewEventForm(props) {
         />
       </div>
 
-      <EventAdress
+      <EventDescription
+        value={description}
         onChange={handleChange}
-        value={adress}
-        errors={errors.adress}
-        touched={touched.adress}
       />
 
       <div className="form__terrain-level-wrap">
@@ -53,11 +52,15 @@ export default function NewEventForm(props) {
         />
       </div>
 
-      <EventDescription
-        value={description}
+      <EventAdress
         onChange={handleChange}
+        value={adress}
+        errors={errors.adress}
+        touched={touched.adress}
       />
 
+      <NewEventMap/>
+      
       <section className="new-event__controls form__controls">
         <button type="submit" className="new-event__submit submit-btn">Send</button>
         or

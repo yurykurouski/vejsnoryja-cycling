@@ -24,6 +24,23 @@ class RequestService {
     }
   }
 
+  async get(url) {
+    try {
+      const response = await fetch(url, {
+        method: HttpMethod.GET,
+        headers: {
+          'Content-Type': ContentType.APPLICATION_JSON,
+        }
+      });
+
+      const json = response.json();
+
+      return json;
+    } catch (err) {
+      throw Error(err);
+    }
+  }
+
   async post(url, data) {
     try {
       const response = await fetch(url, {
@@ -43,8 +60,6 @@ class RequestService {
   }
 
   async postSecured(url, data) {
-    // const token = localStorage.getItem('token');
-
     try {
       const response = await fetch(url, {
         method: HttpMethod.POST,

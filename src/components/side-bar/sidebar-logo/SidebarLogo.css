@@ -8,10 +8,12 @@
   margin-bottom: 30px;
   transition: height .3s ease-out,
     margin .3s ease-out;
+  transition-delay: .3s;
   cursor: pointer;
 }
 
 .header__logo:hover {
   height: 188px;
   margin-bottom: 0;
+  transition-delay: 2s;
 }
