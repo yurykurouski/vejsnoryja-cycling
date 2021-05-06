@@ -11,9 +11,9 @@ export const authUser = createAsyncThunk(types.AUTH_USER, () => {
 export const loginUser = createAsyncThunk(types.LOGIN_USER, async (data) => {
   const response = await authService.userLogin(data);
   // authUser не вызывается
-  if (!response) {
+/*   if (!response) {
     authUser();
-  }
+  } */
 
   return response;
 });

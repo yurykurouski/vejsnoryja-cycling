@@ -38,7 +38,7 @@ class RequestService {
 
       return json;
     } catch (err) {
-      throw Error(err.message);
+      throw new Error(err.message);
     }
   }
 
