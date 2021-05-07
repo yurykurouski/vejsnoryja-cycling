@@ -43,6 +43,7 @@ p {
 #root {
   display: grid;
   grid-template-columns: 80%;
+  height: 100vh;
   justify-content: center;
 }
 
