@@ -9,9 +9,6 @@ export default function EventDescription(props) {
 
       <textarea
         name="description"
-        id=""
-        cols="40"
-        rows="5"
         onChange={onChange}
         value={value}
         className="form__input form__input_description"

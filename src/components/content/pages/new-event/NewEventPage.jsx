@@ -10,6 +10,10 @@ class NewEventPage extends Component {
   constructor() {
     super();
 
+    this.state = {
+      markerData: null
+    }
+
     this.validationSchema = Yup.object().shape({
       title: Yup
         .string()
@@ -18,20 +22,43 @@ class NewEventPage extends Component {
         .string()
         .required('Adress cannot be blank'),
       date: Yup
-      .date()
+        .date()
     })
   }
 
   submitForm = (newEvent, actions) => {
     const { addEvent } = this.props;
+    const { markerData } = this.state;
 
-    addEvent(newEvent);
-    
+    addEvent({ ...newEvent, markerData: markerData });
     actions.resetForm();
   }
 
+  addMarker = (event) => {
+    const coords = event.latlng;
+
+    this.setState({
+      markerData: {
+        lat: coords.lat,
+        lng: coords.lng
+      }
+    })
+  };
+
+  updateMarker = (event) => {
+    const coords = event.target.getLatLng();
+
+    this.setState({
+      markerData: {
+        lat: coords.lat,
+        lng: coords.lng
+      }
+    })
+  };
+
   render() {
     const { currentUser } = this.props;
+    const { markerData } = this.state;
 
     return (
       <div className="content__new-event first-layer-card">
@@ -44,7 +71,8 @@ class NewEventPage extends Component {
             date: "2021-03-25T11:00",
             terrain: '',
             level: '',
-            author: currentUser.user
+            author: currentUser.user,
+            markerData: markerData
           }}
           onSubmit={this.submitForm}
           validationSchema={this.validationSchema}
@@ -53,6 +81,10 @@ class NewEventPage extends Component {
             <NewEventForm
               handleSubmit={handleSubmit}
               handleChange={handleChange}
+
+              addMarker={this.addMarker}
+              updateMarker={this.updateMarker}
+              markerData={markerData}
 
               errors={errors}
               touched={touched}

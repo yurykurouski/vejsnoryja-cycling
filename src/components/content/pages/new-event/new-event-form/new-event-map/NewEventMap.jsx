@@ -11,30 +11,14 @@ export default class NewEventMap extends Component {
         lat: 53.6778,
         lng: 23.8294
       },
-      zoom: 4,
       draggable: true,
       markerData: null
     }
   }
 
-  addMarker = (event) => {
-    const coords = event.latlng;
-    this.setState({
-      markerData: coords
-    });
-  };
-
-  updateMarker = (event) => {
-    const latLng = event.target.getLatLng();
-
-    this.setState({
-      markerData: latLng
-    })
-  };
-
   render() {
-    const { center, markerData } = this.state;
-    const { addMarker, updateMarker } = this;
+    const { center, draggable } = this.state;
+    const { addMarker, updateMarker, markerData } = this.props;
 
     return (
       <MapContainer
@@ -55,7 +39,7 @@ export default class NewEventMap extends Component {
 
         {markerData && <Marker
           position={markerData}
-          draggable={true}
+          draggable={draggable}
           eventHandlers={{
             dragend(e) {
               updateMarker(e);

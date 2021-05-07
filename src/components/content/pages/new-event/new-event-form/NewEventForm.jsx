@@ -12,7 +12,7 @@ import NewEventMap from './new-event-map/NewEventMap';
 
 export default function NewEventForm(props) {
   const {
-    handleSubmit, handleChange, title, adress, date, terrain, level, description, errors, touched
+    handleSubmit, handleChange, title, adress, date, terrain, level, description, errors, touched, addMarker, updateMarker, markerData
   } = props;
 
   return (
@@ -59,8 +59,12 @@ export default function NewEventForm(props) {
         touched={touched.adress}
       />
 
-      <NewEventMap/>
-      
+      <NewEventMap
+          addMarker={addMarker}
+          updateMarker={updateMarker}
+          markerData={markerData}
+        />
+
       <section className="new-event__controls form__controls">
         <button type="submit" className="new-event__submit submit-btn">Send</button>
         or
