@@ -64,6 +64,7 @@ export default function NewEventForm(props) {
         updateMarker={updateMarker}
         markerData={markerData}
         isDraggable={true}
+        mainClass="new-event__map"
       />
 
       <section className="new-event__controls form__controls">

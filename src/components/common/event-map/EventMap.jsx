@@ -16,22 +16,25 @@ export default class EventMap extends Component {
 
   render() {
     const { center } = this.state;
-    const { isDraggable, addMarker, updateMarker, markerData } = this.props;
+    const { isDraggable, addMarker, updateMarker, markerData, mainClass } = this.props;
 
     return (
       <MapContainer
-        className="new-event__map second-layer-card"
-        center={center}
+        className={`${mainClass} map second-layer-card`}
+        center={ markerData? markerData: center }
         zoom={13}
+        zoomControl={false}
         scrollWheelZoom={true}
         whenReady={(map) => {
-          map.target.on("click", function (e) {
-            addMarker(e);
-          });
+          if (addMarker) {
+            map.target.on("click", function (e) {
+              addMarker(e);
+            });
+          }
         }}
       >
         <TileLayer
-          attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+          attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a>'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
 

@@ -1,21 +1,37 @@
-.main-page__event{
+.main-page__event {
   display: flex;
   padding: 5px;
   gap: 20px;
 }
 
-.event-card__main{
+.event-card__main {
   display: flex;
-  justify-content: flex-start1;
+  justify-content: flex-start;
   flex-direction: column;
   max-width: 50%;
 }
 
-.event-card__main__heading{
+.event-card__main__heading {
   display: flex;
   gap: .5em;
 }
 
-.date-header__day{
+.date-header__day {
   font-weight: 600;
+}
+
+.event__map {
+  margin-left: auto;
+  width: 150px;
+  height: 150px;
+  transition: width .3s ease-out, height .2s ease-out;
+}
+
+.event__map .leaflet-control-attribution {
+  opacity: 0;
+}
+
+.event__map:hover{
+  width: 30%;
+  height: 200px;
 }

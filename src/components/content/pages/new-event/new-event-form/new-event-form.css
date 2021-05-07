@@ -86,3 +86,8 @@
 .cancel-btn:focus {
   color: var(--font-color-main_active);
 }
+
+.new-event__map {
+  height: 300px;
+  width: 100%;
+}
