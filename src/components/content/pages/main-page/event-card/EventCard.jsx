@@ -7,7 +7,7 @@ import EventMap from '../../../../common/event-map/EventMap';
 import './event-card.css';
 
 export default function EventCard(props) {
-  const { date, title, level, markerData, adress } = props.event;
+  const { date, title, level, distance, markerData, adress } = props.event;
 
   return (
     <li className="main-page__event first-layer-card_hovered">
@@ -31,12 +31,25 @@ export default function EventCard(props) {
           <b>{title}</b>
         </span>
 
-        <span className="event-card__main__level">
-          <Icon>speed</Icon> {level}
+        <span className="event-card__main__distance event-details">
+          <Icon
+            style={{ opacity: .9 }}
+            title="Distance"
+          >directions_bike</Icon> {distance}
         </span>
 
-        <adress className="event-card__main__adress">
-          <Icon>place</Icon> {adress}
+        <span className="event-card__main__level event-details">
+          <Icon
+            style={{ opacity: .9 }}
+            title="Level/Event type"
+          >speed</Icon> {level}
+        </span>
+
+        <adress className="event-card__main__adress event-details">
+          <Icon
+            style={{ opacity: .9 }}
+            title="Adress"
+          >place</Icon> {adress}
         </adress>
       </div>
 

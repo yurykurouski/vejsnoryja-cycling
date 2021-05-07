@@ -1,4 +1,4 @@
-import './App.css';
+import './app.css';
 import Content from './content/Content';
 import Sidebar from './side-bar/Sidebar';
 import FloatCard from './common/float-card/FloatCard';

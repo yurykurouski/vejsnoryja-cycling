@@ -7,12 +7,13 @@ import EventTerrain from './new-event-inputs/EventTerrain';
 import EventLevel from './new-event-inputs/EventLevel';
 import EventDescription from './new-event-inputs/EventDescription';
 import EventDate from './new-event-inputs/EventDate';
+import Distance from './new-event-inputs/Distance';
 
 import EventMap from '../../../../common/event-map/EventMap';
 
 export default function NewEventForm(props) {
   const {
-    handleSubmit, handleChange, title, adress, date, terrain, level, description, errors, touched, addMarker, updateMarker, markerData
+    handleSubmit, handleChange, title, adress, date, terrain, level, description, distance, errors, touched, addMarker, updateMarker, markerData
   } = props;
 
   return (
@@ -41,6 +42,11 @@ export default function NewEventForm(props) {
       />
 
       <div className="form__terrain-level-wrap">
+        <Distance
+          value={distance}
+          onChange={handleChange}
+        />
+
         <EventTerrain
           value={terrain}
           onChange={handleChange}

@@ -6,7 +6,8 @@
 .main-page__heading{
   position: sticky;
   top: 0px;
-  z-index: 999999;
+  z-index: 1;
+  margin-top: 5px;
   padding: 20px 0 30px 30px;
   border-radius: 5px 5px 0 0;
 

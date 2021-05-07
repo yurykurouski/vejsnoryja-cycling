@@ -21,8 +21,7 @@
   font-weight: 600;
 }
 
-.event-card__main__adress,
-.event-card__main__level{
+.event-details {
   display: flex;
   gap: 5px;
 }

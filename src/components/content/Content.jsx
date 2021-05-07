@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './Content.css'
+import './content.css'
 import { Switch, Route } from 'react-router-dom';
 import MainPage from "./pages/main-page/MainPage";
 import NewEventPage from "./pages/new-event/NewEventPage";

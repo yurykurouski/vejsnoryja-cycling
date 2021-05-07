@@ -1,5 +1,5 @@
 import React from 'react';
-import './NewEvent.css'
+import './new-event.css'
 import Icon from '@material-ui/core/Icon';
 import { Link } from "react-router-dom";
 import PropTypes from 'prop-types';
