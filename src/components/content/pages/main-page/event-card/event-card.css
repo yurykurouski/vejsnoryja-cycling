@@ -1,0 +1,21 @@
+.main-page__event{
+  display: flex;
+  padding: 5px;
+  gap: 20px;
+}
+
+.event-card__main{
+  display: flex;
+  justify-content: flex-start1;
+  flex-direction: column;
+  max-width: 50%;
+}
+
+.event-card__main__heading{
+  display: flex;
+  gap: .5em;
+}
+
+.date-header__day{
+  font-weight: 600;
+}

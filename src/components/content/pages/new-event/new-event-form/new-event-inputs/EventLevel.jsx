@@ -15,9 +15,9 @@ export default function EventLevel(props) {
         className="form__input form__input_level"
       >
 
-        <option value="casual">Casual/No Drop</option>
-        <option value="tempo">Tempo</option>
-        <option value="race">Race Pace</option>
+        <option value="Casual">Casual/No Drop</option>
+        <option value="Tempo">Tempo</option>
+        <option value="Race">Race Pace</option>
       </select>
     </label>
   )

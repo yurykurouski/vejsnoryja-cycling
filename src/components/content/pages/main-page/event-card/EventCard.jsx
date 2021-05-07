@@ -1,10 +1,42 @@
-import React from 'react'
+import React from 'react';
+import Moment from 'react-moment';
+import EventCardDate from './event-card-date/EventCardDate';
 
-export default function EventCard({event}) {
+import './event-card.css';
+
+export default function EventCard(props) {
+  const { date, title, level } = props.event;
+
   return (
-    <div className="main-page__events">
-      {event.title}
-    </div>
+    <li className="main-page__event first-layer-card_hovered">
+
+      <EventCardDate customClass="event-card__date_date" date={date} />
+
+      <div className="event-card__main">
+        <span className="event-card__main__heading">
+          <Moment
+            element="span"
+            format="dddd"
+            className="date-header__day"
+          >{date}</Moment>
+
+          <Moment
+            element="span"
+            format="h:mm"
+            className="date-header__start-time"
+          >{date}</Moment>
+          /
+          <b>{title}</b>
+        </span>
+
+        <span className="event-card__main__level">
+          {level}
+        </span>
+      </div>
+
+      
+
+    </li>
   )
 }
 

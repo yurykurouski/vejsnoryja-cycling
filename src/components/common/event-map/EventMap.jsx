@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { MapContainer, TileLayer, Marker } from 'react-leaflet'
-import './new-event-map.css';
+import './event-map.css';
 
-export default class NewEventMap extends Component {
+export default class EventMap extends Component {
   constructor() {
     super();
 
@@ -11,14 +11,12 @@ export default class NewEventMap extends Component {
         lat: 53.6778,
         lng: 23.8294
       },
-      draggable: true,
-      markerData: null
     }
   }
 
   render() {
-    const { center, draggable } = this.state;
-    const { addMarker, updateMarker, markerData } = this.props;
+    const { center } = this.state;
+    const { isDraggable, addMarker, updateMarker, markerData } = this.props;
 
     return (
       <MapContainer
@@ -39,7 +37,7 @@ export default class NewEventMap extends Component {
 
         {markerData && <Marker
           position={markerData}
-          draggable={draggable}
+          draggable={isDraggable}
           eventHandlers={{
             dragend(e) {
               updateMarker(e);

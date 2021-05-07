@@ -1,5 +1,5 @@
 body {
-  margin: 0 10px;
+  margin: 5px 10px;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -22,16 +22,12 @@ body {
   background-color: var(--background-main-color);
 }
 
-/* :focus {
-  outline: none;
-  box-shadow: 0 0 0 1px red;
-} */
-
 h1,
 h2,
 h3,
 h4,
 h5,
+ol,
 ul,
 li,
 p {
@@ -50,6 +46,7 @@ p {
   justify-content: center;
 }
 
+.first-layer-card_hovered,
 .second-layer-card,
 .first-layer-card {
   border-radius: 5px;
@@ -61,8 +58,17 @@ p {
   animation: .3s linear fadein;
 }
 
+.first-layer-card_hovered,
 .first-layer-card {
   background-color: var(--surface-overlay-color);
+}
+
+.first-layer-card_hovered{
+  transition: background-color .3s ease-out;
+}
+
+.first-layer-card_hovered:hover{
+  background-color: var(--surface-overlay-color_second-level);
 }
 
 .second-layer-card {

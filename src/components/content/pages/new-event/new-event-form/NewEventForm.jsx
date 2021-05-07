@@ -8,7 +8,7 @@ import EventLevel from './new-event-inputs/EventLevel';
 import EventDescription from './new-event-inputs/EventDescription';
 import EventDate from './new-event-inputs/EventDate';
 
-import NewEventMap from './new-event-map/NewEventMap';
+import EventMap from '../../../../common/event-map/EventMap';
 
 export default function NewEventForm(props) {
   const {
@@ -59,11 +59,12 @@ export default function NewEventForm(props) {
         touched={touched.adress}
       />
 
-      <NewEventMap
-          addMarker={addMarker}
-          updateMarker={updateMarker}
-          markerData={markerData}
-        />
+      <EventMap
+        addMarker={addMarker}
+        updateMarker={updateMarker}
+        markerData={markerData}
+        isDraggable={true}
+      />
 
       <section className="new-event__controls form__controls">
         <button type="submit" className="new-event__submit submit-btn">Send</button>

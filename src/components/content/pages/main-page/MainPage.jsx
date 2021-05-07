@@ -11,11 +11,14 @@ export default class MainPage extends Component {
 
     return (
       <div className="content__main-page">
-        <h2>Upcoming Events</h2>
 
-        {events.map((event, index) => (
-          <EventCard event={event} key={event._id}/>
-        ))}
+        <h2 className="main-page__heading card-heading first-layer-card">Upcoming Events</h2>
+
+        <ul className="main-page__events">
+          {events.map((event, index) => (
+            <EventCard event={event} key={event._id} />
+          ))}
+        </ul>
 
         {status === ActionStatus.LOADING && <Loader />}
 

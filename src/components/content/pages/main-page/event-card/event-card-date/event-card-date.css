@@ -1,0 +1,21 @@
+.date {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: fit-content;
+  border: 1px solid var(--accent-color_light-blue);
+  border-radius: 5px;
+  padding: 5px;
+
+  font-family: "Roboto";
+}
+
+.date_date {
+  font-size: 26px;
+  font-weight: 600;
+  border-bottom: 2px solid var(--accent-color_light-blue);
+}
+
+.date_month {
+  font-weight: 500;
+}

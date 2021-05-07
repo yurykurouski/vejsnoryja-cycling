@@ -15,10 +15,10 @@ export default function EventTerrain(props) {
         className="form__input form__input_terrain"
       >
 
-        <option value="mostly-flat">Mostly Flat</option>
-        <option value="gravel">Gravel</option>
-        <option value="rolling-hills">Rolling Hills</option>
-        <option value="killer-Climbs">Killer Climbs</option>
+        <option value="Mostly flat">Mostly Flat</option>
+        <option value="Gravel">Gravel</option>
+        <option value="Rolling hills">Rolling Hills</option>
+        <option value="Killer Climbs">Killer Climbs</option>
       </select>
     </label>
   )

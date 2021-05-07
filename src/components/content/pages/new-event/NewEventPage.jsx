@@ -69,8 +69,8 @@ class NewEventPage extends Component {
             adress: '',
             description: '',
             date: "2021-03-25T11:00",
-            terrain: '',
-            level: '',
+            terrain: 'Mostly flat',
+            level: 'Casual',
             author: currentUser.user,
             markerData: markerData
           }}

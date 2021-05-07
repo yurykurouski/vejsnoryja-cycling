@@ -2,3 +2,15 @@
   width: 100%;
   height: 100%;
 }
+
+.main-page__heading{
+  padding: 20px 0 30px 30px;
+  border-radius: 5px 5px 0 0;
+}
+
+.main-page__events{
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  list-style-type: none;
+}
