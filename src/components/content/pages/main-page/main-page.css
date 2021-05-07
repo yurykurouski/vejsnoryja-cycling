@@ -4,13 +4,19 @@
 }
 
 .main-page__heading{
+  position: sticky;
+  top: 0px;
+  z-index: 999999;
   padding: 20px 0 30px 30px;
   border-radius: 5px 5px 0 0;
+
+  background-color: #f8f8f8;
 }
 
 .main-page__events{
   display: flex;
   flex-direction: column;
   gap: 30px;
+  margin-top: 10px;
   list-style-type: none;
 }

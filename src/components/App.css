@@ -8,6 +8,8 @@
 }
 
 .add-btn_container {
+  position: sticky;
+  bottom: 15px;
   grid-area: addbtn;
   margin-top: auto;
   margin-bottom: 15px;

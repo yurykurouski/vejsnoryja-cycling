@@ -1,5 +1,7 @@
 .float-card {
   grid-area: float;
+  position: sticky;
+  top: 5px;
   height: fit-content;
   padding: 5px;
   border-radius: 6px;

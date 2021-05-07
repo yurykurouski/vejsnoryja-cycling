@@ -1,4 +1,5 @@
 import React from 'react';
+import Icon from '@material-ui/core/Icon';
 import Moment from 'react-moment';
 import EventCardDate from './event-card-date/EventCardDate';
 import EventMap from '../../../../common/event-map/EventMap';
@@ -31,12 +32,12 @@ export default function EventCard(props) {
         </span>
 
         <span className="event-card__main__level">
-          {level}
+          <Icon>speed</Icon> {level}
         </span>
 
-        <span>
-          {adress}
-        </span>
+        <adress className="event-card__main__adress">
+          <Icon>place</Icon> {adress}
+        </adress>
       </div>
 
       <EventMap
@@ -44,8 +45,6 @@ export default function EventCard(props) {
         isDraggable={false}
         mainClass="event__map"
       />
-
-
 
     </li>
   )
