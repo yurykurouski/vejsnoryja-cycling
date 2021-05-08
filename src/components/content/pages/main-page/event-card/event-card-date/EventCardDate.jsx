@@ -15,7 +15,7 @@ export default function EventCardDate(props) {
 
       <Moment
         element="span"
-        format="MMMM"
+        format="MMM"
         className={`${customClass} date_month`}
         locale="en"
       >{date}</Moment>

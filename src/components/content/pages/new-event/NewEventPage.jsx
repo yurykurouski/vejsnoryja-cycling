@@ -22,7 +22,10 @@ class NewEventPage extends Component {
         .string()
         .required('Adress cannot be blank'),
       date: Yup
-        .date()
+        .date(),
+      distance: Yup
+        .number()
+        .typeError('You must specify a number'),
     })
   }
 
@@ -71,7 +74,7 @@ class NewEventPage extends Component {
             date: "2021-03-25T11:00",
             terrain: 'Mostly flat',
             level: 'Casual',
-            distance:'',
+            distance: '',
             author: currentUser.user,
             markerData: markerData
           }}

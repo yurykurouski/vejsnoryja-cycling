@@ -46,7 +46,6 @@ class Content extends Component {
               }
             </Route>
 
-
             <Route path='/register'>
               {isAuthenticated ? (
                 <Redirect to='/profile' />

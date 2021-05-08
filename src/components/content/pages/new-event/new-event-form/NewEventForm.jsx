@@ -45,6 +45,8 @@ export default function NewEventForm(props) {
         <Distance
           value={distance}
           onChange={handleChange}
+          errors={errors.distance}
+          touched={touched.distance}
         />
 
         <EventTerrain
