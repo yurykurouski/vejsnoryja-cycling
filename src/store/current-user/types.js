@@ -3,6 +3,11 @@ export const LOGIN_USER_REQUEST = 'LOGIN_USER/pending';
 export const LOGIN_USER_SUCESS = 'LOGIN_USER/fulfilled';
 export const LOGIN_USER_FAILURE = 'LOGIN_USER/rejected';
 
+export const REGISTER_USER = 'REGISTER_USER';
+export const REGISTER_USER_REQUEST = 'REGISTER_USER/pending';
+export const REGISTER_USER_SUCESS = 'REGISTER_USER/fulfilled';
+export const REGISTER_USER_FAILURE = 'REGISTER_USER/rejected';
+
 export const AUTH_USER = 'AUTH_USER';
 export const AUTH_USER_REQUEST = 'AUTH_USER/pending';
 export const AUTH_USER_SUCESS = 'AUTH_USER/fulfilled';

@@ -45,12 +45,12 @@ export default function EventCard(props) {
           >speed</Icon> {level}
         </span>}
 
-        {adress && <adress className="event-card__main__adress event-details">
+        {adress && <address className="event-card__main__adress event-details">
           <Icon
             style={{ opacity: .9 }}
             title="Adress"
           >place</Icon> {adress}
-        </adress>}
+        </address>}
       </div>
 
       <EventMap

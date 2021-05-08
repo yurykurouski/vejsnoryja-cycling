@@ -7,12 +7,14 @@ class AuthService {
   }
 
   async userRegister(data) {
-    const result = await requestService.post(process.env.REACT_APP_REGISTRATION_URL, data)
+    const response = await requestService.post(process.env.REACT_APP_REGISTRATION_URL, data)
       .then((response) => {
         return response;
       });
 
-    return result;
+    if (response.message) {
+      throw new Error(response.message)
+    }
   }
 
   async userLogin(data) {

@@ -1,18 +1,16 @@
 import * as Yup from 'yup';
 import { Formik } from 'formik';
 import React, { Component } from 'react';
-import authService from '../../../../../services/auth-service';
 import { MIN_PASSWORD_LENGTH, PASSWORD_REGEX } from '../../../../../constants/';
 import ValidationErrMsg from '../../../../common/validation-err-msg/ValidationErrMsg';
 import '../auth-pages.css';
 import { Link } from "react-router-dom";
+import { connect } from 'react-redux';
+import { registerUser } from '../../../../../store/current-user/actions';
 
-export default class RegistrationPage extends Component {
+class RegistrationPage extends Component {
   constructor() {
     super();
-    this.state = {
-      authError: null
-    };
 
     this.submitForm = this.submitForm.bind(this);
     this.validationSchema = Yup.object().shape({
@@ -32,18 +30,13 @@ export default class RegistrationPage extends Component {
   }
 
   async submitForm(values) {
+    const { registerUser } = this.props;
 
-    const res = await authService.userRegister(values);
-
-    if (res) {
-      this.setState({
-        authError: res
-      });
-    }
+    await registerUser(values);
   }
 
   render() {
-    const { authError } = this.state;
+    const { authErrors } = this.props;
 
     return (
       <div className="content__registration-page auth-page first-layer-card">
@@ -73,8 +66,8 @@ export default class RegistrationPage extends Component {
                 />
               </label>
 
-              {(errors.email && touched.email) || authError ? (
-                <ValidationErrMsg errorMsg={errors.email || authError} />
+              {(errors.email && touched.email) || authErrors ? (
+                <ValidationErrMsg errorMsg={errors.email || authErrors} />
               ) : null}
 
               <label className="input__label">
@@ -123,3 +116,17 @@ export default class RegistrationPage extends Component {
     )
   }
 }
+
+function mapStateToProps(state) {
+  return {
+    authErrors: state.currentUser.authErrors
+  }
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    registerUser: (data) => dispatch(registerUser(data))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(RegistrationPage);

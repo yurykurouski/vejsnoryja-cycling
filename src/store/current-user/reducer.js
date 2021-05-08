@@ -10,6 +10,22 @@ const initialState = {
 
 export default function currentUser(state = initialState, action) {
   switch (action.type) {
+    case types.REGISTER_USER_SUCESS: {
+      return {
+        ...state,
+        authErrors: null,
+        status: ActionStatus.SUCCEDED
+      }
+    }
+
+    case types.REGISTER_USER_FAILURE: {
+      return {
+        ...state,
+        authErrors: action.error.message,
+        status: ActionStatus.FAILED
+      }
+    }
+
     case types.LOGIN_USER_SUCESS: {
       return {
         ...state,
@@ -35,6 +51,15 @@ export default function currentUser(state = initialState, action) {
       }
     }
 
+    case types.AUTH_USER_FAILURE: {
+      return {
+        ...state,
+        isAuthenticated: false,
+        user: null,
+        status: ActionStatus.FAILED
+      }
+    }
+
     case types.LOGOUT_USER: {
       localStorage.removeItem('token');
       return {
@@ -45,6 +70,7 @@ export default function currentUser(state = initialState, action) {
       };
     }
 
+    case types.REGISTER_USER_REQUEST:
     case types.LOGIN_USER.REQUEST:
     case types.AUTH_USER_REQUEST: {
       return { ...state, status: ActionStatus.LOADING };

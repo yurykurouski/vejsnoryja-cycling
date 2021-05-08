@@ -5,7 +5,8 @@ import * as Yup from 'yup';
 import ValidationErrMsg from '../../../../common/validation-err-msg/ValidationErrMsg';
 import { Link } from "react-router-dom";
 import { connect } from 'react-redux';
-import { authUser, logoutUser, loginUser } from '../../../../../store/current-user/actions';
+import { authUser, loginUser } from '../../../../../store/current-user/actions';
+import Loader from '../../../../common/loader/Loader';
 
 class AuthorizationPage extends Component {
   constructor() {
@@ -106,7 +107,6 @@ function mapDispatchToProps(dispatch) {
   return {
     loginUser: (data) => dispatch(loginUser(data)),
     authUser: () => dispatch(authUser()),
-    logoutUser: () => dispatch(logoutUser())
   }
 }
 
