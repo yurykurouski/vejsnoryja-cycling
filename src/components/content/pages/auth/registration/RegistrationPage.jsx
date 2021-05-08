@@ -4,6 +4,8 @@ import React, { Component } from 'react';
 import authService from '../../../../../services/auth-service';
 import { MIN_PASSWORD_LENGTH, PASSWORD_REGEX } from '../../../../../constants/';
 import ValidationErrMsg from '../../../../common/validation-err-msg/ValidationErrMsg';
+import '../auth-pages.css';
+import { Link } from "react-router-dom";
 
 export default class RegistrationPage extends Component {
   constructor() {
@@ -44,9 +46,8 @@ export default class RegistrationPage extends Component {
     const { authError } = this.state;
 
     return (
-      <div className='content__registration-page'>
-
-        <h2>RegistrationPage</h2>
+      <div className="content__registration-page auth-page first-layer-card">
+        <h2 className="registration-page__heading auth-page__heading card-heading">RegistrationPage</h2>
 
         <Formik
           initialValues={{ email: '', password: '', repeatPass: '' }}
@@ -55,48 +56,66 @@ export default class RegistrationPage extends Component {
         >
           {({ handleSubmit, handleChange, values, errors, touched }) => (
             <form
+              className="registration-page__form auth-page__form second-layer-card"
               onSubmit={handleSubmit}
             >
-              <input
-                onChange={handleChange}
-                name='email'
-                type='email'
-                value={values.email}
-                placeholder='Email'
-                autoFocus
-              />
+
+              <label className="input__label">
+                Email
+
+                <input
+                  name="email"
+                  type="text"
+                  onChange={handleChange}
+                  value={values.email}
+                  className="form__input form__input_email"
+                  autoFocus
+                />
+              </label>
 
               {(errors.email && touched.email) || authError ? (
                 <ValidationErrMsg errorMsg={errors.email || authError} />
               ) : null}
 
-              <input
-                onChange={handleChange}
-                name='password'
-                type='password'
-                value={values.password}
-                placeholder='Password'
-                autoComplete="on"
-              />
+              <label className="input__label">
+                Password
+
+                <input
+                  name="password"
+                  type="password"
+                  onChange={handleChange}
+                  value={values.password}
+                  className="form__input form__input_password"
+                  autoComplete="on"
+                />
+              </label>
 
               {errors.password && touched.password ? (
                 <ValidationErrMsg errorMsg={errors.password} />
               ) : null}
 
-              <input
-                onChange={handleChange}
-                name='repeatPass'
-                type='password'
-                value={values.repeatPass}
-                placeholder='Repeat password'
-                autoComplete="on"
-              />
+              <label className="input__label">
+                Repeat your password
+
+                <input
+                  name='repeatPass'
+                  type='password'
+                  onChange={handleChange}
+                  value={values.repeatPass}
+                  className="form__input form__input_password"
+                  autoComplete="on"
+                />
+              </label>
 
               {errors.repeatPass && touched.repeatPass ? (
                 <ValidationErrMsg errorMsg={errors.repeatPass} />
               ) : null}
 
-              <button type='submit'>Submit</button>
+              <section className="registration-page__controls form__controls">
+                <button type="submit" className="registration-page__submit submit-btn">Sign in</button>
+                or
+                <Link to='login' className="registration-page__cancel cancel-btn">Log in</Link>
+              </section>
             </form>
           )}
         </Formik>

@@ -1,4 +1,4 @@
-.error-message{
+.error-message {
   width: fit-content;
   font-size: 12px;
   font-weight: 500;
@@ -9,23 +9,27 @@
 }
 
 @keyframes shake {
-  from{
+  from {
+    font-size: 1px;
     transform: rotate(0deg);
     opacity: 0;
   }
 
-  33%{
+  20% {
+    font-size: 12px;
+  }
+
+  33% {
     transform: rotate(3deg);
   }
 
-  66%{
+  66% {
     transform: rotate(-3deg);
     opacity: 1;
   }
 
-  100%{
+  100% {
     transform: rotate(0deg);
     opacity: .8;
   }
 }
-

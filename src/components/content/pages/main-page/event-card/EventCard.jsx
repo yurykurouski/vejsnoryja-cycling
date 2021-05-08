@@ -31,26 +31,26 @@ export default function EventCard(props) {
           <b>{title}</b>
         </span>
 
-        <span className="event-card__main__distance event-details">
+        {distance && <span className="event-card__main__distance event-details">
           <Icon
             style={{ opacity: .9 }}
             title="Distance"
           >directions_bike</Icon> {distance}
-        </span>
+        </span>}
 
-        <span className="event-card__main__level event-details">
+        {level && <span className="event-card__main__level event-details">
           <Icon
             style={{ opacity: .9 }}
             title="Level/Event type"
           >speed</Icon> {level}
-        </span>
+        </span>}
 
-        <adress className="event-card__main__adress event-details">
+        {adress && <adress className="event-card__main__adress event-details">
           <Icon
             style={{ opacity: .9 }}
             title="Adress"
           >place</Icon> {adress}
-        </adress>
+        </adress>}
       </div>
 
       <EventMap

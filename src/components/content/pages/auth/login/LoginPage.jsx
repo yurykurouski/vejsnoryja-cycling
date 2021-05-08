@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Formik } from 'formik';
+import '../auth-pages.css';
 import * as Yup from 'yup';
 import ValidationErrMsg from '../../../../common/validation-err-msg/ValidationErrMsg';
 import { Link } from "react-router-dom";
@@ -10,9 +11,6 @@ class AuthorizationPage extends Component {
   constructor() {
     super();
 
-    this.logOut = this.logOut.bind(this);
-
-    this.submitForm = this.submitForm.bind(this);
     this.validationSchema = Yup.object().shape({
       email: Yup
         .string()
@@ -23,13 +21,7 @@ class AuthorizationPage extends Component {
     });
   }
 
-  logOut() {
-    const { logoutUser } = this.props;
-
-    logoutUser();
-  }
-
-  async submitForm(values) {
+  submitForm = async (values) => {
     const { loginUser, authUser } = this.props;
 
     await loginUser(values);
@@ -40,50 +32,64 @@ class AuthorizationPage extends Component {
     const { authErrors } = this.props;
 
     return (
-      <div className='content__authorization-page'>
-        <button onClick={this.logOut}>logout</button>
-        <h2>LoginPage</h2>
+      <div className="content__login-page auth-page first-layer-card">
+        <h2 className="login-page__heading auth-page__heading card-heading">LoginPage</h2>
 
         <Formik
-          initialValues={{ email: '', password: '' }}
+          initialValues={{
+            email: '',
+            password: ''
+          }}
           onSubmit={this.submitForm}
           validationSchema={this.validationSchema}
         >
 
           {({ handleSubmit, handleChange, values, errors, touched }) => (
-            <form onSubmit={handleSubmit}>
-              <input
-                onChange={handleChange}
-                type="email"
-                name='email'
-                value={values.email}
-                placeholder='Email'
-                autoFocus
-              />
+            <form onSubmit={handleSubmit} className="login-page__form auth-page__form second-layer-card">
+              <label className="input__label">
+                Email
+
+                <input
+                  name="email"
+                  type="text"
+                  onChange={handleChange}
+                  value={values.email}
+                  className="form__input form__input_email"
+                  autoFocus
+                />
+              </label>
 
               {(errors.email && touched.email) || authErrors ? (
                 <ValidationErrMsg errorMsg={errors.email || authErrors} />
               ) : null}
 
-              <input
-                onChange={handleChange}
-                name='password'
-                type='password'
-                value={values.password}
-                placeholder='Password'
-                autoComplete="on"
-              />
+              <label className="input__label">
+                Password
+
+                <input
+                  name='password'
+                  type='password'
+                  onChange={handleChange}
+                  value={values.password}
+                  className="form__input form__input_password"
+                  autoComplete="on"
+                />
+              </label>
 
               {errors.password && touched.password ? (
                 <ValidationErrMsg errorMsg={errors.password} />
               ) : null}
 
-              <button type='submit'>Submit</button>
+              <section className="login-page__controls form__controls">
+                <button type="submit" className="login-page__submit submit-btn">Log in</button>
+                or
+                <Link to='register' className="login-page__cancel cancel-btn">Sign in</Link>
+              </section>
             </form>
           )}
 
         </Formik>
-        <Link to='register'>REGISTER</Link>
+
       </div>
     )
   }
