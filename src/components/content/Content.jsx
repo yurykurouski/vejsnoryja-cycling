@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './content.css'
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import MainPage from "./pages/main-page/MainPage";
 import NewEventPage from "./pages/new-event/NewEventPage";
 import UserProfile from "./pages/user-profile/UserProfile";
@@ -17,26 +17,59 @@ class Content extends Component {
   }
 
   render() {
-    const { events, status, getAllEvents } = this.props;
+    const { events, status, getAllEvents, isAuthenticated } = this.props;
 
     return (
       <div className='content'>
         <div className='content__wrap'>
 
           <Switch>
-            <Route path='/' component={(props) => <MainPage
+            <Route path='/' component={() => <MainPage
               events={events}
               status={status}
               getAllEvents={getAllEvents}
             />} exact />
-            <Route path='/new-event' component={NewEventPage} />
-            <Route path='/profile' component={UserProfile} />
-            <Route path='/register' component={RegistrationPage} />
-            <Route path='/login' component={LoginPage} />
+
+            <Route path='/new-event'>
+              {isAuthenticated ? (
+                <NewEventPage />
+              )
+                : <Redirect to='/' />
+              }
+            </Route>
+
+            <Route path='/profile'>
+              {isAuthenticated ? (
+                <UserProfile />
+              )
+                : <Redirect to='/login' />
+              }
+            </Route>
+
+
+            <Route path='/register'>
+              {isAuthenticated ? (
+                <Redirect to='/profile' />
+              )
+                : <RegistrationPage />
+              }
+            </Route>
+
+            <Route path='/login'>
+              {isAuthenticated ? (
+                <Redirect to='/profile' />
+              )
+                : <LoginPage />
+              }
+            </Route>
+
+            <Route path='*'>
+              <div>You got too far, folk (404) </div>
+            </Route>
           </Switch>
 
         </div>
-      </div>
+      </div >
     )
   }
 }
@@ -44,7 +77,8 @@ class Content extends Component {
 function mapStateToProps(state) {
   return {
     events: state.events.events,
-    status: state.events.status
+    status: state.events.status,
+    isAuthenticated: state.currentUser.isAuthenticated,
   }
 }
 

@@ -7,6 +7,8 @@ import '../auth-pages.css';
 import { Link } from "react-router-dom";
 import { connect } from 'react-redux';
 import { registerUser } from '../../../../../store/current-user/actions';
+import Loader from '../../../../common/loader/Loader';
+import ActionStatus from '../../../../../constants/action-status';
 
 class RegistrationPage extends Component {
   constructor() {
@@ -36,7 +38,7 @@ class RegistrationPage extends Component {
   }
 
   render() {
-    const { authErrors } = this.props;
+    const { authErrors, status } = this.props;
 
     return (
       <div className="content__registration-page auth-page first-layer-card">
@@ -112,6 +114,8 @@ class RegistrationPage extends Component {
             </form>
           )}
         </Formik>
+
+        {status === ActionStatus.LOADING && <Loader />}
       </div>
     )
   }

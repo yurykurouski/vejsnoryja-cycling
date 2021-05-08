@@ -7,7 +7,7 @@ function UserProfile(props) {
 
   return (
     <div className='content__user-profile'>
-      <button onClick={logoutUser}>LOGOUT</button>
+      <button onClick={logoutUser}>Sign out</button>
     </div>
   )
 }

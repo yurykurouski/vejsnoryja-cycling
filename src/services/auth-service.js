@@ -13,7 +13,7 @@ class AuthService {
       });
 
     if (response.message) {
-      throw new Error(response.message)
+      throw new Error(response.message);
     }
   }
 

@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import { connect } from 'react-redux';
 import { authUser, loginUser } from '../../../../../store/current-user/actions';
 import Loader from '../../../../common/loader/Loader';
+import ActionStatus from '../../../../../constants/action-status';
 
 class AuthorizationPage extends Component {
   constructor() {
@@ -30,7 +31,7 @@ class AuthorizationPage extends Component {
   }
 
   render() {
-    const { authErrors } = this.props;
+    const { authErrors, status } = this.props;
 
     return (
       <div className="content__login-page auth-page first-layer-card">
@@ -91,6 +92,7 @@ class AuthorizationPage extends Component {
 
         </Formik>
 
+        {status === ActionStatus.LOADING && <Loader />}
       </div>
     )
   }
