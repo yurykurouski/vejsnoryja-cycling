@@ -9,7 +9,7 @@ import EventDescription from './new-event-inputs/EventDescription';
 import EventDate from './new-event-inputs/EventDate';
 import Distance from './new-event-inputs/Distance';
 
-import EventMap from '../../../../common/event-map/EventMap';
+import EventMap from '../../../../common/event-card/event-card-map/EventMap';
 
 export default function NewEventForm(props) {
   const {

@@ -4,6 +4,14 @@
   gap: 20px;
 }
 
+.event-card__aside{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: min-content;
+}
+
 .event-card__main {
   display: flex;
   justify-content: flex-start;

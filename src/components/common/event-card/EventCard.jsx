@@ -2,17 +2,27 @@ import React from 'react';
 import Icon from '@material-ui/core/Icon';
 import Moment from 'react-moment';
 import EventCardDate from './event-card-date/EventCardDate';
-import EventMap from '../../../../common/event-map/EventMap';
+import EventMap from './event-card-map/EventMap';
+import EventCardOption from './event-card-option/EventCardOption';
 
 import './event-card.css';
 
 export default function EventCard(props) {
+  const { btnTitle, btnIcon, onClick } = props;
   const { date, title, level, distance, markerData, adress } = props.event;
 
   return (
     <li className="main-page__event first-layer-card_hovered">
 
-      <EventCardDate customClass="event-card__date_date" date={date} />
+      <div className="event-card__aside">
+        <EventCardDate customClass="event-card__date_date" date={date} />
+
+        <EventCardOption
+          onClick={onClick}
+          btnTitle={btnTitle}
+          btnIcon={btnIcon}
+        />
+      </div>
 
       <div className="event-card__main">
         <span className="event-card__main__heading">

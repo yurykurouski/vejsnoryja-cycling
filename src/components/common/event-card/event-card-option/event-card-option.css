@@ -1,0 +1,24 @@
+.event-card__option {
+  width: fit-content;
+  height: 34px;
+  margin: 0;
+  padding: 5px;
+
+  border-radius: 5px;
+  background-color: transparent;
+  color: var(--accent-color_light-blue);
+
+  border: none;
+  outline: none;
+  transition: color .3s ease-out;
+  cursor: pointer;
+}
+
+.event-card__option:hover {
+  color: var(--font-color-main_active);
+  background-color: var(--font-color-main_hover-bg);
+}
+
+.option__icon {
+  
+}

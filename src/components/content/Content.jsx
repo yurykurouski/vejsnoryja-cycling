@@ -7,27 +7,18 @@ import UserProfile from "./pages/user-profile/UserProfile";
 import RegistrationPage from "./pages/auth/registration/RegistrationPage";
 import LoginPage from "./pages/auth/login/LoginPage";
 import { connect } from 'react-redux';
-import { getAllEvents } from "../../store/events/actions";
 
 class Content extends Component {
-  componentDidMount() {
-    const { getAllEvents } = this.props;
-
-    getAllEvents();
-  }
-
   render() {
-    const { events, status, getAllEvents, isAuthenticated } = this.props;
+    const { isAuthenticated } = this.props;
 
     return (
       <div className='content'>
         <div className='content__wrap'>
 
           <Switch>
-            <Route path='/' component={() => <MainPage
-              events={events}
-              status={status}
-              getAllEvents={getAllEvents}
+            <Route path='/'
+              component={() => <MainPage
             />} exact />
 
             <Route path='/new-event'>
@@ -38,7 +29,7 @@ class Content extends Component {
               }
             </Route>
 
-            <Route path='/profile'>
+            <Route path='/profile' exact>
               {isAuthenticated ? (
                 <UserProfile />
               )
@@ -63,7 +54,7 @@ class Content extends Component {
             </Route>
 
             <Route path='*'>
-              <div>You got too far, folk (404) </div>
+              <div>You gone too far, folk (404) </div>
             </Route>
           </Switch>
 
@@ -75,16 +66,8 @@ class Content extends Component {
 
 function mapStateToProps(state) {
   return {
-    events: state.events.events,
-    status: state.events.status,
     isAuthenticated: state.currentUser.isAuthenticated,
   }
 }
 
-function mapDispatchToProps(dispatch) {
-  return {
-    getAllEvents: () => dispatch(getAllEvents()),
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Content);
+export default connect(mapStateToProps, null)(Content);

@@ -8,7 +8,7 @@ class EventsService {
   async createEvent(data) {
     try {
       requestService.postSecured(process.env.REACT_APP_API_NEW_EVENT_URL, data);
-      
+
       return data;
     } catch (err) {
       console.log(err);
@@ -18,6 +18,16 @@ class EventsService {
   async getAllEvents() {
     try {
       const response = await requestService.get(process.env.REACT_APP_API_GET_ALL_EVENTS_URL);
+
+      return response;
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
+  async getEventsByUser() {
+    try {
+      const response = await requestService.getSecured(process.env.REACT_APP_API_GET_EVENTS_BY_USER_URL);
 
       return response;
     } catch (err) {
