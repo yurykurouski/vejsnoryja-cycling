@@ -29,7 +29,7 @@ class Content extends Component {
               }
             </Route>
 
-            <Route path='/profile' exact>
+            <Route path='/profile'>
               {isAuthenticated ? (
                 <UserProfile />
               )
@@ -39,7 +39,7 @@ class Content extends Component {
 
             <Route path='/register'>
               {isAuthenticated ? (
-                <Redirect to='/profile' />
+                <Redirect to='/profile/last-activities' />
               )
                 : <RegistrationPage />
               }
@@ -47,7 +47,7 @@ class Content extends Component {
 
             <Route path='/login'>
               {isAuthenticated ? (
-                <Redirect to='/profile' />
+                <Redirect to='/profile/last-activities' />
               )
                 : <LoginPage />
               }

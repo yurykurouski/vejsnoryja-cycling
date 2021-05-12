@@ -4,6 +4,20 @@ import { logoutUser } from '../../../../store/current-user/actions';
 import { getEventsByUser, getAllEvents } from '../../../../store/events/actions';
 import './user-profile.css';
 import LastActivities from './last-activities/LastActivities';
+import { Switch, Route, Link } from 'react-router-dom';
+import UserGear from "./gear/UserGear";
+import Tabs from "../../../common/tabs/Tabs";
+
+const userProfileTabs = [
+  {
+    to: '/profile/last-activities',
+    name: 'Last activities'
+  },
+  {
+    to: '/profile/gear',
+    name: 'Your gear'
+  }
+]
 
 class UserProfile extends Component {
   componentDidMount() {
@@ -21,19 +35,24 @@ class UserProfile extends Component {
         </span>
 
         <div className="user-profile__main second-layer-card">
-          <span className="user-profile__tabs">
-            <span className="user-profile__tab user-profile__tab_active tab_activities">Last activities</span>
-            <span className="user-profile__tab tab_gear">Your gear</span>
-          </span>
 
-          <LastActivities
-            getEventsByUser={getEventsByUser}
-            events={events}
-            status={status}
-          />
+          <Tabs tabs={userProfileTabs} />
+
+          <Switch>
+            <Route path="/profile/last-activities">
+              <LastActivities
+                getEventsByUser={getEventsByUser}
+                events={events}
+                status={status}
+              />
+            </Route>
+
+            <Route path="/profile/gear">
+              <UserGear />
+            </Route>
+          </Switch>
 
         </div>
-
       </div>
     )
   }
