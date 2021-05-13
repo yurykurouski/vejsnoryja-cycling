@@ -1,31 +1,29 @@
-import React, { Component } from 'react';
+import React from 'react';
 import EventCard from '../../../../common/event-card/EventCard';
-import ActionStatus from "../../../../../constants/action-status";
-import Loader from "../../../../common/loader/Loader";
+import ActionStatus from '../../../../../constants/action-status';
+import Loader from '../../../../common/loader/Loader';
+import { useHistory } from 'react-router-dom';
 
-export default class LastActivities extends Component {
-  handleClick = () => {
-    console.log('fsdfds')
-  }
 
-  render() {
-    const { events, status } = this.props;
-    return (
-      <div>
-        <ul className="main-page__events">
-          {events.map((event) => (
-            <EventCard
-              event={event}
-              key={event._id}
-              btnTitle="Edit"
-              btnIcon="edit"
-              onClick={this.handleClick}
-            />
-          ))}
-        </ul>
+export default function LastActivities({ events, status }) {
+  const history = useHistory();
+  const handleClick = (event) => history.push(`/profile/edit-event/${event._id}`);
 
-        {status === ActionStatus.LOADING && <Loader />}
-      </div>
-    )
-  }
+  return (
+    <div>
+      <ul className="main-page__events">
+        {events.map((event) => (
+          <EventCard
+            event={event}
+            key={event._id}
+            btnTitle="Edit"
+            btnIcon="edit"
+            onClick={() => handleClick(event)}
+          />
+        ))}
+      </ul>
+
+      {status === ActionStatus.LOADING && <Loader />}
+    </div>
+  )
 }

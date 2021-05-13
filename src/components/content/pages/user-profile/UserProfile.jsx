@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { logoutUser } from '../../../../store/current-user/actions';
-import { getEventsByUser, getAllEvents } from '../../../../store/events/actions';
+import { getEventsByUser } from '../../../../store/events/actions';
 import './user-profile.css';
 import LastActivities from './last-activities/LastActivities';
-import { Switch, Route, Link } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import UserGear from "./gear/UserGear";
 import Tabs from "../../../common/tabs/Tabs";
+import EventPage from '../../../common/event-page/EventPage';
 
 const userProfileTabs = [
   {
@@ -25,23 +26,30 @@ class UserProfile extends Component {
   }
 
   render() {
-    const { logoutUser, getEventsByUser, events, status } = this.props;
+    const { logoutUser, events, status, currentUser } = this.props;
 
     return (
-      <div className="content__user-profile first-layer-card">
-        <span className="user-profile__header">
-          <h2 className="user-profile__heading card-heading">Your profile</h2>
-          <button onClick={logoutUser} className="user-profile__logout-btn submit-btn sign-out-btn">Sign out</button>
-        </span>
+      <Switch>
+        <Route exact path="/profile/edit-event/:eventID" render={({ match }) => (
+          <EventPage
+            event={events.find(event => event._id === match.params.eventID)}
+            currentUser={currentUser}
+          />
+        )}>
+        </Route>
 
-        <div className="user-profile__main second-layer-card">
+        <div className="content__user-profile first-layer-card">
+          <span className="user-profile__header">
+            <h2 className="user-profile__heading card-heading">Your profile</h2>
+            <button onClick={logoutUser} className="user-profile__logout-btn submit-btn sign-out-btn">Sign out</button>
+          </span>
 
-          <Tabs tabs={userProfileTabs} />
+          <div className="user-profile__main second-layer-card">
 
-          <Switch>
+            <Tabs tabs={userProfileTabs} />
+
             <Route path="/profile/last-activities">
               <LastActivities
-                getEventsByUser={getEventsByUser}
                 events={events}
                 status={status}
               />
@@ -50,10 +58,10 @@ class UserProfile extends Component {
             <Route path="/profile/gear">
               <UserGear />
             </Route>
-          </Switch>
 
+          </div>
         </div>
-      </div>
+      </Switch>
     )
   }
 }
@@ -62,6 +70,7 @@ function mapStateToProps(state) {
   return {
     events: state.events.events,
     status: state.events.status,
+    currentUser: state.currentUser.user,
   }
 }
 
@@ -69,7 +78,6 @@ function mapDispatchToProps(dispatch) {
   return {
     logoutUser: () => dispatch(logoutUser()),
     getEventsByUser: () => dispatch(getEventsByUser()),
-    getAllEvents: () => dispatch(getAllEvents()),
   }
 }
 

@@ -31,6 +31,14 @@ export default function events(state = initialState, action) {
         status: ActionStatus.SUCCEDED
       };
     }
+      
+    case types.GET_EVENT_BY_ID: {
+      return {
+        ...state,
+        events: state.events.filter((event) => event._id === action.payload),
+        status: ActionStatus.SUCCEDED
+      }
+    }
 
     case types.GET_ALL_EVENTS_REQUEST:
     case types.GET_EVENTS_BY_USER_REQUEST:

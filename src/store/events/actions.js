@@ -7,3 +7,5 @@ export const addEvent = createAsyncThunk(types.CREATE_NEW_EVENT, (newEvent) => e
 export const getAllEvents = createAsyncThunk(types.GET_ALL_EVENTS, () => eventService.getAllEvents());
 
 export const getEventsByUser = createAsyncThunk(types.GET_EVENTS_BY_USER, () => eventService.getEventsByUser());
+
+// export const getEventById = (eventId) => ({type: types.GET_EVENT_BY_ID});

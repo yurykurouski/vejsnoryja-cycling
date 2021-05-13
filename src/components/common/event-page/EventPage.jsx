@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { connect } from 'react-redux';
-import { addEvent } from "../../../../store/events/actions";
-import NewEventForm from "./new-event-form/NewEventForm";
-import './new-event-page.css'
+import { addEvent } from "../../../store/events/actions";
+import EventForm from './event-form/EventForm'
+import './event-page.css'
 
-class NewEventPage extends Component {
+class EventPage extends Component {
   constructor() {
     super();
 
@@ -60,35 +60,35 @@ class NewEventPage extends Component {
   };
 
   render() {
-    const { currentUser } = this.props;
+    const { currentUser, event = '' } = this.props;
     const { markerData } = this.state;
 
     return (
       <div className="content__new-event first-layer-card">
-        <h2 className="new-event__heading card-heading">Create new Event</h2>
+        <h2 className="new-event__heading card-heading">{event ? "Edit event" : "Create new Event"}</h2>
         <Formik
           initialValues={{
-            title: '',
-            adress: '',
-            description: '',
-            date: "2021-03-25T11:00",
-            terrain: 'Mostly flat',
-            level: 'Casual',
-            distance: '',
+            title: event.title ? event.title : "",
+            adress: event.adress ? event.adress : "",
+            description: event.description ? event.description : "",
+            date: event.date ? event.date : "2021-03-25T11:00",
+            terrain: event.terrain ? event.terrain : "Mostly flat",
+            level: event.level ? event.level : "Casual",
+            distance: event.distance ? event.distance : "",
             author: currentUser.user,
-            markerData: markerData
+            markerData: event.markerData ? event.markerData : markerData
           }}
           onSubmit={this.submitForm}
           validationSchema={this.validationSchema}
         >
           {({ handleSubmit, handleChange, values, errors, touched }) => (
-            <NewEventForm
+            <EventForm
               handleSubmit={handleSubmit}
               handleChange={handleChange}
 
               addMarker={this.addMarker}
               updateMarker={this.updateMarker}
-              markerData={markerData}
+              markerData={event.markerData ? event.markerData : markerData}
 
               errors={errors}
               touched={touched}
@@ -102,9 +102,7 @@ class NewEventPage extends Component {
               distance={values.distance}
             />
           )}
-
         </Formik>
-
       </div>
     )
   }
@@ -122,4 +120,4 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(NewEventPage);
+export default connect(mapStateToProps, mapDispatchToProps)(EventPage);

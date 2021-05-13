@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './content.css'
 import { Switch, Route, Redirect } from 'react-router-dom';
 import MainPage from "./pages/main-page/MainPage";
-import NewEventPage from "./pages/new-event/NewEventPage";
+import EventPage from "../common/event-page/EventPage";
 import UserProfile from "./pages/user-profile/UserProfile";
 import RegistrationPage from "./pages/auth/registration/RegistrationPage";
 import LoginPage from "./pages/auth/login/LoginPage";
@@ -23,7 +23,7 @@ class Content extends Component {
 
             <Route path='/new-event'>
               {isAuthenticated ? (
-                <NewEventPage />
+                <EventPage />
               )
                 : <Redirect to='/' />
               }

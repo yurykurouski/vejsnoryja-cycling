@@ -1,19 +1,32 @@
 import React from 'react';
-import './new-event-form.css'
+import './event-form.css'
 
-import EventTitle from './new-event-inputs/EventTitle';
-import EventAdress from './new-event-inputs/EventAdress';
-import EventTerrain from './new-event-inputs/EventTerrain';
-import EventLevel from './new-event-inputs/EventLevel';
-import EventDescription from './new-event-inputs/EventDescription';
-import EventDate from './new-event-inputs/EventDate';
-import Distance from './new-event-inputs/Distance';
+import EventTitle from '../event-form-inputs/EventTitle';
+import EventAdress from '../event-form-inputs/EventAdress';
+import EventTerrain from '../event-form-inputs/EventTerrain';
+import EventLevel from '../event-form-inputs/EventLevel';
+import EventDescription from '../event-form-inputs/EventDescription';
+import EventDate from '../event-form-inputs/EventDate';
+import Distance from '../event-form-inputs/Distance';
 
-import EventMap from '../../../../common/event-card/event-card-map/EventMap';
+import EventMap from '../../event-card/event-card-map/EventMap';
 
-export default function NewEventForm(props) {
+export default function EventForm(props) {
   const {
-    handleSubmit, handleChange, title, adress, date, terrain, level, description, distance, errors, touched, addMarker, updateMarker, markerData
+    handleSubmit,
+    handleChange,
+    title,
+    adress,
+    date,
+    terrain,
+    level,
+    description,
+    distance,
+    errors,
+    touched,
+    addMarker,
+    updateMarker,
+    markerData
   } = props;
 
   return (
@@ -76,7 +89,7 @@ export default function NewEventForm(props) {
       />
 
       <section className="new-event__controls form__controls">
-        <button type="submit" className="new-event__submit submit-btn">Send</button>
+        <button type="submit" className="new-event__submit submit-btn">Save</button>
         or
         <a href="#!" className="new-event__cancel cancel-btn">Cancel</a>
       </section>

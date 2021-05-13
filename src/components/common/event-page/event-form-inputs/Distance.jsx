@@ -1,5 +1,5 @@
 import React from 'react';
-import ValidationErrMsg from '../../../../../common/validation-err-msg/ValidationErrMsg';
+import ValidationErrMsg from '../../validation-err-msg/ValidationErrMsg';
 
 
 export default function Distance(props) {
