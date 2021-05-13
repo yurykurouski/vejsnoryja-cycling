@@ -13,4 +13,7 @@ export const GET_EVENTS_BY_USER_REQUEST = 'GET_EVENTS_BY_USER/pending';
 export const GET_EVENTS_BY_USER_SUCESS = 'GET_EVENTS_BY_USER/fulfilled';
 export const GET_EVENTS_BY_USER_FAILURE = 'GET_EVENTS_BY_USER/rejected';
 
-export const GET_EVENT_BY_ID = 'GET_EVENT_BY_ID';
+export const UPDATE_EVENT_BY_ID = 'UPDATE_EVENT_BY_ID'
+export const UPDATE_EVENT_BY_ID_REQUEST = 'UPDATE_EVENT_BY_ID/pending';
+export const UPDATE_EVENT_BY_ID_SUCESS = 'UPDATE_EVENT_BY_ID/fulfilled';
+export const UPDATE_EVENT_BY_ID_FAILURE = 'UPDATE_EVENT_BY_ID/rejected';

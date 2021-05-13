@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { logoutUser } from '../../../../store/current-user/actions';
-import { getEventsByUser } from '../../../../store/events/actions';
+import { getEventsByUser, updateEventById } from '../../../../store/events/actions';
 import './user-profile.css';
 import LastActivities from './last-activities/LastActivities';
 import { Switch, Route } from 'react-router-dom';
@@ -26,7 +26,7 @@ class UserProfile extends Component {
   }
 
   render() {
-    const { logoutUser, events, status, currentUser } = this.props;
+    const { logoutUser, events, status, currentUser, updateEventById } = this.props;
 
     return (
       <Switch>
@@ -34,6 +34,7 @@ class UserProfile extends Component {
           <EventPage
             event={events.find(event => event._id === match.params.eventID)}
             currentUser={currentUser}
+            saveEvent={updateEventById}
           />
         )}>
         </Route>
@@ -78,6 +79,7 @@ function mapDispatchToProps(dispatch) {
   return {
     logoutUser: () => dispatch(logoutUser()),
     getEventsByUser: () => dispatch(getEventsByUser()),
+    updateEventById: (data) => dispatch(updateEventById(data))
   }
 }
 

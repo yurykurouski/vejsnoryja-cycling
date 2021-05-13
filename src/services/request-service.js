@@ -83,6 +83,21 @@ class RequestService {
       console.log(err);
     }
   }
+
+  async putSecured(url, data) {
+    try {
+      await fetch(url, {
+        method: HttpMethod.PUT,
+        body: JSON.stringify(data),
+        headers: {
+          "Content-Type": ContentType.APPLICATION_JSON,
+          'Authorization': this.token
+        },
+      });
+    } catch (err) {
+      throw new Error(err)
+    }
+  }
 }
 
 const requestService = new RequestService();

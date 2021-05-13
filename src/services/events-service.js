@@ -34,6 +34,14 @@ class EventsService {
       console.log(err)
     }
   }
+
+  async updateEventById(data) {
+    try {
+      await requestService.putSecured(process.env.REACT_APP_API_UPDATE_EVENT_BY_ID, data);
+    } catch (err) {
+      throw new Error(err);
+    }
+  }
 }
 
 const eventService = new EventsService();

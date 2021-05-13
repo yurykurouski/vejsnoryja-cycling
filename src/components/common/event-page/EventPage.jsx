@@ -30,10 +30,13 @@ class EventPage extends Component {
   }
 
   submitForm = (newEvent, actions) => {
-    const { addEvent } = this.props;
+    const { saveEvent, event } = this.props;
     const { markerData } = this.state;
 
-    addEvent({ ...newEvent, markerData: markerData });
+    event
+      ? saveEvent({ ...newEvent, markerData: markerData, _id: event._id })
+      : saveEvent({ ...newEvent, markerData: markerData });
+
     actions.resetForm();
   }
 

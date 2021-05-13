@@ -31,11 +31,10 @@ export default function events(state = initialState, action) {
         status: ActionStatus.SUCCEDED
       };
     }
-      
-    case types.GET_EVENT_BY_ID: {
+
+    case types.UPDATE_EVENT_BY_ID_SUCESS: {
       return {
         ...state,
-        events: state.events.filter((event) => event._id === action.payload),
         status: ActionStatus.SUCCEDED
       }
     }

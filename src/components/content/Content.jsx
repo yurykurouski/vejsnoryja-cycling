@@ -7,10 +7,11 @@ import UserProfile from "./pages/user-profile/UserProfile";
 import RegistrationPage from "./pages/auth/registration/RegistrationPage";
 import LoginPage from "./pages/auth/login/LoginPage";
 import { connect } from 'react-redux';
+import { addEvent } from "../../store/events/actions";
 
 class Content extends Component {
   render() {
-    const { isAuthenticated } = this.props;
+    const { isAuthenticated, addEvent } = this.props;
 
     return (
       <div className='content'>
@@ -19,11 +20,11 @@ class Content extends Component {
           <Switch>
             <Route path='/'
               component={() => <MainPage
-            />} exact />
+              />} exact />
 
             <Route path='/new-event'>
               {isAuthenticated ? (
-                <EventPage />
+                <EventPage saveEvent={addEvent} />
               )
                 : <Redirect to='/' />
               }
@@ -70,4 +71,10 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps, null)(Content);
+function mapDispatchToProps(dispatch) {
+  return {
+    addEvent: (newEvent) => dispatch(addEvent(newEvent)),
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Content);
