@@ -1,0 +1,18 @@
+.content__settings {
+  height: calc(100% - 25px);
+  padding-top: 20px;
+  margin-top: 5px;
+}
+
+.settings__heading {
+  margin-left: 30px;
+  margin-bottom: 30px;
+}
+
+.settings__main {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 0 5px;
+  padding: 5px;
+}

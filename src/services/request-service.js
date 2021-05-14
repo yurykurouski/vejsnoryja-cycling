@@ -13,7 +13,7 @@ class RequestService {
         headers: {
           'Content-Type': ContentType.APPLICATION_JSON,
           'Authorization': this.token
-        }
+        },
       });
 
       const json = response.json();

@@ -25,9 +25,7 @@ class AuthService {
 
     if (result.token) {
       localStorage.setItem('token', result.token);
-
     } else if (result) {
-
       throw new Error(result.message);
     }
   }

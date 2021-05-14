@@ -37,7 +37,6 @@ export default class EventMap extends Component {
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a>'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        <button type="button" onClick={this.getPos}>vxcvx</button>
         {markerData && <Marker
           position={markerData}
           draggable={isDraggable}

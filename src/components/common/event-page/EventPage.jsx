@@ -68,7 +68,6 @@ class EventPage extends Component {
 
     return (
       <div className="content__new-event first-layer-card">
-        <button onClick={this.getCurrentLocation}>Click</button>
         <h2 className="new-event__heading card-heading">{event ? "Edit event" : "Create new Event"}</h2>
         <Formik
           initialValues={{

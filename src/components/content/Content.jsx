@@ -8,6 +8,7 @@ import RegistrationPage from "./pages/auth/registration/RegistrationPage";
 import LoginPage from "./pages/auth/login/LoginPage";
 import { connect } from 'react-redux';
 import { addEvent } from "../../store/events/actions";
+import SettingsPage from "./pages/settings-page/SettingsPage";
 
 function Content({ isAuthenticated, addEvent }) {
   return (
@@ -27,7 +28,7 @@ function Content({ isAuthenticated, addEvent }) {
             }
           </Route>
 
-          <Route path='/profile'>
+          <Route path='/profile/:tab'>
             {isAuthenticated ? (
               <UserProfile />
             )
@@ -48,6 +49,14 @@ function Content({ isAuthenticated, addEvent }) {
               <Redirect to='/' />
             )
               : <LoginPage />
+            }
+          </Route>
+
+          <Route path='/settings/:tab'>
+            {isAuthenticated ? (
+              <SettingsPage />
+            )
+              : <Redirect to='/login' />
             }
           </Route>
 
