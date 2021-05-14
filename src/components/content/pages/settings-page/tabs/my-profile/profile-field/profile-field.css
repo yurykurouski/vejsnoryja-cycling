@@ -1,0 +1,42 @@
+.my-profile__field-wrap {
+  display: flex;
+  align-items: center;
+  height: 2em;
+  gap: 15px;
+
+  font-family: "Roboto";
+}
+
+.my-profile__field {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.my-profile__field_edit{
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  width: 85%;
+}
+
+.my-profile__input{
+  width: 100%;
+}
+
+.my-profile__field-title {
+  font-weight: 300;
+  width: 20%;
+}
+
+.my-profile__field-value {
+  justify-content: space-around;
+  border-radius: 1em;
+  cursor: pointer;
+  width: 85%;
+}
+
+.my-profile__field-value:hover,
+.my-profile__field-value:active {
+  background-color: var(--font-color-main_hover-bg);
+}

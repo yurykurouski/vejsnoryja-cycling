@@ -1,0 +1,10 @@
+.settings__my-profile {
+  padding: 5px;
+}
+
+.my-profile__user-info {
+  display: flex;
+  flex-direction: column;
+  max-width: 70%;
+  gap: 20px;
+}

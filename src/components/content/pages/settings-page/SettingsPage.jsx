@@ -26,7 +26,7 @@ const settingsTabs = [
   }
 ]
 
-function SettingsPage({ userId, getUserInfo}) {
+function SettingsPage({ userId, getUserInfo, userInfo}) {
   return (
     <div className="content__settings first-layer-card">
       <h2 className="settings__heading card-heading">Settings</h2>
@@ -40,6 +40,7 @@ function SettingsPage({ userId, getUserInfo}) {
             <MyProfile
               getUserInfo={getUserInfo}
               userId={userId}
+              userInfo={userInfo}
             />
           </Route>
 
@@ -61,6 +62,7 @@ function SettingsPage({ userId, getUserInfo}) {
 function mapStateToProps(state) {
   return {
     userId: state.currentUser.user,
+    userInfo: state.settings.userInfo
   }
 }
 
