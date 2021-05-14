@@ -14,7 +14,6 @@ class RegistrationPage extends Component {
   constructor() {
     super();
 
-    this.submitForm = this.submitForm.bind(this);
     this.validationSchema = Yup.object().shape({
       email: Yup
         .string()
@@ -31,7 +30,7 @@ class RegistrationPage extends Component {
     });
   }
 
-  async submitForm(values) {
+  submitForm = async (values) => {
     const { registerUser } = this.props;
 
     await registerUser(values);

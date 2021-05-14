@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './content.css'
 import { Switch, Route, Redirect } from 'react-router-dom';
 import MainPage from "./pages/main-page/MainPage";
@@ -9,60 +9,56 @@ import LoginPage from "./pages/auth/login/LoginPage";
 import { connect } from 'react-redux';
 import { addEvent } from "../../store/events/actions";
 
-class Content extends Component {
-  render() {
-    const { isAuthenticated, addEvent } = this.props;
+function Content({ isAuthenticated, addEvent }) {
+  return (
+    <div className='content'>
+      <div className='content__wrap'>
 
-    return (
-      <div className='content'>
-        <div className='content__wrap'>
+        <Switch>
+          <Route path='/'
+            component={() => <MainPage
+            />} exact />
 
-          <Switch>
-            <Route path='/'
-              component={() => <MainPage
-              />} exact />
+          <Route path='/new-event'>
+            {isAuthenticated ? (
+              <EventPage saveEvent={addEvent} />
+            )
+              : <Redirect to='/' />
+            }
+          </Route>
 
-            <Route path='/new-event'>
-              {isAuthenticated ? (
-                <EventPage saveEvent={addEvent} />
-              )
-                : <Redirect to='/' />
-              }
-            </Route>
+          <Route path='/profile'>
+            {isAuthenticated ? (
+              <UserProfile />
+            )
+              : <Redirect to='/login' />
+            }
+          </Route>
 
-            <Route path='/profile'>
-              {isAuthenticated ? (
-                <UserProfile />
-              )
-                : <Redirect to='/login' />
-              }
-            </Route>
+          <Route path='/register'>
+            {isAuthenticated ? (
+              <Redirect to='/' />
+            )
+              : <RegistrationPage />
+            }
+          </Route>
 
-            <Route path='/register'>
-              {isAuthenticated ? (
-                <Redirect to='/profile/last-activities' />
-              )
-                : <RegistrationPage />
-              }
-            </Route>
+          <Route path='/login'>
+            {isAuthenticated ? (
+              <Redirect to='/' />
+            )
+              : <LoginPage />
+            }
+          </Route>
 
-            <Route path='/login'>
-              {isAuthenticated ? (
-                <Redirect to='/profile/last-activities' />
-              )
-                : <LoginPage />
-              }
-            </Route>
+          <Route path='*'>
+            <div>You gone too far, folk (404) </div>
+          </Route>
+        </Switch>
 
-            <Route path='*'>
-              <div>You gone too far, folk (404) </div>
-            </Route>
-          </Switch>
-
-        </div>
-      </div >
-    )
-  }
+      </div>
+    </div >
+  )
 }
 
 function mapStateToProps(state) {

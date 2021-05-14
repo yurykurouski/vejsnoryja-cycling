@@ -26,7 +26,7 @@ export default function EventForm(props) {
     touched,
     addMarker,
     updateMarker,
-    markerData
+    markerData,
   } = props;
 
   return (

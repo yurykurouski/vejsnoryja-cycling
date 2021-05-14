@@ -2,8 +2,8 @@ import PropTypes from "prop-types";
 import React from 'react'
 import './validation-err-msg.css';
 
-export default function ValidationErrMsg(props) {
-  const {errorMsg} = props
+export default function ValidationErrMsg({ errorMsg }) {
+
   return (
     <div className="error-message">
       {errorMsg}

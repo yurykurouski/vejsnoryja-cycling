@@ -11,12 +11,9 @@ export default class AddButton extends Component {
       clickedClass: '',
       expanded: false
     }
-
-    this.handleClick = this.handleClick.bind(this);
-    this.handleClickAway = this.handleClickAway.bind(this);
   }
 
-  handleClick() {
+  handleClick = () => {
     const clicked = this.state.clickedClass ? '' : 'add-btn-icon_clicked';
 
     this.setState({
@@ -25,7 +22,7 @@ export default class AddButton extends Component {
     });
   };
 
-  handleClickAway() {
+  handleClickAway = () => {
     this.setState({
       clickedClass: '',
       expanded: false

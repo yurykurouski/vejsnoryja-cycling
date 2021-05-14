@@ -1,23 +1,28 @@
-import './app.css';
+import React, { useEffect } from 'react';
+import { connect } from "react-redux";
 import Content from './content/Content';
 import Sidebar from './side-bar/Sidebar';
 import FloatCard from './common/float-card/FloatCard';
 import AddButton from './common/add-button/AddButton';
 import { authUser } from "../store/current-user/actions";
-import { connect } from "react-redux";
+
+import './app.css';
 
 function App(props) {
   const { isAuthenticated, authUser } = props;
+  const token = localStorage.getItem('token');
 
-  if (!isAuthenticated) {
-    authUser();
-  }
+  useEffect(() => {
+    if (!isAuthenticated && token) {
+      authUser();
+    }
+  }, [isAuthenticated, token, authUser]);
 
   return (
     <div className='app'>
       <Sidebar />
 
-        <Content />
+      <Content />
 
       <FloatCard />
       <AddButton />

@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import { MapContainer, TileLayer, Marker } from 'react-leaflet'
+import React, { Component } from 'react';
+import { MapContainer, TileLayer, Marker } from 'react-leaflet';
 import './event-map.css';
 
 export default class EventMap extends Component {
@@ -8,7 +8,7 @@ export default class EventMap extends Component {
 
     this.state = {
       center: {
-        lat: 53.6778,
+        lat: 23.6778,
         lng: 23.8294
       },
     }
@@ -21,7 +21,7 @@ export default class EventMap extends Component {
     return (
       <MapContainer
         className={`${mainClass} map second-layer-card`}
-        center={ markerData? markerData: center }
+        center={markerData ? markerData : center}
         zoom={13}
         zoomControl={false}
         scrollWheelZoom={true}
@@ -37,7 +37,7 @@ export default class EventMap extends Component {
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a>'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-
+        <button type="button" onClick={this.getPos}>vxcvx</button>
         {markerData && <Marker
           position={markerData}
           draggable={isDraggable}
@@ -51,5 +51,3 @@ export default class EventMap extends Component {
     )
   }
 }
-
-

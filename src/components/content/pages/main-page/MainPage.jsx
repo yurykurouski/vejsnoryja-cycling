@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { useEffect } from 'react'
 import ActionStatus from '../../../../constants/action-status';
 import Loader from '../../../common/loader/Loader'
 import EventCard from '../../../common/event-card/EventCard';
@@ -6,35 +6,31 @@ import './main-page.css';
 import { connect } from 'react-redux';
 import { getAllEvents } from '../../../../store/events/actions';
 
-class MainPage extends Component {
-  componentDidMount() {
-    this.props.getAllEvents()
-  }
+function MainPage({ events, status, getAllEvents }) {
+  useEffect(() => {
+    getAllEvents();
+  }, [getAllEvents]);
 
-  render() {
-    const { events, status } = this.props;
+  return (
+    <div className="content__main-page">
 
-    return (
-      <div className="content__main-page">
+      <h2 className="main-page__heading card-heading first-layer-card">Upcoming Events</h2>
 
-        <h2 className="main-page__heading card-heading first-layer-card">Upcoming Events</h2>
+      <ul className="main-page__events">
+        {events.map((event) => (
+          <EventCard
+            event={event}
+            key={event._id}
+            btnTitle="I'm in"
+            btnIcon="done_outline"
+          />
+        ))}
+      </ul>
 
-        <ul className="main-page__events">
-          {events.map((event) => (
-            <EventCard
-              event={event}
-              key={event._id}
-              btnTitle="I'm in"
-              btnIcon="done_outline"
-            />
-          ))}
-        </ul>
+      {status === ActionStatus.LOADING && <Loader />}
 
-        {status === ActionStatus.LOADING && <Loader />}
-
-      </div>
-    );
-  }
+    </div>
+  )
 }
 
 function mapStateToProps(state) {

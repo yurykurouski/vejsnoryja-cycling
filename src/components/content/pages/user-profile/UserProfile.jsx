@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { useEffect } from 'react'
 import { connect } from 'react-redux';
 import { logoutUser } from '../../../../store/current-user/actions';
 import { getEventsByUser, updateEventById } from '../../../../store/events/actions';
@@ -20,16 +20,16 @@ const userProfileTabs = [
   }
 ]
 
-class UserProfile extends Component {
-  componentDidMount() {
-    this.props.getEventsByUser()
-  }
+function UserProfile(props) {
+  const { logoutUser, events, status, currentUser, updateEventById, getEventsByUser } = props;
 
-  render() {
-    const { logoutUser, events, status, currentUser, updateEventById } = this.props;
+  useEffect(() => {
+    getEventsByUser();
+  }, [getEventsByUser]);
 
-    return (
-      <Switch>
+  return (
+    <Switch>
+      <>
         <Route exact path="/profile/edit-event/:eventID" render={({ match }) => (
           <EventPage
             event={events.find(event => event._id === match.params.eventID)}
@@ -53,6 +53,7 @@ class UserProfile extends Component {
               <LastActivities
                 events={events}
                 status={status}
+                getEventsByUser={getEventsByUser}
               />
             </Route>
 
@@ -62,9 +63,9 @@ class UserProfile extends Component {
 
           </div>
         </div>
-      </Switch>
-    )
-  }
+      </>
+    </Switch>
+  )
 }
 
 function mapStateToProps(state) {

@@ -2,8 +2,7 @@ import React from 'react';
 import Moment from 'react-moment';
 import './event-card-date.css';
 
-export default function EventCardDate(props) {
-  const { customClass, date } = props;
+export default function EventCardDate({ customClass, date }) {
   return (
     <div className="event-card__date date">
       <Moment

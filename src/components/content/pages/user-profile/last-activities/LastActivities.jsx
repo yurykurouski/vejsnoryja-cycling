@@ -1,9 +1,9 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
+
 import EventCard from '../../../../common/event-card/EventCard';
 import ActionStatus from '../../../../../constants/action-status';
 import Loader from '../../../../common/loader/Loader';
-import { useHistory } from 'react-router-dom';
-
 
 export default function LastActivities({ events, status }) {
   const history = useHistory();

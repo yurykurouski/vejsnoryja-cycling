@@ -3,8 +3,8 @@ import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { connect } from 'react-redux';
 import { addEvent } from "../../../store/events/actions";
-import EventForm from './event-form/EventForm'
-import './event-page.css'
+import EventForm from './event-form/EventForm';
+import './event-page.css';
 
 class EventPage extends Component {
   constructor() {
@@ -68,6 +68,7 @@ class EventPage extends Component {
 
     return (
       <div className="content__new-event first-layer-card">
+        <button onClick={this.getCurrentLocation}>Click</button>
         <h2 className="new-event__heading card-heading">{event ? "Edit event" : "Create new Event"}</h2>
         <Formik
           initialValues={{

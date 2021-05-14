@@ -39,6 +39,7 @@ export default function events(state = initialState, action) {
       }
     }
 
+    case types.UPDATE_EVENT_BY_ID_REQUEST:
     case types.GET_ALL_EVENTS_REQUEST:
     case types.GET_EVENTS_BY_USER_REQUEST:
     case types.CREATE_NEW_EVENT_REQUEST: {

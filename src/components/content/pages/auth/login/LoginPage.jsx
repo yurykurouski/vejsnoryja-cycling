@@ -27,7 +27,7 @@ class AuthorizationPage extends Component {
     const { loginUser, authUser } = this.props;
 
     await loginUser(values);
-    authUser();
+    await authUser();
   }
 
   render() {
