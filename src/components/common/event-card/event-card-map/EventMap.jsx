@@ -8,8 +8,8 @@ export default class EventMap extends Component {
 
     this.state = {
       center: {
-        lat: 23.6778,
-        lng: 23.8294
+        lat: 53.68312602177623,
+        lng: 23.83411884664919
       },
     }
   }
