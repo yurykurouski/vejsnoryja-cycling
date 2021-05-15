@@ -3,7 +3,7 @@ import ProfileField from './profile-field/ProfileField';
 
 import './my-profile.css';
 
-export default function MyProfile({ getUserInfo, userId, userInfo }) {
+export default function MyProfile({ getUserInfo, updateUserInfo, userId, userInfo }) {
   useEffect(() => {
     getUserInfo(userId);
   }, [getUserInfo, userId]);
@@ -14,7 +14,6 @@ export default function MyProfile({ getUserInfo, userId, userInfo }) {
     <div className="settings__my-profile first-layer-card_hovered">
       <div className="my-profile__user-info">
         {Object.entries(userInfo).map((value) => {
-
           if (editedFields.includes(value[0])) {
             return <ProfileField
               key={value[0]}
@@ -22,6 +21,7 @@ export default function MyProfile({ getUserInfo, userId, userInfo }) {
               value={value[1]}
               handleClick={handleClick}
               editedFields={editedFields}
+              updateUserInfo={updateUserInfo}
               inEdit={true}
             />
           } else {

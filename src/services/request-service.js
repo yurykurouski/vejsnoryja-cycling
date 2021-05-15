@@ -86,7 +86,7 @@ class RequestService {
 
   async putSecured(url, data) {
     try {
-      await fetch(url, {
+      const response = await fetch(url, {
         method: HttpMethod.PUT,
         body: JSON.stringify(data),
         headers: {
@@ -94,6 +94,8 @@ class RequestService {
           'Authorization': this.token
         },
       });
+
+      return await response.json();
     } catch (err) {
       throw new Error(err)
     }

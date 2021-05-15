@@ -3,7 +3,7 @@ import Icon from '@material-ui/core/Icon';
 import Moment from 'react-moment';
 import EventCardDate from './event-card-date/EventCardDate';
 import EventMap from './event-card-map/EventMap';
-import EventCardOption from './event-card-option/EventCardOption';
+import IconButton from '../icon-button/IconButton';
 
 import './event-card.css';
 
@@ -17,7 +17,7 @@ export default function EventCard(props) {
       <div className="event-card__aside">
         <EventCardDate customClass="event-card__date_date" date={date} />
 
-        <EventCardOption
+        <IconButton
           onClick={onClick}
           btnTitle={btnTitle}
           btnIcon={btnIcon}

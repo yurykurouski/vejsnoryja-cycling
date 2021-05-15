@@ -15,7 +15,15 @@ export default function settings(state = initialState, action) {
         status: ActionStatus.SUCCEDED
       };
     }
+    case types.UPDATE_USER_INFO_SUCESS: {
+      return {
+        ...state,
+        userInfo: action.payload,
+        status: ActionStatus.SUCCEDED
+      };
+    }
 
+    case types.UPDATE_USER_INFO_REQUEST:
     case types.GET_USER_INFO_REQUEST: {
       return {
         ...state,
@@ -23,6 +31,7 @@ export default function settings(state = initialState, action) {
       }
     }
 
+    case types.UPDATE_USER_INFO_FAILURE:
     case types.GET_USER_INFO_FAILURE: {
       return {
         ...state,

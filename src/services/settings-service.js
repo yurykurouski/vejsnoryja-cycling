@@ -15,6 +15,16 @@ class SettingsService {
       throw new Error(err);
     }
   }
+
+  async updateUserInfo(field) {
+    try {
+      const response = await requestService.putSecured(process.env.REACT_APP_API_UPDATE_SETTINGS_MY_PROFILE_URL, field);
+
+      return response;
+    } catch (err) {
+      throw new Error(err);
+    }
+  }
 }
 
 const settingsService = new SettingsService();

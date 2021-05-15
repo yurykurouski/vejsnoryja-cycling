@@ -1,6 +1,6 @@
 import React from 'react';
 import Icon from '@material-ui/core/Icon';
-import './event-card-option.css';
+import './icon-button.css';
 
 export default function EventCardOption(props) {
   const { onClick, btnTitle, btnIcon } = props;

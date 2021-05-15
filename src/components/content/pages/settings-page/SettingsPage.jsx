@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from "react-redux";
 import { Switch, Route } from 'react-router-dom';
 
-import { getUserInfo } from "../../../../store/settings/actions";
+import { getUserInfo, updateUserInfo } from "../../../../store/settings/actions";
 import Tabs from '../../../common/tabs/Tabs';
 import MyProfile from "./tabs/my-profile/MyProfile";
 import MyGear from "./tabs/my-gear/MyGear";
@@ -26,7 +26,7 @@ const settingsTabs = [
   }
 ]
 
-function SettingsPage({ userId, getUserInfo, userInfo}) {
+function SettingsPage({ userId, getUserInfo, updateUserInfo, userInfo }) {
   return (
     <div className="content__settings first-layer-card">
       <h2 className="settings__heading card-heading">Settings</h2>
@@ -41,6 +41,7 @@ function SettingsPage({ userId, getUserInfo, userInfo}) {
               getUserInfo={getUserInfo}
               userId={userId}
               userInfo={userInfo}
+              updateUserInfo={updateUserInfo}
             />
           </Route>
 
@@ -69,6 +70,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     getUserInfo: (id) => dispatch(getUserInfo(id)),
+    updateUserInfo: (field) => dispatch(updateUserInfo(field)),
   }
 }
 
