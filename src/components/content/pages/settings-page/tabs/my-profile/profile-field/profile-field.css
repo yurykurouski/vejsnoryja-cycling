@@ -30,7 +30,9 @@
 }
 
 .my-profile__field-value {
-  justify-content: space-around;
+  justify-content: flex-start;
+  font-size: 18px;
+  padding: 0 10px;
   border-radius: 1em;
   cursor: pointer;
   width: 85%;
