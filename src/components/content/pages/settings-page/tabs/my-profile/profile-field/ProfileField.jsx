@@ -43,6 +43,7 @@ export default function ProfileField({ title, value, handleClick, editedFields, 
             onKeyDown={handleSubmitKeyDown}
             value={inputValue}
             className="my-profile__input form__input"
+            autoFocus={true}
           />
           <button
             type="button"
