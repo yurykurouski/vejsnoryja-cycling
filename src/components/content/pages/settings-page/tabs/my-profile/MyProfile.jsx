@@ -8,21 +8,20 @@ export default function MyProfile({ getUserInfo, userId, userInfo }) {
     getUserInfo(userId);
   }, [getUserInfo, userId]);
 
-  const [editedField, handleClick] = useState([]);
-
+  const [editedFields, handleClick] = useState([]);
 
   return (
     <div className="settings__my-profile first-layer-card_hovered">
       <div className="my-profile__user-info">
         {Object.entries(userInfo).map((value) => {
 
-          if (editedField.includes(value[0])) {
+          if (editedFields.includes(value[0])) {
             return <ProfileField
               key={value[0]}
               title={value[0]}
               value={value[1]}
               handleClick={handleClick}
-              editedField={editedField}
+              editedFields={editedFields}
               inEdit={true}
             />
           } else {
@@ -31,7 +30,7 @@ export default function MyProfile({ getUserInfo, userId, userInfo }) {
               title={value[0]}
               value={value[1]}
               handleClick={handleClick}
-              editedField={editedField}
+              editedFields={editedFields}
             />
           }
         })}
