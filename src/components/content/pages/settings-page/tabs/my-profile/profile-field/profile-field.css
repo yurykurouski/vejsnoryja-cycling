@@ -13,14 +13,14 @@
   height: 100%;
 }
 
-.my-profile__field_edit{
+.my-profile__field_edit {
   display: flex;
   align-items: center;
   gap: 5px;
   width: 85%;
 }
 
-.my-profile__input{
+.my-profile__input {
   width: 100%;
 }
 
@@ -36,6 +36,11 @@
   border-radius: 1em;
   cursor: pointer;
   width: 85%;
+}
+
+.my-profile__field-value-empty {
+  color: var(--font-color-main_unactive);
+  font-size: 16px;
 }
 
 .my-profile__field-value:hover,

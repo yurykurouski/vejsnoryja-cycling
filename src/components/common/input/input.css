@@ -1,0 +1,36 @@
+.form__input {
+  height: 1.5em;
+  border: 1px solid var(--accent-color_light-blue);
+  outline: none;
+  border-radius: 2px;
+  box-sizing: border-box;
+
+  font-family: "Roboto";
+  font-size: 18px;
+}
+
+.form__input:focus {
+  box-shadow: 0 0 1px .5px var(--accent-color_light-blue);
+}
+
+.form__title-wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.form__terrain-level-wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.form__terrain-level-wrap .input__label {
+  width: 100%;
+}
+
+.form__input_title {
+  width: 100%;
+}

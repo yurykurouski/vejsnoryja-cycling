@@ -61,8 +61,8 @@ export default function ProfileField({ title, value, handleClick, editedFields, 
         :
         <span
           onClick={() => handleClick(editedFields = [...editedFields, title])}
-          className="my-profile__field-value my-profile__field"
-        >{value ? value : 'Change'}</span>
+          className={`my-profile__field-value ${value ? '' : 'my-profile__field-value-empty'} my-profile__field`}
+        >{value ? value : 'Add'}</span>
       }
     </div>
   )
