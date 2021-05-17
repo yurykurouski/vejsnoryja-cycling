@@ -2,9 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-function SidebarProfile(props) {
-  const { isAuthenticated } = props;
-
+function SidebarProfile({ isAuthenticated }) {
   return (
     <li className='sidebar__nav_item'>
 

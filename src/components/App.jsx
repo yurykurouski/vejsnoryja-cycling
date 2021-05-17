@@ -8,8 +8,7 @@ import { authUser } from "../store/current-user/actions";
 
 import './app.css';
 
-function App(props) {
-  const { isAuthenticated, authUser } = props;
+function App({ isAuthenticated, authUser }) {
   const token = localStorage.getItem('token');
 
   useEffect(() => {

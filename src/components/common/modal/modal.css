@@ -14,7 +14,20 @@
 }
 
 .modal-window {
-  /* position: absolute; */
   background-color: var(--background-main-color);
   width: 30%;
+  padding: 5px;
+}
+
+.modal-window__heading{
+  margin-top: 20px;
+  margin-bottom: 30px;
+  margin-left: 20px;
+}
+
+.modal-window__main{
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 0 5px;
 }

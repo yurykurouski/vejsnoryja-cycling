@@ -25,7 +25,7 @@ export default function ProfileField({ title, value, handleClick, editedFields, 
 
   const handleSubmitKeyDown = (e) => {
     if (e.keyCode === SUBMIT_KEYCODE) {
-      handleSave()
+      handleSave();
     }
   }
 

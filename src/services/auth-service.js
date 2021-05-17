@@ -29,7 +29,7 @@ class AuthService {
       throw new Error(result.message);
     }
   }
-
+// TODO переделать
   async userAuth() {
     const token = localStorage.getItem('token');
 
