@@ -11,7 +11,7 @@ class EventsService {
 
       return data;
     } catch (err) {
-      console.log(err);
+      throw new Error(err);
     }
   }
 
@@ -21,7 +21,7 @@ class EventsService {
 
       return response;
     } catch (err) {
-      console.log(err)
+      throw new Error(err);
     }
   }
 
