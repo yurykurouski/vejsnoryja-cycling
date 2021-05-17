@@ -46,7 +46,6 @@ class AuthService {
       .then(data => {
         return data;
       })
-    // .catch(localStorage.removeItem('token'));
 
     return await result;
   }

@@ -11,7 +11,6 @@ export default function events(state = initialState, action) {
     case types.CREATE_NEW_EVENT_SUCESS: {
       return {
         ...state,
-        events: [...state.events, action.payload],
         status: ActionStatus.SUCCEDED
       };
     }

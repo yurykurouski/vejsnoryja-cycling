@@ -29,10 +29,10 @@ function EventPage(props) {
   });
 
   const handleSubmit = (newEvent, actions) => {
-    // ! тут что-то непонятное
+    // ! тут что-то непонятное (проверь, что отправляет сервак)
     event
       ? saveEvent({ ...newEvent, markerData: markerData, _id: event._id })
-      : saveEvent({ ...newEvent, markerData: markerData, _id: event._id  });
+      : saveEvent({ ...newEvent, markerData: markerData, _id: event._id });
 
     actions.resetForm();
     history.goBack();

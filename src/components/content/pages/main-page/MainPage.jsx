@@ -15,7 +15,7 @@ function MainPage({ events, status, getAllEvents }) {
     <div className="content__main-page">
 
       <h2 className="main-page__heading card-heading first-layer-card">Upcoming Events</h2>
-
+      
       <ul className="main-page__events">
         {events.map((event) => (
           <EventCard
