@@ -1,6 +1,6 @@
 import React from 'react';
 import './content.css'
-import { Switch, Route, Redirect } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import MainPage from "./pages/main-page/MainPage";
 import EventPage from "../common/event-page/EventPage";
 import UserProfile from "./pages/user-profile/UserProfile";
@@ -12,7 +12,7 @@ import SettingsPage from "./pages/settings-page/SettingsPage";
 import PrivateRoute from "./routes/PrivateRoute";
 import PublicRoute from "./routes/PublicRoute";
 
-function Content({ isAuthenticated, addEvent }) {
+function Content({ addEvent }) {
   return (
     <div className='content'>
       <div className='content__wrap'>
@@ -26,7 +26,7 @@ function Content({ isAuthenticated, addEvent }) {
 
           <PrivateRoute path='/profile/:tab' component={UserProfile} />
 
-          <PublicRoute path='/sign-up' restricted={true} component={RegistrationPage}/>
+          <PublicRoute path='/sign-up' restricted={true} component={RegistrationPage} />
 
           <PublicRoute path='/sign-in' restricted={true} component={LoginPage} />
 
@@ -42,16 +42,10 @@ function Content({ isAuthenticated, addEvent }) {
   )
 }
 
-function mapStateToProps(state) {
-  return {
-    isAuthenticated: state.currentUser.isAuthenticated,
-  }
-}
-
 function mapDispatchToProps(dispatch) {
   return {
     addEvent: (newEvent) => dispatch(addEvent(newEvent)),
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Content);
+export default connect(null, mapDispatchToProps)(Content);
