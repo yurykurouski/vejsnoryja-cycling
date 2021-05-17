@@ -32,8 +32,16 @@ export default function events(state = initialState, action) {
     }
 
     case types.UPDATE_EVENT_BY_ID_SUCESS: {
+      const updatedEvents = state.events.map(event => {
+        if (event._id === action.payload._id) {
+          return action.payload;
+        }
+        return event;
+      })
+
       return {
         ...state,
+        events: updatedEvents,
         status: ActionStatus.SUCCEDED
       }
     }

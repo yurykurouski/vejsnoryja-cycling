@@ -39,7 +39,6 @@ class EventsService {
     try {
       const response = await requestService.putSecured(process.env.REACT_APP_API_UPDATE_EVENT_BY_ID, data);
 
-      console.log(response)
       return response;
     } catch (err) {
       throw new Error(err);
