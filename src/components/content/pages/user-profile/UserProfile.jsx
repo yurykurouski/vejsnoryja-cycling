@@ -4,7 +4,7 @@ import { logoutUser } from '../../../../store/current-user/actions';
 import { getEventsByUser, updateEventById } from '../../../../store/events/actions';
 import './user-profile.css';
 import LastActivities from './last-activities/LastActivities';
-import { Switch, Route, Redirect } from 'react-router-dom';
+import { Switch, Route, Redirect, useRouteMatch } from 'react-router-dom';
 import UserGear from "./gear/UserGear";
 import Tabs from "../../../common/tabs/Tabs";
 import EventPage from '../../../common/event-page/EventPage';
@@ -22,6 +22,7 @@ const userProfileTabs = [
 
 function UserProfile(props) {
   const { logoutUser, events, status, currentUser, updateEventById, getEventsByUser } = props;
+  const eventID = useRouteMatch('/profile/edit-event/:eventID')?.params.eventID;
 
   useEffect(() => {
     getEventsByUser();
@@ -30,43 +31,44 @@ function UserProfile(props) {
   return (
     <Switch>
       <>
-        <Route exact path="/profile/edit-event/:eventID" render={({ match }) => (
-          <EventPage
-            event={events.find(event => event._id === match.params.eventID)}
-            currentUser={currentUser}
-            saveEvent={updateEventById}
-          />
-        )}>
-        </Route>
-
-        <div className="content__user-profile first-layer-card">
-          <span className="user-profile__header">
-            <h2 className="user-profile__heading card-heading">Your profile</h2>
-            <button onClick={logoutUser} className="user-profile__logout-btn submit-btn sign-out-btn">Sign out</button>
-          </span>
-
-          <div className="user-profile__main second-layer-card">
-
-            <Tabs tabs={userProfileTabs} />
-
-            <Route exact path="/profile">
-              <Redirect to="/profile/last-activities" />
-            </Route>
-
-            <Route path="/profile/last-activities">
-              <LastActivities
-                events={events}
-                status={status}
-                getEventsByUser={getEventsByUser}
+        {
+          eventID
+            ? <Route exact path="/profile/edit-event/:eventID">
+              <EventPage
+                event={events.find(event => event._id === eventID)}
+                currentUser={currentUser}
+                saveEvent={updateEventById}
               />
             </Route>
 
-            <Route path="/profile/gear">
-              <UserGear />
-            </Route>
+            : <div className="content__user-profile first-layer-card">
+              <span className="user-profile__header">
+                <h2 className="user-profile__heading card-heading">Your profile</h2>
+                <button onClick={logoutUser} className="user-profile__logout-btn submit-btn sign-out-btn">Sign out</button>
+              </span>
 
-          </div>
-        </div>
+              <div className="user-profile__main second-layer-card">
+
+                <Tabs tabs={userProfileTabs} />
+
+                <Route exact path="/profile">
+                  <Redirect to="/profile/last-activities" />
+                </Route>
+
+                <Route exact path="/profile/last-activities">
+                  <LastActivities
+                    events={events}
+                    status={status}
+                    getEventsByUser={getEventsByUser}
+                  />
+                </Route>
+
+                <Route exact path="/profile/gear">
+                  <UserGear />
+                </Route>
+              </div>
+            </div>
+        }
       </>
     </Switch>
   )
