@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { Formik } from 'formik';
 import '../auth-pages.css';
 import * as Yup from 'yup';
@@ -9,93 +9,85 @@ import { authUser, loginUser } from '../../../../../store/current-user/actions';
 import Loader from '../../../../common/loader/Loader';
 import ActionStatus from '../../../../../constants/action-status';
 
-class AuthorizationPage extends Component {
-  constructor() {
-    super();
+function LoginPage(props) {
+  const { loginUser, authUser, authErrors, status } = props;
 
-    this.validationSchema = Yup.object().shape({
-      email: Yup
-        .string()
-        .required('Email can not be empty.'),
-      password: Yup
-        .string()
-        .required('Password can not be empty.'),
-    });
-  }
+  const validationSchema = Yup.object().shape({
+    email: Yup
+      .string()
+      .required('Email can not be empty.'),
+    password: Yup
+      .string()
+      .required('Password can not be empty.'),
+  });
 
-  submitForm = async (values) => {
-    const { loginUser, authUser } = this.props;
-
+  const submitForm = async (values) => {
     await loginUser(values);
-    await authUser();
+    authUser();
   }
 
-  render() {
-    const { authErrors, status } = this.props;
+  return (
+    <div className="content__login-page auth-page first-layer-card">
+      <h2 className="login-page__heading auth-page__heading card-heading">Sign in</h2>
 
-    return (
-      <div className="content__login-page auth-page first-layer-card">
-        <h2 className="login-page__heading auth-page__heading card-heading">Sign in</h2>
+      <Formik
+        initialValues={{
+          email: '',
+          password: ''
+        }}
+        onSubmit={submitForm}
+        validationSchema={validationSchema}
+      >
 
-        <Formik
-          initialValues={{
-            email: '',
-            password: ''
-          }}
-          onSubmit={this.submitForm}
-          validationSchema={this.validationSchema}
-        >
+        {({ handleSubmit, handleChange, values, errors, touched }) => (
+          <form onSubmit={handleSubmit} className="login-page__form auth-page__form second-layer-card">
+            <label className="input__label">
+              Email
 
-          {({ handleSubmit, handleChange, values, errors, touched }) => (
-            <form onSubmit={handleSubmit} className="login-page__form auth-page__form second-layer-card">
-              <label className="input__label">
-                Email
+              <input
+                name="email"
+                type="text"
+                onChange={handleChange}
+                value={values.email}
+                className="form__input form__input_email"
+                autoFocus
+              />
+            </label>
 
-                <input
-                  name="email"
-                  type="text"
-                  onChange={handleChange}
-                  value={values.email}
-                  className="form__input form__input_email"
-                  autoFocus
-                />
-              </label>
+            {(errors.email && touched.email) || authErrors ? (
+              <ValidationErrMsg errorMsg={errors.email || authErrors} />
+            ) : null}
 
-              {(errors.email && touched.email) || authErrors ? (
-                <ValidationErrMsg errorMsg={errors.email || authErrors} />
-              ) : null}
+            <label className="input__label">
+              Password
 
-              <label className="input__label">
-                Password
+              <input
+                name='password'
+                type='password'
+                onChange={handleChange}
+                value={values.password}
+                className="form__input form__input_password"
+                autoComplete="on"
+              />
+            </label>
 
-                <input
-                  name='password'
-                  type='password'
-                  onChange={handleChange}
-                  value={values.password}
-                  className="form__input form__input_password"
-                  autoComplete="on"
-                />
-              </label>
+            {errors.password && touched.password ? (
+              <ValidationErrMsg errorMsg={errors.password} />
+            ) : null}
 
-              {errors.password && touched.password ? (
-                <ValidationErrMsg errorMsg={errors.password} />
-              ) : null}
+            <section className="login-page__controls form__controls">
+              <button type="submit" className="login-page__submit submit-btn">Sign in</button>
+              or
+              <Link to='sign-up' className="login-page__cancel cancel-btn">Create account</Link>
+            </section>
+          </form>
+        )}
 
-              <section className="login-page__controls form__controls">
-                <button type="submit" className="login-page__submit submit-btn">Sign in</button>
-                or
-                <Link to='sign-up' className="login-page__cancel cancel-btn">Create account</Link>
-              </section>
-            </form>
-          )}
+      </Formik>
 
-        </Formik>
-
-        {status === ActionStatus.LOADING && <Loader />}
-      </div>
-    )
-  }
+      {status === ActionStatus.LOADING && <Loader />}
+    </div>
+  )
 }
 
 function mapStateToProps(state) {
@@ -112,4 +104,4 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(AuthorizationPage);
+export default connect(mapStateToProps, mapDispatchToProps)(LoginPage);
