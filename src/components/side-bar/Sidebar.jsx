@@ -18,7 +18,7 @@ export default function Sidebar() {
               <a href="#!" className='nav_item__link link'>Workshop</a>
             </li>
             <li className='sidebar__nav_item'>
-              <Link to="/settings/my-profile" className='nav_item__link link'>Settings</Link>
+              <Link to="/settings" className='nav_item__link link'>Settings</Link>
             </li>
             <li className='sidebar__nav_item'>
               <a href="#!" className='nav_item__link link'>Smthng else</a>

@@ -1,6 +1,6 @@
+import React from 'react';
 import * as Yup from 'yup';
 import { Formik } from 'formik';
-import React, { Component } from 'react';
 import { MIN_PASSWORD_LENGTH, PASSWORD_REGEX } from '../../../../../constants/';
 import ValidationErrMsg from '../../../../common/validation-err-msg/ValidationErrMsg';
 import '../auth-pages.css';

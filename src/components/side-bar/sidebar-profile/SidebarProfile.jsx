@@ -6,11 +6,10 @@ function SidebarProfile(props) {
   const { isAuthenticated } = props;
 
   return (
-
     <li className='sidebar__nav_item'>
 
       {isAuthenticated
-        ? <Link to='/profile/last-activities' className='nav_item__link profile_logined link'>Profile</Link>
+        ? <Link to='/profile' className='nav_item__link profile_logined link'>Profile</Link>
         : <Link to='/sign-in' className='nav_item__link profile_notlogined link'>Sign-in</Link>
       }
 

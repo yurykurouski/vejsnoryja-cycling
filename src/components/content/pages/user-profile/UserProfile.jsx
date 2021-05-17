@@ -4,7 +4,7 @@ import { logoutUser } from '../../../../store/current-user/actions';
 import { getEventsByUser, updateEventById } from '../../../../store/events/actions';
 import './user-profile.css';
 import LastActivities from './last-activities/LastActivities';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import UserGear from "./gear/UserGear";
 import Tabs from "../../../common/tabs/Tabs";
 import EventPage from '../../../common/event-page/EventPage';
@@ -48,6 +48,10 @@ function UserProfile(props) {
           <div className="user-profile__main second-layer-card">
 
             <Tabs tabs={userProfileTabs} />
+
+            <Route exact path="/profile">
+              <Redirect to="/profile/last-activities" />
+            </Route>
 
             <Route path="/profile/last-activities">
               <LastActivities

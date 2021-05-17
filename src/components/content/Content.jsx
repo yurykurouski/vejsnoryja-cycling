@@ -24,13 +24,13 @@ function Content({ addEvent }) {
 
           <PrivateRoute path='/new-event' component={EventPage} saveEvent={addEvent} />
 
-          <PrivateRoute path='/profile/:tab' component={UserProfile} />
+          <PrivateRoute path='/profile' component={UserProfile} />
 
           <PublicRoute path='/sign-up' restricted={true} component={RegistrationPage} />
 
           <PublicRoute path='/sign-in' restricted={true} component={LoginPage} />
 
-          <PrivateRoute path='/settings/:tab' component={SettingsPage} />
+          <PrivateRoute path='/settings' component={SettingsPage} />
 
           <Route path='*'>
             <div>You gone too far, folk (404) </div>

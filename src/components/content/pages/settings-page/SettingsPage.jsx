@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from "react-redux";
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 
 import { getUserInfo, updateUserInfo } from "../../../../store/settings/actions";
 import Tabs from '../../../common/tabs/Tabs';
@@ -32,10 +32,14 @@ function SettingsPage({ userId, getUserInfo, updateUserInfo, userInfo }) {
       <h2 className="settings__heading card-heading">Settings</h2>
 
       <div className="settings__main second-layer-card">
-      
+
         <Tabs tabs={settingsTabs} />
 
         <Switch>
+          <Route exact path="/settings">
+            <Redirect to="/settings/my-profile" />
+          </Route>
+
           <Route path="/settings/my-profile">
             <MyProfile
               getUserInfo={getUserInfo}
