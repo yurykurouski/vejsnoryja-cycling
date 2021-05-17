@@ -11,7 +11,7 @@ function SidebarProfile(props) {
 
       {isAuthenticated
         ? <Link to='/profile/last-activities' className='nav_item__link profile_logined link'>Profile</Link>
-        : <Link to='/login' className='nav_item__link profile_notlogined link'>Login/register</Link>
+        : <Link to='/sign-in' className='nav_item__link profile_notlogined link'>Sign-in</Link>
       }
 
     </li>

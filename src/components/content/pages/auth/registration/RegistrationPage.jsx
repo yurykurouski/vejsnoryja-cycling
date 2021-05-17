@@ -41,7 +41,7 @@ class RegistrationPage extends Component {
 
     return (
       <div className="content__registration-page auth-page first-layer-card">
-        <h2 className="registration-page__heading auth-page__heading card-heading">RegistrationPage</h2>
+        <h2 className="registration-page__heading auth-page__heading card-heading">Create new account</h2>
 
         <Formik
           initialValues={{ email: '', password: '', repeatPass: '' }}
@@ -106,9 +106,9 @@ class RegistrationPage extends Component {
               ) : null}
 
               <section className="registration-page__controls form__controls">
-                <button type="submit" className="registration-page__submit submit-btn">Sign in</button>
+                <button type="submit" className="registration-page__submit submit-btn">Create account</button>
                 or
-                <Link to='login' className="registration-page__cancel cancel-btn">Log in</Link>
+                <Link to='sign-in' className="registration-page__cancel cancel-btn">Sign in</Link>
               </section>
             </form>
           )}

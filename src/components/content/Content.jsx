@@ -9,6 +9,8 @@ import LoginPage from "./pages/auth/login/LoginPage";
 import { connect } from 'react-redux';
 import { addEvent } from "../../store/events/actions";
 import SettingsPage from "./pages/settings-page/SettingsPage";
+import PrivateRoute from "./routes/PrivateRoute";
+import PublicRoute from "./routes/PublicRoute";
 
 function Content({ isAuthenticated, addEvent }) {
   return (
@@ -20,45 +22,15 @@ function Content({ isAuthenticated, addEvent }) {
             component={() => <MainPage
             />} exact />
 
-          <Route path='/new-event'>
-            {isAuthenticated ? (
-              <EventPage saveEvent={addEvent} />
-            )
-              : <Redirect to='/' />
-            }
-          </Route>
+          <PrivateRoute path='/new-event' component={EventPage} saveEvent={addEvent} />
 
-          <Route path='/profile/:tab'>
-            {isAuthenticated ? (
-              <UserProfile />
-            )
-              : <Redirect to='/login' />
-            }
-          </Route>
+          <PrivateRoute path='/profile/:tab' component={UserProfile} />
 
-          <Route path='/register'>
-            {isAuthenticated ? (
-              <Redirect to='/' />
-            )
-              : <RegistrationPage />
-            }
-          </Route>
+          <PublicRoute path='/sign-up' restricted={true} component={RegistrationPage}/>
 
-          <Route path='/login'>
-            {isAuthenticated ? (
-              <Redirect to='/' />
-            )
-              : <LoginPage />
-            }
-          </Route>
+          <PublicRoute path='/sign-in' restricted={true} component={LoginPage} />
 
-          <Route path='/settings/:tab'>
-            {isAuthenticated ? (
-              <SettingsPage />
-            )
-              : <Redirect to='/login' />
-            }
-          </Route>
+          <PrivateRoute path='/settings/:tab' component={SettingsPage} />
 
           <Route path='*'>
             <div>You gone too far, folk (404) </div>

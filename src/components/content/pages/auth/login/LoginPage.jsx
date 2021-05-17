@@ -35,7 +35,7 @@ class AuthorizationPage extends Component {
 
     return (
       <div className="content__login-page auth-page first-layer-card">
-        <h2 className="login-page__heading auth-page__heading card-heading">LoginPage</h2>
+        <h2 className="login-page__heading auth-page__heading card-heading">Sign in</h2>
 
         <Formik
           initialValues={{
@@ -83,9 +83,9 @@ class AuthorizationPage extends Component {
               ) : null}
 
               <section className="login-page__controls form__controls">
-                <button type="submit" className="login-page__submit submit-btn">Log in</button>
+                <button type="submit" className="login-page__submit submit-btn">Sign in</button>
                 or
-                <Link to='register' className="login-page__cancel cancel-btn">Sign in</Link>
+                <Link to='sign-up' className="login-page__cancel cancel-btn">Create account</Link>
               </section>
             </form>
           )}
