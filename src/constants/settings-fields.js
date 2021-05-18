@@ -1,4 +1,23 @@
 export default class SettingsFields {
+  static get SETTINGS_TABS() {
+    return [
+      {
+        to: '/settings/my-profile',
+        name: 'My Profile'
+      },
+
+      {
+        to: '/settings/my-gear',
+        name: 'My Gear'
+      },
+
+      {
+        to: '/settings/my-account',
+        name: 'My Account'
+      }
+    ]
+  }
+
   static get ADD_BIKE() {
     return [
       {

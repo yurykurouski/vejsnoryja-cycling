@@ -8,23 +8,7 @@ import MyProfile from "./tabs/my-profile/MyProfile";
 import MyGear from "./tabs/my-gear/MyGear";
 import MyAccount from "./tabs/my-account/MyAccount";
 import './settings-page.css';
-
-const settingsTabs = [
-  {
-    to: '/settings/my-profile',
-    name: 'My Profile'
-  },
-
-  {
-    to: '/settings/my-gear',
-    name: 'My Gear'
-  },
-
-  {
-    to: '/settings/my-account',
-    name: 'My Account'
-  }
-]
+import SettingsFields from "../../../../constants/settings-fields";
 
 function SettingsPage({ userId, getUserInfo, updateUserInfo, addNewGear, userInfo, gear }) {
   return (
@@ -33,7 +17,7 @@ function SettingsPage({ userId, getUserInfo, updateUserInfo, addNewGear, userInf
 
       <div className="settings__main second-layer-card">
 
-        <Tabs tabs={settingsTabs} />
+        <Tabs tabs={SettingsFields.SETTINGS_TABS} />
 
         <Switch>
           <Route exact path="/settings">
