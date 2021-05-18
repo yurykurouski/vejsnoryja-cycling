@@ -67,7 +67,8 @@ export default function MyGear() {
       .required('Please name your bike'),
     weight: Yup
       .number()
-      .required('The weight must be entered as a number.'),
+      .required('You must enter a valid weight for your bike.')
+      .typeError('The weight must be entered as a number.'),
   })
 
   const handleClick = () => {
@@ -78,8 +79,11 @@ export default function MyGear() {
     setModalOpen(false);
   }
 
-  const handleModalSubmit = () => {
-    console.log('sdfds')
+  const handleModalSubmit = (data, actions) => {
+
+
+    actions.resetForm();
+    handleCloseModal();
   }
 
   return (

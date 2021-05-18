@@ -6,6 +6,15 @@ import Input from '../input/Input';
 import './modal.css';
 
 export default function Modal({ heading, fields, handleCloseModal, handleModalSubmit, validationSchema, btnText }) {
+  const getValues = () => {
+    let vals = {};
+
+    fields.forEach(el => {
+      vals[el.name] = el.value;
+    })
+    return vals;
+  }
+
   return (
     <div className="fade-layer">
       <ClickAwayListener onClickAway={handleCloseModal}>
@@ -13,18 +22,20 @@ export default function Modal({ heading, fields, handleCloseModal, handleModalSu
           <h3 className="modal-window__heading">{heading}</h3>
 
           <Formik
-            initialValues={{ ...fields.value }}
+            initialValues={getValues()}
             onSubmit={handleModalSubmit}
             validationSchema={validationSchema}
           >
-            {({ handleSubmit, handleChange, values, errors, touched }) => (
+            {({ handleSubmit, handleChange, values, errors }) => (
               <form className="modal-window__main second-layer-card" onSubmit={handleSubmit}>
 
-                {fields.map(field => (
+                {fields.map((field) => (
                   <Input {...field}
                     value={values[field.name]}
                     handleChange={handleChange}
                     key={field.name}
+                    error={errors[field.name]}
+                    touched={values}
                   />
                 ))}
 
@@ -34,6 +45,6 @@ export default function Modal({ heading, fields, handleCloseModal, handleModalSu
           </Formik>
         </div>
       </ClickAwayListener>
-    </div>
+    </div >
   )
 }
