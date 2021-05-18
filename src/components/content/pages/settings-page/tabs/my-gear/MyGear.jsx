@@ -9,7 +9,7 @@ import TableRow from '@material-ui/core/TableRow';
 import TableCell from '@material-ui/core/TableCell';
 
 import Modal from '../../../../../common/modal/Modal';
-import SettingsFields from '../../../../../../constants/gear-fields';
+import SettingsFields from '../../../../../../constants/settings-fields';
 
 const useStyles = makeStyles({
   container: {

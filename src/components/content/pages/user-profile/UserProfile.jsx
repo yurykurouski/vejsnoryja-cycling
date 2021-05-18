@@ -1,24 +1,15 @@
+import { Switch, Route, Redirect, useRouteMatch } from 'react-router-dom';
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux';
-import { logoutUser } from '../../../../store/current-user/actions';
-import { getEventsByUser, updateEventById } from '../../../../store/events/actions';
 import './user-profile.css';
-import LastActivities from './last-activities/LastActivities';
-import { Switch, Route, Redirect, useRouteMatch } from 'react-router-dom';
+
 import UserGear from "./gear/UserGear";
 import Tabs from "../../../common/tabs/Tabs";
 import EventPage from '../../../common/event-page/EventPage';
-
-const userProfileTabs = [
-  {
-    to: '/profile/last-activities',
-    name: 'Last activities'
-  },
-  {
-    to: '/profile/gear',
-    name: 'Your gear'
-  }
-]
+import ProfileFields from '../../../../constants/profile-fields';
+import LastActivities from './last-activities/LastActivities';
+import { logoutUser } from '../../../../store/current-user/actions';
+import { getEventsByUser, updateEventById } from '../../../../store/events/actions';
 
 function UserProfile(props) {
   const { logoutUser, events, status, currentUser, updateEventById, getEventsByUser } = props;
@@ -49,7 +40,7 @@ function UserProfile(props) {
 
               <div className="user-profile__main second-layer-card">
 
-                <Tabs tabs={userProfileTabs} />
+                <Tabs tabs={ProfileFields.PROFILE_TABS} />
 
                 <Route exact path="/profile">
                   <Redirect to="/profile/last-activities" />
