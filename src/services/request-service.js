@@ -20,7 +20,7 @@ class RequestService {
 
       return json;
     } catch (err) {
-      throw Error(err);
+      throw new Error(err);
     }
   }
 
@@ -37,7 +37,7 @@ class RequestService {
 
       return json;
     } catch (err) {
-      throw Error(err);
+      throw new Error(err);
     }
   }
 
@@ -75,12 +75,11 @@ class RequestService {
       if (!response.ok) {
 
         return json.message;
-      } else if (json.token) {
+      } else {
         return json;
       }
-
     } catch (err) {
-      console.log(err);
+      throw new Error(err);
     }
   }
 

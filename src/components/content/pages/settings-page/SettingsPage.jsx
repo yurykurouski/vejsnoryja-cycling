@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from "react-redux";
 import { Switch, Route, Redirect } from 'react-router-dom';
 
-import { getUserInfo, updateUserInfo } from "../../../../store/settings/actions";
+import { addNewGear, getUserInfo, updateUserInfo } from "../../../../store/settings/actions";
 import Tabs from '../../../common/tabs/Tabs';
 import MyProfile from "./tabs/my-profile/MyProfile";
 import MyGear from "./tabs/my-gear/MyGear";
@@ -26,7 +26,7 @@ const settingsTabs = [
   }
 ]
 
-function SettingsPage({ userId, getUserInfo, updateUserInfo, userInfo }) {
+function SettingsPage({ userId, getUserInfo, updateUserInfo, addNewGear, userInfo, gear }) {
   return (
     <div className="content__settings first-layer-card">
       <h2 className="settings__heading card-heading">Settings</h2>
@@ -50,7 +50,7 @@ function SettingsPage({ userId, getUserInfo, updateUserInfo, userInfo }) {
           </Route>
 
           <Route path="/settings/my-gear">
-            <MyGear />
+            <MyGear addNewGear={addNewGear}/>
           </Route>
 
           <Route path="/settings/my-account">
@@ -67,7 +67,8 @@ function SettingsPage({ userId, getUserInfo, updateUserInfo, userInfo }) {
 function mapStateToProps(state) {
   return {
     userId: state.currentUser.user,
-    userInfo: state.settings.userInfo
+    userInfo: state.settings.userInfo,
+    gear: state.settings.gear
   }
 }
 
@@ -75,6 +76,7 @@ function mapDispatchToProps(dispatch) {
   return {
     getUserInfo: (id) => dispatch(getUserInfo(id)),
     updateUserInfo: (field) => dispatch(updateUserInfo(field)),
+    addNewGear: (data) => dispatch(addNewGear(data))
   }
 }
 

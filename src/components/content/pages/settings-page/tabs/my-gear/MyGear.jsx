@@ -56,7 +56,7 @@ const useStyles = makeStyles({
   },
 });
 
-export default function MyGear() {
+export default function MyGear({ addNewGear}) {
   const classes = useStyles();
 
   const [modalOpen, setModalOpen] = useState(false);
@@ -79,9 +79,9 @@ export default function MyGear() {
     setModalOpen(false);
   }
 
-  const handleModalSubmit = (data, actions) => {
+  const handleModalSubmit = async (data, actions) => {
+    await addNewGear(data);
 
-    console.log(data)
     actions.resetForm();
     handleCloseModal();
   }
@@ -116,3 +116,5 @@ export default function MyGear() {
     </div>
   );
 }
+
+
