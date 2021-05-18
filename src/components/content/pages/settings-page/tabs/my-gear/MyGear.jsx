@@ -9,46 +9,7 @@ import TableRow from '@material-ui/core/TableRow';
 import TableCell from '@material-ui/core/TableCell';
 
 import Modal from '../../../../../common/modal/Modal';
-
-const fields = [
-  {
-    title: 'Name',
-    name: 'name',
-    value: '',
-    type: 'text'
-  },
-  {
-    title: 'Types',
-    name: 'types',
-    value: 'Road bike',
-    options: ['Road bike', 'Mountain bike', 'Cross bike', 'Gravel'],
-    type: 'select'
-  },
-  {
-    title: 'Weight',
-    name: 'weight',
-    value: '',
-    type: 'text'
-  },
-  {
-    title: 'Brand',
-    name: 'brand',
-    value: '',
-    type: 'text'
-  },
-  {
-    title: 'Model',
-    name: 'model',
-    value: '',
-    type: 'text'
-  },
-  {
-    title: 'Notes',
-    name: 'notes',
-    value: '',
-    type: 'textfield'
-  },
-]
+import SettingsFields from '../../../../../../constants/gear-fields';
 
 const useStyles = makeStyles({
   container: {
@@ -95,7 +56,7 @@ export default function MyGear({ addNewGear}) {
 
       {modalOpen && <Modal
         heading="Add a bike"
-        fields={fields}
+        fields={SettingsFields.ADD_BIKE}
         btnText="Save bike"
         handleCloseModal={handleCloseModal}
         validationSchema={validationSchema}

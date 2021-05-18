@@ -28,7 +28,7 @@ class SettingsService {
   async addNewGear(data) {
     try {
       const response = await requestService.postSecured(process.env.REACT_APP_API_ADD_NEW_GEAR_SETTINGS, data);
-      console.log(response)
+
       return response;
     } catch (err) {
       throw new Error(err);
