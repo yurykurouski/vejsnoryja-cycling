@@ -81,7 +81,7 @@ export default function MyGear() {
 
   const handleModalSubmit = (data, actions) => {
 
-
+    console.log(data)
     actions.resetForm();
     handleCloseModal();
   }
