@@ -13,6 +13,8 @@ import Modal from '../../../../../common/modal/Modal';
 import SettingsFields from '../../../../../../constants/settings-fields';
 import ActiveToggler from './actions/ActiveToggler';
 
+import './my-gear.css';
+
 const useStyles = makeStyles({
   container: {
     marginTop: 10
@@ -56,7 +58,7 @@ export default function MyGear({ addNewGear, getUserGear, gear }) {
   return (
     <div className="settings__my-gear first-layer-card_hovered">
       <button
-        className="submit-btn"
+        className="my-gear__submit submit-btn"
         onClick={handleClick}
       >Add bike</button>
 

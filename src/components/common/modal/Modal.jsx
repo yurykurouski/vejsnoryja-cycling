@@ -1,11 +1,26 @@
-import React from 'react';
+import React, { useCallback, useEffect } from 'react';
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 import { Formik } from 'formik';
 
 import Input from '../input/Input';
 import './modal.css';
+import { ESCAPE_KEYCODE } from "../../../constants";
 
 export default function Modal({ heading, fields, handleCloseModal, handleModalSubmit, validationSchema, btnText }) {
+  const escFunction = useCallback((event) => {
+    if (event.keyCode === ESCAPE_KEYCODE) {
+      handleCloseModal();
+    }
+  }, [handleCloseModal]);
+
+  useEffect(() => {
+    document.addEventListener("keydown", escFunction, false);
+
+    return () => {
+      document.removeEventListener("keydown", escFunction, false);
+    };
+  }, [escFunction]);
+
   const getValues = () => {
     let vals = {};
 
@@ -39,7 +54,7 @@ export default function Modal({ heading, fields, handleCloseModal, handleModalSu
                   />
                 ))}
 
-                <button type="submit" className="submit-btn">{btnText}</button>
+                <button type="submit" className="modal__submit-btn submit-btn">{btnText}</button>
               </form>)
             }
           </Formik>
