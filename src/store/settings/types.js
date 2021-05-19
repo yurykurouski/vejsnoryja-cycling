@@ -18,3 +18,8 @@ export const GET_USER_GER_REQUEST = 'GET_USER_GER/pending';
 export const GET_USER_GER_SUCESS = 'GET_USER_GER/fulfilled';
 export const GET_USER_GER_FAILURE = 'GET_USER_GER/rejected';
 
+export const SET_ACTIVE_GEAR = 'SET_ACTIVE_GEAR';
+export const SET_ACTIVE_GEAR_REQUEST = 'SET_ACTIVE_GEAR/pending';
+export const SET_ACTIVE_GEAR_SUCESS = 'SET_ACTIVE_GEAR/fulfilled';
+export const SET_ACTIVE_GEAR_FAILURE = 'SET_ACTIVE_GEAR/rejected';
+

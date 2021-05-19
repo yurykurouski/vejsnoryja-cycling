@@ -34,7 +34,7 @@ function SettingsPage({ userId, getUserInfo, updateUserInfo, addNewGear, userInf
           </Route>
 
           <Route path="/settings/my-gear">
-            <MyGear addNewGear={addNewGear} getUserGear={getUserGear}/>
+            <MyGear addNewGear={addNewGear} getUserGear={getUserGear} gear={gear} />
           </Route>
 
           <Route path="/settings/my-account">

@@ -7,9 +7,11 @@ import Table from '@material-ui/core/Table';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import TableCell from '@material-ui/core/TableCell';
+import TableBody from '@material-ui/core/TableBody';
 
 import Modal from '../../../../../common/modal/Modal';
 import SettingsFields from '../../../../../../constants/settings-fields';
+import ActiveToggler from './actions/ActiveToggler';
 
 const useStyles = makeStyles({
   container: {
@@ -17,7 +19,7 @@ const useStyles = makeStyles({
   },
 });
 
-export default function MyGear({ addNewGear, getUserGear }) {
+export default function MyGear({ addNewGear, getUserGear, gear }) {
   const classes = useStyles();
 
   const [modalOpen, setModalOpen] = useState(false);
@@ -71,11 +73,26 @@ export default function MyGear({ addNewGear, getUserGear }) {
         <Table aria-label="simple table">
           <TableHead>
             <TableRow>
-              <TableCell>Default</TableCell>
-              <TableCell align="right">Bike</TableCell>
-              <TableCell align="right">action</TableCell>
+              <TableCell align="left">Active</TableCell>
+              <TableCell align="center">Bike name</TableCell>
+              <TableCell align="right">Action</TableCell>
             </TableRow>
           </TableHead>
+          <TableBody>
+
+            {gear.map((bike) => (
+              <TableRow key={bike._id}>
+                <TableCell align="left">
+                  <ActiveToggler bike={bike} />
+                </TableCell>
+                <TableCell align="center" component="th" scope="row">
+                  {bike.name}
+                </TableCell>
+                <TableCell align="right">smthg</TableCell>
+
+              </TableRow>
+            ))}
+          </TableBody>
         </Table>
       </TableContainer>
     </div>
