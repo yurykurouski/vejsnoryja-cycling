@@ -34,6 +34,15 @@ class SettingsService {
       throw new Error(err);
     }
   }
+  async getUserGear() {
+    try {
+      const response = await requestService.getSecured(process.env.REACT_APP_API_GET_USER_GEAR_SETTINGS_URL);
+
+      return response;
+    } catch (err) {
+      throw new Error(err);
+    }
+  }
 }
 
 const settingsService = new SettingsService();

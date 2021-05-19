@@ -42,21 +42,23 @@ function UserProfile(props) {
 
                 <Tabs tabs={ProfileFields.PROFILE_TABS} />
 
-                <Route exact path="/profile">
-                  <Redirect to="/profile/last-activities" />
-                </Route>
+                <div className="user-profile__tab-content-wrap">
+                  <Route exact path="/profile">
+                    <Redirect to="/profile/last-activities" />
+                  </Route>
 
-                <Route exact path="/profile/last-activities">
-                  <LastActivities
-                    events={events}
-                    status={status}
-                    getEventsByUser={getEventsByUser}
-                  />
-                </Route>
+                  <Route exact path="/profile/last-activities">
+                    <LastActivities
+                      events={events}
+                      status={status}
+                      getEventsByUser={getEventsByUser}
+                    />
+                  </Route>
 
-                <Route exact path="/profile/gear">
-                  <UserGear />
-                </Route>
+                  <Route exact path="/profile/gear">
+                    <UserGear />
+                  </Route>
+                </div>
               </div>
             </div>
         }

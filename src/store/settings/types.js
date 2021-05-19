@@ -13,3 +13,8 @@ export const ADD_NEW_GEAR_REQUEST = 'ADD_NEW_GEAR/pending';
 export const ADD_NEW_GEAR_SUCESS = 'ADD_NEW_GEAR/fulfilled';
 export const ADD_NEW_GEAR_FAILURE = 'ADD_NEW_GEAR/rejected';
 
+export const GET_USER_GER = 'GET_USER_GER';
+export const GET_USER_GER_REQUEST = 'GET_USER_GER/pending';
+export const GET_USER_GER_SUCESS = 'GET_USER_GER/fulfilled';
+export const GET_USER_GER_FAILURE = 'GET_USER_GER/rejected';
+

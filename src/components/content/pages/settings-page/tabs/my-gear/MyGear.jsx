@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import * as Yup from 'yup';
 
@@ -17,10 +17,14 @@ const useStyles = makeStyles({
   },
 });
 
-export default function MyGear({ addNewGear}) {
+export default function MyGear({ addNewGear, getUserGear }) {
   const classes = useStyles();
 
   const [modalOpen, setModalOpen] = useState(false);
+
+  useEffect(() => {
+    getUserGear();
+  }, [getUserGear]);
 
   const validationSchema = Yup.object().shape({
     name: Yup

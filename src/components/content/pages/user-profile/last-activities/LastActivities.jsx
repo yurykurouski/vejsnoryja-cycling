@@ -10,7 +10,7 @@ export default function LastActivities({ events, status }) {
   const handleClick = (event) => history.push(`/profile/edit-event/${event._id}`);
 
   return (
-    <div>
+    <>
       <ul className="main-page__events">
         {events.map((event) => (
           <EventCard
@@ -24,6 +24,6 @@ export default function LastActivities({ events, status }) {
       </ul>
 
       {status === ActionStatus.LOADING && <Loader />}
-    </div>
+    </  >
   )
 }
