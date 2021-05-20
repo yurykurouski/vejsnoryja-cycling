@@ -2,7 +2,7 @@ import React from 'react';
 import Icon from '@material-ui/core/Icon';
 import './icon-button.css';
 
-export default function EventCardOption(props) {
+export default function IconButton(props) {
   const { onClick, btnTitle, btnIcon } = props;
 
   return (

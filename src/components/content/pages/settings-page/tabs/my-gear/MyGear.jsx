@@ -12,6 +12,7 @@ import TableBody from '@material-ui/core/TableBody';
 import Modal from '../../../../../common/modal/Modal';
 import SettingsFields from '../../../../../../constants/settings-fields';
 import ActiveToggler from './actions/ActiveToggler';
+import IconButton from '../../../../../common/icon-button/IconButton';
 
 import './my-gear.css';
 
@@ -21,7 +22,7 @@ const useStyles = makeStyles({
   },
 });
 
-export default function MyGear({ addNewGear, getUserGear, gear }) {
+export default function MyGear({ addNewGear, getUserGear, deleteUserGear, gear }) {
   const classes = useStyles();
 
   const [modalOpen, setModalOpen] = useState(false);
@@ -88,9 +89,16 @@ export default function MyGear({ addNewGear, getUserGear, gear }) {
                   <ActiveToggler bike={bike} />
                 </TableCell>
                 <TableCell align="center" component="th" scope="row">
-                  {bike.name}
+                  <span className="bikes__bike-name">{bike.name}</span>
                 </TableCell>
-                <TableCell align="right">smthg</TableCell>
+                <TableCell align="right">
+                  <IconButton
+                    onClick={() => deleteUserGear(bike._id)}
+                    btnTitle="Delete that bike"
+                    btnIcon="delete"
+                  />
+                  and edit
+                </TableCell>
 
               </TableRow>
             ))}

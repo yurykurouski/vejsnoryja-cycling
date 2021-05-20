@@ -54,6 +54,17 @@ class SettingsService {
       throw new Error(err);
     }
   }
+
+  async deleteGear(id) {
+    try {
+      const response = await requestService.deleteSecured(`${process.env.REACT_APP_API_DELETE_USER_GEAR_SETTINGS_URL}${id}`);
+
+      console.log(response)
+      return response;
+    } catch (err) {
+      throw new Error(err);
+    }
+  }
 }
 
 const settingsService = new SettingsService();

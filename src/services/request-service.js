@@ -4,6 +4,16 @@ import HttpMethod from '../constants/http-method';
 class RequestService {
   constructor() {
     this.token = localStorage.getItem('token');
+    this.response = async (url, method, data) => {
+      return await fetch(url, {
+        method: method,
+        headers: {
+          'Content-Type': ContentType.APPLICATION_JSON,
+          'Authorization': this.token,
+          body: JSON.stringify(data)
+        }
+      });
+    }
   }
 
   async getSecured(url) {
@@ -97,6 +107,16 @@ class RequestService {
       return await response.json();
     } catch (err) {
       throw new Error(err)
+    }
+  }
+
+  async deleteSecured(url) {
+    try {
+      const response = await this.response(url, HttpMethod.DELETE);
+
+      return response.json();
+    } catch (err) {
+      throw new Error(err);
     }
   }
 }

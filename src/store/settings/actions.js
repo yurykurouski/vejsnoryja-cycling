@@ -7,3 +7,4 @@ export const updateUserInfo = createAsyncThunk(types.UPDATE_USER_INFO, (field) =
 export const addNewGear = createAsyncThunk(types.ADD_NEW_GEAR, (data) => settingsService.addNewGear(data));
 export const getUserGear = createAsyncThunk(types.GET_USER_GER, () => settingsService.getUserGear());
 export const setActiveGear = createAsyncThunk(types.SET_ACTIVE_GEAR, (data) => settingsService.setActiveGear(data));
+export const deleteUserGear = createAsyncThunk(types.DELETE_USER_GEAR, (id) => settingsService.deleteGear(id));

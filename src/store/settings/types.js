@@ -23,3 +23,8 @@ export const SET_ACTIVE_GEAR_REQUEST = 'SET_ACTIVE_GEAR/pending';
 export const SET_ACTIVE_GEAR_SUCESS = 'SET_ACTIVE_GEAR/fulfilled';
 export const SET_ACTIVE_GEAR_FAILURE = 'SET_ACTIVE_GEAR/rejected';
 
+export const DELETE_USER_GEAR = 'DELETE_USER_GEAR';
+export const DELETE_USER_GEAR_REQUEST = 'DELETE_USER_GEAR/pending';
+export const DELETE_USER_GEAR_SUCESS = 'DELETE_USER_GEAR/fulfilled';
+export const DELETE_USER_GEAR_FAILURE = 'DELETE_USER_GEAR/rejected';
+
