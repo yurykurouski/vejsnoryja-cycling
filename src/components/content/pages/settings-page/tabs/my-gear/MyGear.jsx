@@ -3,6 +3,7 @@ import * as Yup from 'yup';
 
 import Modal from '../../../../../common/modal/Modal';
 import ModalForm from '../../../../../common/modal/form/ModalForm';
+import ModalDialog from '../../../../../common/modal/dialog/ModalDialog';
 import SettingsFields from '../../../../../../constants/settings-fields';
 import MyGearTable from './table/MyGearTable';
 
@@ -10,6 +11,7 @@ import './my-gear.css';
 
 export default function MyGear({ addNewGear, getUserGear, deleteUserGear, gear }) {
   const [modalOpen, setModalOpen] = useState(false);
+  const [gearIdToDelete, setDialogOpen] = useState(false);
 
   useEffect(() => {
     getUserGear();
@@ -25,12 +27,13 @@ export default function MyGear({ addNewGear, getUserGear, deleteUserGear, gear }
       .typeError('The weight must be entered as a number.'),
   })
 
-  const handleClick = () => {
+  const handleAddBikeClick = () => {
     setModalOpen(true);
   }
 
   const handleCloseModal = () => {
     setModalOpen(false);
+    setDialogOpen(false);
   }
 
   const handleModalSubmit = async (data) => {
@@ -39,11 +42,20 @@ export default function MyGear({ addNewGear, getUserGear, deleteUserGear, gear }
     handleCloseModal();
   }
 
+  const handleDeleteButtonClick = (id) => {
+    setDialogOpen(id);
+  }
+
+  const handleYesClick = async () => {
+    await deleteUserGear(gearIdToDelete);
+    setDialogOpen(false);
+  }
+
   return (
     <div className="settings__my-gear first-layer-card_hovered">
       <button
         className="my-gear__submit submit-btn"
-        onClick={handleClick}
+        onClick={handleAddBikeClick}
       >Add bike</button>
 
       {modalOpen && <Modal
@@ -60,8 +72,20 @@ export default function MyGear({ addNewGear, getUserGear, deleteUserGear, gear }
       />
       }
 
+      {gearIdToDelete && <Modal
+        heading="You sure?"
+        handleCloseModal={handleCloseModal}
+        component={
+          <ModalDialog
+            onYes={handleYesClick}
+            onNo={handleCloseModal}
+          />
+        }
+      />
+      }
+
       <MyGearTable
-        deleteUserGear={deleteUserGear}
+        deleteUserGear={handleDeleteButtonClick}
         gear={gear}
       />
 

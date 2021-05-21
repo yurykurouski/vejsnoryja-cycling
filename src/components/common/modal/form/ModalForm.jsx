@@ -3,7 +3,7 @@ import { Formik } from "formik";
 
 import Input from '../../input/Input';
 
-export default function ModalForm({ fields, handleModalSubmit, validationSchema, btnText}) {
+export default function ModalForm({ fields, handleModalSubmit, validationSchema, btnText }) {
 
   const getValues = () => {
     let vals = {};
@@ -22,7 +22,7 @@ export default function ModalForm({ fields, handleModalSubmit, validationSchema,
     >
       {({ handleSubmit, handleChange, values, errors }) => (
         <form
-          className="modal-window__main second-layer-card"
+          className="modal-window__main modal-form second-layer-card"
           onSubmit={handleSubmit}
         >
           {fields.map((field) => (

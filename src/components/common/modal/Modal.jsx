@@ -10,7 +10,6 @@ export default function Modal(
     component: Component,
     heading,
     handleCloseModal,
-    ...rest
   }
 ) {
   const modalRoot = document.getElementById('modal-root');
