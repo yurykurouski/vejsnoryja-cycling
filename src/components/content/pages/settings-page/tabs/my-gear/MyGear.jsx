@@ -10,6 +10,7 @@ import TableCell from '@material-ui/core/TableCell';
 import TableBody from '@material-ui/core/TableBody';
 
 import Modal from '../../../../../common/modal/Modal';
+import ModalForm from '../../../../../common/modal/form/ModalForm';
 import SettingsFields from '../../../../../../constants/settings-fields';
 import ActiveToggler from './actions/ActiveToggler';
 import IconButton from '../../../../../common/icon-button/IconButton';
@@ -49,10 +50,9 @@ export default function MyGear({ addNewGear, getUserGear, deleteUserGear, gear }
     setModalOpen(false);
   }
 
-  const handleModalSubmit = async (data, actions) => {
+  const handleModalSubmit = async (data) => {
     await addNewGear(data);
 
-    actions.resetForm();
     handleCloseModal();
   }
 
@@ -65,14 +65,19 @@ export default function MyGear({ addNewGear, getUserGear, deleteUserGear, gear }
 
       {modalOpen && <Modal
         heading="Add a bike"
-        fields={SettingsFields.ADD_BIKE}
-        btnText="Save bike"
         handleCloseModal={handleCloseModal}
-        validationSchema={validationSchema}
-        handleModalSubmit={handleModalSubmit}
-      />}
+        component={
+          <ModalForm
+            validationSchema={validationSchema}
+            handleModalSubmit={handleModalSubmit}
+            fields={SettingsFields.ADD_BIKE}
+            btnText="Save bike"
+          />
+        }
+      />
+      }
 
-      <TableContainer className={`my-gear__bikes first-layer-card ${classes.container}`}>
+      <TableContainer className={`my-gear__bikes first-layer-card ${ classes.container }`}>
         <Table aria-label="simple table">
           <TableHead>
             <TableRow>
