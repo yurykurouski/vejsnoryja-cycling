@@ -93,11 +93,17 @@ export default function MyGear({ addNewGear, getUserGear, deleteUserGear, gear }
                 </TableCell>
                 <TableCell align="right">
                   <IconButton
+                    // onClick={() => deleteUserGear(bike._id)}
+                    btnTitle="Edit that bike"
+                    btnIcon="edit"
+                  />
+                  <IconButton
                     onClick={() => deleteUserGear(bike._id)}
                     btnTitle="Delete that bike"
                     btnIcon="delete"
+                    color="red"
                   />
-                  and edit
+
                 </TableCell>
 
               </TableRow>

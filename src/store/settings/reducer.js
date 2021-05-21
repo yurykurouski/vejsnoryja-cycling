@@ -44,7 +44,9 @@ export default function settings(state = initialState, action) {
     case types.SET_ACTIVE_GEAR_SUCESS: {
       const updatedGear = state.gear.map(bike => {
         if (bike._id === action.payload._id) return action.payload;
-        const unactive = { ...bike };
+        const unactive = {
+          ...bike
+        };
         unactive.active = false;
         return unactive;
       });
