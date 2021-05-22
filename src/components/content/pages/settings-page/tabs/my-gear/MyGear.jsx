@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux'
 import * as Yup from 'yup';
 
 import MyGearTable from './table/MyGearTable';
@@ -6,13 +7,13 @@ import Modal from '../../../../../common/modal/Modal';
 import ModalForm from '../../../../../common/modal/form/ModalForm';
 import ModalDialog from '../../../../../common/modal/dialog/ModalDialog';
 import SettingsFields from '../../../../../../constants/settings-fields';
-
 import './my-gear.css';
+import { makeInputTemplateFromState } from '../../../../../../utils';
 
 export default function MyGear({ addNewGear, getUserGear, deleteUserGear, editUserGear, gear }) {
   const [modalOpen, setModalOpen] = useState(false);
-  const [gearIdToDelete, setDialogOpen] = useState(false);
-
+  const [gearIdToDelete, setDeleteDialogOpen] = useState(false);
+  const [gearIdToEdit, setEditDialogOpen] = useState(false);
 
   useEffect(() => {
     getUserGear();
@@ -34,7 +35,8 @@ export default function MyGear({ addNewGear, getUserGear, deleteUserGear, editUs
 
   const handleCloseModal = () => {
     setModalOpen(false);
-    setDialogOpen(false);
+    setDeleteDialogOpen(false);
+    setEditDialogOpen(false);
   }
 
   const handleModalSubmit = async (data) => {
@@ -44,18 +46,23 @@ export default function MyGear({ addNewGear, getUserGear, deleteUserGear, editUs
   }
 
   const handleDeleteButtonClick = (id) => {
-    setDialogOpen(id);
+    setDeleteDialogOpen(id);
   }
 
   const handleYesClick = async () => {
     await deleteUserGear(gearIdToDelete);
-    setDialogOpen(false);
+    setDeleteDialogOpen(false);
   }
 
-  const handleEditButtonClick = async () => {
-    console.log('sdfds')
+  const handleEditButtonClick = async (id) => {
+    setEditDialogOpen(id);
   }
 
+  const filterGearbyId = () => {
+    const filtered = gear.find(el => el._id === gearIdToEdit);
+
+    return makeInputTemplateFromState(filtered);
+  }
 
   return (
     <div className="settings__my-gear first-layer-card_hovered">
@@ -72,6 +79,20 @@ export default function MyGear({ addNewGear, getUserGear, deleteUserGear, editUs
             validationSchema={validationSchema}
             handleModalSubmit={handleModalSubmit}
             fields={SettingsFields.ADD_BIKE}
+            btnText="Save bike"
+          />
+        }
+      />
+      }
+
+      {gearIdToEdit && <Modal
+        heading="Edit your bike info"
+        handleCloseModal={handleCloseModal}
+        component={
+          <ModalForm
+            validationSchema={validationSchema}
+            handleModalSubmit={handleModalSubmit}
+            fields={filterGearbyId()}
             btnText="Save bike"
           />
         }

@@ -4,7 +4,6 @@ import { Formik } from "formik";
 import Input from '../../input/Input';
 
 export default function ModalForm({ fields, handleModalSubmit, validationSchema, btnText }) {
-
   const getValues = () => {
     let vals = {};
 

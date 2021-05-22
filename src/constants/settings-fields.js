@@ -1,4 +1,7 @@
 export default class SettingsFields {
+  constructor() {
+    this.bikeOptions = ['Road bike', 'Mountain bike', 'Cross bike', 'Gravel'];
+  }
   static get SETTINGS_TABS() {
     return [
       {
@@ -30,7 +33,7 @@ export default class SettingsFields {
         title: 'Types',
         name: 'types',
         value: 'Road bike',
-        options: ['Road bike', 'Mountain bike', 'Cross bike', 'Gravel'],
+        options: this.bikeOptions,
         type: 'select'
       },
       {
@@ -58,5 +61,13 @@ export default class SettingsFields {
         type: 'textfield'
       },
     ]
+  }
+
+  static get FIELDS_FILTER() {
+    return ['owner', 'active', '_id', '__v']
+  }
+
+  static get FIELDS_OPTIONS() {
+    return this.bikeOptions;
   }
 }
