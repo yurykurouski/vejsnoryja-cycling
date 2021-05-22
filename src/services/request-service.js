@@ -18,13 +18,7 @@ class RequestService {
 
   async getSecured(url) {
     try {
-      const response = await fetch(url, {
-        method: HttpMethod.GET,
-        headers: {
-          'Content-Type': ContentType.APPLICATION_JSON,
-          'Authorization': this.token
-        },
-      });
+      const response = await this.response(url, HttpMethod.GET);
 
       const json = response.json();
 
@@ -36,12 +30,7 @@ class RequestService {
 
   async get(url) {
     try {
-      const response = await fetch(url, {
-        method: HttpMethod.GET,
-        headers: {
-          'Content-Type': ContentType.APPLICATION_JSON,
-        }
-      });
+      const response = await this.response(url, HttpMethod.GET);
 
       const json = response.json();
 
@@ -53,13 +42,7 @@ class RequestService {
 
   async post(url, data) {
     try {
-      const response = await fetch(url, {
-        method: HttpMethod.POST,
-        body: JSON.stringify(data),
-        headers: {
-          'Content-Type': ContentType.APPLICATION_JSON
-        }
-      });
+      const response = await this.response(url, HttpMethod.POST, data);
 
       const json = await response.json();
 
@@ -71,14 +54,7 @@ class RequestService {
 
   async postSecured(url, data) {
     try {
-      const response = await fetch(url, {
-        method: HttpMethod.POST,
-        body: JSON.stringify(data),
-        headers: {
-          "Content-Type": ContentType.APPLICATION_JSON,
-          'Authorization': this.token
-        },
-      });
+      const response = await this.response(url, HttpMethod.POST, data);
 
       const json = await response.json();
 
@@ -95,14 +71,7 @@ class RequestService {
 
   async putSecured(url, data) {
     try {
-      const response = await fetch(url, {
-        method: HttpMethod.PUT,
-        body: JSON.stringify(data),
-        headers: {
-          "Content-Type": ContentType.APPLICATION_JSON,
-          'Authorization': this.token
-        },
-      });
+      const response = await this.response(url, HttpMethod.PUT, data);
 
       return await response.json();
     } catch (err) {
