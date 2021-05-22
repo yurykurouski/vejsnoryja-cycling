@@ -14,7 +14,20 @@
 .modal-window {
   background-color: var(--background-main-color);
   width: 30%;
+  height: auto;
   padding: 5px;
+  animation: .1s ease-out fly-in;
+}
+
+@keyframes fly-in {
+  from {
+    width: 10%;
+    opacity: 0;
+  }
+  to {
+    width: 30%;
+    opacity: 1;
+  }
 }
 
 .modal-window__heading {

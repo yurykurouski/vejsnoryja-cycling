@@ -1,12 +1,14 @@
-.my-gear__submit{
+.my-gear__submit {
   margin-top: 5px;
   margin-left: 5px;
 }
 
-.my-gear__bikes{
+.my-gear__bikes {
   margin-top: 10px;
 }
 
-.bikes__bike-name{
+.bikes__bike-name {
   font-size: 18px;
+  cursor: pointer;
+  text-decoration: underline;
 }

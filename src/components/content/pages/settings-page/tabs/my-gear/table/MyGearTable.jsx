@@ -17,7 +17,7 @@ const useStyles = makeStyles({
   },
 });
 
-export default function MyGearTable({ gear, deleteUserGear, editUserGear }) {
+export default function MyGearTable({ gear, deleteUserGear, editUserGear, handleClickOnGear }) {
   const classes = useStyles();
 
   return (
@@ -38,7 +38,7 @@ export default function MyGearTable({ gear, deleteUserGear, editUserGear }) {
                 <ActiveToggler bike={bike} />
               </TableCell>
               <TableCell align="center" component="th" scope="row">
-                <span className="bikes__bike-name">{bike.name}</span>
+                <span className="bikes__bike-name" onClick={() => handleClickOnGear(bike._id)}>{bike.name}</span>
               </TableCell>
               <TableCell align="right">
                 <IconButton

@@ -6,13 +6,16 @@ import Modal from '../../../../../common/modal/Modal';
 import ModalForm from '../../../../../common/modal/form/ModalForm';
 import ModalDialog from '../../../../../common/modal/dialog/ModalDialog';
 import SettingsFields from '../../../../../../constants/settings-fields';
-import './my-gear.css';
 import { makeInputTemplateFromState } from '../../../../../../utils';
+
+import './my-gear.css';
+import GearCard from './gear-card/GearCard';
 
 export default function MyGear({ addNewGear, getUserGear, deleteUserGear, editUserGear, gear }) {
   const [modalOpen, setModalOpen] = useState(false);
   const [gearIdToDelete, setDeleteDialogOpen] = useState(false);
   const [gearIdToEdit, setEditDialogOpen] = useState(false);
+  const [gearIdToCard, setCardDialogOpen] = useState(false);
 
   useEffect(() => {
     getUserGear();
@@ -36,6 +39,7 @@ export default function MyGear({ addNewGear, getUserGear, deleteUserGear, editUs
     setModalOpen(false);
     setDeleteDialogOpen(false);
     setEditDialogOpen(false);
+    setCardDialogOpen(false);
   }
 
   const handleModalSubmit = async (data) => {
@@ -66,6 +70,11 @@ export default function MyGear({ addNewGear, getUserGear, deleteUserGear, editUs
   const handleEditModalSubmit = async (data) => {
     await editUserGear({ data: data, id: gearIdToEdit });
     setEditDialogOpen(false);
+  }
+
+  const handleModalCardOpen = () => {
+    const filtered = gear.find(el => el._id === gearIdToCard);
+    return filtered;
   }
 
   return (
@@ -115,14 +124,24 @@ export default function MyGear({ addNewGear, getUserGear, deleteUserGear, editUs
       />
       }
 
+      {gearIdToCard && <Modal
+        heading="Your bike"
+        handleCloseModal={handleCloseModal}
+        component={
+          <GearCard
+            handleModalCardOpen={handleModalCardOpen}
+          />
+        }
+      />
+      }
+
       <MyGearTable
         deleteUserGear={handleDeleteButtonClick}
         editUserGear={handleEditButtonClick}
+        handleClickOnGear={(id) => setCardDialogOpen(id)}
         gear={gear}
       />
 
     </div>
   );
 }
-
-

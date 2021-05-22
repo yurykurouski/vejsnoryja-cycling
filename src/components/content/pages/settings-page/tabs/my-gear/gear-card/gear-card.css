@@ -1,0 +1,14 @@
+.modal__gear-field {
+  display: flex;
+  align-items: center;
+  font-family: "Roboto";
+}
+
+.gear-field__key {
+  width: 20%;
+  font-size: 18px;
+}
+
+.gear-field__value {
+  font-size: 24px;
+}
