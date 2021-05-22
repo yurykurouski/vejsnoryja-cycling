@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import * as Yup from 'yup';
 
+import GearCard from './gear-card/GearCard';
 import MyGearTable from './table/MyGearTable';
 import Modal from '../../../../../common/modal/Modal';
 import ModalForm from '../../../../../common/modal/form/ModalForm';
+import { makeInputTemplateFromState } from '../../../../../../utils';
 import ModalDialog from '../../../../../common/modal/dialog/ModalDialog';
 import SettingsFields from '../../../../../../constants/settings-fields';
-import { makeInputTemplateFromState } from '../../../../../../utils';
 
 import './my-gear.css';
-import GearCard from './gear-card/GearCard';
 
 export default function MyGear({ addNewGear, getUserGear, deleteUserGear, editUserGear, gear }) {
   const [modalOpen, setModalOpen] = useState(false);

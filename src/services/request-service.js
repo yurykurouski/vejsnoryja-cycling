@@ -1,16 +1,15 @@
-import ContentType from "../constants/content-type";
 import HttpMethod from '../constants/http-method';
+import ContentType from '../constants/content-type';
 
 class RequestService {
   constructor() {
-    this.token = localStorage.getItem('token');
     this.response = async (url, method, data) => {
       return await fetch(url, {
         method: method,
         body: JSON.stringify(data),
         headers: {
           'Content-Type': ContentType.APPLICATION_JSON,
-          'Authorization': this.token,
+          'Authorization': localStorage.getItem('token'),
         }
       });
     }
@@ -18,11 +17,9 @@ class RequestService {
 
   async getSecured(url) {
     try {
-      const response = await this.response(url, HttpMethod.GET);
+      const response = await this.response(url, 'GET');
 
-      const json = response.json();
-
-      return json;
+      return response.json();;
     } catch (err) {
       throw new Error(err);
     }
@@ -32,9 +29,7 @@ class RequestService {
     try {
       const response = await this.response(url, HttpMethod.GET);
 
-      const json = response.json();
-
-      return json;
+      return response.json();;
     } catch (err) {
       throw new Error(err);
     }
@@ -44,9 +39,7 @@ class RequestService {
     try {
       const response = await this.response(url, HttpMethod.POST, data);
 
-      const json = await response.json();
-
-      return json;
+      return response.json();;
     } catch (err) {
       throw new Error(err.message);
     }

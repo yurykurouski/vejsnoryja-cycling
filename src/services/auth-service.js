@@ -1,53 +1,41 @@
-import ContentType from "../constants/content-type.js";
 import requestService from './request-service.js';
 
 class AuthService {
-  constructor(requestService) {
-    this.requestService = requestService
-  }
-
   async userRegister(data) {
-    const response = await requestService.post(process.env.REACT_APP_REGISTRATION_URL, data)
-      .then((response) => {
-        return response;
-      });
+    try {
+      const response = await requestService.post(process.env.REACT_APP_REGISTRATION_URL, data);
 
-    if (response.message) {
-      throw new Error(response.message);
+      if (response.message) {
+        throw new Error(response.message);
+      }
+    } catch (err) {
+      throw new Error(err);
     }
   }
 
   async userLogin(data) {
-    const result = await requestService.post(process.env.REACT_APP_LOGIN_URL, data)
-      .then((response) => {
-        return response;
-      });
+    try {
+      const result = await requestService.post(process.env.REACT_APP_LOGIN_URL, data);
 
-    if (result.token) {
-      localStorage.setItem('token', result.token);
-    } else if (result) {
-      throw new Error(result.message);
+      if (result.token) {
+        localStorage.setItem('token', result.token);
+
+      } else if (result) {
+        throw new Error(result.message);
+      }
+    } catch (err) {
+      throw new Error(err);
     }
   }
-// TODO переделать
+
   async userAuth() {
-    const token = localStorage.getItem('token');
+    try {
+      const result = await requestService.getSecured(process.env.REACT_APP_AUTH_URL);
 
-    const result = fetch(process.env.REACT_APP_AUTH_URL, {
-      method: 'GET',
-      headers: {
-        'Content-Type': ContentType.APPLICATION_JSON,
-        Accept: ContentType.APPLICATION_JSON,
-        'Authorization': token
-      }
-    }).then(response => {
-      return response.json();
-    })
-      .then(data => {
-        return data;
-      })
-
-    return await result;
+      return result;
+    } catch (err) {
+      throw new Error(err);
+    }
   }
 }
 

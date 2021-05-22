@@ -1,10 +1,6 @@
 import requestService from './request-service.js';
 
 class SettingsService {
-  constructor(requestService) {
-    this.requestService = requestService
-  }
-
   async getUserInfo(id) {
     try {
       const response = await requestService.getSecured(`${ process.env.REACT_APP_API_SETTINGS_MY_PROFILE_URL }${ id }`);
