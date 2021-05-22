@@ -7,9 +7,7 @@
   top: 0;
   bottom: 0;
   width: 100%;
-
   background-color: var(--font-color-main_unactive);
-
   z-index: 99;
 }
 
@@ -19,19 +17,22 @@
   padding: 5px;
 }
 
-.modal-window__heading{
+.modal-window__heading {
   margin-top: 20px;
   margin-bottom: 30px;
   margin-left: 20px;
 }
 
-.modal-window__main{
+.modal-window__main {
   display: flex;
-  flex-direction: column;
   gap: 15px;
-  padding: 0 5px;
+  padding: 5px 5px;
 }
 
-.modal__submit-btn{
-  margin-bottom: 10px;
+.modal-form {
+  flex-direction: column;
+}
+
+.modal-dialog {
+  justify-content: space-between;
 }

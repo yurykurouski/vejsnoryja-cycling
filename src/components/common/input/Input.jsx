@@ -4,9 +4,9 @@ import './input.css';
 
 export default function Input(props) {
   const { title, name, type, value, options, customInputClass = '', customLabelClass = '', handleChange, error } = props;
-  
+
   return (
-    <label className={`${customLabelClass}input__label`}>
+    <label className={`${ customLabelClass }input__label`}>
       {title}
 
       {options
@@ -15,7 +15,7 @@ export default function Input(props) {
           type={type}
           onChange={handleChange}
           value={value}
-          className={`${customInputClass} form__input`}
+          className={`${ customInputClass } form__input`}
         > {options.map(option => (
           <option value={option} key={option}>{option}</option>
         ))}
@@ -26,11 +26,11 @@ export default function Input(props) {
           type={type}
           onChange={handleChange}
           value={value}
-          className={`${customInputClass} form__input`}
+          className={`${ customInputClass } form__input`}
         />
       }
       {error ? (
-         <ValidationErrMsg errorMsg={error} />
+        <ValidationErrMsg errorMsg={error} />
       ) : null}
 
     </label>

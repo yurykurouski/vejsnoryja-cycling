@@ -1,31 +1,18 @@
 import React, { useState, useEffect } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
 import * as Yup from 'yup';
 
-import TableContainer from '@material-ui/core/TableContainer';
-import Table from '@material-ui/core/Table';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
-import TableCell from '@material-ui/core/TableCell';
-import TableBody from '@material-ui/core/TableBody';
-
+import MyGearTable from './table/MyGearTable';
 import Modal from '../../../../../common/modal/Modal';
+import ModalForm from '../../../../../common/modal/form/ModalForm';
+import ModalDialog from '../../../../../common/modal/dialog/ModalDialog';
 import SettingsFields from '../../../../../../constants/settings-fields';
-import ActiveToggler from './actions/ActiveToggler';
-import IconButton from '../../../../../common/icon-button/IconButton';
 
 import './my-gear.css';
 
-const useStyles = makeStyles({
-  container: {
-    marginTop: 10
-  },
-});
-
-export default function MyGear({ addNewGear, getUserGear, deleteUserGear, gear }) {
-  const classes = useStyles();
-
+export default function MyGear({ addNewGear, getUserGear, deleteUserGear, editUserGear, gear }) {
   const [modalOpen, setModalOpen] = useState(false);
+  const [gearIdToDelete, setDialogOpen] = useState(false);
+
 
   useEffect(() => {
     getUserGear();
@@ -41,70 +28,74 @@ export default function MyGear({ addNewGear, getUserGear, deleteUserGear, gear }
       .typeError('The weight must be entered as a number.'),
   })
 
-  const handleClick = () => {
+  const handleAddBikeClick = () => {
     setModalOpen(true);
   }
 
   const handleCloseModal = () => {
     setModalOpen(false);
+    setDialogOpen(false);
   }
 
-  const handleModalSubmit = async (data, actions) => {
+  const handleModalSubmit = async (data) => {
     await addNewGear(data);
 
-    actions.resetForm();
     handleCloseModal();
   }
+
+  const handleDeleteButtonClick = (id) => {
+    setDialogOpen(id);
+  }
+
+  const handleYesClick = async () => {
+    await deleteUserGear(gearIdToDelete);
+    setDialogOpen(false);
+  }
+
+  const handleEditButtonClick = async () => {
+    console.log('sdfds')
+  }
+
 
   return (
     <div className="settings__my-gear first-layer-card_hovered">
       <button
         className="my-gear__submit submit-btn"
-        onClick={handleClick}
+        onClick={handleAddBikeClick}
       >Add bike</button>
 
       {modalOpen && <Modal
         heading="Add a bike"
-        fields={SettingsFields.ADD_BIKE}
-        btnText="Save bike"
         handleCloseModal={handleCloseModal}
-        validationSchema={validationSchema}
-        handleModalSubmit={handleModalSubmit}
-      />}
+        component={
+          <ModalForm
+            validationSchema={validationSchema}
+            handleModalSubmit={handleModalSubmit}
+            fields={SettingsFields.ADD_BIKE}
+            btnText="Save bike"
+          />
+        }
+      />
+      }
 
-      <TableContainer className={`my-gear__bikes first-layer-card ${classes.container}`}>
-        <Table aria-label="simple table">
-          <TableHead>
-            <TableRow>
-              <TableCell align="left">Active</TableCell>
-              <TableCell align="center">Bike name</TableCell>
-              <TableCell align="right">Action</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
+      {gearIdToDelete && <Modal
+        heading="You sure?"
+        handleCloseModal={handleCloseModal}
+        component={
+          <ModalDialog
+            onYes={handleYesClick}
+            onNo={handleCloseModal}
+          />
+        }
+      />
+      }
 
-            {gear.map((bike) => (
-              <TableRow key={bike._id}>
-                <TableCell align="left">
-                  <ActiveToggler bike={bike} />
-                </TableCell>
-                <TableCell align="center" component="th" scope="row">
-                  <span className="bikes__bike-name">{bike.name}</span>
-                </TableCell>
-                <TableCell align="right">
-                  <IconButton
-                    onClick={() => deleteUserGear(bike._id)}
-                    btnTitle="Delete that bike"
-                    btnIcon="delete"
-                  />
-                  and edit
-                </TableCell>
+      <MyGearTable
+        deleteUserGear={handleDeleteButtonClick}
+        editUserGear={handleEditButtonClick}
+        gear={gear}
+      />
 
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
     </div>
   );
 }
