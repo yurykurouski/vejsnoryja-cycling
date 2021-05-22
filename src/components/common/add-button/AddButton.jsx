@@ -39,6 +39,7 @@ export default class AddButton extends Component {
 
         {AddButtonActions.ACTIONS.map((action) => (
           <NewEvent
+            key={action.name}
             name={action.name}
             expanded={expanded}
             type={action.type}

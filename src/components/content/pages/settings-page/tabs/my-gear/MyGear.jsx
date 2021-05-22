@@ -1,17 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import * as Yup from 'yup';
 
+import MyGearTable from './table/MyGearTable';
 import Modal from '../../../../../common/modal/Modal';
 import ModalForm from '../../../../../common/modal/form/ModalForm';
 import ModalDialog from '../../../../../common/modal/dialog/ModalDialog';
 import SettingsFields from '../../../../../../constants/settings-fields';
-import MyGearTable from './table/MyGearTable';
 
 import './my-gear.css';
 
-export default function MyGear({ addNewGear, getUserGear, deleteUserGear, gear }) {
+export default function MyGear({ addNewGear, getUserGear, deleteUserGear, editUserGear, gear }) {
   const [modalOpen, setModalOpen] = useState(false);
   const [gearIdToDelete, setDialogOpen] = useState(false);
+
 
   useEffect(() => {
     getUserGear();
@@ -51,6 +52,11 @@ export default function MyGear({ addNewGear, getUserGear, deleteUserGear, gear }
     setDialogOpen(false);
   }
 
+  const handleEditButtonClick = async () => {
+    console.log('sdfds')
+  }
+
+
   return (
     <div className="settings__my-gear first-layer-card_hovered">
       <button
@@ -86,6 +92,7 @@ export default function MyGear({ addNewGear, getUserGear, deleteUserGear, gear }
 
       <MyGearTable
         deleteUserGear={handleDeleteButtonClick}
+        editUserGear={handleEditButtonClick}
         gear={gear}
       />
 

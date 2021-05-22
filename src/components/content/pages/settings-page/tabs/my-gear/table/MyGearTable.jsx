@@ -17,7 +17,7 @@ const useStyles = makeStyles({
   },
 });
 
-export default function MyGearTable({ gear, deleteUserGear }) {
+export default function MyGearTable({ gear, deleteUserGear, editUserGear }) {
   const classes = useStyles();
 
   return (
@@ -42,7 +42,7 @@ export default function MyGearTable({ gear, deleteUserGear }) {
               </TableCell>
               <TableCell align="right">
                 <IconButton
-                  // onClick={() => deleteUserGear(bike._id)}
+                  onClick={() => editUserGear(bike._id)}
                   btnTitle="Edit that bike"
                   btnIcon="edit"
                 />
