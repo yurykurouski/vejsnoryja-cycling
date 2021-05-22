@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux'
 import * as Yup from 'yup';
 
 import MyGearTable from './table/MyGearTable';
@@ -64,6 +63,11 @@ export default function MyGear({ addNewGear, getUserGear, deleteUserGear, editUs
     return makeInputTemplateFromState(filtered);
   }
 
+  const handleEditModalSubmit = async (data) => {
+    await editUserGear({ data: data, id: gearIdToEdit });
+    setEditDialogOpen(false);
+  }
+
   return (
     <div className="settings__my-gear first-layer-card_hovered">
       <button
@@ -91,7 +95,7 @@ export default function MyGear({ addNewGear, getUserGear, deleteUserGear, editUs
         component={
           <ModalForm
             validationSchema={validationSchema}
-            handleModalSubmit={handleModalSubmit}
+            handleModalSubmit={handleEditModalSubmit}
             fields={filterGearbyId()}
             btnText="Save bike"
           />

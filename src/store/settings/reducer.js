@@ -58,7 +58,6 @@ export default function settings(state = initialState, action) {
       };
     }
 
-
     case types.DELETE_USER_GEAR_SUCESS: {
       const updatedGear = state.gear.filter(bike => bike._id !== action.payload._id);
       return {
@@ -68,6 +67,21 @@ export default function settings(state = initialState, action) {
       };
     }
 
+    case types.EDIT_USER_GEAR_SUCESS: {
+      console.log(action.payload)
+      const updatedGear = state.gear.map(bike => {
+        if (bike._id === action.payload._id) return action.payload;
+        return bike;
+      });
+
+      return {
+        ...state,
+        gear: updatedGear,
+        status: ActionStatus.SUCCEDED
+      };
+    }
+
+    case types.EDIT_USER_GEAR_REQUEST:
     case types.DELETE_USER_GEAR_REQUEST:
     case types.SET_ACTIVE_GEAR_REQUEST:
     case types.GET_USER_GER_REQUEST:
@@ -80,6 +94,7 @@ export default function settings(state = initialState, action) {
       }
     }
 
+    case types.EDIT_USER_GEAR_FAILURE:
     case types.DELETE_USER_GEAR_FAILURE:
     case types.SET_ACTIVE_GEAR_FAILURE:
     case types.GET_USER_GER_FAILURE:

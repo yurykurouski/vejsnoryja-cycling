@@ -14,4 +14,8 @@ export default class HttpMethod {
   static get PUT() {
     return 'put';
   }
+
+  static get PATCH() {
+    return 'PATCH';
+  }
 }

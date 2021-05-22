@@ -1,4 +1,4 @@
-import SettingsFields from "../constants/settings-fields";
+import SettingsFields from "../constants/settings-fields.js";
 
 export function makeInputTemplateFromState(filtered) {
   let res = [];

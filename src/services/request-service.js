@@ -7,10 +7,10 @@ class RequestService {
     this.response = async (url, method, data) => {
       return await fetch(url, {
         method: method,
+        body: JSON.stringify(data),
         headers: {
           'Content-Type': ContentType.APPLICATION_JSON,
           'Authorization': this.token,
-          body: JSON.stringify(data)
         }
       });
     }
@@ -113,6 +113,16 @@ class RequestService {
   async deleteSecured(url) {
     try {
       const response = await this.response(url, HttpMethod.DELETE);
+
+      return response.json();
+    } catch (err) {
+      throw new Error(err);
+    }
+  }
+
+  async patchSecured(url, data) {
+    try {
+      const response = await this.response(url, HttpMethod.PATCH, data);
 
       return response.json();
     } catch (err) {

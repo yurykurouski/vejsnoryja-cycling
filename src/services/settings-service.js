@@ -7,7 +7,7 @@ class SettingsService {
 
   async getUserInfo(id) {
     try {
-      const response = await requestService.getSecured(`${process.env.REACT_APP_API_SETTINGS_MY_PROFILE_URL}${id}`);
+      const response = await requestService.getSecured(`${ process.env.REACT_APP_API_SETTINGS_MY_PROFILE_URL }${ id }`);
 
       return response;
     } catch (err) {
@@ -34,7 +34,7 @@ class SettingsService {
       throw new Error(err);
     }
   }
-  
+
   async getUserGear() {
     try {
       const response = await requestService.getSecured(process.env.REACT_APP_API_GET_USER_GEAR_SETTINGS_URL);
@@ -57,7 +57,17 @@ class SettingsService {
 
   async deleteGear(id) {
     try {
-      const response = await requestService.deleteSecured(`${process.env.REACT_APP_API_DELETE_USER_GEAR_SETTINGS_URL}${id}`);
+      const response = await requestService.deleteSecured(`${ process.env.REACT_APP_API_DELETE_USER_GEAR_SETTINGS_URL }${ id }`);
+
+      return response;
+    } catch (err) {
+      throw new Error(err);
+    }
+  }
+
+  async editGear(data) {
+    try {
+      const response = await requestService.patchSecured(process.env.REACT_APP_API_EDIT_USER_GEAR_SETTINGS_URL, data);
 
       return response;
     } catch (err) {

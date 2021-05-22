@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from "react-redux";
 import { Switch, Route, Redirect } from 'react-router-dom';
 
-import { addNewGear, getUserInfo, updateUserInfo, getUserGear, deleteUserGear } from "../../../../store/settings/actions";
+import { addNewGear, getUserInfo, updateUserInfo, getUserGear, deleteUserGear, editUserGear } from "../../../../store/settings/actions";
 import Tabs from '../../../common/tabs/Tabs';
 import MyProfile from "./tabs/my-profile/MyProfile";
 import MyGear from "./tabs/my-gear/MyGear";
@@ -12,7 +12,18 @@ import SettingsFields from "../../../../constants/settings-fields";
 import ActionStatus from "../../../../constants/action-status";
 import Loader from "../../../common/loader/Loader";
 
-function SettingsPage({ userId, getUserInfo, updateUserInfo, addNewGear, userInfo, getUserGear, deleteUserGear, gear, status }) {
+function SettingsPage(props) {
+  const { userId,
+    getUserInfo,
+    updateUserInfo,
+    addNewGear,
+    userInfo,
+    getUserGear,
+    deleteUserGear,
+    editUserGear,
+    gear,
+    status } = props;
+
   return (
     <div className="content__settings first-layer-card">
       <h2 className="settings__heading card-heading">Settings</h2>
@@ -41,6 +52,7 @@ function SettingsPage({ userId, getUserInfo, updateUserInfo, addNewGear, userInf
               getUserGear={getUserGear}
               gear={gear}
               deleteUserGear={deleteUserGear}
+              editUserGear={editUserGear}
             />
           </Route>
 
@@ -71,7 +83,8 @@ function mapDispatchToProps(dispatch) {
     updateUserInfo: (field) => dispatch(updateUserInfo(field)),
     addNewGear: (data) => dispatch(addNewGear(data)),
     getUserGear: () => dispatch(getUserGear()),
-    deleteUserGear: (id) => dispatch(deleteUserGear(id))
+    deleteUserGear: (id) => dispatch(deleteUserGear(id)),
+    editUserGear: (data) => dispatch(editUserGear(data))
   }
 }
 

@@ -28,3 +28,7 @@ export const DELETE_USER_GEAR_REQUEST = 'DELETE_USER_GEAR/pending';
 export const DELETE_USER_GEAR_SUCESS = 'DELETE_USER_GEAR/fulfilled';
 export const DELETE_USER_GEAR_FAILURE = 'DELETE_USER_GEAR/rejected';
 
+export const EDIT_USER_GEAR = 'EDIT_USER_GEAR';
+export const EDIT_USER_GEAR_REQUEST = 'EDIT_USER_GEAR/pending';
+export const EDIT_USER_GEAR_SUCESS = 'EDIT_USER_GEAR/fulfilled';
+export const EDIT_USER_GEAR_FAILURE = 'EDIT_USER_GEAR/rejected';
