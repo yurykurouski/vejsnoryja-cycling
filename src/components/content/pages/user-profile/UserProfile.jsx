@@ -15,13 +15,9 @@ import Loader from '../../../common/loader/Loader';
 import ActionStatus from '../../../../constants/action-status';
 
 function UserProfile(props) {
-  const { logoutUser, events, status, updateEventById, getUserActiveGear, getEventsByUser } = props;
+  const { logoutUser, events, eventsStatus, gearStatus, updateEventById, getUserActiveGear, getEventsByUser } = props;
   const eventID = useRouteMatch('/profile/edit-event/:eventID')?.params.eventID;
   const userId = useRouteMatch('/profile/:userId')?.params.userId;
-
-  useEffect(() => {
-    getEventsByUser(userId);
-  }, [getEventsByUser, userId]);
 
   return (
     <Switch>
@@ -53,21 +49,23 @@ function UserProfile(props) {
 
                   <Route exact path="/profile/:userId/last-activities">
                     <LastActivities
-                      events={events}
                       getEventsByUser={getEventsByUser}
+                      userId={userId}
+                      events={events}
                     />
                   </Route>
 
                   <Route exact path="/profile/:userId/gear">
                     <UserGear
                       getUserActiveGear={getUserActiveGear}
+                      userId={userId}
                     />
                   </Route>
                 </div>
               </div>
             </div>
         }
-        {status === ActionStatus.LOADING && <Loader />}
+        {(eventsStatus === ActionStatus.LOADING || gearStatus === ActionStatus.LOADING) && <Loader />}
       </>
     </Switch>
   )
@@ -76,7 +74,8 @@ function UserProfile(props) {
 function mapStateToProps(state) {
   return {
     events: state.events.events,
-    status: state.events.status,
+    eventsStatus: state.events.status,
+    gearStatus: state.gear.status,
   }
 }
 

@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
 
 
-export default function UserGear() {
-  /*   useEffect(() => {
-      getUserInfo(userId);
-    }, [getUserInfo, userId]); */
+export default function UserGear({ getUserActiveGear, userId }) {
+  useEffect(() => {
+    getUserActiveGear(userId);
+  }, [getUserActiveGear, userId]);
 
   return (
     <div>
