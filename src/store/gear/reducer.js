@@ -2,29 +2,12 @@ import * as types from './types';
 import ActionStatus from '../../constants/action-status';
 
 const initialState = {
-  userInfo: {},
   gear: [],
   status: ActionStatus.IDLE
 };
 
-export default function settings(state = initialState, action) {
+export default function gear(state = initialState, action) {
   switch (action.type) {
-    case types.GET_USER_INFO_SUCESS: {
-      return {
-        ...state,
-        userInfo: action.payload,
-        status: ActionStatus.SUCCEDED
-      };
-    }
-
-    case types.UPDATE_USER_INFO_SUCESS: {
-      return {
-        ...state,
-        userInfo: action.payload,
-        status: ActionStatus.SUCCEDED
-      };
-    }
-
     case types.ADD_NEW_GEAR_SUCESS: {
       return {
         ...state,
@@ -85,9 +68,7 @@ export default function settings(state = initialState, action) {
     case types.DELETE_USER_GEAR_REQUEST:
     case types.SET_ACTIVE_GEAR_REQUEST:
     case types.GET_USER_GER_REQUEST:
-    case types.ADD_NEW_GEAR_REQUEST:
-    case types.UPDATE_USER_INFO_REQUEST:
-    case types.GET_USER_INFO_REQUEST: {
+    case types.ADD_NEW_GEAR_REQUEST: {
       return {
         ...state,
         status: ActionStatus.LOADING
@@ -98,9 +79,7 @@ export default function settings(state = initialState, action) {
     case types.DELETE_USER_GEAR_FAILURE:
     case types.SET_ACTIVE_GEAR_FAILURE:
     case types.GET_USER_GER_FAILURE:
-    case types.ADD_NEW_GEAR_FAILURE:
-    case types.UPDATE_USER_INFO_FAILURE:
-    case types.GET_USER_INFO_FAILURE: {
+    case types.ADD_NEW_GEAR_FAILURE: {
       return {
         ...state,
         status: ActionStatus.FAILED

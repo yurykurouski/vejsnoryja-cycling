@@ -5,7 +5,7 @@ import './gear-card.css';
 
 export default function GearCard({ handleModalCardOpen }) {
   const gearToRender = Object.entries(handleModalCardOpen());
-  console.log(gearToRender)
+
   return (
     <div className="modal-window__main modal-form second-layer-card">
 

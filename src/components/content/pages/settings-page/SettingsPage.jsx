@@ -2,7 +2,8 @@ import React from 'react';
 import { connect } from "react-redux";
 import { Switch, Route, Redirect } from 'react-router-dom';
 
-import { addNewGear, getUserInfo, updateUserInfo, getUserGear, deleteUserGear, editUserGear } from "../../../../store/settings/actions";
+import { addNewGear, getUserGear, deleteUserGear, editUserGear } from "../../../../store/gear/actions";
+import { getUserInfo, updateUserInfo } from "../../../../store/user-info/actions";
 import Tabs from '../../../common/tabs/Tabs';
 import MyProfile from "./tabs/my-profile/MyProfile";
 import MyGear from "./tabs/my-gear/MyGear";
@@ -22,7 +23,8 @@ function SettingsPage(props) {
     deleteUserGear,
     editUserGear,
     gear,
-    status } = props;
+    gearStatus,
+    infoStatus } = props;
 
   return (
     <div className="content__settings first-layer-card">
@@ -63,7 +65,7 @@ function SettingsPage(props) {
         </Switch>
 
       </div>
-      {status === ActionStatus.LOADING && <Loader />}
+      {(gearStatus || infoStatus) === ActionStatus.LOADING && <Loader />}
     </div>
   )
 }
@@ -71,9 +73,10 @@ function SettingsPage(props) {
 function mapStateToProps(state) {
   return {
     userId: state.currentUser.user,
-    userInfo: state.settings.userInfo,
-    gear: state.settings.gear,
-    status: state.settings.status,
+    userInfo: state.userInfo.userInfo,
+    infoStatus: state.userInfo.status,
+    gear: state.gear.gear,
+    gearStatus: state.gear.status,
   }
 }
 

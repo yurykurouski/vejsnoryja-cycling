@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from "react-redux";
 import Radio from '@material-ui/core/Radio';
-import { setActiveGear } from "../../../../../../../store/settings/actions";
+import { setActiveGear } from "../../../../../../../store/gear/actions";
 
 function ActiveToggler({ bike, setActiveGear }) {
   const handleChange = async () => {
@@ -14,7 +14,7 @@ function ActiveToggler({ bike, setActiveGear }) {
       onChange={handleChange}
       value={bike._id}
       name="active"
-      style={{ "color": "#146bff"}}
+      style={{ "color": "#146bff" }}
     />
   )
 }
