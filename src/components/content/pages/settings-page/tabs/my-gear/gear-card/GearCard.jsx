@@ -1,5 +1,5 @@
 import React from 'react';
-import Gear from '../../../../../../../constants/gear/gear';
+import Gear from '../../../../../../../constants/gear/gear-helper';
 
 import './gear-card.css';
 
@@ -13,7 +13,7 @@ export default function GearCard({ handleModalCardOpen }) {
         (Gear.UNUSEFUL_FIELDS.includes(gear[0]) || gear[1] === '')
           ? ''
           :
-          <div key={gear._id} className="modal__gear-field">
+          <div key={gear[0]} className="modal__gear-field">
             <span className="gear-field__key">{gear[0][0].toUpperCase() + gear[0].substring(1)}:</span>
             <span className="gear-field__value">{gear[1]}</span>
           </div>

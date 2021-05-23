@@ -1,15 +1,7 @@
-import React, { useEffect } from 'react';
-import Gear from '../../../../../constants/gear/gear';
-import { useStore } from 'react-redux';
+import React from 'react';
+import Gear from '../../../../../constants/gear/gear-helper';
 
-export default function UserGear({ getUserActiveGear, userId }) {
-  useEffect(() => {
-    getUserActiveGear(userId);
-  }, [getUserActiveGear, userId]);
-
-  const store = useStore();
-  const gear = store.getState().gear.gear;
-
+export default function UserGear({ gear }) {
   const gearToRender = Object.entries(gear);
 
   return (

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from "react-redux";
 import { Switch, Route, Redirect } from 'react-router-dom';
 
@@ -25,6 +25,10 @@ function SettingsPage(props) {
     gear,
     gearStatus,
     infoStatus } = props;
+
+  useEffect(() => {
+    getUserGear();
+  }, [getUserGear]);
 
   return (
     <div className="content__settings first-layer-card">

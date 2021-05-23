@@ -1,5 +1,5 @@
 import { Switch, Route, Redirect, useRouteMatch } from 'react-router-dom';
-import React from 'react'
+import React, { useEffect } from 'react'
 import { connect } from 'react-redux';
 import './user-profile.css';
 
@@ -18,6 +18,10 @@ function UserProfile(props) {
   const { logoutUser, events, gear, eventsStatus, gearStatus, updateEventById, getUserActiveGear, getEventsByUser } = props;
   const eventID = useRouteMatch('/profile/edit-event/:eventID')?.params.eventID;
   const userId = useRouteMatch('/profile/:userId')?.params.userId;
+
+  useEffect(() => {
+    getUserActiveGear(userId);
+  }, [getUserActiveGear, userId]);
 
   return (
     <Switch>

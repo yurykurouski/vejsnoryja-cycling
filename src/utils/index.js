@@ -1,10 +1,11 @@
+import Gear from "../constants/gear/gear-helper.js";
 import SettingsFields from "../constants/settings-fields.js";
 
 export function makeInputTemplateFromState(filtered) {
   let res = [];
 
   for (let key in filtered) {
-    if (!SettingsFields.FIELDS_FILTER.includes(key)) {
+    if (!Gear.UNUSEFUL_FIELDS.includes(key)) {
       if (SettingsFields.FIELDS_OPTIONS.includes(filtered[key])) {
         res.push({
           name: key,

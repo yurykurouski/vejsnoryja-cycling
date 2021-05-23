@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import * as Yup from 'yup';
 
 import GearCard from './gear-card/GearCard';
@@ -11,15 +11,11 @@ import SettingsFields from '../../../../../../constants/settings-fields';
 
 import './my-gear.css';
 
-export default function MyGear({ addNewGear, getUserGear, deleteUserGear, editUserGear, gear }) {
+export default function MyGear({ addNewGear, deleteUserGear, editUserGear, gear }) {
   const [modalOpen, setModalOpen] = useState(false);
   const [gearIdToDelete, setDeleteDialogOpen] = useState(false);
   const [gearIdToEdit, setEditDialogOpen] = useState(false);
   const [gearIdToCard, setCardDialogOpen] = useState(false);
-
-  useEffect(() => {
-    getUserGear();
-  }, [getUserGear]);
 
   const validationSchema = Yup.object().shape({
     name: Yup
