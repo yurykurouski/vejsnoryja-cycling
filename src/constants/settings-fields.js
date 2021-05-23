@@ -63,8 +63,4 @@ export default class SettingsFields {
       },
     ]
   }
-
-  static get FIELDS_FILTER() {
-    return ['owner', 'active', '_id', '__v']
-  }
 }

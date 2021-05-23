@@ -2,11 +2,11 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Route, Redirect } from 'react-router-dom';
 
-const PublicRoute = ({ component: Component, isAuthenticated, path, restricted, ...rest }) => {
+const PublicRoute = ({ component: Component, isAuthenticated, userId, path, restricted, ...rest }) => {
   return (
     <Route {...rest} render={props => (
       isAuthenticated && restricted
-        ? <Redirect to='profile/last-activities' />
+        ? <Redirect to={`profile/${ userId }/last-activities`} />
         : <Component {...props} />
     )} />
   );
@@ -15,6 +15,7 @@ const PublicRoute = ({ component: Component, isAuthenticated, path, restricted, 
 function mapStateToProps(state) {
   return {
     isAuthenticated: state.currentUser.isAuthenticated,
+    userId: state.currentUser.user
   }
 }
 

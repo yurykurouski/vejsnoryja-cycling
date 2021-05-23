@@ -1,5 +1,5 @@
 import React from 'react';
-import SettingsFields from '../../../../../../../constants/settings-fields';
+import Gear from '../../../../../../../constants/gear/gear';
 
 import './gear-card.css';
 
@@ -10,7 +10,7 @@ export default function GearCard({ handleModalCardOpen }) {
     <div className="modal-window__main modal-form second-layer-card">
 
       {gearToRender.map((gear) => (
-        (SettingsFields.FIELDS_FILTER.includes(gear[0]) || gear[1] === '')
+        (Gear.UNUSEFUL_FIELDS.includes(gear[0]) || gear[1] === '')
           ? ''
           :
           <div key={gear._id} className="modal__gear-field">

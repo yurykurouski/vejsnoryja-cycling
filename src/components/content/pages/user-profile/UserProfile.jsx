@@ -1,5 +1,5 @@
 import { Switch, Route, Redirect, useRouteMatch } from 'react-router-dom';
-import React, { useEffect } from 'react'
+import React from 'react'
 import { connect } from 'react-redux';
 import './user-profile.css';
 
@@ -15,7 +15,7 @@ import Loader from '../../../common/loader/Loader';
 import ActionStatus from '../../../../constants/action-status';
 
 function UserProfile(props) {
-  const { logoutUser, events, eventsStatus, gearStatus, updateEventById, getUserActiveGear, getEventsByUser } = props;
+  const { logoutUser, events, gear, eventsStatus, gearStatus, updateEventById, getUserActiveGear, getEventsByUser } = props;
   const eventID = useRouteMatch('/profile/edit-event/:eventID')?.params.eventID;
   const userId = useRouteMatch('/profile/:userId')?.params.userId;
 
@@ -43,7 +43,7 @@ function UserProfile(props) {
                 <Tabs tabs={profileFields.PROFILE_TABS(userId)} />
 
                 <div className="user-profile__tab-content-wrap">
-                  <Route exact path="/profile/:userId">
+                  <Route path="/profile/:userId">
                     <Redirect to={`/profile/${ userId }/last-activities`} />
                   </Route>
 
@@ -59,6 +59,7 @@ function UserProfile(props) {
                     <UserGear
                       getUserActiveGear={getUserActiveGear}
                       userId={userId}
+                      gear={gear}
                     />
                   </Route>
                 </div>
@@ -75,6 +76,7 @@ function mapStateToProps(state) {
   return {
     events: state.events.events,
     eventsStatus: state.events.status,
+    gear: state.gear.gear,
     gearStatus: state.gear.status,
   }
 }
