@@ -2,12 +2,10 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 
 import EventCard from '../../../../common/event-card/EventCard';
-import ActionStatus from '../../../../../constants/action-status';
-import Loader from '../../../../common/loader/Loader';
 
-export default function LastActivities({ events, status }) {
+export default function LastActivities({ events }) {
   const history = useHistory();
-  const handleClick = (event) => history.push(`/profile/edit-event/${event._id}`);
+  const handleClick = (event) => history.push(`/profile/edit-event/${ event._id }`);
 
   return (
     <>
@@ -22,8 +20,6 @@ export default function LastActivities({ events, status }) {
           />
         ))}
       </ul>
-
-      {status === ActionStatus.LOADING && <Loader />}
     </  >
   )
 }

@@ -65,7 +65,7 @@ function SettingsPage(props) {
         </Switch>
 
       </div>
-      {(gearStatus || infoStatus) === ActionStatus.LOADING && <Loader />}
+      {(gearStatus === ActionStatus.LOADING || infoStatus === ActionStatus.LOADING) && <Loader />}
     </div>
   )
 }

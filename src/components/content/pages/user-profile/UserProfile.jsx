@@ -11,6 +11,8 @@ import LastActivities from './last-activities/LastActivities';
 import { logoutUser } from '../../../../store/current-user/actions';
 import { getEventsByUser, updateEventById } from '../../../../store/events/actions';
 import { getUserActiveGear } from '../../../../store/gear/actions';
+import Loader from '../../../common/loader/Loader';
+import ActionStatus from '../../../../constants/action-status';
 
 function UserProfile(props) {
   const { logoutUser, events, status, updateEventById, getUserActiveGear, getEventsByUser } = props;
@@ -52,7 +54,6 @@ function UserProfile(props) {
                   <Route exact path="/profile/:userId/last-activities">
                     <LastActivities
                       events={events}
-                      status={status}
                       getEventsByUser={getEventsByUser}
                     />
                   </Route>
@@ -66,6 +67,7 @@ function UserProfile(props) {
               </div>
             </div>
         }
+        {status === ActionStatus.LOADING && <Loader />}
       </>
     </Switch>
   )
