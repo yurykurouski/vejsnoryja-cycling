@@ -21,9 +21,9 @@ class EventsService {
     }
   }
 
-  async getEventsByUser() {
+  async getEventsByUser(id) {
     try {
-      const response = await requestService.getSecured(process.env.REACT_APP_API_GET_EVENTS_BY_USER_URL);
+      const response = await requestService.getSecured(`${ process.env.REACT_APP_API_GET_EVENTS_BY_USER_URL }${ id }`);
 
       return response;
     } catch (err) {

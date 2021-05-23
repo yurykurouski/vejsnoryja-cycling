@@ -3,10 +3,15 @@ export const ADD_NEW_GEAR_REQUEST = 'ADD_NEW_GEAR/pending';
 export const ADD_NEW_GEAR_SUCESS = 'ADD_NEW_GEAR/fulfilled';
 export const ADD_NEW_GEAR_FAILURE = 'ADD_NEW_GEAR/rejected';
 
-export const GET_USER_GER = 'GET_USER_GER';
-export const GET_USER_GER_REQUEST = 'GET_USER_GER/pending';
-export const GET_USER_GER_SUCESS = 'GET_USER_GER/fulfilled';
-export const GET_USER_GER_FAILURE = 'GET_USER_GER/rejected';
+export const GET_USER_GEAR = 'GET_USER_GEAR';
+export const GET_USER_GEAR_REQUEST = 'GET_USER_GEAR/pending';
+export const GET_USER_GEAR_SUCESS = 'GET_USER_GEAR/fulfilled';
+export const GET_USER_GEAR_FAILURE = 'GET_USER_GEAR/rejected';
+
+export const GET_USER_ACTIVE_GEAR = 'GET_USER_ACTIVE_GEAR';
+export const GET_USER_ACTIVE_GEAR_REQUEST = 'GET_USER_ACTIVE_GEAR/pending';
+export const GET_USER_ACTIVE_GEAR_SUCESS = 'GET_USER_ACTIVE_GEAR/fulfilled';
+export const GET_USER_ACTIVE_GEAR_FAILURE = 'GET_USER_ACTIVE_GEAR/rejected';
 
 export const SET_ACTIVE_GEAR = 'SET_ACTIVE_GEAR';
 export const SET_ACTIVE_GEAR_REQUEST = 'SET_ACTIVE_GEAR/pending';

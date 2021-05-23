@@ -24,7 +24,7 @@ function Content({ addEvent }) {
 
           <PrivateRoute path='/new-event' component={EventPage} saveEvent={addEvent} />
 
-          <PrivateRoute path='/profile' component={UserProfile} />
+          <PrivateRoute path='/profile/:userId' component={UserProfile} />
 
           <PublicRoute path='/sign-up' restricted={true} component={RegistrationPage} />
 

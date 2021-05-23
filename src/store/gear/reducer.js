@@ -16,7 +16,15 @@ export default function gear(state = initialState, action) {
       };
     }
 
-    case types.GET_USER_GER_SUCESS: {
+    case types.GET_USER_GEAR_SUCESS: {
+      return {
+        ...state,
+        gear: action.payload,
+        status: ActionStatus.SUCCEDED
+      };
+    }
+
+    case types.GET_USER_ACTIVE_GEAR_SUCESS: {
       return {
         ...state,
         gear: action.payload,
@@ -67,7 +75,8 @@ export default function gear(state = initialState, action) {
     case types.EDIT_USER_GEAR_REQUEST:
     case types.DELETE_USER_GEAR_REQUEST:
     case types.SET_ACTIVE_GEAR_REQUEST:
-    case types.GET_USER_GER_REQUEST:
+    case types.GET_USER_GEAR_REQUEST:
+    case types.GET_USER_ACTIVE_GEAR_REQUEST:
     case types.ADD_NEW_GEAR_REQUEST: {
       return {
         ...state,
@@ -78,7 +87,8 @@ export default function gear(state = initialState, action) {
     case types.EDIT_USER_GEAR_FAILURE:
     case types.DELETE_USER_GEAR_FAILURE:
     case types.SET_ACTIVE_GEAR_FAILURE:
-    case types.GET_USER_GER_FAILURE:
+    case types.GET_USER_GEAR_FAILURE:
+    case types.GET_USER_ACTIVE_GEAR_FAILURE:
     case types.ADD_NEW_GEAR_FAILURE: {
       return {
         ...state,

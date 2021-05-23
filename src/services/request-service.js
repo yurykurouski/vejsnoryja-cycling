@@ -17,7 +17,7 @@ class RequestService {
 
   async getSecured(url) {
     try {
-      const response = await this.response(url, 'GET');
+      const response = await this.response(url, HttpMethod.GET);
 
       return response.json();;
     } catch (err) {

@@ -2,12 +2,12 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-function SidebarProfile({ isAuthenticated }) {
+function SidebarProfile({ isAuthenticated, userId }) {
   return (
     <li className='sidebar__nav_item'>
 
       {isAuthenticated
-        ? <Link to='/profile' className='nav_item__link profile_logined link'>Profile</Link>
+        ? <Link to={`/profile/${ userId }`} className='nav_item__link profile_logined link'>Profile</Link>
         : <Link to='/sign-in' className='nav_item__link profile_notlogined link'>Sign-in</Link>
       }
 
@@ -17,7 +17,8 @@ function SidebarProfile({ isAuthenticated }) {
 
 function mapStateToProps(state) {
   return {
-    isAuthenticated: state.currentUser.isAuthenticated
+    isAuthenticated: state.currentUser.isAuthenticated,
+    userId: state.currentUser.user
   }
 }
 

@@ -1,14 +1,18 @@
-export default class ProfileFields{
-  static get PROFILE_TABS() {
+class ProfileFields {
+  PROFILE_TABS(userId) {
     return [
       {
-        to: '/profile/last-activities',
+        to: `/profile/${ userId }/last-activities`,
         name: 'Last activities'
       },
       {
-        to: '/profile/gear',
+        to: `/profile/${ userId }/gear`,
         name: 'Your gear'
       }
     ]
   }
 }
+
+const profileFields = new ProfileFields();
+
+export default profileFields;

@@ -9,7 +9,6 @@ const initialState = {
 export default function userInfo(state = initialState, action) {
   switch (action.type) {
     case types.GET_USER_INFO_SUCESS: {
-      console.log(action.payload)
       return {
         ...state,
         userInfo: action.payload,

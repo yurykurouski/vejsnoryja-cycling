@@ -41,6 +41,16 @@ class SettingsService {
     }
   }
 
+  async getUserActiveGear(id) {
+    try {
+      const response = await requestService.getSecured(`${ process.env.REACT_APP_API_GET_GEAR_BY_USER_URL }${ id }`);
+
+      return response;
+    } catch (err) {
+      throw new Error(err);
+    }
+  }
+
   async setActiveGear(data) {
     try {
       const response = await requestService.putSecured(process.env.REACT_APP_API_GET_USER_GEAR_SETTINGS_URL, data);

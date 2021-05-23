@@ -6,18 +6,20 @@ import './user-profile.css';
 import UserGear from "./gear/UserGear";
 import Tabs from "../../../common/tabs/Tabs";
 import EventPage from '../../../common/event-page/EventPage';
-import ProfileFields from '../../../../constants/profile-fields';
+import profileFields from '../../../../constants/profile-fields';
 import LastActivities from './last-activities/LastActivities';
 import { logoutUser } from '../../../../store/current-user/actions';
 import { getEventsByUser, updateEventById } from '../../../../store/events/actions';
+import { getUserActiveGear } from '../../../../store/gear/actions';
 
 function UserProfile(props) {
-  const { logoutUser, events, status, currentUser, updateEventById, getEventsByUser } = props;
+  const { logoutUser, events, status, updateEventById, getUserActiveGear, getEventsByUser } = props;
   const eventID = useRouteMatch('/profile/edit-event/:eventID')?.params.eventID;
+  const userId = useRouteMatch('/profile/:userId')?.params.userId;
 
   useEffect(() => {
-    getEventsByUser();
-  }, [getEventsByUser]);
+    getEventsByUser(userId);
+  }, [getEventsByUser, userId]);
 
   return (
     <Switch>
@@ -27,7 +29,7 @@ function UserProfile(props) {
             ? <Route exact path="/profile/edit-event/:eventID">
               <EventPage
                 event={events.find(event => event._id === eventID)}
-                currentUser={currentUser}
+                currentUser={userId}
                 saveEvent={updateEventById}
               />
             </Route>
@@ -40,14 +42,14 @@ function UserProfile(props) {
 
               <div className="user-profile__main second-layer-card">
 
-                <Tabs tabs={ProfileFields.PROFILE_TABS} />
+                <Tabs tabs={profileFields.PROFILE_TABS(userId)} />
 
                 <div className="user-profile__tab-content-wrap">
-                  <Route exact path="/profile">
-                    <Redirect to="/profile/last-activities" />
+                  <Route exact path="/profile/:userId">
+                    <Redirect to={`/profile/${ userId }/last-activities`} />
                   </Route>
 
-                  <Route exact path="/profile/last-activities">
+                  <Route exact path="/profile/:userId/last-activities">
                     <LastActivities
                       events={events}
                       status={status}
@@ -55,8 +57,10 @@ function UserProfile(props) {
                     />
                   </Route>
 
-                  <Route exact path="/profile/gear">
-                    <UserGear />
+                  <Route exact path="/profile/:userId/gear">
+                    <UserGear
+                      getUserActiveGear={getUserActiveGear}
+                    />
                   </Route>
                 </div>
               </div>
@@ -71,15 +75,15 @@ function mapStateToProps(state) {
   return {
     events: state.events.events,
     status: state.events.status,
-    currentUser: state.currentUser.user,
   }
 }
 
 function mapDispatchToProps(dispatch) {
   return {
     logoutUser: () => dispatch(logoutUser()),
-    getEventsByUser: () => dispatch(getEventsByUser()),
-    updateEventById: (data) => dispatch(updateEventById(data))
+    getEventsByUser: (id) => dispatch(getEventsByUser(id)),
+    updateEventById: (data) => dispatch(updateEventById(data)),
+    getUserActiveGear: (id) => dispatch(getUserActiveGear(id))
   }
 }
 
