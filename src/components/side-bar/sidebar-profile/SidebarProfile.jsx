@@ -7,7 +7,7 @@ function SidebarProfile({ isAuthenticated, userId }) {
     <li className='sidebar__nav_item'>
 
       {isAuthenticated
-        ? <Link to={`/profile/${ userId }`} className='nav_item__link profile_logined link'>Profile</Link>
+        ? <Link to={`/profile/${ userId }/last-activities`} className='nav_item__link profile_logined link'>Profile</Link>
         : <Link to='/sign-in' className='nav_item__link profile_notlogined link'>Sign-in</Link>
       }
 
