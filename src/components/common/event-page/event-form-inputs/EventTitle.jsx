@@ -1,4 +1,5 @@
 import React from 'react';
+
 import ValidationErrMsg from '../../validation-err-msg/ValidationErrMsg';
 
 export default function EventTitle(props) {

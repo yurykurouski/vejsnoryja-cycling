@@ -1,5 +1,6 @@
-import PropTypes from "prop-types";
 import React from 'react'
+import PropTypes from 'prop-types';
+
 import './validation-err-msg.css';
 
 export default function ValidationErrMsg({ errorMsg }) {

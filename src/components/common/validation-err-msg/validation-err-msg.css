@@ -4,7 +4,6 @@
   font-weight: 500;
   color: var(--font-color-main_active);
   opacity: .8;
-
   animation: shake .1s alternate;
 }
 
@@ -14,20 +13,16 @@
     transform: rotate(0deg);
     opacity: 0;
   }
-
   20% {
     font-size: 12px;
   }
-
   33% {
     transform: rotate(3deg);
   }
-
   66% {
     transform: rotate(-3deg);
     opacity: 1;
   }
-
   100% {
     transform: rotate(0deg);
     opacity: .8;

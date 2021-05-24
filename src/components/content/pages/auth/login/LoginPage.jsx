@@ -1,13 +1,15 @@
 import React from 'react'
-import { Formik } from 'formik';
-import '../auth-pages.css';
 import * as Yup from 'yup';
-import ValidationErrMsg from '../../../../common/validation-err-msg/ValidationErrMsg';
-import { Link } from "react-router-dom";
+import { Formik } from 'formik';
 import { connect } from 'react-redux';
-import { authUser, loginUser } from '../../../../../store/current-user/actions';
+import { Link } from "react-router-dom";
+
 import Loader from '../../../../common/loader/Loader';
-import ActionStatus from '../../../../../constants/action-status';
+import ActionStatus from '../../../../../constants/store/action-status';
+import { authUser, loginUser } from '../../../../../store/current-user/actions';
+import ValidationErrMsg from '../../../../common/validation-err-msg/ValidationErrMsg';
+
+import '../auth-pages.css';
 
 function LoginPage(props) {
   const { loginUser, authUser, authErrors, status } = props;

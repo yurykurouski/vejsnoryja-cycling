@@ -1,4 +1,5 @@
 import React from 'react';
+
 import Gear from '../../../../../constants/gear/gear-helper';
 
 export default function UserGear({ gear }) {

@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 
-import NewEvent from "./actions/NewEvent";
-import AddButtonActions from '../../../constants/add-button-actions';
+import NewEvent from './actions/NewEvent';
+import AddButtonActions from '../../../constants/components-fields/add-button-actions';
+
 import './add-button.css';
 
 export default class AddButton extends Component {

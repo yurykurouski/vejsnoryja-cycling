@@ -1,8 +1,10 @@
 import React from 'react';
+import { Link } from 'react-router-dom/cjs/react-router-dom.min';
+
 import SidebarLogo from './sidebar-logo/SidebarLogo'
+import SidebarProfile from './sidebar-profile/SidebarProfile';
+
 import './Sidebar.css';
-import SidebarProfile from "./sidebar-profile/SidebarProfile";
-import { Link } from "react-router-dom/cjs/react-router-dom.min";
 
 export default function Sidebar() {
   return (

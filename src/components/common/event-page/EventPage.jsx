@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { useHistory } from "react-router-dom";
-import { Formik } from 'formik';
 import * as Yup from 'yup';
+import { Formik } from 'formik';
 import { connect } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
-import { addEvent } from "../../../store/events/actions";
 import EventForm from './event-form/EventForm';
+import { addEvent } from '../../../store/events/actions';
+
 import './event-page.css';
 
 function EventPage(props) {

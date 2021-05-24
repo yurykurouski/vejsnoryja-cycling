@@ -4,7 +4,7 @@ import './loader.css';
 export default function Loader() {
   return (
     <div className="loader">
-      <span className="loader__spinner"/>
+      <span className="loader__spinner" />
     </div>
   )
 }

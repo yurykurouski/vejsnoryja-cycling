@@ -1,5 +1,6 @@
 import React from 'react';
 import Icon from '@material-ui/core/Icon';
+
 import './icon-button.css';
 
 export default function IconButton(props) {
@@ -11,7 +12,7 @@ export default function IconButton(props) {
       type="button"
       title={btnTitle}
       onClick={onClick}
-      style={{ 'color': `${color}`}}
+      style={{ 'color': `${ color }` }}
     >
       <Icon
         className="option__icon"

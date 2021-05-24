@@ -1,17 +1,18 @@
 import React, { useEffect } from 'react';
-import { connect } from "react-redux";
+import { connect } from 'react-redux';
 import { Switch, Route, Redirect } from 'react-router-dom';
 
-import { addNewGear, getUserGear, deleteUserGear, editUserGear } from "../../../../store/gear/actions";
-import { getUserInfo, updateUserInfo } from "../../../../store/user-info/actions";
+import MyGear from './tabs/my-gear/MyGear';
 import Tabs from '../../../common/tabs/Tabs';
-import MyProfile from "./tabs/my-profile/MyProfile";
-import MyGear from "./tabs/my-gear/MyGear";
-import MyAccount from "./tabs/my-account/MyAccount";
+import Loader from '../../../common/loader/Loader';
+import MyProfile from './tabs/my-profile/MyProfile';
+import MyAccount from './tabs/my-account/MyAccount';
+import ActionStatus from '../../../../constants/store/action-status';
+import { getUserInfo, updateUserInfo } from '../../../../store/user-info/actions';
+import SettingsFields from '../../../../constants/components-fields/settings-fields';
+import { addNewGear, getUserGear, deleteUserGear, editUserGear } from '../../../../store/gear/actions';
+
 import './settings-page.css';
-import SettingsFields from "../../../../constants/settings-fields";
-import ActionStatus from "../../../../constants/action-status";
-import Loader from "../../../common/loader/Loader";
 
 function SettingsPage(props) {
   const { userId,

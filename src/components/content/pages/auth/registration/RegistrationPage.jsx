@@ -1,14 +1,16 @@
 import React from 'react';
 import * as Yup from 'yup';
 import { Formik } from 'formik';
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+
+import Loader from '../../../../common/loader/Loader';
+import ActionStatus from '../../../../../constants/store/action-status';
+import { registerUser } from '../../../../../store/current-user/actions';
 import { MIN_PASSWORD_LENGTH, PASSWORD_REGEX } from '../../../../../constants/';
 import ValidationErrMsg from '../../../../common/validation-err-msg/ValidationErrMsg';
+
 import '../auth-pages.css';
-import { Link } from "react-router-dom";
-import { connect } from 'react-redux';
-import { registerUser } from '../../../../../store/current-user/actions';
-import Loader from '../../../../common/loader/Loader';
-import ActionStatus from '../../../../../constants/action-status';
 
 function RegistrationPage(props) {
   const { registerUser, authErrors, status } = props;
@@ -20,7 +22,7 @@ function RegistrationPage(props) {
       .required('Email cannot be empty.'),
     password: Yup
       .string()
-      .min(8, `Password should contain at least ${MIN_PASSWORD_LENGTH} characters`)
+      .min(8, `Password should contain at least ${ MIN_PASSWORD_LENGTH } characters`)
       .matches(PASSWORD_REGEX, 'Password invalid format.')
       .required('Password can not be empty.'),
     repeatPass: Yup

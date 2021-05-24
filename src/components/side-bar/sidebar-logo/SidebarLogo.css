@@ -1,13 +1,11 @@
 .header__logo {
   display: block;
-
   background: url(../../../assets/images/navbar_logo.svg) no-repeat center bottom 50%;
   background-size: 100%;
   width: 100%;
   height: 75px;
   margin-bottom: 30px;
-  transition: height .3s ease-out,
-    margin .3s ease-out;
+  transition: height .3s ease-out, margin .3s ease-out;
   transition-delay: .3s;
   cursor: pointer;
 }

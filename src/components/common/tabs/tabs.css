@@ -15,9 +15,7 @@
   text-transform: uppercase;
   text-decoration: none;
   color: var(--font-color-main_unactive);
-
   transition: color .3s ease-out;
-
   cursor: pointer;
 }
 

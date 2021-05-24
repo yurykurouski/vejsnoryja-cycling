@@ -1,9 +1,10 @@
 import React from 'react';
-import Icon from '@material-ui/core/Icon';
 import Moment from 'react-moment';
-import EventCardDate from './event-card-date/EventCardDate';
+import Icon from '@material-ui/core/Icon';
+
 import EventMap from './event-card-map/EventMap';
 import IconButton from '../icon-button/IconButton';
+import EventCardDate from './event-card-date/EventCardDate';
 
 import './event-card.css';
 

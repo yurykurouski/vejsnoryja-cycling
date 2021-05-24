@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { MapContainer, TileLayer, Marker } from 'react-leaflet';
+
 import './event-map.css';
 
 export default class EventMap extends Component {
@@ -20,7 +21,7 @@ export default class EventMap extends Component {
 
     return (
       <MapContainer
-        className={`${mainClass} map second-layer-card`}
+        className={`${ mainClass } map second-layer-card`}
         center={markerData ? markerData : center}
         zoom={13}
         zoomControl={false}

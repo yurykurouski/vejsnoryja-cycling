@@ -1,20 +1,19 @@
-.content__main-page{
+.content__main-page {
   width: 100%;
   height: calc(100% - 20px);
 }
 
-.main-page__heading{
+.main-page__heading {
   position: sticky;
   top: 0px;
   z-index: 1;
   margin-top: 5px;
   padding: 20px 0 30px 30px;
   border-radius: 5px 5px 1px 1px;
-
   background-color: #f8f8f8;
 }
 
-.main-page__events{
+.main-page__events {
   display: flex;
   flex-direction: column;
   gap: 30px;

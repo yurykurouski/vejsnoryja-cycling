@@ -1,10 +1,10 @@
-import React, { useCallback, useEffect } from "react";
-import ReactDom from "react-dom";
-import ClickAwayListener from "@material-ui/core/ClickAwayListener";
+import React, { useCallback, useEffect } from 'react';
+import ReactDom from 'react-dom';
+import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 
-import { ESCAPE_KEYCODE } from "../../../constants";
+import { ESCAPE_KEYCODE } from '../../../constants';
 
-import "./modal.css";
+import './modal.css';
 
 export default function Modal(
   {

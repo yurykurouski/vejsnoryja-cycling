@@ -1,5 +1,5 @@
-import ActionStatus from "../../constants/action-status";
 import * as types from './types';
+import ActionStatus from '../../constants/store/action-status';
 
 const initialState = {
   isAuthenticated: false,

@@ -1,5 +1,5 @@
-import HttpMethod from '../constants/http-method';
-import ContentType from '../constants/content-type';
+import HttpMethod from '../constants/http-requests/http-method';
+import ContentType from '../constants/http-requests/content-type';
 
 class RequestService {
   constructor() {

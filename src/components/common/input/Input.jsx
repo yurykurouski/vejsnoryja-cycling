@@ -1,5 +1,7 @@
 import React from 'react';
-import ValidationErrMsg from "../validation-err-msg/ValidationErrMsg";
+
+import ValidationErrMsg from '../validation-err-msg/ValidationErrMsg';
+
 import './input.css';
 
 export default function Input(props) {

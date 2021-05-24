@@ -1,5 +1,5 @@
-import Gear from "../constants/gear/gear-helper.js";
-import SettingsFields from "../constants/settings-fields.js";
+import Gear from '../constants/gear/gear-helper.js';
+import SettingsFields from '../constants/components-fields/settings-fields.js';
 
 export function makeInputTemplateFromState(filtered) {
   let res = [];

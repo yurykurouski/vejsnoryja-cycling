@@ -1,5 +1,5 @@
-import { createStore, applyMiddleware, compose } from 'redux';
 import { getDefaultMiddleware } from '@reduxjs/toolkit';
+import { createStore, applyMiddleware, compose } from 'redux';
 
 import reducers from './reducers';
 

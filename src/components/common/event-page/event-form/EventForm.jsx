@@ -1,15 +1,16 @@
 import React from 'react';
-import './event-form.css'
 
+import Distance from '../event-form-inputs/Distance';
+import EventDate from '../event-form-inputs/EventDate';
+import EventLevel from '../event-form-inputs/EventLevel';
 import EventTitle from '../event-form-inputs/EventTitle';
 import EventAdress from '../event-form-inputs/EventAdress';
 import EventTerrain from '../event-form-inputs/EventTerrain';
-import EventLevel from '../event-form-inputs/EventLevel';
 import EventDescription from '../event-form-inputs/EventDescription';
-import EventDate from '../event-form-inputs/EventDate';
-import Distance from '../event-form-inputs/Distance';
 
 import EventMap from '../../event-card/event-card-map/EventMap';
+
+import './event-form.css'
 
 export default function EventForm(props) {
   const {

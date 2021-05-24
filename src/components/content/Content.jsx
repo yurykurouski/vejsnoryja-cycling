@@ -1,16 +1,19 @@
 import React from 'react';
-import './content.css'
-import { Switch, Route } from 'react-router-dom';
-import MainPage from "./pages/main-page/MainPage";
-import EventPage from "../common/event-page/EventPage";
-import UserProfile from "./pages/user-profile/UserProfile";
-import RegistrationPage from "./pages/auth/registration/RegistrationPage";
-import LoginPage from "./pages/auth/login/LoginPage";
 import { connect } from 'react-redux';
-import { addEvent } from "../../store/events/actions";
-import SettingsPage from "./pages/settings-page/SettingsPage";
-import PrivateRoute from "./routes/PrivateRoute";
-import PublicRoute from "./routes/PublicRoute";
+import { Switch, Route } from 'react-router-dom';
+
+import PublicRoute from './routes/PublicRoute';
+import PrivateRoute from './routes/PrivateRoute';
+import MainPage from './pages/main-page/MainPage';
+import LoginPage from './pages/auth/login/LoginPage';
+import { addEvent } from '../../store/events/actions';
+import EventPage from '../common/event-page/EventPage';
+import UserProfile from './pages/user-profile/UserProfile';
+import SettingsPage from './pages/settings-page/SettingsPage';
+
+import RegistrationPage from './pages/auth/registration/RegistrationPage';
+
+import './content.css'
 
 function Content({ addEvent }) {
   return (

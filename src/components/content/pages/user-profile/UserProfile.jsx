@@ -1,18 +1,20 @@
-import { Switch, Route, Redirect, useRouteMatch } from 'react-router-dom';
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux';
-import './user-profile.css';
+import { Switch, Route, Redirect, useRouteMatch } from 'react-router-dom';
 
-import UserGear from "./gear/UserGear";
-import Tabs from "../../../common/tabs/Tabs";
-import EventPage from '../../../common/event-page/EventPage';
-import profileFields from '../../../../constants/profile-fields';
-import LastActivities from './last-activities/LastActivities';
-import { logoutUser } from '../../../../store/current-user/actions';
-import { getEventsByUser, updateEventById } from '../../../../store/events/actions';
-import { getUserActiveGear } from '../../../../store/gear/actions';
+import UserGear from './gear/UserGear';
+import Tabs from '../../../common/tabs/Tabs';
 import Loader from '../../../common/loader/Loader';
-import ActionStatus from '../../../../constants/action-status';
+import EventPage from '../../../common/event-page/EventPage';
+import LastActivities from './last-activities/LastActivities';
+import { getUserActiveGear } from '../../../../store/gear/actions';
+import { logoutUser } from '../../../../store/current-user/actions';
+import ActionStatus from '../../../../constants/store/action-status';
+import profileFields from '../../../../constants/components-fields/profile-fields';
+
+import { getEventsByUser, updateEventById } from '../../../../store/events/actions';
+
+import './user-profile.css';
 
 function UserProfile(props) {
   const { logoutUser, events, gear, eventsStatus, gearStatus, updateEventById, getUserActiveGear, getEventsByUser } = props;
