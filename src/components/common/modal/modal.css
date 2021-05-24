@@ -13,6 +13,7 @@
 
 .modal-window {
   background-color: var(--background-main-color);
+  border-radius: 5px;
   width: 30%;
   height: auto;
   padding: 5px;

@@ -43,7 +43,7 @@ export default function Modal(
 
   return ReactDom.createPortal(
     <ClickAwayListener onClickAway={handleCloseModal}>
-      <div className="modal-window first-layer-card">
+      <div className="modal-window">
         <h3 className="modal-window__heading">{heading}</h3>
 
         {Component}
