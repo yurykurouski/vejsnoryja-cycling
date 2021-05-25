@@ -10,7 +10,7 @@ export default function UserGear({ gear }) {
   return (
     <>
       <h3 className="user-profile__gear-subtitle user-profile-subtitle">Gear:</h3>
-      <div className="user-profile__gear-wrap first-layer-card">
+      <div className="user-profile__gear-wrap">
         {gearToRender.map((gear) => (
           Gear.UNUSEFUL_FIELDS.includes(gear[0])
             ? ""
