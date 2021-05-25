@@ -27,6 +27,7 @@
 }
 
 .profile-information-wrap {
+  display: flex;
   padding: 5px;
 }
 

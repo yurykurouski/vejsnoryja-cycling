@@ -3,7 +3,6 @@
   align-items: center;
   height: 2em;
   gap: 15px;
-
   font-family: "Roboto";
 }
 
@@ -35,7 +34,7 @@
   padding: 0 10px;
   border-radius: 1em;
   cursor: pointer;
-  width: 85%;
+  width: 80%;
 }
 
 .my-profile__field-value-empty {
@@ -43,7 +42,6 @@
   font-size: 16px;
 }
 
-.my-profile__field-value:hover,
-.my-profile__field-value:active {
+.my-profile__field-value:hover, .my-profile__field-value:active {
   background-color: var(--font-color-main_hover-bg);
 }

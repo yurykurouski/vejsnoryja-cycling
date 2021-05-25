@@ -6,10 +6,18 @@ class ProfileFields {
         name: 'Last activities'
       },
       {
-        to: `/profile/${ userId }/gear`,
-        name: 'Your gear'
+        to: `/profile/${ userId }/info`,
+        name: 'Information'
       }
     ]
+  }
+
+  INFORMATION_SUBTITLE_INFO() {
+    return 'Info'
+  }
+
+  INFORMATION_SUBTITLE_GEAR() {
+    return 'Gear'
   }
 }
 
