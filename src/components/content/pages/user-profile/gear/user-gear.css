@@ -1,0 +1,7 @@
+.user-profile__gear-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 50%;
+  padding: 5px;
+}

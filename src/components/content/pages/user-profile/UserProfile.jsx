@@ -62,11 +62,13 @@ function UserProfile(props) {
                   </Route>
 
                   <Route exact path="/profile/:userId/gear">
-                    <UserGear
-                      getUserActiveGear={getUserActiveGear}
-                      userId={userId}
-                      gear={gear}
-                    />
+                    <div className="profile-information-wrap first-layer-card">
+                      <UserGear
+                        getUserActiveGear={getUserActiveGear}
+                        userId={userId}
+                        gear={gear}
+                      />
+                    </div>
                   </Route>
                 </div>
               </div>

@@ -25,3 +25,24 @@
   margin: 0 5px;
   padding: 5px;
 }
+
+.profile-information-wrap {
+  padding: 5px;
+}
+
+.user-profile-subtitle {
+  margin-bottom: 5px;
+}
+
+.user-profile__field {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  height: 2em;
+  font-family: "Roboto";
+}
+
+.gear-field__key {
+  font-weight: 300;
+  width: 20%;
+}
