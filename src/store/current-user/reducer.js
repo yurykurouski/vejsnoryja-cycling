@@ -4,6 +4,7 @@ import ActionStatus from '../../constants/store/action-status';
 const initialState = {
   isAuthenticated: false,
   user: null,
+  userEmail: null,
   authErrors: null,
   status: ActionStatus.IDLE
 };
@@ -46,7 +47,8 @@ export default function currentUser(state = initialState, action) {
       return {
         ...state,
         isAuthenticated: true,
-        user: action.payload,
+        user: action.payload.userId,
+        userEmail: action.payload.userEmail,
         status: ActionStatus.SUCCEDED
       }
     }
