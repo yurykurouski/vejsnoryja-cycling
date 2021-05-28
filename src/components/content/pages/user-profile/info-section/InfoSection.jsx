@@ -15,8 +15,11 @@ export default function InfoSection({ info, title }) {
         Gear.UNUSEFUL_FIELDS.includes(field[0])
           ? ""
           : <div key={field[0]} className="user-profile__field-field user-profile__field">
-            <span className="my-profile__field-title ">{field[0][0].toUpperCase() + field[0].substring(1)}:</span>
-            <span className="field-field__value my-profile__field-value">{field[1]}</span>
+            <span className="my-profile__field-title">{field[0][0].toUpperCase() + field[0].substring(1)}:</span>
+            {field[1]
+              ? <span className="field-field__value  field-value_noselect my-profile__field-value">{field[1]}</span>
+              : <span className="field-field__value my-profile__field-value-empty field-value_noselect my-profile__field-value">empty</span>
+            }
           </div>
       ))}
     </div>

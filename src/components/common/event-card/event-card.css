@@ -4,7 +4,7 @@
   gap: 20px;
 }
 
-.event-card__aside{
+.event-card__aside {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -45,9 +45,7 @@
   margin-left: auto;
   width: 150px;
   height: 150px;
-  transition: width .3s .3s ease-in,
-    height .2s .3s ease-in;
-
+  transition: width .3s .3s ease-in, height .2s .3s ease-in;
 }
 
 .event__map .leaflet-control-attribution {
@@ -57,6 +55,5 @@
 .event__map:hover {
   width: 30%;
   height: 200px;
-  transition: width .3s ease-out,
-    height .2s ease-out;
+  transition: width .3s ease-out, height .2s ease-out;
 }

@@ -5,3 +5,11 @@
   width: 50%;
   padding: 5px;
 }
+
+.field-value_noselect {
+  cursor: default !important;
+}
+
+.field-value_noselect:hover {
+  background-color: transparent !important;
+}

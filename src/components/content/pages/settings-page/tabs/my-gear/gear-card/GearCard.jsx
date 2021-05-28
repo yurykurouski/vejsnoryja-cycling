@@ -14,8 +14,8 @@ export default function GearCard({ handleModalCardOpen }) {
           ? ''
           :
           <div key={gear[0]} className="modal__gear-field">
-            <span className="gear-field__key">{gear[0][0].toUpperCase() + gear[0].substring(1)}:</span>
-            <span className="gear-field__value">{gear[1]}</span>
+            <span className="my-profile__field-title">{gear[0][0].toUpperCase() + gear[0].substring(1)}:</span>
+            <span className="field-field__value field-value_noselect my-profile__field-value">{gear[1]}</span>
           </div>
       ))}
 
