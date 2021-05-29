@@ -37,6 +37,20 @@ class AuthService {
       throw new Error(err);
     }
   }
+
+  async changeEmail(data) {
+    try {
+      const response = await requestService.patchSecured(process.env.REACT_APP_API_CHANGE_USER_EMAIL_SETTINGS_URL, data);
+
+      if (response.message) {
+        throw new Error(response.message);
+      }
+
+      return response;
+    } catch (err) {
+      throw new Error(err);
+    }
+  }
 }
 
 const authService = new AuthService();

@@ -1,14 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import ProfileField from './profile-field/ProfileField';
 
 import './my-profile.css';
 import UserAvatar from "../../../../../common/user-avatar/UserAvatar";
 
 export default function MyProfile({ getUserInfo, updateUserInfo, userId, userInfo }) {
-  useEffect(() => {
-    getUserInfo(userId);
-  }, [getUserInfo, userId]);
-
   const [editedFields, handleClick] = useState([]);
 
   return (

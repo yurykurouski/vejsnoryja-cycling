@@ -1,9 +1,16 @@
 import React from 'react';
+import EmailChangeForm from './email-change/EmailChangeForm';
 
-export default function MyAccount() {
+import './my-account.css'
+
+export default function MyAccount({ changeUserEmail, userEmail, authErrors }) {
   return (
-    <div>
-      My Account
+    <div className="settings__my-account first-layer-card_hovered">
+      <EmailChangeForm
+        submitForm={changeUserEmail}
+        userEmail={userEmail}
+        authErrors={authErrors}
+      />
     </div>
   )
 }

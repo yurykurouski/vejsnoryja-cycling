@@ -62,6 +62,23 @@ export default function currentUser(state = initialState, action) {
       }
     }
 
+    case types.CHANGE_USER_EMAIL_SUCESS: {
+      return {
+        ...state,
+        userEmail: action.payload,
+        authErrors: null,
+        status: ActionStatus.SUCCEDED
+      };
+    }
+
+    case types.CHANGE_USER_EMAIL_FAILURE: {
+      return {
+        ...state,
+        authErrors: action.error.message,
+        status: ActionStatus.FAILED
+      };
+    }
+
     case types.LOGOUT_USER: {
       localStorage.removeItem('token');
       return {
@@ -71,7 +88,7 @@ export default function currentUser(state = initialState, action) {
         status: ActionStatus.SUCCEDED
       };
     }
-
+    case types.CHANGE_USER_EMAIL_REQUEST:
     case types.REGISTER_USER_REQUEST:
     case types.LOGIN_USER.REQUEST:
     case types.AUTH_USER_REQUEST: {

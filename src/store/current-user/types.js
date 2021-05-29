@@ -13,4 +13,9 @@ export const AUTH_USER_REQUEST = 'AUTH_USER/pending';
 export const AUTH_USER_SUCESS = 'AUTH_USER/fulfilled';
 export const AUTH_USER_FAILURE = 'AUTH_USER/rejected';
 
+export const CHANGE_USER_EMAIL = 'CHANGE_USER_EMAIL';
+export const CHANGE_USER_EMAIL_REQUEST = 'CHANGE_USER_EMAIL/pending';
+export const CHANGE_USER_EMAIL_SUCESS = 'CHANGE_USER_EMAIL/fulfilled';
+export const CHANGE_USER_EMAIL_FAILURE = 'CHANGE_USER_EMAIL/rejected';
+
 export const LOGOUT_USER = 'LOGOUT_USER';

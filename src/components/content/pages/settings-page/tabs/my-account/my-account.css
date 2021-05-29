@@ -1,0 +1,10 @@
+.settings__my-account {
+  padding: 5px;
+}
+
+.my-account__form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 5px;
+}
