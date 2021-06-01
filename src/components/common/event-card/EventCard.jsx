@@ -9,7 +9,7 @@ import EventCardDate from './event-card-date/EventCardDate';
 import './event-card.css';
 
 export default function EventCard(props) {
-  const { btnTitle, btnIcon, onClick } = props;
+  const { btnTitle, btnIcon, onClick, deleteEvent } = props;
   const { date, title, level, distance, markerData, adress } = props.event;
 
   return (
@@ -17,6 +17,13 @@ export default function EventCard(props) {
 
       <div className="event-card__aside">
         <EventCardDate customClass="event-card__date_date" date={date} />
+
+        {deleteEvent && <IconButton
+          onClick={deleteEvent}
+          btnTitle='Delete this event'
+          btnIcon='delete'
+          color='red'
+        />}
 
         <IconButton
           onClick={onClick}

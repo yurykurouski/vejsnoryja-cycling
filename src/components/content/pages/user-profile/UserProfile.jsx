@@ -12,7 +12,7 @@ import { getUserActiveGear } from '../../../../store/gear/actions';
 import { logoutUser } from '../../../../store/current-user/actions';
 import ActionStatus from '../../../../constants/store/action-status';
 import profileFields from '../../../../constants/components-fields/profile-fields';
-import { getEventsByUser, updateEventById } from '../../../../store/events/actions';
+import { deleteEventById, getEventsByUser, updateEventById } from '../../../../store/events/actions';
 
 import './user-profile.css';
 
@@ -27,7 +27,8 @@ function UserProfile(props) {
     getEventsByUser,
     getUserInfo,
     userInfo,
-    currentUserId
+    currentUserId,
+    deleteEventById
   } = props;
 
   const eventID = useRouteMatch('/profile/edit-event/:eventID')?.params.eventID;
@@ -77,6 +78,7 @@ function UserProfile(props) {
                   <Route exact path="/profile/:userId/last-activities">
                     <LastActivities
                       getEventsByUser={getEventsByUser}
+                      deleteEventById={deleteEventById}
                       userId={userId}
                       events={events}
                     />
@@ -121,7 +123,8 @@ function mapDispatchToProps(dispatch) {
     getEventsByUser: (id) => dispatch(getEventsByUser(id)),
     updateEventById: (data) => dispatch(updateEventById(data)),
     getUserActiveGear: (id) => dispatch(getUserActiveGear(id)),
-    getUserInfo: (id) => dispatch(getUserInfo(id))
+    getUserInfo: (id) => dispatch(getUserInfo(id)),
+    deleteEventById: (id) => dispatch(deleteEventById(id))
   }
 }
 

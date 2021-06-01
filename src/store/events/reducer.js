@@ -46,6 +46,16 @@ export default function events(state = initialState, action) {
       }
     }
 
+    case types.DELETE_EVENT_BY_ID_SUCESS: {
+      const filteredEvents = state.events.filter(event => event._id !== action.payload._id);
+      return {
+        ...state,
+        events: filteredEvents,
+        status: ActionStatus.SUCCEDED
+      };
+    }
+
+    case types.DELETE_EVENT_BY_ID_REQUEST:
     case types.UPDATE_EVENT_BY_ID_REQUEST:
     case types.GET_ALL_EVENTS_REQUEST:
     case types.GET_EVENTS_BY_USER_REQUEST:

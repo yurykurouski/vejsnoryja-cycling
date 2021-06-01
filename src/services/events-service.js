@@ -31,9 +31,19 @@ class EventsService {
     }
   }
 
-  async updateEventById(data) {
+  async updateEventById(id) {
     try {
-      const response = await requestService.putSecured(process.env.REACT_APP_API_UPDATE_EVENT_BY_ID, data);
+      const response = await requestService.putSecured(process.env.REACT_APP_API_UPDATE_EVENT_BY_ID, id);
+
+      return response;
+    } catch (err) {
+      throw new Error(err);
+    }
+  }
+
+  async deleteEventById(id) {
+    try {
+      const response = await requestService.deleteSecured(`${ process.env.REACT_APP_API_DELETE_EVENT_BY_ID }${ id }`);
 
       return response;
     } catch (err) {

@@ -17,3 +17,8 @@ export const UPDATE_EVENT_BY_ID = 'UPDATE_EVENT_BY_ID'
 export const UPDATE_EVENT_BY_ID_REQUEST = 'UPDATE_EVENT_BY_ID/pending';
 export const UPDATE_EVENT_BY_ID_SUCESS = 'UPDATE_EVENT_BY_ID/fulfilled';
 export const UPDATE_EVENT_BY_ID_FAILURE = 'UPDATE_EVENT_BY_ID/rejected';
+
+export const DELETE_EVENT_BY_ID = 'DELETE_EVENT_BY_ID'
+export const DELETE_EVENT_BY_ID_REQUEST = 'DELETE_EVENT_BY_ID/pending';
+export const DELETE_EVENT_BY_ID_SUCESS = 'DELETE_EVENT_BY_ID/fulfilled';
+export const DELETE_EVENT_BY_ID_FAILURE = 'DELETE_EVENT_BY_ID/rejected';
