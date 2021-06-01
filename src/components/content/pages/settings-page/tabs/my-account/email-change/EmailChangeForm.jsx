@@ -16,8 +16,10 @@ export default function EmailChangeForm({ submitForm, userEmail, authErrors }) {
       .required('Password can not be empty.'),
   });
 
-  const submitEmailChange = async (data) => {
+  const submitEmailChange = async (data, actions) => {
     await submitForm(data);
+
+    actions.resetForm();
   }
 
   return (
@@ -54,8 +56,8 @@ export default function EmailChangeForm({ submitForm, userEmail, authErrors }) {
             onChange={handleChange}
           />
 
-          {(errors.password && touched.password) || authErrors ? (
-            <ValidationErrMsg errorMsg={errors.password || authErrors} />
+          {(errors.password && touched.password) || authErrors.email ? (
+            <ValidationErrMsg errorMsg={errors.password || authErrors.email} />
           ) : null}
 
           <button type="submit" className="my-account__submit-email-change submit-btn">Update</button>

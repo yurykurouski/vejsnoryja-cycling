@@ -5,7 +5,10 @@ const initialState = {
   isAuthenticated: false,
   user: null,
   userEmail: null,
-  authErrors: null,
+  authErrors: {
+    email: '',
+    password: ''
+  },
   status: ActionStatus.IDLE
 };
 
@@ -14,7 +17,7 @@ export default function currentUser(state = initialState, action) {
     case types.REGISTER_USER_SUCESS: {
       return {
         ...state,
-        authErrors: null,
+        authErrors: { password: null, email: null },
         status: ActionStatus.SUCCEDED
       }
     }
@@ -30,7 +33,7 @@ export default function currentUser(state = initialState, action) {
     case types.LOGIN_USER_SUCESS: {
       return {
         ...state,
-        authErrors: null,
+        authErrors: { password: null, email: null },
         status: ActionStatus.SUCCEDED
       }
     }
@@ -49,6 +52,7 @@ export default function currentUser(state = initialState, action) {
         isAuthenticated: true,
         user: action.payload.userId,
         userEmail: action.payload.userEmail,
+        authErrors: { password: null, email: null },
         status: ActionStatus.SUCCEDED
       }
     }
@@ -66,7 +70,7 @@ export default function currentUser(state = initialState, action) {
       return {
         ...state,
         userEmail: action.payload,
-        authErrors: null,
+        authErrors: { password: null, email: null },
         status: ActionStatus.SUCCEDED
       };
     }
@@ -74,7 +78,7 @@ export default function currentUser(state = initialState, action) {
     case types.CHANGE_USER_EMAIL_FAILURE: {
       return {
         ...state,
-        authErrors: action.error.message,
+        authErrors: { ...state.authErrors, email: action.error.message },
         status: ActionStatus.FAILED
       };
     }
@@ -82,6 +86,7 @@ export default function currentUser(state = initialState, action) {
     case types.CHANGE_USER_PASSWORD_SUCESS: {
       return {
         ...state,
+        authErrors: { password: null, email: null },
         status: ActionStatus.SUCCEDED
       };
     }
@@ -89,6 +94,7 @@ export default function currentUser(state = initialState, action) {
     case types.CHANGE_USER_PASSWORD_FAILURE: {
       return {
         ...state,
+        authErrors: { ...state.authErrors, password: action.error.message },
         status: ActionStatus.SUCCEDED
       };
     }

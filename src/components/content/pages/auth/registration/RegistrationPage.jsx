@@ -62,8 +62,8 @@ function RegistrationPage(props) {
               />
             </label>
 
-            {(errors.email && touched.email) || authErrors ? (
-              <ValidationErrMsg errorMsg={errors.email || authErrors} />
+            {(errors.email && touched.email) || authErrors.email ? (
+              <ValidationErrMsg errorMsg={errors.email || authErrors.email} />
             ) : null}
 
             <label className="input__label">
@@ -96,8 +96,8 @@ function RegistrationPage(props) {
               />
             </label>
 
-            {errors.repeatPass && touched.repeatPass ? (
-              <ValidationErrMsg errorMsg={errors.repeatPass} />
+            {(errors.repeatPass && touched.repeatPass) || authErrors.password ? (
+              <ValidationErrMsg errorMsg={errors.repeatPass || authErrors.password} />
             ) : null}
 
             <section className="registration-page__controls form__controls">

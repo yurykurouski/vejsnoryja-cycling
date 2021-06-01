@@ -56,8 +56,8 @@ function LoginPage(props) {
               />
             </label>
 
-            {(errors.email && touched.email) || authErrors ? (
-              <ValidationErrMsg errorMsg={errors.email || authErrors} />
+            {(errors.email && touched.email) || authErrors.email ? (
+              <ValidationErrMsg errorMsg={errors.email || authErrors.email} />
             ) : null}
 
             <label className="input__label">
