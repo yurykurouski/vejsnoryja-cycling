@@ -21,15 +21,16 @@ export default function PasswordChangeForm({ submitForm, authErrors }) {
       .oneOf([Yup.ref('newPassword'), null], 'Passwords does not match.')
   });
 
-  const submitEmailChange = async (data) => {
+  const submitPasswordChange = async (data, actions) => {
     await submitForm(data);
-    console.log(data)
+
+    actions.resetForm();
   }
 
   return (
     <Formik
       initialValues={{ password: '', newPassword: '', repeatPass: '' }}
-      onSubmit={submitEmailChange}
+      onSubmit={submitPasswordChange}
       validationSchema={validationSchema}
     >
       {({ handleSubmit, handleChange, values, errors, touched }) => (
@@ -43,12 +44,12 @@ export default function PasswordChangeForm({ submitForm, authErrors }) {
             title='Change Password'
             customInputClass="my-account__input"
             placeholder='Current password'
-            value={values.email}
+            value={values.password}
             onChange={handleChange}
           />
 
-          {(errors.password && touched.password) ? (
-            <ValidationErrMsg errorMsg={errors.password} />
+          {(errors.password && touched.password) || authErrors.password ? (
+            <ValidationErrMsg errorMsg={errors.password || authErrors.password} />
           ) : null}
 
           <Input
@@ -60,8 +61,8 @@ export default function PasswordChangeForm({ submitForm, authErrors }) {
             onChange={handleChange}
           />
 
-          {(errors.newPassword && touched.newPassword) || authErrors ? (
-            <ValidationErrMsg errorMsg={errors.newPassword || authErrors} />
+          {(errors.newPassword && touched.newPassword) ? (
+            <ValidationErrMsg errorMsg={errors.newPassword} />
           ) : null}
 
           <Input
