@@ -25,7 +25,7 @@ export default function currentUser(state = initialState, action) {
     case types.REGISTER_USER_FAILURE: {
       return {
         ...state,
-        authErrors: action.error.message,
+        authErrors: { ...state.authErrors, email: action.error.message },
         status: ActionStatus.FAILED
       }
     }
@@ -41,7 +41,7 @@ export default function currentUser(state = initialState, action) {
     case types.LOGIN_USER_FAILURE: {
       return {
         ...state,
-        authErrors: action.error.message,
+        authErrors: { ...state.authErrors, password: action.error.message },
         status: ActionStatus.FAILED
       }
     }

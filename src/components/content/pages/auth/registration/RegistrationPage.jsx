@@ -96,8 +96,8 @@ function RegistrationPage(props) {
               />
             </label>
 
-            {(errors.repeatPass && touched.repeatPass) || authErrors.password ? (
-              <ValidationErrMsg errorMsg={errors.repeatPass || authErrors.password} />
+            {(errors.repeatPass && touched.repeatPass) ? (
+              <ValidationErrMsg errorMsg={errors.repeatPass} />
             ) : null}
 
             <section className="registration-page__controls form__controls">
