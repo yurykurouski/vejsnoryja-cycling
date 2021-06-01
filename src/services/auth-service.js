@@ -51,6 +51,18 @@ class AuthService {
       throw new Error(err);
     }
   }
+  // TODO нужно будет обьединить методы
+  async changePassword(data) {
+    try {
+      const response = await requestService.patchSecured(process.env.REACT_APP_API_CHANGE_USER_PASSWORD_SETTINGS_URL, data);
+
+      if (response.message) {
+        throw new Error(response.message);
+      }
+    } catch (err) {
+      throw new Error(err);
+    }
+  }
 }
 
 const authService = new AuthService();

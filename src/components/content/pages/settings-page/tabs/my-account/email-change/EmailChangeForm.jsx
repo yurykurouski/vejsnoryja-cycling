@@ -1,7 +1,8 @@
 import React from 'react';
-import Input from '../../../../../../common/input/Input';
 import * as Yup from 'yup';
 import { Formik } from 'formik';
+
+import Input from '../../../../../../common/input/Input';
 import ValidationErrMsg from '../../../../../../common/validation-err-msg/ValidationErrMsg';
 
 export default function EmailChangeForm({ submitForm, userEmail, authErrors }) {

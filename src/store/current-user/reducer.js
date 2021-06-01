@@ -79,6 +79,20 @@ export default function currentUser(state = initialState, action) {
       };
     }
 
+    case types.CHANGE_USER_PASSWORD_SUCESS: {
+      return {
+        ...state,
+        status: ActionStatus.SUCCEDED
+      };
+    }
+
+    case types.CHANGE_USER_PASSWORD_FAILURE: {
+      return {
+        ...state,
+        status: ActionStatus.SUCCEDED
+      };
+    }
+
     case types.LOGOUT_USER: {
       localStorage.removeItem('token');
       return {
@@ -88,6 +102,8 @@ export default function currentUser(state = initialState, action) {
         status: ActionStatus.SUCCEDED
       };
     }
+
+    case types.CHANGE_USER_PASSWORD_REQUEST:
     case types.CHANGE_USER_EMAIL_REQUEST:
     case types.REGISTER_USER_REQUEST:
     case types.LOGIN_USER.REQUEST:

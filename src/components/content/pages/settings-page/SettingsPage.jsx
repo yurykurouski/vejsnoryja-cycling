@@ -9,8 +9,8 @@ import MyProfile from './tabs/my-profile/MyProfile';
 import MyAccount from './tabs/my-account/MyAccount';
 import ActionStatus from '../../../../constants/store/action-status';
 import { getUserInfo, updateUserInfo } from '../../../../store/user-info/actions';
-import { changeUserEmail } from '../../../../store/current-user/actions';
 import SettingsFields from '../../../../constants/components-fields/settings-fields';
+import { changeUserEmail, changeUserPassword } from '../../../../store/current-user/actions';
 import { addNewGear, getUserGear, deleteUserGear, editUserGear } from '../../../../store/gear/actions';
 
 import './settings-page.css';
@@ -28,6 +28,7 @@ function SettingsPage(props) {
     gearStatus,
     infoStatus,
     changeUserEmail,
+    changeUserPassword,
     userEmail,
     authErrors,
     userStatus
@@ -73,6 +74,7 @@ function SettingsPage(props) {
           <Route path="/settings/my-account">
             <MyAccount
               changeUserEmail={changeUserEmail}
+              changeUserPassword={changeUserPassword}
               userEmail={userEmail}
               authErrors={authErrors}
             />
@@ -107,7 +109,8 @@ function mapDispatchToProps(dispatch) {
     getUserGear: () => dispatch(getUserGear()),
     deleteUserGear: (id) => dispatch(deleteUserGear(id)),
     editUserGear: (data) => dispatch(editUserGear(data)),
-    changeUserEmail: (data) => dispatch(changeUserEmail(data))
+    changeUserEmail: (data) => dispatch(changeUserEmail(data)),
+    changeUserPassword: (data) => dispatch(changeUserPassword(data))
   }
 }
 
