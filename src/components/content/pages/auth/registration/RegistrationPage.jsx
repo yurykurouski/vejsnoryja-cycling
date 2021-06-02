@@ -6,14 +6,14 @@ import { connect } from 'react-redux';
 
 import Loader from '../../../../common/loader/Loader';
 import ActionStatus from '../../../../../constants/store/action-status';
-import { registerUser } from '../../../../../store/current-user/actions';
+import { registerUser, authUser } from '../../../../../store/current-user/actions';
 import { MIN_PASSWORD_LENGTH, PASSWORD_REGEX } from '../../../../../constants/';
 import ValidationErrMsg from '../../../../common/validation-err-msg/ValidationErrMsg';
 
 import '../auth-pages.css';
 
 function RegistrationPage(props) {
-  const { registerUser, authErrors, status } = props;
+  const { registerUser, authErrors, status, authUser } = props;
 
   const validationSchema = Yup.object().shape({
     email: Yup
@@ -28,10 +28,12 @@ function RegistrationPage(props) {
     repeatPass: Yup
       .string()
       .oneOf([Yup.ref('password'), null], 'Passwords does not match.')
+      .required('Confirm your password.')
   });
 
   const submitForm = async (values) => {
     await registerUser(values);
+    authUser();
   }
 
   return (
@@ -122,7 +124,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    registerUser: (data) => dispatch(registerUser(data))
+    registerUser: (data) => dispatch(registerUser(data)),
+    authUser: () => dispatch(authUser()),
   }
 }
 

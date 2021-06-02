@@ -59,7 +59,6 @@ export default function gear(state = initialState, action) {
     }
 
     case types.EDIT_USER_GEAR_SUCESS: {
-      console.log(action.payload)
       const updatedGear = state.gear.map(bike => {
         if (bike._id === action.payload._id) return action.payload;
         return bike;

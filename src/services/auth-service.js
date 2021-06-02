@@ -7,6 +7,8 @@ class AuthService {
 
       if (response.message) {
         throw new Error(response.message);
+      } else if (response.token) {
+        localStorage.setItem('token', response.token);
       }
     } catch (err) {
       throw new Error(err);
@@ -15,13 +17,13 @@ class AuthService {
 
   async userLogin(data) {
     try {
-      const result = await requestService.post(process.env.REACT_APP_LOGIN_URL, data);
+      const response = await requestService.post(process.env.REACT_APP_LOGIN_URL, data);
 
-      if (result.token) {
-        localStorage.setItem('token', result.token);
+      if (response.token) {
+        localStorage.setItem('token', response.token);
 
-      } else if (result) {
-        throw new Error(result.message);
+      } else if (response) {
+        throw new Error(response.message);
       }
     } catch (err) {
       throw new Error(err);
@@ -31,7 +33,6 @@ class AuthService {
   async userAuth() {
     try {
       const result = await requestService.getSecured(process.env.REACT_APP_AUTH_URL);
-
       return result;
     } catch (err) {
       throw new Error(err);
