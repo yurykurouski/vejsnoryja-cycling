@@ -50,6 +50,16 @@ class EventsService {
       throw new Error(err);
     }
   }
+
+  async userInEvent(data) {
+    try {
+      const response = await requestService.patchSecured(process.env.REACT_APP_API_EVENT_USER_IN, data);
+
+      return response;
+    } catch (err) {
+      throw new Error(err);
+    }
+  }
 }
 
 const eventService = new EventsService();

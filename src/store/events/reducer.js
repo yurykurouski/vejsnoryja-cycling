@@ -55,6 +55,20 @@ export default function events(state = initialState, action) {
       };
     }
 
+    case types.EVENT_USER_IN_SUCESS: {
+      const updatedEvents = state.events.map((event) => {
+        if (event._id === action.payload._id) return action.payload;
+        return event;
+      });
+
+      return {
+        ...state,
+        events: updatedEvents,
+        status: ActionStatus.SUCCEDED
+      };
+    }
+
+    case types.EVENT_USER_IN_REQUEST:
     case types.DELETE_EVENT_BY_ID_REQUEST:
     case types.UPDATE_EVENT_BY_ID_REQUEST:
     case types.GET_ALL_EVENTS_REQUEST:

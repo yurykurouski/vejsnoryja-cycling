@@ -22,3 +22,8 @@ export const DELETE_EVENT_BY_ID = 'DELETE_EVENT_BY_ID'
 export const DELETE_EVENT_BY_ID_REQUEST = 'DELETE_EVENT_BY_ID/pending';
 export const DELETE_EVENT_BY_ID_SUCESS = 'DELETE_EVENT_BY_ID/fulfilled';
 export const DELETE_EVENT_BY_ID_FAILURE = 'DELETE_EVENT_BY_ID/rejected';
+
+export const EVENT_USER_IN = 'EVENT_USER_IN'
+export const EVENT_USER_IN_REQUEST = 'EVENT_USER_IN/pending';
+export const EVENT_USER_IN_SUCESS = 'EVENT_USER_IN/fulfilled';
+export const EVENT_USER_IN_FAILURE = 'EVENT_USER_IN/rejected';
