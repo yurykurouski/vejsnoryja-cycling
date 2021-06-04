@@ -8,7 +8,7 @@ import Loader from '../../../common/loader/Loader';
 import MyProfile from './tabs/my-profile/MyProfile';
 import MyAccount from './tabs/my-account/MyAccount';
 import ActionStatus from '../../../../constants/store/action-status';
-import { getUserInfo, updateUserInfo } from '../../../../store/user-info/actions';
+import { updateUserInfo } from '../../../../store/user-info/actions';
 import SettingsFields from '../../../../constants/components-fields/settings-fields';
 import { changeUserEmail, changeUserPassword } from '../../../../store/current-user/actions';
 import { addNewGear, getUserGear, deleteUserGear, editUserGear } from '../../../../store/gear/actions';
@@ -17,7 +17,6 @@ import './settings-page.css';
 
 function SettingsPage(props) {
   const { userId,
-    getUserInfo,
     updateUserInfo,
     addNewGear,
     userInfo,
@@ -36,8 +35,7 @@ function SettingsPage(props) {
 
   useEffect(() => {
     getUserGear();
-    getUserInfo(userId);
-  }, [getUserGear, getUserInfo, userId]);
+  }, [getUserGear]);
 
   return (
     <div className="content__settings first-layer-card">
@@ -54,7 +52,6 @@ function SettingsPage(props) {
 
           <Route path="/settings/my-profile">
             <MyProfile
-              getUserInfo={getUserInfo}
               userId={userId}
               userInfo={userInfo}
               updateUserInfo={updateUserInfo}
@@ -103,7 +100,6 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    getUserInfo: (id) => dispatch(getUserInfo(id)),
     updateUserInfo: (field) => dispatch(updateUserInfo(field)),
     addNewGear: (data) => dispatch(addNewGear(data)),
     getUserGear: () => dispatch(getUserGear()),

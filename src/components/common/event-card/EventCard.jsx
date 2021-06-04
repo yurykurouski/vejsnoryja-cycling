@@ -1,7 +1,8 @@
 import React from 'react';
 import Moment from 'react-moment';
-import Icon from '@material-ui/core/Icon';
+import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom';
+import Icon from '@material-ui/core/Icon';
 
 import EventMap from './event-card-map/EventMap';
 import IconButton from '../icon-button/IconButton';
@@ -13,12 +14,14 @@ import UserAvatar from '../user-avatar/UserAvatar';
 export default function EventCard(props) {
   const { btnTitle, btnIcon, onClick, deleteEvent } = props;
   const { date, title, level, distance, markerData, adress, whosIn } = props.event;
+  const isAuthenticated = useSelector((state) => state.currentUser.isAuthenticated)
 
   return (
     <li className="main-page__event first-layer-card_hovered">
 
       <div className="event-card__aside">
         <EventCardDate customClass="event-card__date_date" date={date} />
+
 
         {deleteEvent && <IconButton
           onClick={deleteEvent}
@@ -27,11 +30,14 @@ export default function EventCard(props) {
           color='red'
         />}
 
-        <IconButton
-          onClick={onClick}
-          btnTitle={btnTitle}
-          btnIcon={btnIcon}
-        />
+        {isAuthenticated &&
+          <IconButton
+            onClick={onClick}
+            btnTitle={btnTitle}
+            btnIcon={btnIcon}
+          />
+        }
+
       </div>
 
       <div className="event-card__main">

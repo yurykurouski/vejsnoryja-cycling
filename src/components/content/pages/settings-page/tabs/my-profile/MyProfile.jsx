@@ -4,7 +4,7 @@ import ProfileField from './profile-field/ProfileField';
 import './my-profile.css';
 import UserAvatar from "../../../../../common/user-avatar/UserAvatar";
 
-export default function MyProfile({ getUserInfo, updateUserInfo, userId, userInfo }) {
+export default function MyProfile({ updateUserInfo, userInfo }) {
   const [editedFields, handleClick] = useState([]);
 
   return (

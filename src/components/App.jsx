@@ -8,15 +8,21 @@ import AddButton from './common/add-button/AddButton';
 import { authUser } from '../store/current-user/actions';
 
 import './app.css';
+import { getUserInfo } from '../store/user-info/actions';
 
-function App({ isAuthenticated, authUser }) {
+function App(props) {
+  const isAuthenticated = props.currentUser.isAuthenticated;
+  const userId = props.currentUser.userId;
+  const { authUser, getUserInfo } = props;
+
   const token = localStorage.getItem('token');
 
   useEffect(() => {
     if (!isAuthenticated && token) {
       authUser();
+      getUserInfo(userId)
     }
-  }, [isAuthenticated, token, authUser]);
+  }, [isAuthenticated, authUser, token, getUserInfo, userId]);
 
   return (
     <div className='app'>
@@ -32,13 +38,14 @@ function App({ isAuthenticated, authUser }) {
 
 function mapStateToProps(state) {
   return {
-    isAuthenticated: state.currentUser.isAuthenticated,
+    currentUser: state.currentUser,
   }
 }
 
 function mapDispatchToProps(dispatch) {
   return {
     authUser: () => dispatch(authUser()),
+    getUserInfo: (id) => dispatch(getUserInfo(id))
   }
 }
 
