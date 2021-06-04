@@ -2,7 +2,7 @@ import React from 'react'
 import * as Yup from 'yup';
 import { Formik } from 'formik';
 import { connect } from 'react-redux';
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
 import Loader from '../../../../common/loader/Loader';
 import ActionStatus from '../../../../../constants/store/action-status';
@@ -80,7 +80,7 @@ function LoginPage(props) {
             <section className="login-page__controls form__controls">
               <button type="submit" className="login-page__submit submit-btn">Sign in</button>
               or
-              <Link to='sign-up' className="login-page__cancel cancel-btn">Create account</Link>
+              <Link to='/sign-up' className="login-page__cancel cancel-btn">Create account</Link>
             </section>
           </form>
         )}

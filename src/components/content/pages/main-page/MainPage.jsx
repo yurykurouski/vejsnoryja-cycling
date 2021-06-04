@@ -3,12 +3,12 @@ import { connect } from 'react-redux';
 
 import Loader from '../../../common/loader/Loader'
 import EventCard from '../../../common/event-card/EventCard';
-import { getAllEvents, userInEvent } from '../../../../store/events/actions';
 import ActionStatus from '../../../../constants/store/action-status';
+import { getAllEvents, userInOutEvent } from '../../../../store/events/actions';
 
 import './main-page.css';
 
-function MainPage({ events, status, getAllEvents, userInEvent, userName, userId }) {
+function MainPage({ events, status, getAllEvents, userInOutEvent, userName, userId }) {
   useEffect(() => {
     getAllEvents();
   }, [getAllEvents]);
@@ -20,27 +20,17 @@ function MainPage({ events, status, getAllEvents, userInEvent, userName, userId 
 
       <ul className="main-page__events">
         {events.map((event) => {
-          if (event.whosIn.find(user => user.userId === userId)) {
-            return (
-              <EventCard
-                event={event}
-                key={event._id}
-                onClick={() => console.log('out')}
-                btnTitle="I'm Out"
-                btnIcon="remove_done"
-              />
-            )
-          } else {
-            return (
-              <EventCard
-                event={event}
-                key={event._id}
-                onClick={() => userInEvent({ eventId: event._id, userName })}
-                btnTitle="I'm In"
-                btnIcon="done_outline"
-              />
-            )
-          }
+          const match = event.whosIn.find(user => user.userId === userId);
+
+          return (
+            <EventCard
+              event={event}
+              key={event._id}
+              onClick={() => userInOutEvent({ eventId: event._id, userName })}
+              btnTitle={match ? "I'm Out" : "I'm In"}
+              btnIcon={match ? "remove_done" : "done_outline"}
+            />
+          )
         })}
       </ul>
 
@@ -62,7 +52,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     getAllEvents: () => dispatch(getAllEvents()),
-    userInEvent: (data) => dispatch(userInEvent(data))
+    userInOutEvent: (data) => dispatch(userInOutEvent(data))
   }
 }
 

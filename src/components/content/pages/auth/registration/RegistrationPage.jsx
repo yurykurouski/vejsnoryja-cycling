@@ -105,7 +105,7 @@ function RegistrationPage(props) {
             <section className="registration-page__controls form__controls">
               <button type="submit" className="registration-page__submit submit-btn">Create account</button>
               or
-              <Link to='sign-in' className="registration-page__cancel cancel-btn">Sign in</Link>
+              <Link to='/sign-in' className="registration-page__cancel cancel-btn">Sign in</Link>
             </section>
           </form>
         )}

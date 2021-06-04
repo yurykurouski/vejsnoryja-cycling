@@ -51,9 +51,9 @@ class EventsService {
     }
   }
 
-  async userInEvent(data) {
+  async userInOutEvent(data) {
     try {
-      const response = await requestService.patchSecured(process.env.REACT_APP_API_EVENT_USER_IN, data);
+      const response = await requestService.patchSecured(process.env.REACT_APP_API_EVENT_USER_IN_OUT, data);
 
       return response;
     } catch (err) {

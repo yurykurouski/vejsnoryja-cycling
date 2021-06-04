@@ -41,6 +41,35 @@
   font-weight: 400;
 }
 
+.event-card__main__whos-in {
+  display: flex;
+  gap: 5px;
+  height: 34px;
+  margin-top: auto;
+}
+
+.whos-in__avatar-wrap {
+  width: 34px;
+  border-radius: 50%;
+  transition: background-color .2s ease-out;
+  animation: .1s ease-out flyIn;
+}
+
+@keyframes flyIn {
+  from {
+    opacity: .5;
+    transform: translateX(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.whos-in__avatar-wrap:hover {
+  background-color: var(--font-color-main_hover-bg);
+}
+
 .event__map {
   margin-left: auto;
   width: 150px;

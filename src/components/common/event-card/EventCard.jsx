@@ -1,16 +1,18 @@
 import React from 'react';
 import Moment from 'react-moment';
 import Icon from '@material-ui/core/Icon';
+import { Link } from 'react-router-dom';
 
 import EventMap from './event-card-map/EventMap';
 import IconButton from '../icon-button/IconButton';
 import EventCardDate from './event-card-date/EventCardDate';
 
 import './event-card.css';
+import UserAvatar from '../user-avatar/UserAvatar';
 
 export default function EventCard(props) {
   const { btnTitle, btnIcon, onClick, deleteEvent } = props;
-  const { date, title, level, distance, markerData, adress } = props.event;
+  const { date, title, level, distance, markerData, adress, whosIn } = props.event;
 
   return (
     <li className="main-page__event first-layer-card_hovered">
@@ -69,6 +71,16 @@ export default function EventCard(props) {
             title="Adress"
           >place</Icon> {adress}
         </address>}
+
+        <span className="event-card__main__whos-in">
+          {whosIn.map(user => (
+            <div key={user.userId} className="whos-in__avatar-wrap" title={user.userName}>
+              <Link to={`/profile/${ user.userId }/last-activities`}>
+                <UserAvatar />
+              </Link>
+            </div>
+          ))}
+        </span>
       </div>
 
       <EventMap
