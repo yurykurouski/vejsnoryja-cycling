@@ -3,9 +3,9 @@ import requestService from './request-service.js';
 class EventsService {
   async createEvent(data) {
     try {
-      requestService.postSecured(process.env.REACT_APP_API_NEW_EVENT_URL, data);
+      const response = requestService.postSecured(process.env.REACT_APP_API_NEW_EVENT_URL, data);
 
-      return data;
+      return response;
     } catch (err) {
       throw new Error(err);
     }
