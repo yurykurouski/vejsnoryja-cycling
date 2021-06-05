@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { MapContainer, TileLayer, Marker } from 'react-leaflet';
 
 import './event-map.css';
-
+// ! переписать
 export default class EventMap extends Component {
   constructor() {
     super();

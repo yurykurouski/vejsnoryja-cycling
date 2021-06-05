@@ -6,10 +6,10 @@ import Icon from '@material-ui/core/Icon';
 
 import EventMap from './event-card-map/EventMap';
 import IconButton from '../icon-button/IconButton';
+import UserAvatar from '../user-avatar/UserAvatar';
 import EventCardDate from './event-card-date/EventCardDate';
 
 import './event-card.css';
-import UserAvatar from '../user-avatar/UserAvatar';
 
 export default function EventCard(props) {
   const { btnTitle, btnIcon, onClick, deleteEvent } = props;

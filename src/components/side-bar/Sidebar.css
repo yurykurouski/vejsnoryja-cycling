@@ -18,11 +18,11 @@
   list-style-type: none;
 }
 
-.sidebar__nav_item {
+.sidebar__nav-item {
   width: 100%;
 }
 
-.nav_item__link {
+.nav-item__link {
   display: inline-block;
   width: 100%;
   font-size: 28px;
@@ -48,7 +48,11 @@
   }
 }
 
-.nav_item__link:focus, .nav_item__link:active, .nav_item__link:hover {
+.nav-item__link:focus, .nav-item__link:active, .nav-item__link:hover {
   color: var(--font-color-main_active);
   background-color: var(--font-color-main_hover-bg);
+}
+
+.link_active {
+  color: var(--font-color-main_active) !important;
 }
