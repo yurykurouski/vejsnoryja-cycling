@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 
 import NewEvent from './actions/NewEvent';
@@ -6,58 +6,44 @@ import AddButtonActions from '../../../constants/components-fields/add-button-ac
 
 import './add-button.css';
 
-export default class AddButton extends Component {
-  constructor() {
-    super();
+export default function AddButton() {
+  const [clickedClass, setClickedClass] = useState('');
+  const [isExpanded, setIsExpanded] = useState(false);
 
-    this.state = {
-      clickedClass: '',
-      expanded: false
-    }
+  const handleClick = () => {
+    const clicked = clickedClass ? '' : 'add-btn-icon_clicked';
+
+    setClickedClass(clicked)
+    setIsExpanded(!isExpanded);
   }
 
-  handleClick = () => {
-    const clicked = this.state.clickedClass ? '' : 'add-btn-icon_clicked';
-
-    this.setState({
-      clickedClass: clicked,
-      expanded: !this.state.expanded
-    });
-  };
-
-  handleClickAway = () => {
-    this.setState({
-      clickedClass: '',
-      expanded: false
-    });
+  const handleClickAway = () => {
+    setClickedClass('');
+    setIsExpanded(false);
   }
 
-  render() {
-    const { clickedClass, expanded } = this.state;
+  return (
+    <div className='add-btn_container'>
 
-    return (
-      <div className='add-btn_container'>
+      {AddButtonActions.ACTIONS.map((action) => (
+        <NewEvent
+          key={action.name}
+          name={action.name}
+          expanded={isExpanded}
+          type={action.type}
+          linkTo={action.linkTo}
+        />
+      ))}
 
-        {AddButtonActions.ACTIONS.map((action) => (
-          <NewEvent
-            key={action.name}
-            name={action.name}
-            expanded={expanded}
-            type={action.type}
-            linkTo={action.linkTo}
-          />
-        ))}
+      <ClickAwayListener onClickAway={handleClickAway}>
+        <button className='add-btn' onClick={handleClick}>
+          <svg className={`add-btn__add-icon ${ clickedClass }`} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M0 0h24v24H0V0z" fill="none" />
+            <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
+          </svg>
+        </button>
+      </ClickAwayListener>
 
-        <ClickAwayListener onClickAway={this.handleClickAway}>
-          <button className='add-btn' onClick={this.handleClick}>
-            <svg className={`add-btn__add-icon ${ clickedClass }`} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-              <path d="M0 0h24v24H0V0z" fill="none" />
-              <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
-            </svg>
-          </button>
-        </ClickAwayListener>
-
-      </div>
-    )
-  }
+    </div>
+  )
 }
