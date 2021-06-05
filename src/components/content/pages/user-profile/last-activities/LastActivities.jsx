@@ -12,7 +12,6 @@ export default function LastActivities({ userId, events, deleteEventById, curren
   const history = useHistory();
   const handleClick = (event) => history.push(`/profile/edit-event/${ event._id }`);
   const handleDeleteClick = (id) => {
-    console.log('sdfsd')
     setEventToDelete(id);
 
     setModalOpen(true);
