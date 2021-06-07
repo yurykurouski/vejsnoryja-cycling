@@ -8,14 +8,7 @@ const initialState = {
 
 export default function userInfo(state = initialState, action) {
   switch (action.type) {
-    case types.GET_USER_INFO_SUCESS: {
-      return {
-        ...state,
-        userInfo: action.payload,
-        status: ActionStatus.SUCCEDED
-      };
-    }
-
+    case types.GET_USER_INFO_SUCESS:
     case types.UPDATE_USER_INFO_SUCESS: {
       return {
         ...state,
@@ -29,7 +22,7 @@ export default function userInfo(state = initialState, action) {
       return {
         ...state,
         status: ActionStatus.LOADING
-      }
+      };
     }
 
     case types.UPDATE_USER_INFO_FAILURE:
@@ -37,7 +30,7 @@ export default function userInfo(state = initialState, action) {
       return {
         ...state,
         status: ActionStatus.FAILED
-      }
+      };
     }
 
     default: {

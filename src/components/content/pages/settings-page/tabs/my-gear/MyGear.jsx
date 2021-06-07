@@ -5,7 +5,7 @@ import GearCard from './gear-card/GearCard';
 import MyGearTable from './table/MyGearTable';
 import Modal from '../../../../../common/modal/Modal';
 import ModalForm from '../../../../../common/modal/form/ModalForm';
-import { makeInputTemplateFromState } from '../../../../../../utils';
+import makeInputTemplateFromState from '../../../../../../utils';
 import ModalDialog from '../../../../../common/modal/dialog/ModalDialog';
 import SettingsFields from '../../../../../../constants/components-fields/settings-fields';
 

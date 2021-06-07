@@ -11,6 +11,6 @@ export default class AddButtonActions {
         type: 'edit',
         linkTo: 'new-event',
       }
-    ]
+    ];
   }
 }

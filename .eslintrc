@@ -1,0 +1,57 @@
+{
+  "env": {
+    "commonjs": true,
+    "es6": true,
+    "node": true,
+    "browser": true
+  },
+  "extends": [
+    "airbnb",
+    "plugin:react/recommended",
+    "plugin:import/errors",
+    "plugin:import/warnings",
+    "plugin:jsx-a11y/recommended",
+    "plugin:sonarjs/recommended",
+    "plugin:promise/recommended"
+  ],
+  "plugins": [
+    "react",
+    "jsx-a11y",
+    "optimize-regex",
+    "sonarjs",
+    "no-loops",
+    "no-use-extend-native",
+    "promise"
+  ],
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "ecmaVersion": 2019,
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "rules":{
+    "template-curly-spacing": "warn",
+    "linebreak-style": "warn",
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "import/prefer-default-export": "warn",
+    "no-underscore-dangle": "off",
+    "no-shadow": "warn",
+    "react/button-has-type": "warn",
+    "jsx-a11y/anchor-is-valid": "warn",
+    "jsx-a11y/label-has-associated-control": "warn",
+    "react/prop-types": "warn",
+    "react/prefer-stateless-function": "warn",
+    "react/self-closing-comp": "warn",
+    "implicit-arrow-linebreak": "warn",
+    "comma-dangle": "off",
+    "function-paren-newline": "warn",
+    "max-len": "warn",
+    "jsx-a11y/no-static-element-interactions": "off",
+    "object-curly-newline": "warn",
+    "arrow-parens": "warn",
+    "react/jsx-props-no-spreading": "warn",
+    "react/jsx-wrap-multilines": "warn",
+    "sonarjs/cognitive-complexity": "warn"
+  }
+}

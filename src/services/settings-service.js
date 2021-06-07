@@ -1,81 +1,79 @@
-import requestService from './request-service.js';
+import requestService from './request-service';
 
 class SettingsService {
-  async getUserInfo(id) {
+  static async getUserInfo(id) {
     try {
-      const response = await requestService.getSecured(`${ process.env.REACT_APP_API_SETTINGS_MY_PROFILE_URL }${ id }`);
-
-      return response;
+      return await requestService.getSecured(
+        `${process.env.REACT_APP_API_SETTINGS_MY_PROFILE_URL}${id}`
+      );
     } catch (err) {
       throw new Error(err);
     }
   }
 
-  async updateUserInfo(field) {
+  static async updateUserInfo(field) {
     try {
-      const response = await requestService.putSecured(process.env.REACT_APP_API_UPDATE_SETTINGS_MY_PROFILE_URL, field);
-
-      return response;
+      return await requestService.putSecured(
+        process.env.REACT_APP_API_UPDATE_SETTINGS_MY_PROFILE_URL, field
+      );
     } catch (err) {
       throw new Error(err);
     }
   }
 
-  async addNewGear(data) {
+  static async addNewGear(data) {
     try {
-      const response = await requestService.postSecured(process.env.REACT_APP_API_ADD_NEW_GEAR_SETTINGS_URL, data);
-
-      return response;
+      return await requestService.postSecured(
+        process.env.REACT_APP_API_ADD_NEW_GEAR_SETTINGS_URL, data
+      );
     } catch (err) {
       throw new Error(err);
     }
   }
 
-  async getUserGear() {
+  static async getUserGear() {
     try {
-      const response = await requestService.getSecured(process.env.REACT_APP_API_GET_USER_GEAR_SETTINGS_URL);
-
-      return response;
+      return await requestService.getSecured(process.env.REACT_APP_API_GET_USER_GEAR_SETTINGS_URL);
     } catch (err) {
       throw new Error(err);
     }
   }
 
-  async getUserActiveGear(id) {
+  static async getUserActiveGear(id) {
     try {
-      const response = await requestService.getSecured(`${ process.env.REACT_APP_API_GET_GEAR_BY_USER_URL }${ id }`);
-
-      return response;
+      return await requestService.getSecured(
+        `${process.env.REACT_APP_API_GET_GEAR_BY_USER_URL}${id}`
+      );
     } catch (err) {
       throw new Error(err);
     }
   }
 
-  async setActiveGear(data) {
+  static async setActiveGear(data) {
     try {
-      const response = await requestService.putSecured(process.env.REACT_APP_API_GET_USER_GEAR_SETTINGS_URL, data);
-
-      return response;
+      return await requestService.putSecured(
+        process.env.REACT_APP_API_GET_USER_GEAR_SETTINGS_URL, data
+      );
     } catch (err) {
       throw new Error(err);
     }
   }
 
-  async deleteGear(id) {
+  static async deleteGear(id) {
     try {
-      const response = await requestService.deleteSecured(`${ process.env.REACT_APP_API_DELETE_USER_GEAR_SETTINGS_URL }${ id }`);
-
-      return response;
+      return await requestService.deleteSecured(
+        `${process.env.REACT_APP_API_DELETE_USER_GEAR_SETTINGS_URL}${id}`
+      );
     } catch (err) {
       throw new Error(err);
     }
   }
 
-  async editGear(data) {
+  static async editGear(data) {
     try {
-      const response = await requestService.patchSecured(process.env.REACT_APP_API_EDIT_USER_GEAR_SETTINGS_URL, data);
-
-      return response;
+      return await requestService.patchSecured(
+        process.env.REACT_APP_API_EDIT_USER_GEAR_SETTINGS_URL, data
+      );
     } catch (err) {
       throw new Error(err);
     }

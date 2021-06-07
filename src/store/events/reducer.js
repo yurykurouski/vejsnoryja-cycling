@@ -16,14 +16,7 @@ export default function events(state = initialState, action) {
       };
     }
 
-    case types.GET_ALL_EVENTS_SUCESS: {
-      return {
-        ...state,
-        events: action.payload,
-        status: ActionStatus.SUCCEDED
-      };
-    }
-
+    case types.GET_ALL_EVENTS_SUCESS:
     case types.GET_EVENTS_BY_USER_SUCESS: {
       return {
         ...state,
@@ -33,22 +26,22 @@ export default function events(state = initialState, action) {
     }
 
     case types.UPDATE_EVENT_BY_ID_SUCESS: {
-      const updatedEvents = state.events.map(event => {
+      const updatedEvents = state.events.map((event) => {
         if (event._id === action.payload._id) {
           return action.payload;
         }
         return event;
-      })
+      });
 
       return {
         ...state,
         events: updatedEvents,
         status: ActionStatus.SUCCEDED
-      }
+      };
     }
 
     case types.DELETE_EVENT_BY_ID_SUCESS: {
-      const filteredEvents = state.events.filter(event => event._id !== action.payload._id);
+      const filteredEvents = state.events.filter((event) => event._id !== action.payload._id);
       return {
         ...state,
         events: filteredEvents,
@@ -78,14 +71,14 @@ export default function events(state = initialState, action) {
       return {
         ...state,
         status: ActionStatus.LOADING
-      }
+      };
     }
 
     case types.EVENT_USER_IN_OUT_FAILURE: {
       return {
         ...state,
         status: ActionStatus.FAILED
-      }
+      };
     }
 
     default: {

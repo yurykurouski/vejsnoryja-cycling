@@ -19,7 +19,7 @@ export default class SettingsFields {
         to: '/settings/my-account',
         name: 'My Account'
       }
-    ]
+    ];
   }
 
   static get ADD_BIKE() {
@@ -61,6 +61,6 @@ export default class SettingsFields {
         value: '',
         type: 'textfield'
       },
-    ]
+    ];
   }
 }

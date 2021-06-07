@@ -1,6 +1,6 @@
+import { combineReducers } from 'redux';
 import gear from './gear/reducer';
 import events from './events/reducer';
-import { combineReducers } from 'redux';
 import userInfo from './user-info/reducer';
 import currentUser from './current-user/reducer';
 

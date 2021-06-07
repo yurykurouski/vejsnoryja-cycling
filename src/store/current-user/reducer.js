@@ -14,28 +14,14 @@ const initialState = {
 
 export default function currentUser(state = initialState, action) {
   switch (action.type) {
-    case types.REGISTER_USER_SUCESS: {
+    case types.REGISTER_USER_SUCESS:
+    case types.LOGIN_USER_SUCESS:
+    case types.CHANGE_USER_PASSWORD_SUCESS: {
       return {
         ...state,
         authErrors: { password: null, email: null },
         status: ActionStatus.SUCCEDED
-      }
-    }
-
-    case types.REGISTER_USER_FAILURE: {
-      return {
-        ...state,
-        authErrors: { ...state.authErrors, email: action.error.message },
-        status: ActionStatus.FAILED
-      }
-    }
-
-    case types.LOGIN_USER_SUCESS: {
-      return {
-        ...state,
-        authErrors: { password: null, email: null },
-        status: ActionStatus.SUCCEDED
-      }
+      };
     }
 
     case types.LOGIN_USER_FAILURE: {
@@ -43,7 +29,7 @@ export default function currentUser(state = initialState, action) {
         ...state,
         authErrors: { ...state.authErrors, password: action.error.message },
         status: ActionStatus.FAILED
-      }
+      };
     }
 
     case types.AUTH_USER_SUCESS: {
@@ -54,7 +40,7 @@ export default function currentUser(state = initialState, action) {
         userEmail: action.payload.userEmail,
         authErrors: { password: null, email: null },
         status: ActionStatus.SUCCEDED
-      }
+      };
     }
 
     case types.AUTH_USER_FAILURE: {
@@ -63,7 +49,7 @@ export default function currentUser(state = initialState, action) {
         isAuthenticated: false,
         user: null,
         status: ActionStatus.FAILED
-      }
+      };
     }
 
     case types.CHANGE_USER_EMAIL_SUCESS: {
@@ -75,19 +61,12 @@ export default function currentUser(state = initialState, action) {
       };
     }
 
+    case types.REGISTER_USER_FAILURE:
     case types.CHANGE_USER_EMAIL_FAILURE: {
       return {
         ...state,
         authErrors: { ...state.authErrors, email: action.error.message },
         status: ActionStatus.FAILED
-      };
-    }
-
-    case types.CHANGE_USER_PASSWORD_SUCESS: {
-      return {
-        ...state,
-        authErrors: { password: null, email: null },
-        status: ActionStatus.SUCCEDED
       };
     }
 

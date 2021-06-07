@@ -1,10 +1,11 @@
-import Gear from '../constants/gear/gear-helper.js';
-import SettingsFields from '../constants/components-fields/settings-fields.js';
+/* eslint-disable */
+import Gear from '../constants/gear/gear-helper';
+import SettingsFields from '../constants/components-fields/settings-fields';
 
-export function makeInputTemplateFromState(filtered) {
-  let res = [];
+export default function makeInputTemplateFromState(filtered) {
+  const res = [];
 
-  for (let key in filtered) {
+  for (const key in filtered) {
     if (!Gear.UNUSEFUL_FIELDS.includes(key)) {
       if (SettingsFields.FIELDS_OPTIONS.includes(filtered[key])) {
         res.push({
@@ -14,7 +15,6 @@ export function makeInputTemplateFromState(filtered) {
           type: 'select',
           value: filtered[key]
         });
-
       } else {
         res.push({
           name: key,

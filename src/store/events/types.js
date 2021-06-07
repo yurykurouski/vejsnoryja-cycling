@@ -13,17 +13,17 @@ export const GET_EVENTS_BY_USER_REQUEST = 'GET_EVENTS_BY_USER/pending';
 export const GET_EVENTS_BY_USER_SUCESS = 'GET_EVENTS_BY_USER/fulfilled';
 export const GET_EVENTS_BY_USER_FAILURE = 'GET_EVENTS_BY_USER/rejected';
 
-export const UPDATE_EVENT_BY_ID = 'UPDATE_EVENT_BY_ID'
+export const UPDATE_EVENT_BY_ID = 'UPDATE_EVENT_BY_ID';
 export const UPDATE_EVENT_BY_ID_REQUEST = 'UPDATE_EVENT_BY_ID/pending';
 export const UPDATE_EVENT_BY_ID_SUCESS = 'UPDATE_EVENT_BY_ID/fulfilled';
 export const UPDATE_EVENT_BY_ID_FAILURE = 'UPDATE_EVENT_BY_ID/rejected';
 
-export const DELETE_EVENT_BY_ID = 'DELETE_EVENT_BY_ID'
+export const DELETE_EVENT_BY_ID = 'DELETE_EVENT_BY_ID';
 export const DELETE_EVENT_BY_ID_REQUEST = 'DELETE_EVENT_BY_ID/pending';
 export const DELETE_EVENT_BY_ID_SUCESS = 'DELETE_EVENT_BY_ID/fulfilled';
 export const DELETE_EVENT_BY_ID_FAILURE = 'DELETE_EVENT_BY_ID/rejected';
 
-export const EVENT_USER_IN_OUT = 'EVENT_USER_IN_OUT'
+export const EVENT_USER_IN_OUT = 'EVENT_USER_IN_OUT';
 export const EVENT_USER_IN_OUT_REQUEST = 'EVENT_USER_IN_OUT/pending';
 export const EVENT_USER_IN_OUT_SUCESS = 'EVENT_USER_IN_OUT/fulfilled';
 export const EVENT_USER_IN_OUT_FAILURE = 'EVENT_USER_IN_OUT/rejected';
