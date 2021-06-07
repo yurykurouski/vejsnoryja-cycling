@@ -8,7 +8,7 @@ import TableHead from '@material-ui/core/TableHead';
 import { makeStyles } from '@material-ui/core/styles';
 import TableContainer from '@material-ui/core/TableContainer';
 
-import ActiveToggler from './../actions/ActiveToggler';
+import ActiveToggler from '../actions/ActiveToggler';
 import IconButton from '../../../../../../common/icon-button/IconButton';
 
 const useStyles = makeStyles({
@@ -60,5 +60,5 @@ export default function MyGearTable({ gear, deleteUserGear, editUserGear, handle
         </TableBody>
       </Table>
     </TableContainer>
-  )
+  );
 }

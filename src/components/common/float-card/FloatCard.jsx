@@ -1,4 +1,5 @@
 import React from 'react';
+
 import './FloatCard.css';
 
 export default function FloatCard() {
@@ -35,5 +36,5 @@ export default function FloatCard() {
         </li>
       </ul>
     </aside>
-  )
+  );
 }

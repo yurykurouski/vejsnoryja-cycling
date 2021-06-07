@@ -5,7 +5,7 @@ import Input from '../../input/Input';
 
 export default function ModalForm({ fields, handleModalSubmit, validationSchema, btnText }) {
   const getValues = () => {
-    let vals = {};
+    const vals = {};
 
     fields.forEach((el) => {
       vals[el.name] = el.value;
@@ -41,5 +41,5 @@ export default function ModalForm({ fields, handleModalSubmit, validationSchema,
         </form>
       )}
     </Formik>
-  )
+  );
 }

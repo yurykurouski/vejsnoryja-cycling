@@ -21,7 +21,7 @@ export default function Modal(
     modalRoot.appendChild(el);
     return () => {
       modalRoot.removeChild(el);
-    }
+    };
   });
 
   const escFunction = useCallback(
@@ -34,10 +34,10 @@ export default function Modal(
   );
 
   useEffect(() => {
-    document.addEventListener("keydown", escFunction, false);
+    document.addEventListener('keydown', escFunction, false);
 
     return () => {
-      document.removeEventListener("keydown", escFunction, false);
+      document.removeEventListener('keydown', escFunction, false);
     };
   }, [escFunction]);
 

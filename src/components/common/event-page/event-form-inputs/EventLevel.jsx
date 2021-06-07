@@ -8,8 +8,8 @@ export default function EventLevel(props) {
       Level/Event type
 
       <select
-        name='level'
-        type='text'
+        name="level"
+        type="text"
         value={value}
         onChange={onChange}
         className="form__input form__input_level"
@@ -20,5 +20,5 @@ export default function EventLevel(props) {
         <option value="Race">Race Pace</option>
       </select>
     </label>
-  )
+  );
 }

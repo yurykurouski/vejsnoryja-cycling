@@ -10,8 +10,8 @@ export default function Distance(props) {
       Distance (km)
 
       <input
-        name='distance'
-        type='text'
+        name="distance"
+        type="text"
         onChange={onChange}
         value={value}
         className="form__input form__input_distance"
@@ -21,5 +21,5 @@ export default function Distance(props) {
         <ValidationErrMsg errorMsg={errors} />
       ) : null}
     </label>
-  )
+  );
 }

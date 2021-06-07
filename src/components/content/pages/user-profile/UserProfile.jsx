@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Switch, Route, Redirect, useRouteMatch } from 'react-router-dom';
 
@@ -60,8 +60,7 @@ function UserProfile(props) {
                 <h2 className="user-profile__heading card-heading">
                   {currentUserId === userId
                     ? 'Your profile'
-                    : `${ userInfo.Name }'s profile`
-                  }
+                    : `${ userInfo.Name }'s profile`}
                 </h2>
                 <button onClick={logoutUser} className="user-profile__logout-btn submit-btn sign-out-btn">Sign out</button>
               </span>
@@ -105,7 +104,7 @@ function UserProfile(props) {
         {(eventsStatus === ActionStatus.LOADING || gearStatus === ActionStatus.LOADING) && <Loader />}
       </>
     </Switch>
-  )
+  );
 }
 
 function mapStateToProps(state) {
@@ -116,7 +115,7 @@ function mapStateToProps(state) {
     gearStatus: state.gear.status,
     userInfo: state.userInfo.userInfo,
     currentUserId: state.currentUser.user
-  }
+  };
 }
 
 function mapDispatchToProps(dispatch) {
@@ -127,7 +126,7 @@ function mapDispatchToProps(dispatch) {
     getUserInfo: (id) => dispatch(getUserInfo(id)),
     deleteEventById: (id) => dispatch(deleteEventById(id)),
     userInOutEvent: (data) => dispatch(userInOutEvent(data))
-  }
+  };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserProfile);

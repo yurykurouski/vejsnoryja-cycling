@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
+
 import ProfileField from './profile-field/ProfileField';
+import UserAvatar from '../../../../../common/user-avatar/UserAvatar';
 
 import './my-profile.css';
-import UserAvatar from "../../../../../common/user-avatar/UserAvatar";
 
 export default function MyProfile({ updateUserInfo, userInfo }) {
   const [editedFields, handleClick] = useState([]);
@@ -12,24 +13,26 @@ export default function MyProfile({ updateUserInfo, userInfo }) {
       <div className="my-profile__user-info">
         {Object.entries(userInfo).map((value) => {
           if (editedFields.includes(value[0])) {
-            return <ProfileField
+            return (
+              <ProfileField
+                key={value[0]}
+                title={value[0]}
+                value={value[1]}
+                handleClick={handleClick}
+                editedFields={editedFields}
+                updateUserInfo={updateUserInfo}
+                inEdit
+              />
+            );
+          } return (
+            <ProfileField
               key={value[0]}
               title={value[0]}
               value={value[1]}
               handleClick={handleClick}
               editedFields={editedFields}
-              updateUserInfo={updateUserInfo}
-              inEdit={true}
             />
-          } else {
-            return <ProfileField
-              key={value[0]}
-              title={value[0]}
-              value={value[1]}
-              handleClick={handleClick}
-              editedFields={editedFields}
-            />
-          }
+          );
         })}
       </div>
       <div className="my-profile__user-avatar">
@@ -38,5 +41,5 @@ export default function MyProfile({ updateUserInfo, userInfo }) {
         </div>
       </div>
     </div>
-  )
+  );
 }

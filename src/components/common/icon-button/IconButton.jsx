@@ -12,11 +12,11 @@ export default function IconButton(props) {
       type="button"
       title={btnTitle}
       onClick={onClick}
-      style={{ 'color': `${ color }` }}
+      style={{ color: `${ color }` }}
     >
       <Icon
         className="option__icon"
       >{btnIcon}</Icon>
     </button>
-  )
+  );
 }

@@ -11,16 +11,15 @@ export default function EventTitle(props) {
 
       <input
         onChange={onChange}
-        name='title'
-        type='text'
+        name="title"
+        type="text"
         value={value}
         className="form__input form__input_title"
-        autoFocus
       />
 
       {(errors && touched) ? (
         <ValidationErrMsg errorMsg={errors} />
       ) : null}
     </label>
-  )
+  );
 }

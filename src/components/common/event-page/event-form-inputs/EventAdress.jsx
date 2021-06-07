@@ -10,8 +10,8 @@ export default function EventAdress(props) {
       Meet-up adress*
 
       <input
-        name='adress'
-        type='text'
+        name="adress"
+        type="text"
         onChange={onChange}
         value={value}
         className="form__input form__input_adress"
@@ -21,5 +21,5 @@ export default function EventAdress(props) {
         <ValidationErrMsg errorMsg={errors} />
       ) : null}
     </label>
-  )
+  );
 }

@@ -8,8 +8,8 @@ export default function EventTerrain(props) {
       Terrain
 
       <select
-        name='terrain'
-        type='text'
+        name="terrain"
+        type="text"
         value={value}
         onChange={onChange}
         className="form__input form__input_terrain"
@@ -21,5 +21,5 @@ export default function EventTerrain(props) {
         <option value="Killer Climbs">Killer Climbs</option>
       </select>
     </label>
-  )
+  );
 }

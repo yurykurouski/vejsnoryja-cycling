@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 export default function EventDate(props) {
   const { onChange, value } = props;
@@ -17,5 +17,5 @@ export default function EventDate(props) {
         className="form__input form__input_date"
       />
     </label>
-  )
+  );
 }

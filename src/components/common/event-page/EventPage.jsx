@@ -30,11 +30,11 @@ function EventPage(props) {
   });
 
   const handleSubmit = (newEvent, actions) => {
-    saveEvent({ ...newEvent, markerData: markerData, _id: event._id });
+    saveEvent({ ...newEvent, markerData, _id: event._id });
 
     actions.resetForm();
     history.goBack();
-  }
+  };
 
   const addMarker = (event) => {
     const coords = event.latlng;
@@ -56,16 +56,16 @@ function EventPage(props) {
 
   return (
     <div className="content__new-event first-layer-card">
-      <h2 className="new-event__heading card-heading">{event ? "Edit event" : "Create new Event"}</h2>
+      <h2 className="new-event__heading card-heading">{event ? 'Edit event' : 'Create new Event'}</h2>
       <Formik
         initialValues={{
-          title: event.title ? event.title : "",
-          adress: event.adress ? event.adress : "",
-          description: event.description ? event.description : "",
-          date: event.date ? event.date : "2021-03-25T11:00",
-          terrain: event.terrain ? event.terrain : "Mostly flat",
-          level: event.level ? event.level : "Casual",
-          distance: event.distance ? event.distance : "",
+          title: event.title ? event.title : '',
+          adress: event.adress ? event.adress : '',
+          description: event.description ? event.description : '',
+          date: event.date ? event.date : '2021-03-25T11:00',
+          terrain: event.terrain ? event.terrain : 'Mostly flat',
+          level: event.level ? event.level : 'Casual',
+          distance: event.distance ? event.distance : '',
           author: currentUser.user,
           markerData: event.markerData ? event.markerData : markerData
         }}
@@ -76,14 +76,11 @@ function EventPage(props) {
           <EventForm
             handleSubmit={handleSubmit}
             handleChange={handleChange}
-
             addMarker={addMarker}
             updateMarker={updateMarker}
             markerData={event.markerData ? event.markerData : markerData}
-
             errors={errors}
             touched={touched}
-
             title={values.title}
             adress={values.adress}
             date={values.date}
@@ -95,19 +92,19 @@ function EventPage(props) {
         )}
       </Formik>
     </div>
-  )
+  );
 }
 
 function mapStateToProps(state) {
   return {
     currentUser: state.currentUser
-  }
+  };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
     addEvent: (newEvent) => dispatch(addEvent(newEvent)),
-  }
+  };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(EventPage);

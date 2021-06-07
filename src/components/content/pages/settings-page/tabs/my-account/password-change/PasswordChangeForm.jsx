@@ -25,7 +25,7 @@ export default function PasswordChangeForm({ submitForm, authErrors }) {
     await submitForm(data);
 
     actions.resetForm();
-  }
+  };
 
   return (
     <Formik
@@ -39,11 +39,11 @@ export default function PasswordChangeForm({ submitForm, authErrors }) {
           onSubmit={handleSubmit}
         >
           <Input
-            name='password'
-            type='password'
-            title='Change Password'
+            name="password"
+            type="password"
+            title="Change Password"
             customInputClass="my-account__input"
-            placeholder='Current password'
+            placeholder="Current password"
             value={values.password}
             onChange={handleChange}
           />
@@ -53,8 +53,8 @@ export default function PasswordChangeForm({ submitForm, authErrors }) {
           ) : null}
 
           <Input
-            name='newPassword'
-            type='password'
+            name="newPassword"
+            type="password"
             placeholder="New password"
             customInputClass="my-account__input"
             value={values.newPassword}
@@ -66,8 +66,8 @@ export default function PasswordChangeForm({ submitForm, authErrors }) {
           ) : null}
 
           <Input
-            name='repeatPass'
-            type='password'
+            name="repeatPass"
+            type="password"
             placeholder="Confirm new password"
             customInputClass="my-account__input"
             value={values.repeatPass}
@@ -82,5 +82,5 @@ export default function PasswordChangeForm({ submitForm, authErrors }) {
         </form>
       )}
     </Formik>
-  )
+  );
 }

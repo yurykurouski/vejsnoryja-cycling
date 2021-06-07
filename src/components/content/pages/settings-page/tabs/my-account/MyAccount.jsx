@@ -18,5 +18,5 @@ export default function MyAccount({ changeUserEmail, userEmail, authErrors, chan
         authErrors={authErrors}
       />
     </div>
-  )
+  );
 }

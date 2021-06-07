@@ -10,22 +10,18 @@ import { authUser } from '../store/current-user/actions';
 import './app.css';
 import { getUserInfo } from '../store/user-info/actions';
 
-function App(props) {
-  const isAuthenticated = props.currentUser.isAuthenticated;
-  const userId = props.currentUser.userId;
-  const { authUser, getUserInfo } = props;
-
+function App({ currentUser: isAuthenticated, currentUser: userId, authUser, getUserInfo }) {
   const token = localStorage.getItem('token');
 
   useEffect(() => {
     if (!isAuthenticated && token) {
       authUser();
-      getUserInfo(userId)
+      getUserInfo(userId);
     }
   }, [isAuthenticated, authUser, token, getUserInfo, userId]);
 
   return (
-    <div className='app'>
+    <div className="app">
       <Sidebar />
 
       <Content />
@@ -39,14 +35,14 @@ function App(props) {
 function mapStateToProps(state) {
   return {
     currentUser: state.currentUser,
-  }
+  };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
     authUser: () => dispatch(authUser()),
     getUserInfo: (id) => dispatch(getUserInfo(id))
-  }
+  };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

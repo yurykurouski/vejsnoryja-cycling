@@ -1,7 +1,7 @@
 import React from 'react';
 import Moment from 'react-moment';
-import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import Icon from '@material-ui/core/Icon';
 
 import EventMap from './event-card-map/EventMap';
@@ -12,9 +12,14 @@ import EventCardDate from './event-card-date/EventCardDate';
 import './event-card.css';
 
 export default function EventCard(props) {
-  const { btnTitle, btnIcon, onClick, deleteEvent } = props;
+  const {
+    btnTitle,
+    btnIcon,
+    onClick,
+    deleteEvent
+  } = props;
   const { date, title, level, distance, markerData, adress, whosIn } = props.event;
-  const isAuthenticated = useSelector((state) => state.currentUser.isAuthenticated)
+  const isAuthenticated = useSelector((state) => state.currentUser.isAuthenticated);
 
   return (
     <li className="main-page__event first-layer-card_hovered">
@@ -22,21 +27,18 @@ export default function EventCard(props) {
       <div className="event-card__aside">
         <EventCardDate customClass="event-card__date_date" date={date} />
 
-
         {deleteEvent && <IconButton
           onClick={deleteEvent}
-          btnTitle='Delete this event'
-          btnIcon='delete'
-          color='red'
+          btnTitle="Delete this event"
+          btnIcon="delete"
+          color="red"
         />}
 
-        {isAuthenticated &&
-          <IconButton
-            onClick={onClick}
-            btnTitle={btnTitle}
-            btnIcon={btnIcon}
-          />
-        }
+        {isAuthenticated && <IconButton
+          onClick={onClick}
+          btnTitle={btnTitle}
+          btnIcon={btnIcon}
+        />}
 
       </div>
 
@@ -59,21 +61,21 @@ export default function EventCard(props) {
 
         {distance && <span className="event-card__main__distance event-details">
           <Icon
-            style={{ opacity: .9 }}
+            style={{ opacity: 0.9 }}
             title="Distance"
           >directions_bike</Icon> {distance}
         </span>}
 
         {level && <span className="event-card__main__level event-details">
           <Icon
-            style={{ opacity: .9 }}
+            style={{ opacity: 0.9 }}
             title="Level/Event type"
           >speed</Icon> {level}
         </span>}
 
         {adress && <address className="event-card__main__adress event-details">
           <Icon
-            style={{ opacity: .9 }}
+            style={{ opacity: 0.9 }}
             title="Adress"
           >place</Icon> {adress}
         </address>}
@@ -96,6 +98,5 @@ export default function EventCard(props) {
       />
 
     </li>
-  )
+  );
 }
-

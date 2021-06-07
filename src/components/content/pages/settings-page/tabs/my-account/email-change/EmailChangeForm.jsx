@@ -20,7 +20,7 @@ export default function EmailChangeForm({ submitForm, userEmail, authErrors }) {
     await submitForm(data);
 
     actions.resetForm();
-  }
+  };
 
   return (
     <Formik
@@ -34,9 +34,9 @@ export default function EmailChangeForm({ submitForm, userEmail, authErrors }) {
           onSubmit={handleSubmit}
         >
           <Input
-            name='email'
-            type='text'
-            title='Change Email Address'
+            name="email"
+            type="text"
+            title="Change Email Address"
             customInputClass="my-account__input"
             placeholder={userEmail}
             value={values.email}
@@ -48,8 +48,8 @@ export default function EmailChangeForm({ submitForm, userEmail, authErrors }) {
           ) : null}
 
           <Input
-            name='password'
-            type='password'
+            name="password"
+            type="password"
             placeholder="Confirm with password"
             customInputClass="my-account__input"
             value={values.password}
@@ -64,5 +64,5 @@ export default function EmailChangeForm({ submitForm, userEmail, authErrors }) {
         </form>
       )}
     </Formik>
-  )
+  );
 }

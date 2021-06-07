@@ -13,32 +13,29 @@ export default function Input(props) {
 
       {options
         ? <select
-          name={name}
-          type={type}
-          onChange={handleChange}
-          value={value}
-          className={`${ customInputClass } form__input`}
-          {...rest}
+            name={name}
+            type={type}
+            onChange={handleChange}
+            value={value}
+            className={`${ customInputClass } form__input`}
+            {...rest}
         > {options.map(option => (
           <option value={option} key={option}>{option}</option>
         ))}
         </select>
 
         : <input
-          name={name}
-          type={type}
-          onChange={handleChange}
-          value={value}
-          className={`${ customInputClass } form__input`}
-          {...rest}
-        />
-      }
+            name={name}
+            type={type}
+            onChange={handleChange}
+            value={value}
+            className={`${ customInputClass } form__input`}
+            {...rest}
+        />}
       {error ? (
         <ValidationErrMsg errorMsg={error} />
       ) : null}
 
     </label>
-  )
+  );
 }
-
-

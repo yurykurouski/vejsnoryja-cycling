@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import * as Yup from 'yup';
 import { Formik } from 'formik';
 import { connect } from 'react-redux';
@@ -26,7 +26,7 @@ function LoginPage(props) {
   const submitForm = async (values) => {
     await loginUser(values);
     authUser();
-  }
+  };
 
   return (
     <div className="content__login-page auth-page first-layer-card">
@@ -52,7 +52,6 @@ function LoginPage(props) {
                 onChange={handleChange}
                 value={values.email}
                 className="form__input form__input_email"
-                autoFocus
               />
             </label>
 
@@ -64,8 +63,8 @@ function LoginPage(props) {
               Password
 
               <input
-                name='password'
-                type='password'
+                name="password"
+                type="password"
                 onChange={handleChange}
                 value={values.password}
                 className="form__input form__input_password"
@@ -80,7 +79,7 @@ function LoginPage(props) {
             <section className="login-page__controls form__controls">
               <button type="submit" className="login-page__submit submit-btn">Sign in</button>
               or
-              <Link to='/sign-up' className="login-page__cancel cancel-btn">Create account</Link>
+              <Link to="/sign-up" className="login-page__cancel cancel-btn">Create account</Link>
             </section>
           </form>
         )}
@@ -89,21 +88,21 @@ function LoginPage(props) {
 
       {status === ActionStatus.LOADING && <Loader />}
     </div>
-  )
+  );
 }
 
 function mapStateToProps(state) {
   return {
     currentUser: state.currentUser,
     authErrors: state.currentUser.authErrors
-  }
+  };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
     loginUser: (data) => dispatch(loginUser(data)),
     authUser: () => dispatch(authUser()),
-  }
+  };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginPage);

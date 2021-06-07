@@ -13,42 +13,44 @@ import SettingsPage from './pages/settings-page/SettingsPage';
 
 import RegistrationPage from './pages/auth/registration/RegistrationPage';
 
-import './content.css'
+import './content.css';
 
 function Content({ addEvent }) {
   return (
-    <div className='content'>
-      <div className='content__wrap'>
+    <div className="content">
+      <div className="content__wrap">
 
         <Switch>
-          <Route path='/'
-            component={() => <MainPage
-            />} exact />
+          <Route
+            exact
+            path="/"
+            component={() => <MainPage />}
+          />
 
-          <PrivateRoute path='/new-event' component={EventPage} saveEvent={addEvent} />
+          <PrivateRoute path="/new-event" component={EventPage} saveEvent={addEvent} />
 
-          <PrivateRoute path='/profile/:userId' component={UserProfile} />
+          <PrivateRoute path="/profile/:userId" component={UserProfile} />
 
-          <PublicRoute path='/sign-up' restricted={true} component={RegistrationPage} />
+          <PublicRoute path="/sign-up" restricted component={RegistrationPage} />
 
-          <PublicRoute path='/sign-in' restricted={true} component={LoginPage} />
+          <PublicRoute path="/sign-in" restricted component={LoginPage} />
 
-          <PrivateRoute path='/settings' component={SettingsPage} />
+          <PrivateRoute path="/settings" component={SettingsPage} />
 
-          <Route path='*'>
+          <Route path="*">
             <div>You gone too far, folk (404) </div>
           </Route>
         </Switch>
 
       </div>
-    </div >
-  )
+    </div>
+  );
 }
 
 function mapDispatchToProps(dispatch) {
   return {
     addEvent: (newEvent) => dispatch(addEvent(newEvent)),
-  }
+  };
 }
 
 export default connect(null, mapDispatchToProps)(Content);

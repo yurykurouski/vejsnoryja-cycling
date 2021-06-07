@@ -32,7 +32,6 @@
   },
   "rules":{
     "template-curly-spacing": "off",
-    "linebreak-style": "warn",
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
     "import/prefer-default-export": "warn",
     "no-underscore-dangle": "off",
@@ -52,6 +51,11 @@
     "arrow-parens": "warn",
     "react/jsx-props-no-spreading": "warn",
     "react/jsx-wrap-multilines": "warn",
-    "sonarjs/cognitive-complexity": "warn"
+    "sonarjs/cognitive-complexity": "warn",
+    "react/jsx-one-expression-per-line":"warn",
+    "react/jsx-closing-tag-location": "warn",
+    "jsx-a11y/click-events-have-key-events": "warn",
+    "jsx-a11y/no-onchange": "warn",
+    "react/destructuring-assignment": "warn"
   }
 }

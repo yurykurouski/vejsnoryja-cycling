@@ -82,7 +82,7 @@ function SettingsPage(props) {
       </div>
       {(gearStatus === ActionStatus.LOADING || infoStatus === ActionStatus.LOADING || userStatus === ActionStatus.LOADING) && <Loader />}
     </div>
-  )
+  );
 }
 
 function mapStateToProps(state) {
@@ -95,7 +95,7 @@ function mapStateToProps(state) {
     gearStatus: state.gear.status,
     authErrors: state.currentUser.authErrors,
     userStatus: state.currentUser.status
-  }
+  };
 }
 
 function mapDispatchToProps(dispatch) {
@@ -107,7 +107,7 @@ function mapDispatchToProps(dispatch) {
     editUserGear: (data) => dispatch(editUserGear(data)),
     changeUserEmail: (data) => dispatch(changeUserEmail(data)),
     changeUserPassword: (data) => dispatch(changeUserPassword(data))
-  }
+  };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(SettingsPage);

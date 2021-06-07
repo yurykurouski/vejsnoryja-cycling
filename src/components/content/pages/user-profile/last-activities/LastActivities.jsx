@@ -15,19 +15,19 @@ export default function LastActivities({ userId, events, deleteEventById, curren
     setEventToDelete(id);
 
     setModalOpen(true);
-  }
+  };
 
   const handleCloseModal = () => {
     setModalOpen(false);
 
     setEventToDelete(null);
-  }
+  };
 
   const handleYesClick = () => {
     deleteEventById(eventToDelete);
 
     handleCloseModal();
-  }
+  };
 
   return (
     <>
@@ -46,17 +46,17 @@ export default function LastActivities({ userId, events, deleteEventById, curren
                   onClick={() => handleClick(event)}
                   deleteEvent={() => handleDeleteClick(event._id)}
                 />
-              )
+              );
             }
             return (
               <EventCard
                 event={event}
                 key={event._id}
                 btnTitle={match ? "I'm Out" : "I'm In"}
-                btnIcon={match ? "remove_done" : "done_outline"}
+                btnIcon={match ? 'remove_done' : 'done_outline'}
                 onClick={() => userInOutEvent({ eventId: event._id, userName })}
               />
-            )
+            );
           } return null;
         }
         )}
@@ -71,8 +71,7 @@ export default function LastActivities({ userId, events, deleteEventById, curren
             onNo={handleCloseModal}
           />
         }
-      />
-      }
+      />}
     </>
-  )
+  );
 }

@@ -7,7 +7,7 @@ import { setActiveGear } from '../../../../../../../store/gear/actions';
 function ActiveToggler({ bike, setActiveGear }) {
   const handleChange = async () => {
     await setActiveGear({ _id: bike._id });
-  }
+  };
 
   return (
     <Radio
@@ -15,15 +15,15 @@ function ActiveToggler({ bike, setActiveGear }) {
       onChange={handleChange}
       value={bike._id}
       name="active"
-      style={{ "color": "#146bff" }}
+      style={{ color: '#146bff' }}
     />
-  )
+  );
 }
 
 function mapDispatchToProps(dispatch) {
   return {
     setActiveGear: (data) => dispatch(setActiveGear(data)),
-  }
+  };
 }
 
 export default connect(null, mapDispatchToProps)(ActiveToggler);

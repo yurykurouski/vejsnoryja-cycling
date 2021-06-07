@@ -10,7 +10,7 @@ import EventDescription from '../event-form-inputs/EventDescription';
 
 import EventMap from '../../event-card/event-card-map/EventMap';
 
-import './event-form.css'
+import './event-form.css';
 
 export default function EventForm(props) {
   const {
@@ -33,7 +33,7 @@ export default function EventForm(props) {
   return (
     <form
       onSubmit={handleSubmit}
-      className='new-event__form second-layer-card'
+      className="new-event__form second-layer-card"
     >
 
       <div className="form__title-wrap">
@@ -85,7 +85,7 @@ export default function EventForm(props) {
         addMarker={addMarker}
         updateMarker={updateMarker}
         markerData={markerData}
-        isDraggable={true}
+        isDraggable
         mainClass="new-event__map"
       />
 
@@ -95,5 +95,5 @@ export default function EventForm(props) {
         <a href="#!" className="new-event__cancel cancel-btn">Cancel</a>
       </section>
     </form>
-  )
+  );
 }

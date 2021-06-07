@@ -20,5 +20,5 @@ export default function EventCardDate({ customClass, date }) {
         locale="en"
       >{date}</Moment>
     </div>
-  )
+  );
 }

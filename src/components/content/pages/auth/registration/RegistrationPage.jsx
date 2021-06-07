@@ -1,13 +1,13 @@
 import React from 'react';
 import * as Yup from 'yup';
 import { Formik } from 'formik';
-import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import Loader from '../../../../common/loader/Loader';
 import ActionStatus from '../../../../../constants/store/action-status';
+import { MIN_PASSWORD_LENGTH, PASSWORD_REGEX } from '../../../../../constants';
 import { registerUser, authUser } from '../../../../../store/current-user/actions';
-import { MIN_PASSWORD_LENGTH, PASSWORD_REGEX } from '../../../../../constants/';
 import ValidationErrMsg from '../../../../common/validation-err-msg/ValidationErrMsg';
 
 import '../auth-pages.css';
@@ -34,7 +34,7 @@ function RegistrationPage(props) {
   const submitForm = async (values) => {
     await registerUser(values);
     authUser();
-  }
+  };
 
   return (
     <div className="content__registration-page auth-page first-layer-card">
@@ -60,7 +60,6 @@ function RegistrationPage(props) {
                 onChange={handleChange}
                 value={values.email}
                 className="form__input form__input_email"
-                autoFocus
               />
             </label>
 
@@ -89,8 +88,8 @@ function RegistrationPage(props) {
               Repeat your password
 
               <input
-                name='repeatPass'
-                type='password'
+                name="repeatPass"
+                type="password"
                 onChange={handleChange}
                 value={values.repeatPass}
                 className="form__input form__input_password"
@@ -105,7 +104,7 @@ function RegistrationPage(props) {
             <section className="registration-page__controls form__controls">
               <button type="submit" className="registration-page__submit submit-btn">Create account</button>
               or
-              <Link to='/sign-in' className="registration-page__cancel cancel-btn">Sign in</Link>
+              <Link to="/sign-in" className="registration-page__cancel cancel-btn">Sign in</Link>
             </section>
           </form>
         )}
@@ -113,20 +112,20 @@ function RegistrationPage(props) {
 
       {status === ActionStatus.LOADING && <Loader />}
     </div>
-  )
+  );
 }
 
 function mapStateToProps(state) {
   return {
     authErrors: state.currentUser.authErrors
-  }
+  };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
     registerUser: (data) => dispatch(registerUser(data)),
     authUser: () => dispatch(authUser()),
-  }
+  };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(RegistrationPage);

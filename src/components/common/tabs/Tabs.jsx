@@ -12,14 +12,14 @@ export default function Tabs({ tabs }) {
         <Link
           className={
             activeTab === index
-              ? "tabs__tab tab_active"
-              : "tabs__tab"
+              ? 'tabs__tab tab_active'
+              : 'tabs__tab'
           }
           onClick={() => setActiveTab(index)}
           to={tab.to}
-          key={index}
+          key={tab.name}
         >{tab.name}</Link>
       ))}
-    </span >
-  )
+    </span>
+  );
 }

@@ -6,7 +6,7 @@ import './event-map.css';
 const center = {
   lat: 53.68312602177623,
   lng: 23.83411884664919
-}
+};
 
 export default function EventMap(props) {
   const { isDraggable, addMarker, updateMarker, markerData, mainClass } = props;
@@ -14,13 +14,13 @@ export default function EventMap(props) {
   return (
     <MapContainer
       className={`${ mainClass } map second-layer-card`}
-      center={markerData ? markerData : center}
+      center={markerData || center}
       zoom={13}
       zoomControl={false}
-      scrollWheelZoom={true}
+      scrollWheelZoom
       whenReady={(map) => {
         if (addMarker) {
-          map.target.on("click", function (e) {
+          map.target.on('click', (e) => {
             addMarker(e);
           });
         }
@@ -40,5 +40,5 @@ export default function EventMap(props) {
         }}
       />}
     </MapContainer>
-  )
+  );
 }
