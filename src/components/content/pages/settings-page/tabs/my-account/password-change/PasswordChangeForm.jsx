@@ -1,7 +1,7 @@
 import React from 'react';
 import * as Yup from 'yup';
 import { Formik } from 'formik';
-
+import PropTypes from 'prop-types';
 import Input from '../../../../../../common/input/Input';
 import { MIN_PASSWORD_LENGTH, PASSWORD_REGEX } from '../../../../../../../constants';
 import ValidationErrMsg from '../../../../../../common/validation-err-msg/ValidationErrMsg';
@@ -18,14 +18,14 @@ export default function PasswordChangeForm({ submitForm, authErrors }) {
       .required('Password can not be empty.'),
     repeatPass: Yup
       .string()
-      .oneOf([Yup.ref('newPassword'), null], 'Passwords does not match.')
+      .oneOf([Yup.ref('newPassword'), null], 'Passwords does not match.'),
   });
 
   const submitPasswordChange = async (data, actions) => {
     await submitForm(data);
 
     actions.resetForm();
-  }
+  };
 
   return (
     <Formik
@@ -33,17 +33,23 @@ export default function PasswordChangeForm({ submitForm, authErrors }) {
       onSubmit={submitPasswordChange}
       validationSchema={validationSchema}
     >
-      {({ handleSubmit, handleChange, values, errors, touched }) => (
+      {({
+        handleSubmit,
+        handleChange,
+        values,
+        errors,
+        touched,
+      }) => (
         <form
           className="my-account__form first-layer-card_hovered"
           onSubmit={handleSubmit}
         >
           <Input
-            name='password'
-            type='password'
-            title='Change Password'
+            name="password"
+            type="password"
+            title="Change Password"
             customInputClass="my-account__input"
-            placeholder='Current password'
+            placeholder="Current password"
             value={values.password}
             onChange={handleChange}
           />
@@ -53,8 +59,8 @@ export default function PasswordChangeForm({ submitForm, authErrors }) {
           ) : null}
 
           <Input
-            name='newPassword'
-            type='password'
+            name="newPassword"
+            type="password"
             placeholder="New password"
             customInputClass="my-account__input"
             value={values.newPassword}
@@ -66,8 +72,8 @@ export default function PasswordChangeForm({ submitForm, authErrors }) {
           ) : null}
 
           <Input
-            name='repeatPass'
-            type='password'
+            name="repeatPass"
+            type="password"
             placeholder="Confirm new password"
             customInputClass="my-account__input"
             value={values.repeatPass}
@@ -82,5 +88,10 @@ export default function PasswordChangeForm({ submitForm, authErrors }) {
         </form>
       )}
     </Formik>
-  )
+  );
 }
+
+PasswordChangeForm.propTypes = {
+  submitForm: PropTypes.func.isRequired,
+  authErrors: PropTypes.object.isRequired,
+};

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import Table from '@material-ui/core/Table';
 import TableRow from '@material-ui/core/TableRow';
@@ -8,16 +9,21 @@ import TableHead from '@material-ui/core/TableHead';
 import { makeStyles } from '@material-ui/core/styles';
 import TableContainer from '@material-ui/core/TableContainer';
 
-import ActiveToggler from './../actions/ActiveToggler';
+import ActiveToggler from '../actions/ActiveToggler';
 import IconButton from '../../../../../../common/icon-button/IconButton';
 
 const useStyles = makeStyles({
   container: {
-    marginTop: 10
+    marginTop: 10,
   },
 });
 
-export default function MyGearTable({ gear, deleteUserGear, editUserGear, handleClickOnGear }) {
+export default function MyGearTable({
+  gear,
+  deleteUserGear,
+  editUserGear,
+  handleClickOnGear,
+}) {
   const classes = useStyles();
 
   return (
@@ -38,7 +44,7 @@ export default function MyGearTable({ gear, deleteUserGear, editUserGear, handle
                 <ActiveToggler bike={bike} />
               </TableCell>
               <TableCell align="center" component="th" scope="row">
-                <span className="bikes__bike-name" onClick={() => handleClickOnGear(bike._id)}>{bike.name}</span>
+                <span className="bikes__bike-name" onClick={() => handleClickOnGear(bike._id)} role="link" tabIndex={0}>{bike.name}</span>
               </TableCell>
               <TableCell align="right">
                 <IconButton
@@ -60,5 +66,12 @@ export default function MyGearTable({ gear, deleteUserGear, editUserGear, handle
         </TableBody>
       </Table>
     </TableContainer>
-  )
+  );
 }
+
+MyGearTable.propTypes = {
+  gear: PropTypes.arrayOf(PropTypes.object).isRequired,
+  deleteUserGear: PropTypes.func.isRequired,
+  editUserGear: PropTypes.func.isRequired,
+  handleClickOnGear: PropTypes.func.isRequired,
+};

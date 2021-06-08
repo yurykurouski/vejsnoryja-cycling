@@ -1,6 +1,7 @@
-import React from 'react'
+import React from 'react';
 import * as Yup from 'yup';
 import { Formik } from 'formik';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
@@ -11,9 +12,12 @@ import ValidationErrMsg from '../../../../common/validation-err-msg/ValidationEr
 
 import '../auth-pages.css';
 
-function LoginPage(props) {
-  const { loginUser, authUser, authErrors, status } = props;
-
+function LoginPage({
+  loginUser,
+  authUser,
+  authErrors,
+  status,
+}) {
   const validationSchema = Yup.object().shape({
     email: Yup
       .string()
@@ -26,7 +30,7 @@ function LoginPage(props) {
   const submitForm = async (values) => {
     await loginUser(values);
     authUser();
-  }
+  };
 
   return (
     <div className="content__login-page auth-page first-layer-card">
@@ -35,24 +39,30 @@ function LoginPage(props) {
       <Formik
         initialValues={{
           email: '',
-          password: ''
+          password: '',
         }}
         onSubmit={submitForm}
         validationSchema={validationSchema}
       >
 
-        {({ handleSubmit, handleChange, values, errors, touched }) => (
+        {({
+          handleSubmit,
+          handleChange,
+          values,
+          errors,
+          touched,
+        }) => (
           <form onSubmit={handleSubmit} className="login-page__form auth-page__form second-layer-card">
-            <label className="input__label">
+            <label className="input__label" htmlFor="email">
               Email
 
               <input
                 name="email"
                 type="text"
+                id="email"
                 onChange={handleChange}
                 value={values.email}
                 className="form__input form__input_email"
-                autoFocus
               />
             </label>
 
@@ -60,12 +70,13 @@ function LoginPage(props) {
               <ValidationErrMsg errorMsg={errors.email} />
             ) : null}
 
-            <label className="input__label">
+            <label className="input__label" htmlFor="password">
               Password
 
               <input
-                name='password'
-                type='password'
+                name="password"
+                type="password"
+                id="password"
                 onChange={handleChange}
                 value={values.password}
                 className="form__input form__input_password"
@@ -80,7 +91,7 @@ function LoginPage(props) {
             <section className="login-page__controls form__controls">
               <button type="submit" className="login-page__submit submit-btn">Sign in</button>
               or
-              <Link to='/sign-up' className="login-page__cancel cancel-btn">Create account</Link>
+              <Link to="/sign-up" className="login-page__cancel cancel-btn">Create account</Link>
             </section>
           </form>
         )}
@@ -89,21 +100,32 @@ function LoginPage(props) {
 
       {status === ActionStatus.LOADING && <Loader />}
     </div>
-  )
+  );
 }
+
+LoginPage.defaultProps = {
+  status: undefined,
+};
+
+LoginPage.propTypes = {
+  loginUser: PropTypes.func.isRequired,
+  authUser: PropTypes.func.isRequired,
+  authErrors: PropTypes.object.isRequired,
+  status: PropTypes.string,
+};
 
 function mapStateToProps(state) {
   return {
     currentUser: state.currentUser,
-    authErrors: state.currentUser.authErrors
-  }
+    authErrors: state.currentUser.authErrors,
+  };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
     loginUser: (data) => dispatch(loginUser(data)),
     authUser: () => dispatch(authUser()),
-  }
+  };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginPage);

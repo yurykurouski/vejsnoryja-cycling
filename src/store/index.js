@@ -3,15 +3,13 @@ import { createStore, applyMiddleware, compose } from 'redux';
 
 import reducers from './reducers';
 
-export function configreStore(initialStore) {
-  const store = createStore(
+export default function configreStore(initialStore) {
+  return createStore(
     reducers,
     initialStore,
     compose(
       applyMiddleware(...getDefaultMiddleware()),
-      window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-    )
+      window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
+    ),
   );
-
-  return store;
 }

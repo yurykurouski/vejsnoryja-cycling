@@ -1,10 +1,12 @@
-import React from 'react'
+import React from 'react';
+import PropTypes from 'prop-types';
 
-export default function EventDate(props) {
-  const { onChange, value } = props;
-
+export default function EventDate({
+  onChange,
+  value,
+}) {
   return (
-    <label className="input__label">
+    <label className="input__label" htmlFor="meeting-time">
       Start Date/Time*
 
       <input
@@ -17,5 +19,10 @@ export default function EventDate(props) {
         className="form__input form__input_date"
       />
     </label>
-  )
+  );
 }
+
+EventDate.propTypes = {
+  onChange: PropTypes.func.isRequired,
+  value: PropTypes.string.isRequired,
+};

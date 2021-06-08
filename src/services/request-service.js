@@ -3,33 +3,21 @@ import ContentType from '../constants/http-requests/content-type';
 
 class RequestService {
   constructor() {
-    this.response = async (url, method, data) => {
-      return await fetch(url, {
-        method: method,
-        body: JSON.stringify(data),
-        headers: {
-          'Content-Type': ContentType.APPLICATION_JSON,
-          'Authorization': localStorage.getItem('token'),
-        }
-      });
-    }
+    this.response = async (url, method, data) => fetch(url, {
+      method,
+      body: JSON.stringify(data),
+      headers: {
+        'Content-Type': ContentType.APPLICATION_JSON,
+        Authorization: localStorage.getItem('token'),
+      },
+    });
   }
 
   async getSecured(url) {
     try {
       const response = await this.response(url, HttpMethod.GET);
 
-      return response.json();;
-    } catch (err) {
-      throw new Error(err);
-    }
-  }
-
-  async get(url) {
-    try {
-      const response = await this.response(url, HttpMethod.GET);
-
-      return response.json();;
+      return response.json();
     } catch (err) {
       throw new Error(err);
     }
@@ -39,7 +27,7 @@ class RequestService {
     try {
       const response = await this.response(url, HttpMethod.POST, data);
 
-      return response.json();;
+      return response.json();
     } catch (err) {
       throw new Error(err.message);
     }
@@ -52,11 +40,9 @@ class RequestService {
       const json = await response.json();
 
       if (!response.ok) {
-
         return json.message;
-      } else {
-        return json;
       }
+      return json;
     } catch (err) {
       throw new Error(err);
     }
@@ -68,7 +54,7 @@ class RequestService {
 
       return await response.json();
     } catch (err) {
-      throw new Error(err)
+      throw new Error(err);
     }
   }
 

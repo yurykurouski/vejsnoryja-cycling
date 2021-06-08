@@ -1,17 +1,22 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import ValidationErrMsg from '../../validation-err-msg/ValidationErrMsg';
 
-export default function Distance(props) {
-  const { onChange, value, errors, touched } = props;
-
+export default function Distance({
+  onChange,
+  value,
+  errors,
+  touched,
+}) {
   return (
-    <label className="input__label">
+    <label className="input__label" htmlFor="distance">
       Distance (km)
 
       <input
-        name='distance'
-        type='text'
+        name="distance"
+        id="distance"
+        type="text"
         onChange={onChange}
         value={value}
         className="form__input form__input_distance"
@@ -21,5 +26,17 @@ export default function Distance(props) {
         <ValidationErrMsg errorMsg={errors} />
       ) : null}
     </label>
-  )
+  );
 }
+
+Distance.defaultProps = {
+  errors: undefined,
+  touched: undefined,
+};
+
+Distance.propTypes = {
+  onChange: PropTypes.func.isRequired,
+  value: PropTypes.string.isRequired,
+  errors: PropTypes.string,
+  touched: PropTypes.bool,
+};

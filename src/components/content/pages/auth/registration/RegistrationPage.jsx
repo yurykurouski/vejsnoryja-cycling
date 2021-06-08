@@ -1,20 +1,24 @@
 import React from 'react';
 import * as Yup from 'yup';
 import { Formik } from 'formik';
-import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import Loader from '../../../../common/loader/Loader';
 import ActionStatus from '../../../../../constants/store/action-status';
+import { MIN_PASSWORD_LENGTH, PASSWORD_REGEX } from '../../../../../constants';
 import { registerUser, authUser } from '../../../../../store/current-user/actions';
-import { MIN_PASSWORD_LENGTH, PASSWORD_REGEX } from '../../../../../constants/';
 import ValidationErrMsg from '../../../../common/validation-err-msg/ValidationErrMsg';
 
 import '../auth-pages.css';
 
-function RegistrationPage(props) {
-  const { registerUser, authErrors, status, authUser } = props;
-
+function RegistrationPage({
+  registerUser,
+  authErrors,
+  status,
+  authUser,
+}) {
   const validationSchema = Yup.object().shape({
     email: Yup
       .string()
@@ -28,13 +32,13 @@ function RegistrationPage(props) {
     repeatPass: Yup
       .string()
       .oneOf([Yup.ref('password'), null], 'Passwords does not match.')
-      .required('Confirm your password.')
+      .required('Confirm your password.'),
   });
 
   const submitForm = async (values) => {
     await registerUser(values);
     authUser();
-  }
+  };
 
   return (
     <div className="content__registration-page auth-page first-layer-card">
@@ -45,22 +49,28 @@ function RegistrationPage(props) {
         onSubmit={submitForm}
         validationSchema={validationSchema}
       >
-        {({ handleSubmit, handleChange, values, errors, touched }) => (
+        {({
+          handleSubmit,
+          handleChange,
+          values,
+          errors,
+          touched,
+        }) => (
           <form
             className="registration-page__form auth-page__form second-layer-card"
             onSubmit={handleSubmit}
           >
 
-            <label className="input__label">
+            <label className="input__label" htmlFor="email">
               Email
 
               <input
                 name="email"
                 type="text"
+                id="email"
                 onChange={handleChange}
                 value={values.email}
                 className="form__input form__input_email"
-                autoFocus
               />
             </label>
 
@@ -68,12 +78,13 @@ function RegistrationPage(props) {
               <ValidationErrMsg errorMsg={errors.email || authErrors.email} />
             ) : null}
 
-            <label className="input__label">
+            <label className="input__label" htmlFor="password">
               Password
 
               <input
                 name="password"
                 type="password"
+                id="password"
                 onChange={handleChange}
                 value={values.password}
                 className="form__input form__input_password"
@@ -85,12 +96,13 @@ function RegistrationPage(props) {
               <ValidationErrMsg errorMsg={errors.password} />
             ) : null}
 
-            <label className="input__label">
+            <label className="input__label" htmlFor="repeatPass">
               Repeat your password
 
               <input
-                name='repeatPass'
-                type='password'
+                name="repeatPass"
+                type="password"
+                id="repeatPass"
                 onChange={handleChange}
                 value={values.repeatPass}
                 className="form__input form__input_password"
@@ -105,7 +117,7 @@ function RegistrationPage(props) {
             <section className="registration-page__controls form__controls">
               <button type="submit" className="registration-page__submit submit-btn">Create account</button>
               or
-              <Link to='/sign-in' className="registration-page__cancel cancel-btn">Sign in</Link>
+              <Link to="/sign-in" className="registration-page__cancel cancel-btn">Sign in</Link>
             </section>
           </form>
         )}
@@ -113,20 +125,31 @@ function RegistrationPage(props) {
 
       {status === ActionStatus.LOADING && <Loader />}
     </div>
-  )
+  );
 }
+
+RegistrationPage.defaultProps = {
+  status: undefined,
+};
+
+RegistrationPage.propTypes = {
+  registerUser: PropTypes.func.isRequired,
+  authUser: PropTypes.func.isRequired,
+  authErrors: PropTypes.object.isRequired,
+  status: PropTypes.string,
+};
 
 function mapStateToProps(state) {
   return {
-    authErrors: state.currentUser.authErrors
-  }
+    authErrors: state.currentUser.authErrors,
+  };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
     registerUser: (data) => dispatch(registerUser(data)),
     authUser: () => dispatch(authUser()),
-  }
+  };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(RegistrationPage);

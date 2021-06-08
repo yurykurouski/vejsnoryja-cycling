@@ -2,8 +2,8 @@ import * as types from './types';
 import ActionStatus from '../../constants/store/action-status';
 
 const initialState = {
-  gear: [],
-  status: ActionStatus.IDLE
+  gear: [{}],
+  status: ActionStatus.IDLE,
 };
 
 export default function gear(state = initialState, action) {
@@ -12,31 +12,31 @@ export default function gear(state = initialState, action) {
       return {
         ...state,
         gear: [...state.gear, action.payload],
-        status: ActionStatus.SUCCEDED
+        status: ActionStatus.SUCCEDED,
       };
     }
-
+    case types.GET_USER_ACTIVE_GEAR_SUCESS:
     case types.GET_USER_GEAR_SUCESS: {
       return {
         ...state,
         gear: action.payload,
-        status: ActionStatus.SUCCEDED
+        status: ActionStatus.SUCCEDED,
       };
     }
 
-    case types.GET_USER_ACTIVE_GEAR_SUCESS: {
-      return {
-        ...state,
-        gear: action.payload,
-        status: ActionStatus.SUCCEDED
-      };
-    }
+    // case types.GET_USER_ACTIVE_GEAR_SUCESS: {
+    //   return {
+    //     ...state,
+    //     gear: action.payload,
+    //     status: ActionStatus.SUCCEDED,
+    //   };
+    // }
 
     case types.SET_ACTIVE_GEAR_SUCESS: {
-      const updatedGear = state.gear.map(bike => {
+      const updatedGear = state.gear.map((bike) => {
         if (bike._id === action.payload._id) return action.payload;
         const unactive = {
-          ...bike
+          ...bike,
         };
         unactive.active = false;
         return unactive;
@@ -45,21 +45,21 @@ export default function gear(state = initialState, action) {
       return {
         ...state,
         gear: updatedGear,
-        status: ActionStatus.SUCCEDED
+        status: ActionStatus.SUCCEDED,
       };
     }
 
     case types.DELETE_USER_GEAR_SUCESS: {
-      const updatedGear = state.gear.filter(bike => bike._id !== action.payload._id);
+      const updatedGear = state.gear.filter((bike) => bike._id !== action.payload._id);
       return {
         ...state,
         gear: updatedGear,
-        status: ActionStatus.SUCCEDED
+        status: ActionStatus.SUCCEDED,
       };
     }
 
     case types.EDIT_USER_GEAR_SUCESS: {
-      const updatedGear = state.gear.map(bike => {
+      const updatedGear = state.gear.map((bike) => {
         if (bike._id === action.payload._id) return action.payload;
         return bike;
       });
@@ -67,7 +67,7 @@ export default function gear(state = initialState, action) {
       return {
         ...state,
         gear: updatedGear,
-        status: ActionStatus.SUCCEDED
+        status: ActionStatus.SUCCEDED,
       };
     }
 
@@ -79,8 +79,8 @@ export default function gear(state = initialState, action) {
     case types.ADD_NEW_GEAR_REQUEST: {
       return {
         ...state,
-        status: ActionStatus.LOADING
-      }
+        status: ActionStatus.LOADING,
+      };
     }
 
     case types.EDIT_USER_GEAR_FAILURE:
@@ -91,8 +91,8 @@ export default function gear(state = initialState, action) {
     case types.ADD_NEW_GEAR_FAILURE: {
       return {
         ...state,
-        status: ActionStatus.FAILED
-      }
+        status: ActionStatus.FAILED,
+      };
     }
 
     default: {

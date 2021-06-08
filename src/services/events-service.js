@@ -1,67 +1,51 @@
-import requestService from './request-service.js';
+import requestService from './request-service';
 
-class EventsService {
-  async createEvent(data) {
+export default class EventsService {
+  static async createEvent(data) {
     try {
-      const response = requestService.postSecured(process.env.REACT_APP_API_NEW_EVENT_URL, data);
-
-      return response;
+      return requestService.postSecured(process.env.REACT_APP_API_NEW_EVENT_URL, data);
     } catch (err) {
       throw new Error(err);
     }
   }
 
-  async getAllEvents() {
+  static async getAllEvents() {
     try {
-      const response = await requestService.get(process.env.REACT_APP_API_GET_ALL_EVENTS_URL);
-
-      return response;
+      return await requestService.getSecured(process.env.REACT_APP_API_GET_ALL_EVENTS_URL);
     } catch (err) {
       throw new Error(err);
     }
   }
 
-  async getEventsByUser(id) {
+  static async getEventsByUser(id) {
     try {
-      const response = await requestService.getSecured(`${ process.env.REACT_APP_API_GET_EVENTS_BY_USER_URL }${ id }`);
-
-      return response;
+      return await requestService.getSecured(`${ process.env.REACT_APP_API_GET_EVENTS_BY_USER_URL }${ id }`);
     } catch (err) {
       throw new Error(err);
     }
   }
 
-  async updateEventById(id) {
+  static async updateEventById(id) {
     try {
-      const response = await requestService.putSecured(process.env.REACT_APP_API_UPDATE_EVENT_BY_ID, id);
-
-      return response;
+      return await requestService.putSecured(process.env.REACT_APP_API_UPDATE_EVENT_BY_ID, id);
     } catch (err) {
       throw new Error(err);
     }
   }
 
-  async deleteEventById(id) {
+  static async deleteEventById(id) {
     try {
-      const response = await requestService.deleteSecured(`${ process.env.REACT_APP_API_DELETE_EVENT_BY_ID }${ id }`);
-
-      return response;
+      return await requestService.deleteSecured(`${ process.env.REACT_APP_API_DELETE_EVENT_BY_ID }${ id }`);
     } catch (err) {
       throw new Error(err);
     }
   }
 
-  async userInOutEvent(data) {
+  static async userInOutEvent(data) {
     try {
-      const response = await requestService.patchSecured(process.env.REACT_APP_API_EVENT_USER_IN_OUT, data);
-
-      return response;
+      return await requestService.patchSecured(process.env.REACT_APP_API_EVENT_USER_IN_OUT, data);
     } catch (err) {
       throw new Error(err);
     }
   }
 }
-
-const eventService = new EventsService();
-
-export default eventService;

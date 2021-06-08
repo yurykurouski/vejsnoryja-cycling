@@ -1,26 +1,31 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { MapContainer, TileLayer, Marker } from 'react-leaflet';
 
 import './event-map.css';
 
 const center = {
   lat: 53.68312602177623,
-  lng: 23.83411884664919
-}
+  lng: 23.83411884664919,
+};
 
-export default function EventMap(props) {
-  const { isDraggable, addMarker, updateMarker, markerData, mainClass } = props;
-
+export default function EventMap({
+  isDraggable,
+  addMarker,
+  updateMarker,
+  markerData,
+  mainClass,
+}) {
   return (
     <MapContainer
       className={`${ mainClass } map second-layer-card`}
-      center={markerData ? markerData : center}
+      center={markerData || center}
       zoom={13}
       zoomControl={false}
-      scrollWheelZoom={true}
+      scrollWheelZoom
       whenReady={(map) => {
         if (addMarker) {
-          map.target.on("click", function (e) {
+          map.target.on('click', (e) => {
             addMarker(e);
           });
         }
@@ -36,9 +41,23 @@ export default function EventMap(props) {
         eventHandlers={{
           dragend(e) {
             updateMarker(e);
-          }
+          },
         }}
       />}
     </MapContainer>
-  )
+  );
 }
+
+EventMap.defaultProps = {
+  markerData: {},
+  updateMarker: undefined,
+  addMarker: undefined,
+};
+
+EventMap.propTypes = {
+  isDraggable: PropTypes.bool.isRequired,
+  updateMarker: PropTypes.func,
+  addMarker: PropTypes.func,
+  markerData: PropTypes.object,
+  mainClass: PropTypes.string.isRequired,
+};

@@ -1,18 +1,17 @@
 import React, { useCallback, useEffect } from 'react';
 import ReactDom from 'react-dom';
+import PropTypes from 'prop-types';
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 
 import { ESCAPE_KEYCODE } from '../../../constants';
 
 import './modal.css';
 
-export default function Modal(
-  {
-    component: Component,
-    heading,
-    handleCloseModal,
-  }
-) {
+export default function Modal({
+  component: Component,
+  heading,
+  handleCloseModal,
+}) {
   const modalRoot = document.getElementById('modal-root');
   const el = document.createElement('div');
   el.classList.add('fade-layer');
@@ -21,7 +20,7 @@ export default function Modal(
     modalRoot.appendChild(el);
     return () => {
       modalRoot.removeChild(el);
-    }
+    };
   });
 
   const escFunction = useCallback(
@@ -30,14 +29,14 @@ export default function Modal(
         handleCloseModal();
       }
     },
-    [handleCloseModal]
+    [handleCloseModal],
   );
 
   useEffect(() => {
-    document.addEventListener("keydown", escFunction, false);
+    document.addEventListener('keydown', escFunction, false);
 
     return () => {
-      document.removeEventListener("keydown", escFunction, false);
+      document.removeEventListener('keydown', escFunction, false);
     };
   }, [escFunction]);
 
@@ -50,6 +49,12 @@ export default function Modal(
 
       </div>
     </ClickAwayListener>,
-    el
+    el,
   );
 }
+
+Modal.propTypes = {
+  component: PropTypes.func.isRequired,
+  handleCloseModal: PropTypes.func.isRequired,
+  heading: PropTypes.string.isRequired,
+};

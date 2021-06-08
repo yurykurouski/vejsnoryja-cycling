@@ -7,19 +7,19 @@ export default class SettingsFields {
     return [
       {
         to: '/settings/my-profile',
-        name: 'My Profile'
+        name: 'My Profile',
       },
 
       {
         to: '/settings/my-gear',
-        name: 'My Gear'
+        name: 'My Gear',
       },
 
       {
         to: '/settings/my-account',
-        name: 'My Account'
-      }
-    ]
+        name: 'My Account',
+      },
+    ];
   }
 
   static get ADD_BIKE() {
@@ -28,39 +28,39 @@ export default class SettingsFields {
         title: 'Name',
         name: 'name',
         value: '',
-        type: 'text'
+        type: 'text',
       },
       {
         title: 'Types',
         name: 'types',
         value: 'Road bike',
         options: this.FIELDS_OPTIONS,
-        type: 'select'
+        type: 'select',
       },
       {
         title: 'Weight',
         name: 'weight',
         value: '',
-        type: 'text'
+        type: 'text',
       },
       {
         title: 'Brand',
         name: 'brand',
         value: '',
-        type: 'text'
+        type: 'text',
       },
       {
         title: 'Model',
         name: 'model',
         value: '',
-        type: 'text'
+        type: 'text',
       },
       {
         title: 'Notes',
         name: 'notes',
         value: '',
-        type: 'textfield'
+        type: 'textfield',
       },
-    ]
+    ];
   }
 }

@@ -1,0 +1,46 @@
+{
+  "env": {
+    "commonjs": true,
+    "es6": true,
+    "node": true,
+    "browser": true
+  },
+  "extends": [
+    "airbnb",
+    "plugin:react/recommended",
+    "plugin:import/errors",
+    "plugin:import/warnings",
+    "plugin:jsx-a11y/recommended",
+    "plugin:sonarjs/recommended",
+    "plugin:promise/recommended"
+  ],
+  "plugins": [
+    "react",
+    "jsx-a11y",
+    "optimize-regex",
+    "sonarjs",
+    "no-loops",
+    "no-use-extend-native",
+    "promise"
+  ],
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "ecmaVersion": 2019,
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "rules":{
+    "template-curly-spacing": "off",
+    "jsx-a11y/no-onchange": "off",
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "react/jsx-closing-tag-location": "off",
+    "no-underscore-dangle": "off",
+    "no-shadow": "off",
+    "react/jsx-props-no-spreading": "off",
+    "react/forbid-prop-types": "off",
+    "react/jsx-wrap-multilines": "off",
+    "jsx-a11y/click-events-have-key-events": "off",
+    "jsx-a11y/aria-role": ["error", {"ignoreNonDom": true}]
+  }
+}

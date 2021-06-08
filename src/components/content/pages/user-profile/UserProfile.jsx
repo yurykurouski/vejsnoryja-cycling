@@ -1,6 +1,12 @@
-import React, { useEffect } from 'react'
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { Switch, Route, Redirect, useRouteMatch } from 'react-router-dom';
+import {
+  Switch,
+  Route,
+  Redirect,
+  useRouteMatch,
+} from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import Tabs from '../../../common/tabs/Tabs';
 import Loader from '../../../common/loader/Loader';
@@ -11,36 +17,31 @@ import { getUserInfo } from '../../../../store/user-info/actions';
 import { getUserActiveGear } from '../../../../store/gear/actions';
 import { logoutUser } from '../../../../store/current-user/actions';
 import ActionStatus from '../../../../constants/store/action-status';
-import profileFields from '../../../../constants/components-fields/profile-fields';
+import ProfileFields from '../../../../constants/components-fields/profile-fields';
 import { deleteEventById, updateEventById, userInOutEvent } from '../../../../store/events/actions';
 
 import './user-profile.css';
 
-function UserProfile(props) {
-  const { logoutUser,
-    events,
-    gear,
-    eventsStatus,
-    gearStatus,
-    updateEventById,
-    getUserActiveGear,
-    getUserInfo,
-    userInfo,
-    currentUserId,
-    deleteEventById,
-    userInOutEvent
-  } = props;
-
+function UserProfile({
+  events,
+  gear,
+  eventsStatus,
+  gearStatus,
+  userInfo,
+  currentUserId,
+  logoutUser,
+  getUserInfo,
+  getUserActiveGear,
+  deleteEventById,
+  updateEventById,
+  userInOutEvent,
+}) {
   const eventID = useRouteMatch('/profile/edit-event/:eventID')?.params.eventID;
   const userId = useRouteMatch('/profile/:userId')?.params.userId;
-
   useEffect(() => {
     getUserActiveGear(userId);
-  }, [getUserActiveGear, userId]);
-
-  useEffect(() => {
     getUserInfo(userId);
-  }, [getUserInfo, userId]);
+  }, [getUserActiveGear, getUserInfo, userId]);
 
   return (
     <Switch>
@@ -49,7 +50,7 @@ function UserProfile(props) {
           eventID
             ? <Route exact path="/profile/edit-event/:eventID">
               <EventPage
-                event={events.find(event => event._id === eventID)}
+                event={events.find((event) => event._id === eventID)}
                 currentUser={userId}
                 saveEvent={updateEventById}
               />
@@ -60,15 +61,20 @@ function UserProfile(props) {
                 <h2 className="user-profile__heading card-heading">
                   {currentUserId === userId
                     ? 'Your profile'
-                    : `${ userInfo.Name }'s profile`
-                  }
+                    : `${ userInfo.Name }'s profile`}
                 </h2>
-                <button onClick={logoutUser} className="user-profile__logout-btn submit-btn sign-out-btn">Sign out</button>
+                <button
+                  onClick={logoutUser}
+                  type="button"
+                  className="user-profile__logout-btn submit-btn sign-out-btn"
+                >
+                  Sign out
+                </button>
               </span>
 
               <div className="user-profile__main second-layer-card">
 
-                <Tabs tabs={profileFields.PROFILE_TABS(userId)} />
+                <Tabs tabs={ProfileFields.PROFILE_TABS(userId)} />
 
                 <div className="user-profile__tab-content-wrap">
                   <Route path="/profile/:userId">
@@ -90,11 +96,11 @@ function UserProfile(props) {
                     <div className="profile-information-wrap first-layer-card">
                       <InfoSection
                         info={userInfo}
-                        title={profileFields.INFORMATION_SUBTITLE_INFO()}
+                        title={ProfileFields.INFORMATION_SUBTITLE_INFO()}
                       />
                       <InfoSection
-                        info={gear}
-                        title={profileFields.INFORMATION_SUBTITLE_GEAR()}
+                        info={gear[0]}
+                        title={ProfileFields.INFORMATION_SUBTITLE_GEAR()}
                       />
                     </div>
                   </Route>
@@ -102,11 +108,27 @@ function UserProfile(props) {
               </div>
             </div>
         }
-        {(eventsStatus === ActionStatus.LOADING || gearStatus === ActionStatus.LOADING) && <Loader />}
+        {(eventsStatus === ActionStatus.LOADING
+          || gearStatus === ActionStatus.LOADING) && <Loader />}
       </>
     </Switch>
-  )
+  );
 }
+
+UserProfile.propTypes = {
+  events: PropTypes.arrayOf(PropTypes.object).isRequired,
+  gear: PropTypes.PropTypes.arrayOf(PropTypes.object).isRequired,
+  eventsStatus: PropTypes.string.isRequired,
+  gearStatus: PropTypes.string.isRequired,
+  userInfo: PropTypes.object.isRequired,
+  currentUserId: PropTypes.string.isRequired,
+  logoutUser: PropTypes.func.isRequired,
+  getUserInfo: PropTypes.func.isRequired,
+  getUserActiveGear: PropTypes.func.isRequired,
+  deleteEventById: PropTypes.func.isRequired,
+  updateEventById: PropTypes.func.isRequired,
+  userInOutEvent: PropTypes.func.isRequired,
+};
 
 function mapStateToProps(state) {
   return {
@@ -115,8 +137,8 @@ function mapStateToProps(state) {
     gear: state.gear.gear,
     gearStatus: state.gear.status,
     userInfo: state.userInfo.userInfo,
-    currentUserId: state.currentUser.user
-  }
+    currentUserId: state.currentUser.user,
+  };
 }
 
 function mapDispatchToProps(dispatch) {
@@ -126,8 +148,8 @@ function mapDispatchToProps(dispatch) {
     getUserActiveGear: (id) => dispatch(getUserActiveGear(id)),
     getUserInfo: (id) => dispatch(getUserInfo(id)),
     deleteEventById: (id) => dispatch(deleteEventById(id)),
-    userInOutEvent: (data) => dispatch(userInOutEvent(data))
-  }
+    userInOutEvent: (data) => dispatch(userInOutEvent(data)),
+  };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserProfile);

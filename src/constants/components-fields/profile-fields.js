@@ -1,26 +1,22 @@
-class ProfileFields {
-  PROFILE_TABS(userId) {
+export default class ProfileFields {
+  static PROFILE_TABS(userId) {
     return [
       {
-        to: `/profile/${ userId }/last-activities`,
-        name: 'Last activities'
+        to: `/profile/${userId}/last-activities`,
+        name: 'Last activities',
       },
       {
-        to: `/profile/${ userId }/info`,
-        name: 'Information'
-      }
-    ]
+        to: `/profile/${userId}/info`,
+        name: 'Information',
+      },
+    ];
   }
 
-  INFORMATION_SUBTITLE_INFO() {
-    return 'Info'
+  static INFORMATION_SUBTITLE_INFO() {
+    return 'Info';
   }
 
-  INFORMATION_SUBTITLE_GEAR() {
-    return 'Gear'
+  static INFORMATION_SUBTITLE_GEAR() {
+    return 'Gear';
   }
 }
-
-const profileFields = new ProfileFields();
-
-export default profileFields;

@@ -10,7 +10,7 @@ export default class AddButtonActions {
         name: 'New event',
         type: 'edit',
         linkTo: 'new-event',
-      }
-    ]
+      },
+    ];
   }
 }
