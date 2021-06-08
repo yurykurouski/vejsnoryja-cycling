@@ -1,17 +1,20 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-export default function EventTerrain(props) {
-  const { onChange, value } = props;
-
+export default function EventTerrain({
+  onChange,
+  value,
+}) {
   return (
-    <label className="input__label">
+    <label className="input__label" htmlFor="terrain">
       Terrain
 
       <select
         name="terrain"
         type="text"
+        id="terrain"
         value={value}
-        onChange={onChange}
+        onBLut={onChange}
         className="form__input form__input_terrain"
       >
 
@@ -23,3 +26,8 @@ export default function EventTerrain(props) {
     </label>
   );
 }
+
+EventTerrain.propTypes = {
+  onChange: PropTypes.func.isRequired,
+  value: PropTypes.string.isRequired,
+};

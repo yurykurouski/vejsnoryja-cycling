@@ -1,9 +1,15 @@
 import React from 'react';
 import { Formik } from 'formik';
+import PropTypes from 'prop-types';
 
 import Input from '../../input/Input';
 
-export default function ModalForm({ fields, handleModalSubmit, validationSchema, btnText }) {
+export default function ModalForm({
+  fields,
+  handleModalSubmit,
+  validationSchema,
+  btnText,
+}) {
   const getValues = () => {
     const vals = {};
 
@@ -19,7 +25,12 @@ export default function ModalForm({ fields, handleModalSubmit, validationSchema,
       onSubmit={handleModalSubmit}
       validationSchema={validationSchema}
     >
-      {({ handleSubmit, handleChange, values, errors }) => (
+      {({
+        handleSubmit,
+        handleChange,
+        values,
+        errors,
+      }) => (
         <form
           className="modal-window__main modal-form second-layer-card"
           onSubmit={handleSubmit}
@@ -43,3 +54,10 @@ export default function ModalForm({ fields, handleModalSubmit, validationSchema,
     </Formik>
   );
 }
+
+ModalForm.propTypes = {
+  handleModalSubmit: PropTypes.func.isRequired,
+  fields: PropTypes.arrayOf(PropTypes.object).isRequired,
+  validationSchema: PropTypes.object.isRequired,
+  btnText: PropTypes.string.isRequired,
+};

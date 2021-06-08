@@ -1,18 +1,17 @@
 import React, { useCallback, useEffect } from 'react';
 import ReactDom from 'react-dom';
+import PropTypes from 'prop-types';
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 
 import { ESCAPE_KEYCODE } from '../../../constants';
 
 import './modal.css';
 
-export default function Modal(
-  {
-    component: Component,
-    heading,
-    handleCloseModal,
-  }
-) {
+export default function Modal({
+  component: Component,
+  heading,
+  handleCloseModal,
+}) {
   const modalRoot = document.getElementById('modal-root');
   const el = document.createElement('div');
   el.classList.add('fade-layer');
@@ -30,7 +29,7 @@ export default function Modal(
         handleCloseModal();
       }
     },
-    [handleCloseModal]
+    [handleCloseModal],
   );
 
   useEffect(() => {
@@ -50,6 +49,12 @@ export default function Modal(
 
       </div>
     </ClickAwayListener>,
-    el
+    el,
   );
 }
+
+Modal.propTypes = {
+  component: PropTypes.func.isRequired,
+  handleCloseModal: PropTypes.func.isRequired,
+  heading: PropTypes.string.isRequired,
+};

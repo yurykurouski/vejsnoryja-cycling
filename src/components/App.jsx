@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import Content from './content/Content';
@@ -6,11 +7,16 @@ import Sidebar from './side-bar/Sidebar';
 import FloatCard from './common/float-card/FloatCard';
 import AddButton from './common/add-button/AddButton';
 import { authUser } from '../store/current-user/actions';
-
-import './app.css';
 import { getUserInfo } from '../store/user-info/actions';
 
-function App({ currentUser: isAuthenticated, currentUser: userId, authUser, getUserInfo }) {
+import './app.css';
+
+function App({
+  currentUser: isAuthenticated,
+  currentUser: userId,
+  authUser,
+  getUserInfo,
+}) {
   const token = localStorage.getItem('token');
 
   useEffect(() => {
@@ -32,6 +38,12 @@ function App({ currentUser: isAuthenticated, currentUser: userId, authUser, getU
   );
 }
 
+App.propTypes = {
+  currentUser: PropTypes.object.isRequired,
+  authUser: PropTypes.func.isRequired,
+  getUserInfo: PropTypes.func.isRequired,
+};
+
 function mapStateToProps(state) {
   return {
     currentUser: state.currentUser,
@@ -41,7 +53,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     authUser: () => dispatch(authUser()),
-    getUserInfo: (id) => dispatch(getUserInfo(id))
+    getUserInfo: (id) => dispatch(getUserInfo(id)),
   };
 }
 

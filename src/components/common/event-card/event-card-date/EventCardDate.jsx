@@ -1,5 +1,6 @@
 import React from 'react';
 import Moment from 'react-moment';
+import PropTypes from 'prop-types';
 
 import './event-card-date.css';
 
@@ -11,14 +12,23 @@ export default function EventCardDate({ customClass, date }) {
         format="D"
         className={`${ customClass } date_date`}
         locale="en"
-      >{date}</Moment>
+      >
+        {date}
+      </Moment>
 
       <Moment
         element="span"
         format="MMM"
         className={`${ customClass } date_month`}
         locale="en"
-      >{date}</Moment>
+      >
+        {date}
+      </Moment>
     </div>
   );
 }
+
+EventCardDate.propTypes = {
+  customClass: PropTypes.string.isRequired,
+  date: PropTypes.instanceOf(Date).isRequired,
+};

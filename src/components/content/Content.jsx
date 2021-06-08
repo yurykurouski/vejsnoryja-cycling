@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Switch, Route } from 'react-router-dom';
 
@@ -46,6 +47,10 @@ function Content({ addEvent }) {
     </div>
   );
 }
+
+Content.propTypes = {
+  addEvent: PropTypes.func.isRequired,
+};
 
 function mapDispatchToProps(dispatch) {
   return {

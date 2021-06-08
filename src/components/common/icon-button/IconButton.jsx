@@ -1,11 +1,15 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Icon from '@material-ui/core/Icon';
 
 import './icon-button.css';
 
-export default function IconButton(props) {
-  const { onClick, btnTitle, btnIcon, color } = props;
-
+export default function IconButton({
+  onClick,
+  btnTitle,
+  btnIcon,
+  color,
+}) {
   return (
     <button
       className="event-card__option"
@@ -16,7 +20,16 @@ export default function IconButton(props) {
     >
       <Icon
         className="option__icon"
-      >{btnIcon}</Icon>
+      >
+        {btnIcon}
+      </Icon>
     </button>
   );
 }
+
+IconButton.propTypes = {
+  onClick: PropTypes.func.isRequired,
+  btnTitle: PropTypes.string.isRequired,
+  btnIcon: PropTypes.string.isRequired,
+  color: PropTypes.string.isRequired,
+};

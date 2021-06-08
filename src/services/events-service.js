@@ -11,7 +11,7 @@ class EventsService {
 
   static async getAllEvents() {
     try {
-      return await requestService.get(process.env.REACT_APP_API_GET_ALL_EVENTS_URL);
+      return await requestService.getSecured(process.env.REACT_APP_API_GET_ALL_EVENTS_URL);
     } catch (err) {
       throw new Error(err);
     }
@@ -19,7 +19,7 @@ class EventsService {
 
   static async getEventsByUser(id) {
     try {
-      return await requestService.getSecured(`${process.env.REACT_APP_API_GET_EVENTS_BY_USER_URL}${id}`);
+      return await requestService.getSecured(`${ process.env.REACT_APP_API_GET_EVENTS_BY_USER_URL }${ id }`);
     } catch (err) {
       throw new Error(err);
     }
@@ -35,7 +35,7 @@ class EventsService {
 
   static async deleteEventById(id) {
     try {
-      return await requestService.deleteSecured(`${process.env.REACT_APP_API_DELETE_EVENT_BY_ID}${id}`);
+      return await requestService.deleteSecured(`${ process.env.REACT_APP_API_DELETE_EVENT_BY_ID }${ id }`);
     } catch (err) {
       throw new Error(err);
     }
@@ -50,6 +50,6 @@ class EventsService {
   }
 }
 
-const eventService = new EventsService();
+// const eventService = new EventsService();
 
-export default eventService;
+export default EventsService;

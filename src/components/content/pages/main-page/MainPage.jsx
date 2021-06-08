@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import Loader from '../../../common/loader/Loader';
@@ -8,7 +9,14 @@ import { getAllEvents, userInOutEvent } from '../../../../store/events/actions';
 
 import './main-page.css';
 
-function MainPage({ events, status, getAllEvents, userInOutEvent, userName, userId }) {
+function MainPage({
+  events,
+  status,
+  getAllEvents,
+  userInOutEvent,
+  userName,
+  userId,
+}) {
   useEffect(() => {
     getAllEvents();
   }, [getAllEvents]);
@@ -20,7 +28,7 @@ function MainPage({ events, status, getAllEvents, userInOutEvent, userName, user
 
       <ul className="main-page__events">
         {events.map((event) => {
-          const match = event.whosIn.find(user => user.userId === userId);
+          const match = event.whosIn.find((user) => user.userId === userId);
 
           return (
             <EventCard
@@ -40,19 +48,34 @@ function MainPage({ events, status, getAllEvents, userInOutEvent, userName, user
   );
 }
 
+MainPage.defaultProps = {
+  userName: undefined,
+  userId: null,
+  // events: [],
+};
+
+MainPage.propTypes = {
+  events: PropTypes.arrayOf(PropTypes.object),
+  status: PropTypes.string.isRequired,
+  getAllEvents: PropTypes.func.isRequired,
+  userInOutEvent: PropTypes.func.isRequired,
+  userName: PropTypes.string,
+  userId: PropTypes.string,
+};
+
 function mapStateToProps(state) {
   return {
     events: state.events.events,
     status: state.events.status,
     userName: state.userInfo.userInfo.Name,
-    userId: state.currentUser.user
+    userId: state.currentUser.user,
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
     getAllEvents: () => dispatch(getAllEvents()),
-    userInOutEvent: (data) => dispatch(userInOutEvent(data))
+    userInOutEvent: (data) => dispatch(userInOutEvent(data)),
   };
 }
 

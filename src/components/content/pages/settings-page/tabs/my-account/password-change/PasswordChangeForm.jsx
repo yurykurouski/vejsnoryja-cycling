@@ -1,7 +1,7 @@
 import React from 'react';
 import * as Yup from 'yup';
 import { Formik } from 'formik';
-
+import PropTypes from 'prop-types';
 import Input from '../../../../../../common/input/Input';
 import { MIN_PASSWORD_LENGTH, PASSWORD_REGEX } from '../../../../../../../constants';
 import ValidationErrMsg from '../../../../../../common/validation-err-msg/ValidationErrMsg';
@@ -18,7 +18,7 @@ export default function PasswordChangeForm({ submitForm, authErrors }) {
       .required('Password can not be empty.'),
     repeatPass: Yup
       .string()
-      .oneOf([Yup.ref('newPassword'), null], 'Passwords does not match.')
+      .oneOf([Yup.ref('newPassword'), null], 'Passwords does not match.'),
   });
 
   const submitPasswordChange = async (data, actions) => {
@@ -33,7 +33,13 @@ export default function PasswordChangeForm({ submitForm, authErrors }) {
       onSubmit={submitPasswordChange}
       validationSchema={validationSchema}
     >
-      {({ handleSubmit, handleChange, values, errors, touched }) => (
+      {({
+        handleSubmit,
+        handleChange,
+        values,
+        errors,
+        touched,
+      }) => (
         <form
           className="my-account__form first-layer-card_hovered"
           onSubmit={handleSubmit}
@@ -84,3 +90,8 @@ export default function PasswordChangeForm({ submitForm, authErrors }) {
     </Formik>
   );
 }
+
+PasswordChangeForm.propTypes = {
+  submitForm: PropTypes.func.isRequired,
+  authErrors: PropTypes.object.isRequired,
+};

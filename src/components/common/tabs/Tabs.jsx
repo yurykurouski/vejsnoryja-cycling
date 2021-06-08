@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 import './tabs.css';
@@ -18,8 +19,14 @@ export default function Tabs({ tabs }) {
           onClick={() => setActiveTab(index)}
           to={tab.to}
           key={tab.name}
-        >{tab.name}</Link>
+        >
+          {tab.name}
+        </Link>
       ))}
     </span>
   );
 }
+
+Tabs.propTypes = {
+  tabs: PropTypes.arrayOf(PropTypes.object).isRequired,
+};

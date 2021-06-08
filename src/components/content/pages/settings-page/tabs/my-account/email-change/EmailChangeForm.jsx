@@ -1,6 +1,7 @@
 import React from 'react';
 import * as Yup from 'yup';
 import { Formik } from 'formik';
+import PropTypes from 'prop-types';
 
 import Input from '../../../../../../common/input/Input';
 import ValidationErrMsg from '../../../../../../common/validation-err-msg/ValidationErrMsg';
@@ -24,11 +25,17 @@ export default function EmailChangeForm({ submitForm, userEmail, authErrors }) {
 
   return (
     <Formik
-      initialValues={{ email: '', password: '', }}
+      initialValues={{ email: '', password: '' }}
       onSubmit={submitEmailChange}
       validationSchema={validationSchema}
     >
-      {({ handleSubmit, handleChange, values, errors, touched }) => (
+      {({
+        handleSubmit,
+        handleChange,
+        values,
+        errors,
+        touched,
+      }) => (
         <form
           className="my-account__form second-layer-card"
           onSubmit={handleSubmit}
@@ -66,3 +73,9 @@ export default function EmailChangeForm({ submitForm, userEmail, authErrors }) {
     </Formik>
   );
 }
+
+EmailChangeForm.propTypes = {
+  submitForm: PropTypes.func.isRequired,
+  userEmail: PropTypes.string.isRequired,
+  authErrors: PropTypes.object.isRequired,
+};

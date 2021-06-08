@@ -12,9 +12,9 @@ export default function ValidationErrMsg({ errorMsg }) {
 }
 
 ValidationErrMsg.defaultProps = {
-  errorMsg: ''
+  errorMsg: '',
 };
 
 ValidationErrMsg.propTypes = {
-  errorMsg: PropTypes.string
+  errorMsg: PropTypes.string,
 };

@@ -1,16 +1,21 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { MapContainer, TileLayer, Marker } from 'react-leaflet';
 
 import './event-map.css';
 
 const center = {
   lat: 53.68312602177623,
-  lng: 23.83411884664919
+  lng: 23.83411884664919,
 };
 
-export default function EventMap(props) {
-  const { isDraggable, addMarker, updateMarker, markerData, mainClass } = props;
-
+export default function EventMap({
+  isDraggable,
+  addMarker,
+  updateMarker,
+  markerData,
+  mainClass,
+}) {
   return (
     <MapContainer
       className={`${ mainClass } map second-layer-card`}
@@ -36,9 +41,21 @@ export default function EventMap(props) {
         eventHandlers={{
           dragend(e) {
             updateMarker(e);
-          }
+          },
         }}
       />}
     </MapContainer>
   );
 }
+
+EventMap.defaultProps = {
+  markerData: {},
+};
+
+EventMap.propTypes = {
+  isDraggable: PropTypes.bool.isRequired,
+  updateMarker: PropTypes.func.isRequired,
+  addMarker: PropTypes.func.isRequired,
+  markerData: PropTypes.object,
+  mainClass: PropTypes.string.isRequired,
+};

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import * as Yup from 'yup';
 import { Formik } from 'formik';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
@@ -9,11 +10,13 @@ import { addEvent } from '../../../store/events/actions';
 
 import './event-page.css';
 
-function EventPage(props) {
+function EventPage({
+  saveEvent,
+  event,
+  currentUser,
+}) {
   const [markerData, setMarkerData] = useState(null);
   const history = useHistory();
-
-  const { saveEvent, event = '', currentUser } = props;
 
   const validationSchema = Yup.object().shape({
     title: Yup
@@ -41,7 +44,7 @@ function EventPage(props) {
 
     setMarkerData({
       lat: coords.lat,
-      lng: coords.lng
+      lng: coords.lng,
     });
   };
 
@@ -50,7 +53,7 @@ function EventPage(props) {
 
     setMarkerData({
       lat: coords.lat,
-      lng: coords.lng
+      lng: coords.lng,
     });
   };
 
@@ -67,12 +70,18 @@ function EventPage(props) {
           level: event.level ? event.level : 'Casual',
           distance: event.distance ? event.distance : '',
           author: currentUser.user,
-          markerData: event.markerData ? event.markerData : markerData
+          markerData: event.markerData ? event.markerData : markerData,
         }}
         onSubmit={handleSubmit}
         validationSchema={validationSchema}
       >
-        {({ handleSubmit, handleChange, values, errors, touched }) => (
+        {({
+          handleSubmit,
+          handleChange,
+          values,
+          errors,
+          touched,
+        }) => (
           <EventForm
             handleSubmit={handleSubmit}
             handleChange={handleChange}
@@ -95,9 +104,19 @@ function EventPage(props) {
   );
 }
 
+EventPage.defaultProps = {
+  event: '',
+};
+
+EventPage.propTypes = {
+  saveEvent: PropTypes.func.isRequired,
+  currentUser: PropTypes.object.isRequired,
+  event: PropTypes.object,
+};
+
 function mapStateToProps(state) {
   return {
-    currentUser: state.currentUser
+    currentUser: state.currentUser,
   };
 }
 
