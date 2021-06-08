@@ -9,7 +9,7 @@ class RequestService {
       headers: {
         'Content-Type': ContentType.APPLICATION_JSON,
         Authorization: localStorage.getItem('token'),
-      }
+      },
     });
   }
 

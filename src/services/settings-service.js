@@ -4,7 +4,7 @@ class SettingsService {
   static async getUserInfo(id) {
     try {
       return await requestService.getSecured(
-        `${process.env.REACT_APP_API_SETTINGS_MY_PROFILE_URL}${id}`
+        `${process.env.REACT_APP_API_SETTINGS_MY_PROFILE_URL}${id}`,
       );
     } catch (err) {
       throw new Error(err);
@@ -14,7 +14,7 @@ class SettingsService {
   static async updateUserInfo(field) {
     try {
       return await requestService.putSecured(
-        process.env.REACT_APP_API_UPDATE_SETTINGS_MY_PROFILE_URL, field
+        process.env.REACT_APP_API_UPDATE_SETTINGS_MY_PROFILE_URL, field,
       );
     } catch (err) {
       throw new Error(err);
@@ -24,7 +24,7 @@ class SettingsService {
   static async addNewGear(data) {
     try {
       return await requestService.postSecured(
-        process.env.REACT_APP_API_ADD_NEW_GEAR_SETTINGS_URL, data
+        process.env.REACT_APP_API_ADD_NEW_GEAR_SETTINGS_URL, data,
       );
     } catch (err) {
       throw new Error(err);
@@ -42,7 +42,7 @@ class SettingsService {
   static async getUserActiveGear(id) {
     try {
       return await requestService.getSecured(
-        `${process.env.REACT_APP_API_GET_GEAR_BY_USER_URL}${id}`
+        `${process.env.REACT_APP_API_GET_GEAR_BY_USER_URL}${id}`,
       );
     } catch (err) {
       throw new Error(err);
@@ -52,7 +52,7 @@ class SettingsService {
   static async setActiveGear(data) {
     try {
       return await requestService.putSecured(
-        process.env.REACT_APP_API_GET_USER_GEAR_SETTINGS_URL, data
+        process.env.REACT_APP_API_GET_USER_GEAR_SETTINGS_URL, data,
       );
     } catch (err) {
       throw new Error(err);
@@ -62,7 +62,7 @@ class SettingsService {
   static async deleteGear(id) {
     try {
       return await requestService.deleteSecured(
-        `${process.env.REACT_APP_API_DELETE_USER_GEAR_SETTINGS_URL}${id}`
+        `${process.env.REACT_APP_API_DELETE_USER_GEAR_SETTINGS_URL}${id}`,
       );
     } catch (err) {
       throw new Error(err);
@@ -72,7 +72,7 @@ class SettingsService {
   static async editGear(data) {
     try {
       return await requestService.patchSecured(
-        process.env.REACT_APP_API_EDIT_USER_GEAR_SETTINGS_URL, data
+        process.env.REACT_APP_API_EDIT_USER_GEAR_SETTINGS_URL, data,
       );
     } catch (err) {
       throw new Error(err);

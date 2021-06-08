@@ -9,7 +9,7 @@ export default function configreStore(initialStore) {
     initialStore,
     compose(
       applyMiddleware(...getDefaultMiddleware()),
-      window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-    )
+      window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
+    ),
   );
 }

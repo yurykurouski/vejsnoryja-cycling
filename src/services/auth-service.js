@@ -40,7 +40,7 @@ class AuthService {
   static async changeEmail(data) {
     try {
       const response = await requestService.patchSecured(
-        process.env.REACT_APP_API_CHANGE_USER_EMAIL_SETTINGS_URL, data
+        process.env.REACT_APP_API_CHANGE_USER_EMAIL_SETTINGS_URL, data,
       );
 
       if (response.message) {
@@ -57,7 +57,7 @@ class AuthService {
   static async changePassword(data) {
     try {
       const response = await requestService.patchSecured(
-        process.env.REACT_APP_API_CHANGE_USER_PASSWORD_SETTINGS_URL, data
+        process.env.REACT_APP_API_CHANGE_USER_PASSWORD_SETTINGS_URL, data,
       );
       if (response.message) {
         throw new Error(response.message);

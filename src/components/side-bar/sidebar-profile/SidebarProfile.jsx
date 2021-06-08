@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
@@ -17,8 +18,18 @@ function SidebarProfile({ isAuthenticated, userId, setActiveLinkClass }) {
 function mapStateToProps(state) {
   return {
     isAuthenticated: state.currentUser.isAuthenticated,
-    userId: state.currentUser.user
+    userId: state.currentUser.user,
   };
 }
+
+SidebarProfile.propTypes = {
+  isAuthenticated: PropTypes.bool.isRequired,
+  userId: PropTypes.string,
+  setActiveLinkClass: PropTypes.func.isRequired,
+};
+
+SidebarProfile.defaultProps = {
+  userId: null,
+};
 
 export default connect(mapStateToProps)(SidebarProfile);

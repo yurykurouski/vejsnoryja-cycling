@@ -1,14 +1,23 @@
 import React, { useState } from 'react';
-import IconButton from '../../../../../../common/icon-button/IconButton';
+import PropTypes from 'prop-types';
+
 import { SUBMIT_KEYCODE } from '../../../../../../../constants';
+import IconButton from '../../../../../../common/icon-button/IconButton';
 
 import './profile-field.css';
 
-export default function ProfileField({ title, value, handleClick, editedFields, inEdit, updateUserInfo }) {
+export default function ProfileField({
+  title,
+  value,
+  handleClick,
+  editedFields,
+  inEdit,
+  updateUserInfo,
+}) {
   const [inputValue, setInputValue] = useState(value);
 
   const handleCancelClick = () => {
-    const filtered = editedFields.filter(f => f !== title);
+    const filtered = editedFields.filter((f) => f !== title);
 
     handleClick(filtered);
   };
@@ -16,7 +25,7 @@ export default function ProfileField({ title, value, handleClick, editedFields, 
   const handleSave = async () => {
     const field = {
       field: title,
-      value: inputValue
+      value: inputValue,
     };
 
     await updateUserInfo(field);
@@ -31,7 +40,7 @@ export default function ProfileField({ title, value, handleClick, editedFields, 
 
   return (
     <div className="my-profile__field-wrap">
-      <span className="my-profile__field-title my-profile__field">{title}:</span>
+      <span className="my-profile__field-title my-profile__field">{`${ title }:`}</span>
 
       {inEdit
         ? <span className="my-profile__field_edit">
@@ -47,7 +56,9 @@ export default function ProfileField({ title, value, handleClick, editedFields, 
             type="button"
             className="new-event__submit submit-btn"
             onClick={handleSave}
-          >Save</button>
+          >
+            Save
+          </button>
 
           <IconButton
             btnTitle="Close"
@@ -57,9 +68,21 @@ export default function ProfileField({ title, value, handleClick, editedFields, 
         </span>
 
         : <span
+            role="input"
             onClick={() => handleClick([...editedFields, title])}
             className={`my-profile__field-value ${ value ? '' : 'my-profile__field-value-empty' } my-profile__field`}
-        >{value || 'Add'}</span>}
+        >
+          {value || 'Add'}
+        </span>}
     </div>
   );
 }
+
+ProfileField.propTypes = {
+  title: PropTypes.string.isRequired,
+  value: PropTypes.string.isRequired,
+  handleClick: PropTypes.func.isRequired,
+  editedFields: PropTypes.arrayOf(PropTypes.string).isRequired,
+  inEdit: PropTypes.bool.isRequired,
+  updateUserInfo: PropTypes.func.isRequired,
+};

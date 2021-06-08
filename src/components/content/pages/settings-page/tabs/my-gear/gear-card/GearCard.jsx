@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import Gear from '../../../../../../../constants/gear/gear-helper';
 
@@ -14,7 +15,7 @@ export default function GearCard({ handleModalCardOpen }) {
         (Gear.UNUSEFUL_FIELDS.includes(gear[0]) || gear[1] === '')
           ? ''
           : <div key={gear[0]} className="modal__gear-field">
-            <span className="my-profile__field-title">{gear[0][0].toUpperCase() + gear[0].substring(1)}:</span>
+            <span className="my-profile__field-title">{`${ gear[0][0].toUpperCase() } ${ gear[0].substring(1) }:`}</span>
             <span className="field-field__value field-value_noselect my-profile__field-value">{gear[1]}</span>
           </div>
       ))}
@@ -22,3 +23,7 @@ export default function GearCard({ handleModalCardOpen }) {
     </div>
   );
 }
+
+GearCard.propTypes = {
+  handleModalCardOpen: PropTypes.object.isRequired,
+};

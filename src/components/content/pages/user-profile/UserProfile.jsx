@@ -1,6 +1,12 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { Switch, Route, Redirect, useRouteMatch } from 'react-router-dom';
+import {
+  Switch,
+  Route,
+  Redirect,
+  useRouteMatch,
+} from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import Tabs from '../../../common/tabs/Tabs';
 import Loader from '../../../common/loader/Loader';
@@ -16,21 +22,14 @@ import { deleteEventById, updateEventById, userInOutEvent } from '../../../../st
 
 import './user-profile.css';
 
-function UserProfile(props) {
-  const { logoutUser,
-    events,
-    gear,
-    eventsStatus,
-    gearStatus,
-    updateEventById,
-    getUserActiveGear,
-    getUserInfo,
-    userInfo,
-    currentUserId,
-    deleteEventById,
-    userInOutEvent
-  } = props;
-
+function UserProfile({
+  events,
+  gear,
+  eventsStatus,
+  gearStatus,
+  userInfo,
+  currentUserId,
+}) {
   const eventID = useRouteMatch('/profile/edit-event/:eventID')?.params.eventID;
   const userId = useRouteMatch('/profile/:userId')?.params.userId;
 
@@ -49,7 +48,7 @@ function UserProfile(props) {
           eventID
             ? <Route exact path="/profile/edit-event/:eventID">
               <EventPage
-                event={events.find(event => event._id === eventID)}
+                event={events.find((event) => event._id === eventID)}
                 currentUser={userId}
                 saveEvent={updateEventById}
               />
@@ -62,7 +61,13 @@ function UserProfile(props) {
                     ? 'Your profile'
                     : `${ userInfo.Name }'s profile`}
                 </h2>
-                <button onClick={logoutUser} className="user-profile__logout-btn submit-btn sign-out-btn">Sign out</button>
+                <button
+                  onClick={logoutUser}
+                  type="button"
+                  className="user-profile__logout-btn submit-btn sign-out-btn"
+                >
+                  Sign out
+                </button>
               </span>
 
               <div className="user-profile__main second-layer-card">
@@ -101,11 +106,25 @@ function UserProfile(props) {
               </div>
             </div>
         }
-        {(eventsStatus === ActionStatus.LOADING || gearStatus === ActionStatus.LOADING) && <Loader />}
+        {(eventsStatus === ActionStatus.LOADING
+          || gearStatus === ActionStatus.LOADING) && <Loader />}
       </>
     </Switch>
   );
 }
+
+UserProfile.defaultProps = {
+
+};
+
+UserProfile.propTypes = {
+  events: PropTypes.arrayOf(PropTypes.object).isRequired,
+  gear: PropTypes.arrayOf(PropTypes.object).isRequired,
+  eventsStatus: PropTypes.string.isRequired,
+  gearStatus: PropTypes.string.isRequired,
+  userInfo: PropTypes.object.isRequired,
+  currentUserId: PropTypes.string.isRequired,
+};
 
 function mapStateToProps(state) {
   return {
@@ -114,7 +133,7 @@ function mapStateToProps(state) {
     gear: state.gear.gear,
     gearStatus: state.gear.status,
     userInfo: state.userInfo.userInfo,
-    currentUserId: state.currentUser.user
+    currentUserId: state.currentUser.user,
   };
 }
 
@@ -125,7 +144,7 @@ function mapDispatchToProps(dispatch) {
     getUserActiveGear: (id) => dispatch(getUserActiveGear(id)),
     getUserInfo: (id) => dispatch(getUserInfo(id)),
     deleteEventById: (id) => dispatch(deleteEventById(id)),
-    userInOutEvent: (data) => dispatch(userInOutEvent(data))
+    userInOutEvent: (data) => dispatch(userInOutEvent(data)),
   };
 }
 

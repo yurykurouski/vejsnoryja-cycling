@@ -3,7 +3,7 @@ import ActionStatus from '../../constants/store/action-status';
 
 const initialState = {
   events: [],
-  status: ActionStatus.IDLE
+  status: ActionStatus.IDLE,
 };
 
 export default function events(state = initialState, action) {
@@ -12,7 +12,7 @@ export default function events(state = initialState, action) {
       return {
         ...state,
         events: [...state.events, action.payload],
-        status: ActionStatus.SUCCEDED
+        status: ActionStatus.SUCCEDED,
       };
     }
 
@@ -21,7 +21,7 @@ export default function events(state = initialState, action) {
       return {
         ...state,
         events: action.payload,
-        status: ActionStatus.SUCCEDED
+        status: ActionStatus.SUCCEDED,
       };
     }
 
@@ -36,7 +36,7 @@ export default function events(state = initialState, action) {
       return {
         ...state,
         events: updatedEvents,
-        status: ActionStatus.SUCCEDED
+        status: ActionStatus.SUCCEDED,
       };
     }
 
@@ -45,7 +45,7 @@ export default function events(state = initialState, action) {
       return {
         ...state,
         events: filteredEvents,
-        status: ActionStatus.SUCCEDED
+        status: ActionStatus.SUCCEDED,
       };
     }
 
@@ -58,7 +58,7 @@ export default function events(state = initialState, action) {
       return {
         ...state,
         events: updatedEvents,
-        status: ActionStatus.SUCCEDED
+        status: ActionStatus.SUCCEDED,
       };
     }
 
@@ -70,14 +70,14 @@ export default function events(state = initialState, action) {
     case types.CREATE_NEW_EVENT_REQUEST: {
       return {
         ...state,
-        status: ActionStatus.LOADING
+        status: ActionStatus.LOADING,
       };
     }
 
     case types.EVENT_USER_IN_OUT_FAILURE: {
       return {
         ...state,
-        status: ActionStatus.FAILED
+        status: ActionStatus.FAILED,
       };
     }
 

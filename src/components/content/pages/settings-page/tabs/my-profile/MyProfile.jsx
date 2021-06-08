@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 
 import ProfileField from './profile-field/ProfileField';
 import UserAvatar from '../../../../../common/user-avatar/UserAvatar';
@@ -43,3 +44,8 @@ export default function MyProfile({ updateUserInfo, userInfo }) {
     </div>
   );
 }
+
+MyProfile.propTypes = {
+  updateUserInfo: PropTypes.func.isRequired,
+  userInfo: PropTypes.object.isRequired,
+};

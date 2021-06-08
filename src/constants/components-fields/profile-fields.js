@@ -3,12 +3,12 @@ class ProfileFields {
     return [
       {
         to: `/profile/${userId}/last-activities`,
-        name: 'Last activities'
+        name: 'Last activities',
       },
       {
         to: `/profile/${userId}/info`,
-        name: 'Information'
-      }
+        name: 'Information',
+      },
     ];
   }
 

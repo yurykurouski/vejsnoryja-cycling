@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import * as Yup from 'yup';
+import PropTypes from 'prop-types';
 
 import GearCard from './gear-card/GearCard';
 import MyGearTable from './table/MyGearTable';
@@ -11,7 +12,12 @@ import SettingsFields from '../../../../../../constants/components-fields/settin
 
 import './my-gear.css';
 
-export default function MyGear({ addNewGear, deleteUserGear, editUserGear, gear }) {
+export default function MyGear({
+  addNewGear,
+  deleteUserGear,
+  editUserGear,
+  gear,
+}) {
   const [modalOpen, setModalOpen] = useState(false);
   const [gearIdToDelete, setDeleteDialogOpen] = useState(false);
   const [gearIdToEdit, setEditDialogOpen] = useState(false);
@@ -58,7 +64,7 @@ export default function MyGear({ addNewGear, deleteUserGear, editUserGear, gear 
   };
 
   const filterGearbyId = () => {
-    const filtered = gear.find(el => el._id === gearIdToEdit);
+    const filtered = gear.find((el) => el._id === gearIdToEdit);
 
     return makeInputTemplateFromState(filtered);
   };
@@ -68,14 +74,17 @@ export default function MyGear({ addNewGear, deleteUserGear, editUserGear, gear 
     setEditDialogOpen(false);
   };
 
-  const handleModalCardOpen = () => gear.find(el => el._id === gearIdToCard);
+  const handleModalCardOpen = () => gear.find((el) => el._id === gearIdToCard);
 
   return (
     <div className="settings__my-gear first-layer-card_hovered">
       <button
         className="my-gear__submit submit-btn"
         onClick={handleAddBikeClick}
-      >Add bike</button>
+        type="button"
+      >
+        Add bike
+      </button>
 
       {modalOpen && <Modal
         heading="Add a bike"
@@ -134,3 +143,10 @@ export default function MyGear({ addNewGear, deleteUserGear, editUserGear, gear 
     </div>
   );
 }
+
+MyGear.propTypes = {
+  addNewGear: PropTypes.func.isRequired,
+  deleteUserGear: PropTypes.func.isRequired,
+  editUserGear: PropTypes.func.isRequired,
+  gear: PropTypes.arrayOf(PropTypes.object).isRequired,
+};

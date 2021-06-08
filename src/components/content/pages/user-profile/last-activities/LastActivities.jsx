@@ -1,11 +1,19 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
 
 import Modal from '../../../../common/modal/Modal';
 import EventCard from '../../../../common/event-card/EventCard';
 import ModalDialog from '../../../../common/modal/dialog/ModalDialog';
 
-export default function LastActivities({ userId, events, deleteEventById, currentUserId, userInOutEvent, userName }) {
+export default function LastActivities({
+  userId,
+  events,
+  deleteEventById,
+  currentUserId,
+  userInOutEvent,
+  userName,
+}) {
   const [modalOpen, setModalOpen] = useState(false);
   const [eventToDelete, setEventToDelete] = useState(null);
 
@@ -33,7 +41,7 @@ export default function LastActivities({ userId, events, deleteEventById, curren
     <>
       <ul className="main-page__events">
         {events.map((event) => {
-          const match = event.whosIn.find(user => user.userId === currentUserId);
+          const match = event.whosIn.find((user) => user.userId === currentUserId);
 
           if (event.author === userId) {
             if (currentUserId === userId) {
@@ -58,8 +66,7 @@ export default function LastActivities({ userId, events, deleteEventById, curren
               />
             );
           } return null;
-        }
-        )}
+        })}
       </ul>
 
       {modalOpen && <Modal
@@ -75,3 +82,12 @@ export default function LastActivities({ userId, events, deleteEventById, curren
     </>
   );
 }
+
+LastActivities.propTypes = {
+  userId: PropTypes.string.isRequired,
+  events: PropTypes.arrayOf(PropTypes.object).isRequired,
+  deleteEventById: PropTypes.func.isRequired,
+  currentUserId: PropTypes.string.isRequired,
+  userInOutEvent: PropTypes.func.isRequired,
+  userName: PropTypes.string.isRequired,
+};

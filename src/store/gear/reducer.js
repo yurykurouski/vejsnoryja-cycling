@@ -3,7 +3,7 @@ import ActionStatus from '../../constants/store/action-status';
 
 const initialState = {
   gear: [],
-  status: ActionStatus.IDLE
+  status: ActionStatus.IDLE,
 };
 
 export default function gear(state = initialState, action) {
@@ -12,7 +12,7 @@ export default function gear(state = initialState, action) {
       return {
         ...state,
         gear: [...state.gear, action.payload],
-        status: ActionStatus.SUCCEDED
+        status: ActionStatus.SUCCEDED,
       };
     }
 
@@ -21,7 +21,7 @@ export default function gear(state = initialState, action) {
       return {
         ...state,
         gear: action.payload,
-        status: ActionStatus.SUCCEDED
+        status: ActionStatus.SUCCEDED,
       };
     }
 
@@ -29,7 +29,7 @@ export default function gear(state = initialState, action) {
       const updatedGear = state.gear.map((bike) => {
         if (bike._id === action.payload._id) return action.payload;
         const unactive = {
-          ...bike
+          ...bike,
         };
         unactive.active = false;
         return unactive;
@@ -38,7 +38,7 @@ export default function gear(state = initialState, action) {
       return {
         ...state,
         gear: updatedGear,
-        status: ActionStatus.SUCCEDED
+        status: ActionStatus.SUCCEDED,
       };
     }
 
@@ -47,7 +47,7 @@ export default function gear(state = initialState, action) {
       return {
         ...state,
         gear: updatedGear,
-        status: ActionStatus.SUCCEDED
+        status: ActionStatus.SUCCEDED,
       };
     }
 
@@ -60,7 +60,7 @@ export default function gear(state = initialState, action) {
       return {
         ...state,
         gear: updatedGear,
-        status: ActionStatus.SUCCEDED
+        status: ActionStatus.SUCCEDED,
       };
     }
 
@@ -72,7 +72,7 @@ export default function gear(state = initialState, action) {
     case types.ADD_NEW_GEAR_REQUEST: {
       return {
         ...state,
-        status: ActionStatus.LOADING
+        status: ActionStatus.LOADING,
       };
     }
 
@@ -84,7 +84,7 @@ export default function gear(state = initialState, action) {
     case types.ADD_NEW_GEAR_FAILURE: {
       return {
         ...state,
-        status: ActionStatus.FAILED
+        status: ActionStatus.FAILED,
       };
     }
 

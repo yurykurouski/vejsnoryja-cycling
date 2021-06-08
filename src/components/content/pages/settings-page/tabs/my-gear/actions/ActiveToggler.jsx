@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Radio from '@material-ui/core/Radio';
 
@@ -19,6 +20,11 @@ function ActiveToggler({ bike, setActiveGear }) {
     />
   );
 }
+
+ActiveToggler.propTypes = {
+  bike: PropTypes.object.isRequired,
+  setActiveGear: PropTypes.func.isRequired,
+};
 
 function mapDispatchToProps(dispatch) {
   return {

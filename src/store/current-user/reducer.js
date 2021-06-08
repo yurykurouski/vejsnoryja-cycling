@@ -7,9 +7,9 @@ const initialState = {
   userEmail: null,
   authErrors: {
     email: '',
-    password: ''
+    password: '',
   },
-  status: ActionStatus.IDLE
+  status: ActionStatus.IDLE,
 };
 
 export default function currentUser(state = initialState, action) {
@@ -20,7 +20,7 @@ export default function currentUser(state = initialState, action) {
       return {
         ...state,
         authErrors: { password: null, email: null },
-        status: ActionStatus.SUCCEDED
+        status: ActionStatus.SUCCEDED,
       };
     }
 
@@ -28,7 +28,7 @@ export default function currentUser(state = initialState, action) {
       return {
         ...state,
         authErrors: { ...state.authErrors, password: action.error.message },
-        status: ActionStatus.FAILED
+        status: ActionStatus.FAILED,
       };
     }
 
@@ -39,7 +39,7 @@ export default function currentUser(state = initialState, action) {
         user: action.payload.userId,
         userEmail: action.payload.userEmail,
         authErrors: { password: null, email: null },
-        status: ActionStatus.SUCCEDED
+        status: ActionStatus.SUCCEDED,
       };
     }
 
@@ -48,7 +48,7 @@ export default function currentUser(state = initialState, action) {
         ...state,
         isAuthenticated: false,
         user: null,
-        status: ActionStatus.FAILED
+        status: ActionStatus.FAILED,
       };
     }
 
@@ -57,7 +57,7 @@ export default function currentUser(state = initialState, action) {
         ...state,
         userEmail: action.payload,
         authErrors: { password: null, email: null },
-        status: ActionStatus.SUCCEDED
+        status: ActionStatus.SUCCEDED,
       };
     }
 
@@ -66,7 +66,7 @@ export default function currentUser(state = initialState, action) {
       return {
         ...state,
         authErrors: { ...state.authErrors, email: action.error.message },
-        status: ActionStatus.FAILED
+        status: ActionStatus.FAILED,
       };
     }
 
@@ -74,7 +74,7 @@ export default function currentUser(state = initialState, action) {
       return {
         ...state,
         authErrors: { ...state.authErrors, password: action.error.message },
-        status: ActionStatus.SUCCEDED
+        status: ActionStatus.SUCCEDED,
       };
     }
 
@@ -84,7 +84,7 @@ export default function currentUser(state = initialState, action) {
         ...state,
         isAuthenticated: false,
         user: null,
-        status: ActionStatus.SUCCEDED
+        status: ActionStatus.SUCCEDED,
       };
     }
 
