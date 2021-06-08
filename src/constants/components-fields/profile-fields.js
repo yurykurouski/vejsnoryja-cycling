@@ -1,4 +1,4 @@
-class ProfileFields {
+export default class ProfileFields {
   static PROFILE_TABS(userId) {
     return [
       {
@@ -20,7 +20,3 @@ class ProfileFields {
     return 'Gear';
   }
 }
-
-const profileFields = new ProfileFields();
-
-export default profileFields;

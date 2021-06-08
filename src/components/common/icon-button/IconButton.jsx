@@ -27,9 +27,13 @@ export default function IconButton({
   );
 }
 
+IconButton.defaultProps = {
+  color: undefined,
+};
+
 IconButton.propTypes = {
   onClick: PropTypes.func.isRequired,
   btnTitle: PropTypes.string.isRequired,
   btnIcon: PropTypes.string.isRequired,
-  color: PropTypes.string.isRequired,
+  color: PropTypes.string,
 };

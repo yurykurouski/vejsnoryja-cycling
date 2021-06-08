@@ -29,9 +29,14 @@ export default function Distance({
   );
 }
 
+Distance.defaultProps = {
+  errors: undefined,
+  touched: undefined,
+};
+
 Distance.propTypes = {
   onChange: PropTypes.func.isRequired,
   value: PropTypes.string.isRequired,
-  errors: PropTypes.string.isRequired,
-  touched: PropTypes.string.isRequired,
+  errors: PropTypes.string,
+  touched: PropTypes.bool,
 };

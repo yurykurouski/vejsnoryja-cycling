@@ -1,6 +1,6 @@
 import requestService from './request-service';
 
-class EventsService {
+export default class EventsService {
   static async createEvent(data) {
     try {
       return requestService.postSecured(process.env.REACT_APP_API_NEW_EVENT_URL, data);
@@ -49,7 +49,3 @@ class EventsService {
     }
   }
 }
-
-// const eventService = new EventsService();
-
-export default EventsService;

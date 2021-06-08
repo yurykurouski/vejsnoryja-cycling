@@ -20,22 +20,21 @@ const PublicRoute = ({
   />
 );
 
+PublicRoute.defaultProps = {
+  userId: null,
+};
+
+PublicRoute.propTypes = {
+  component: PropTypes.object.isRequired,
+  isAuthenticated: PropTypes.bool.isRequired,
+  userId: PropTypes.string,
+  restricted: PropTypes.bool.isRequired,
+};
 function mapStateToProps(state) {
   return {
     isAuthenticated: state.currentUser.isAuthenticated,
     userId: state.currentUser.user,
   };
 }
-
-PublicRoute.defaultProps = {
-  userId: null,
-};
-
-PublicRoute.propTypes = {
-  component: PropTypes.element.isRequired,
-  isAuthenticated: PropTypes.bool.isRequired,
-  userId: PropTypes.string,
-  restricted: PropTypes.bool.isRequired,
-};
 
 export default connect(mapStateToProps)(PublicRoute);

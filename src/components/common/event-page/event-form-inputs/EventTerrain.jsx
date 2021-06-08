@@ -14,7 +14,7 @@ export default function EventTerrain({
         type="text"
         id="terrain"
         value={value}
-        onBLut={onChange}
+        onChange={onChange}
         className="form__input form__input_terrain"
       >
 

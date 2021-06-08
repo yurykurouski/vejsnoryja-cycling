@@ -25,5 +25,5 @@ export default function GearCard({ handleModalCardOpen }) {
 }
 
 GearCard.propTypes = {
-  handleModalCardOpen: PropTypes.object.isRequired,
+  handleModalCardOpen: PropTypes.func.isRequired,
 };

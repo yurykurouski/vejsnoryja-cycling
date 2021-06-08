@@ -103,11 +103,15 @@ function LoginPage({
   );
 }
 
+LoginPage.defaultProps = {
+  status: undefined,
+};
+
 LoginPage.propTypes = {
   loginUser: PropTypes.func.isRequired,
   authUser: PropTypes.func.isRequired,
   authErrors: PropTypes.object.isRequired,
-  status: PropTypes.string.isRequired,
+  status: PropTypes.string,
 };
 
 function mapStateToProps(state) {

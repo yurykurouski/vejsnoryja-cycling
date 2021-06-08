@@ -1,6 +1,6 @@
 import requestService from './request-service';
 
-class SettingsService {
+export default class SettingsService {
   static async getUserInfo(id) {
     try {
       return await requestService.getSecured(
@@ -79,7 +79,3 @@ class SettingsService {
     }
   }
 }
-
-const settingsService = new SettingsService();
-
-export default settingsService;

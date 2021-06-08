@@ -1,6 +1,6 @@
 import requestService from './request-service';
 
-class AuthService {
+export default class AuthService {
   static async userRegister(data) {
     try {
       const response = await requestService.post(process.env.REACT_APP_REGISTRATION_URL, data);
@@ -67,7 +67,3 @@ class AuthService {
     }
   }
 }
-
-const authService = new AuthService();
-
-export default authService;

@@ -30,5 +30,5 @@ export default function EventCardDate({ customClass, date }) {
 
 EventCardDate.propTypes = {
   customClass: PropTypes.string.isRequired,
-  date: PropTypes.instanceOf(Date).isRequired,
+  date: PropTypes.string.isRequired,
 };

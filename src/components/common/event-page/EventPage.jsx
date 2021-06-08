@@ -105,7 +105,7 @@ function EventPage({
 }
 
 EventPage.defaultProps = {
-  event: '',
+  event: {},
 };
 
 EventPage.propTypes = {

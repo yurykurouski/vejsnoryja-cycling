@@ -24,5 +24,5 @@ export default function EventDate({
 
 EventDate.propTypes = {
   onChange: PropTypes.func.isRequired,
-  value: PropTypes.func.isRequired,
+  value: PropTypes.string.isRequired,
 };

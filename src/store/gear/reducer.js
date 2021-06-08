@@ -2,7 +2,7 @@ import * as types from './types';
 import ActionStatus from '../../constants/store/action-status';
 
 const initialState = {
-  gear: [],
+  gear: [{}],
   status: ActionStatus.IDLE,
 };
 
@@ -15,15 +15,22 @@ export default function gear(state = initialState, action) {
         status: ActionStatus.SUCCEDED,
       };
     }
-
-    case types.GET_USER_GEAR_SUCESS:
-    case types.GET_USER_ACTIVE_GEAR_SUCESS: {
+    case types.GET_USER_ACTIVE_GEAR_SUCESS:
+    case types.GET_USER_GEAR_SUCESS: {
       return {
         ...state,
         gear: action.payload,
         status: ActionStatus.SUCCEDED,
       };
     }
+
+    // case types.GET_USER_ACTIVE_GEAR_SUCESS: {
+    //   return {
+    //     ...state,
+    //     gear: action.payload,
+    //     status: ActionStatus.SUCCEDED,
+    //   };
+    // }
 
     case types.SET_ACTIVE_GEAR_SUCESS: {
       const updatedGear = state.gear.map((bike) => {

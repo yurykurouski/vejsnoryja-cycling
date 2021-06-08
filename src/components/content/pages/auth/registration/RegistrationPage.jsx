@@ -128,11 +128,15 @@ function RegistrationPage({
   );
 }
 
+RegistrationPage.defaultProps = {
+  status: undefined,
+};
+
 RegistrationPage.propTypes = {
   registerUser: PropTypes.func.isRequired,
   authUser: PropTypes.func.isRequired,
   authErrors: PropTypes.object.isRequired,
-  status: PropTypes.string.isRequired,
+  status: PropTypes.string,
 };
 
 function mapStateToProps(state) {

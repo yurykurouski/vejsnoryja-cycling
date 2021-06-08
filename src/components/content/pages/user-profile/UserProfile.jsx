@@ -17,7 +17,7 @@ import { getUserInfo } from '../../../../store/user-info/actions';
 import { getUserActiveGear } from '../../../../store/gear/actions';
 import { logoutUser } from '../../../../store/current-user/actions';
 import ActionStatus from '../../../../constants/store/action-status';
-import profileFields from '../../../../constants/components-fields/profile-fields';
+import ProfileFields from '../../../../constants/components-fields/profile-fields';
 import { deleteEventById, updateEventById, userInOutEvent } from '../../../../store/events/actions';
 
 import './user-profile.css';
@@ -29,17 +29,19 @@ function UserProfile({
   gearStatus,
   userInfo,
   currentUserId,
+  logoutUser,
+  getUserInfo,
+  getUserActiveGear,
+  deleteEventById,
+  updateEventById,
+  userInOutEvent,
 }) {
   const eventID = useRouteMatch('/profile/edit-event/:eventID')?.params.eventID;
   const userId = useRouteMatch('/profile/:userId')?.params.userId;
-
   useEffect(() => {
     getUserActiveGear(userId);
-  }, [getUserActiveGear, userId]);
-
-  useEffect(() => {
     getUserInfo(userId);
-  }, [getUserInfo, userId]);
+  }, [getUserActiveGear, getUserInfo, userId]);
 
   return (
     <Switch>
@@ -72,7 +74,7 @@ function UserProfile({
 
               <div className="user-profile__main second-layer-card">
 
-                <Tabs tabs={profileFields.PROFILE_TABS(userId)} />
+                <Tabs tabs={ProfileFields.PROFILE_TABS(userId)} />
 
                 <div className="user-profile__tab-content-wrap">
                   <Route path="/profile/:userId">
@@ -94,11 +96,11 @@ function UserProfile({
                     <div className="profile-information-wrap first-layer-card">
                       <InfoSection
                         info={userInfo}
-                        title={profileFields.INFORMATION_SUBTITLE_INFO()}
+                        title={ProfileFields.INFORMATION_SUBTITLE_INFO()}
                       />
                       <InfoSection
-                        info={gear}
-                        title={profileFields.INFORMATION_SUBTITLE_GEAR()}
+                        info={gear[0]}
+                        title={ProfileFields.INFORMATION_SUBTITLE_GEAR()}
                       />
                     </div>
                   </Route>
@@ -113,17 +115,19 @@ function UserProfile({
   );
 }
 
-UserProfile.defaultProps = {
-
-};
-
 UserProfile.propTypes = {
   events: PropTypes.arrayOf(PropTypes.object).isRequired,
-  gear: PropTypes.arrayOf(PropTypes.object).isRequired,
+  gear: PropTypes.PropTypes.arrayOf(PropTypes.object).isRequired,
   eventsStatus: PropTypes.string.isRequired,
   gearStatus: PropTypes.string.isRequired,
   userInfo: PropTypes.object.isRequired,
   currentUserId: PropTypes.string.isRequired,
+  logoutUser: PropTypes.func.isRequired,
+  getUserInfo: PropTypes.func.isRequired,
+  getUserActiveGear: PropTypes.func.isRequired,
+  deleteEventById: PropTypes.func.isRequired,
+  updateEventById: PropTypes.func.isRequired,
+  userInOutEvent: PropTypes.func.isRequired,
 };
 
 function mapStateToProps(state) {

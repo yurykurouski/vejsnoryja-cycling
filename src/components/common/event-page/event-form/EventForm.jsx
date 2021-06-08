@@ -97,6 +97,10 @@ export default function EventForm({
   );
 }
 
+EventForm.defaultProps = {
+  markerData: null,
+};
+
 EventForm.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
   handleChange: PropTypes.func.isRequired,
@@ -104,12 +108,15 @@ EventForm.propTypes = {
   updateMarker: PropTypes.func.isRequired,
   title: PropTypes.string.isRequired,
   adress: PropTypes.string.isRequired,
-  date: PropTypes.instanceOf(Date).isRequired,
+  date: PropTypes.string.isRequired,
   terrain: PropTypes.string.isRequired,
   level: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
-  distance: PropTypes.string.isRequired,
+  distance: PropTypes.oneOfType([
+    PropTypes.number,
+    PropTypes.string,
+  ]).isRequired,
   errors: PropTypes.object.isRequired,
   touched: PropTypes.object.isRequired,
-  markerData: PropTypes.object.isRequired,
+  markerData: PropTypes.object,
 };

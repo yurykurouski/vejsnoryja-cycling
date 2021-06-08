@@ -83,11 +83,15 @@ export default function LastActivities({
   );
 }
 
+LastActivities.defaultProps = {
+  userName: undefined,
+};
+
 LastActivities.propTypes = {
   userId: PropTypes.string.isRequired,
   events: PropTypes.arrayOf(PropTypes.object).isRequired,
   deleteEventById: PropTypes.func.isRequired,
   currentUserId: PropTypes.string.isRequired,
   userInOutEvent: PropTypes.func.isRequired,
-  userName: PropTypes.string.isRequired,
+  userName: PropTypes.string,
 };

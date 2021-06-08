@@ -51,7 +51,7 @@ function MainPage({
 MainPage.defaultProps = {
   userName: undefined,
   userId: null,
-  // events: [],
+  events: [],
 };
 
 MainPage.propTypes = {

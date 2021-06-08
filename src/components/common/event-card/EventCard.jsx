@@ -17,15 +17,18 @@ export default function EventCard({
   btnIcon,
   onClick,
   deleteEvent,
-  event: date,
-  event: title,
-  event: level,
-  event: distance,
-  event: markerData,
-  event: adress,
-  event: whosIn,
+  event,
 }) {
   const isAuthenticated = useSelector((state) => state.currentUser.isAuthenticated);
+  const {
+    date,
+    title,
+    level,
+    distance,
+    markerData,
+    adress,
+    whosIn,
+  } = event;
 
   return (
     <li className="main-page__event first-layer-card_hovered">

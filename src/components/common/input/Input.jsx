@@ -18,7 +18,7 @@ export default function Input({
   ...rest
 }) {
   return (
-    <label className={`${ customLabelClass }input__label`} htmlFor={title}>
+    <label className={`${ customLabelClass } input__label`} htmlFor={title}>
       {title}
 
       {options
@@ -26,7 +26,7 @@ export default function Input({
             name={name}
             type={type}
             id={title}
-            onBlur={handleChange}
+            onChange={handleChange}
             value={value}
             className={`${ customInputClass } form__input`}
             {...rest}
@@ -37,6 +37,7 @@ export default function Input({
         : <input
             name={name}
             type={type}
+            id={title}
             onChange={handleChange}
             value={value}
             className={`${ customInputClass } form__input`}
@@ -48,18 +49,25 @@ export default function Input({
 }
 
 Input.defaultProps = {
-  customInputClass: '',
+  customInputClass: undefined,
   customLabelClass: '',
+  options: undefined,
+  handleChange: undefined,
+  error: undefined,
+  title: undefined,
 };
 
 Input.propTypes = {
-  title: PropTypes.string.isRequired,
+  title: PropTypes.string,
   name: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
-  value: PropTypes.string.isRequired,
-  options: PropTypes.arrayOf(PropTypes.object).isRequired,
+  value: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+  ]).isRequired,
+  options: PropTypes.arrayOf(PropTypes.string),
   customInputClass: PropTypes.string,
   customLabelClass: PropTypes.string,
-  handleChange: PropTypes.func.isRequired,
-  error: PropTypes.string.isRequired,
+  handleChange: PropTypes.func,
+  error: PropTypes.string,
 };

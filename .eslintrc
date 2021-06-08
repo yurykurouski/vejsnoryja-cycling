@@ -45,6 +45,7 @@
     "x-a11y/no-onchange": "off",
     "max-len": "warn",
     "class-methods-use-this": "warn",
-    "react/require-default-props": "warn"
+    "react/require-default-props": "warn",
+    "jsx-a11y/no-onchange": "off"
   }
 }

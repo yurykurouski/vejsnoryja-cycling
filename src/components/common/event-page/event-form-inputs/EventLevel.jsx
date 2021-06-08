@@ -14,7 +14,7 @@ export default function EventLevel({
         type="text"
         id="level"
         value={value}
-        onBlur={onChange}
+        onChange={onChange}
         className="form__input form__input_level"
       >
 

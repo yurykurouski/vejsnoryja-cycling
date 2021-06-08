@@ -50,12 +50,14 @@ export default function EventMap({
 
 EventMap.defaultProps = {
   markerData: {},
+  updateMarker: undefined,
+  addMarker: undefined,
 };
 
 EventMap.propTypes = {
   isDraggable: PropTypes.bool.isRequired,
-  updateMarker: PropTypes.func.isRequired,
-  addMarker: PropTypes.func.isRequired,
+  updateMarker: PropTypes.func,
+  addMarker: PropTypes.func,
   markerData: PropTypes.object,
   mainClass: PropTypes.string.isRequired,
 };

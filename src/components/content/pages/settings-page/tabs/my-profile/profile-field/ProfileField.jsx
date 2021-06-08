@@ -78,11 +78,16 @@ export default function ProfileField({
   );
 }
 
+ProfileField.defaultProps = {
+  inEdit: undefined,
+  updateUserInfo: undefined,
+};
+
 ProfileField.propTypes = {
   title: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired,
   handleClick: PropTypes.func.isRequired,
   editedFields: PropTypes.arrayOf(PropTypes.string).isRequired,
-  inEdit: PropTypes.bool.isRequired,
-  updateUserInfo: PropTypes.func.isRequired,
+  inEdit: PropTypes.bool,
+  updateUserInfo: PropTypes.func,
 };

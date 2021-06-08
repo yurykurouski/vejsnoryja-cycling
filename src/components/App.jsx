@@ -12,11 +12,11 @@ import { getUserInfo } from '../store/user-info/actions';
 import './app.css';
 
 function App({
-  currentUser: isAuthenticated,
-  currentUser: userId,
+  currentUser,
   authUser,
   getUserInfo,
 }) {
+  const { isAuthenticated, userId } = currentUser;
   const token = localStorage.getItem('token');
 
   useEffect(() => {

@@ -7,7 +7,6 @@ import './info-section.css';
 
 export default function InfoSection({ info, title }) {
   const infoToRender = info ? Object.entries(info) : info;
-
   return (
     <div className="user-profile__section-wrap">
       <h3 className="user-profile__gear-subtitle user-profile-subtitle">{`${ title }:`}</h3>
@@ -32,10 +31,11 @@ export default function InfoSection({ info, title }) {
   );
 }
 
+InfoSection.defaultProps = {
+  info: {},
+};
+
 InfoSection.propTypes = {
-  info: PropTypes.oneOfType([
-    PropTypes.object,
-    PropTypes.arrayOf(PropTypes.string),
-  ]).isRequired,
+  info: PropTypes.object,
   title: PropTypes.string.isRequired,
 };

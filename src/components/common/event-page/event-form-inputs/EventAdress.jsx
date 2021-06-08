@@ -27,9 +27,14 @@ export default function EventAdress({
   );
 }
 
+EventAdress.defaultProps = {
+  errors: undefined,
+  touched: undefined,
+};
+
 EventAdress.propTypes = {
   onChange: PropTypes.func.isRequired,
   value: PropTypes.string.isRequired,
-  errors: PropTypes.string.isRequired,
-  touched: PropTypes.object.isRequired,
+  errors: PropTypes.string,
+  touched: PropTypes.bool,
 };
