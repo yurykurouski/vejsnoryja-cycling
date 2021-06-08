@@ -54,7 +54,7 @@ export default function Modal({
 }
 
 Modal.propTypes = {
-  component: PropTypes.object.isRequired,
+  component: PropTypes.func.isRequired,
   handleCloseModal: PropTypes.func.isRequired,
   heading: PropTypes.string.isRequired,
 };

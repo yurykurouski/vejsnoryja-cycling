@@ -44,7 +44,7 @@ export default function MyGearTable({
                 <ActiveToggler bike={bike} />
               </TableCell>
               <TableCell align="center" component="th" scope="row">
-                <span className="bikes__bike-name" onClick={() => handleClickOnGear(bike._id)} role="button">{bike.name}</span>
+                <span className="bikes__bike-name" onClick={() => handleClickOnGear(bike._id)} role="link" tabIndex={0}>{bike.name}</span>
               </TableCell>
               <TableCell align="right">
                 <IconButton

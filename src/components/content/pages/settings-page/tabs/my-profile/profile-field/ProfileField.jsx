@@ -68,7 +68,8 @@ export default function ProfileField({
         </span>
 
         : <span
-            role="input"
+            role="textbox"
+            tabIndex={0}
             onClick={() => handleClick([...editedFields, title])}
             className={`my-profile__field-value ${ value ? '' : 'my-profile__field-value-empty' } my-profile__field`}
         >

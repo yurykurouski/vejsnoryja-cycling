@@ -26,7 +26,7 @@ export default function InfoSection({ info, title }) {
                 : <span className="field-field__value my-profile__field-value-empty field-value_noselect my-profile__field-value">empty</span>}
             </div>
         ))
-        : <span>{`User have no active ${title}`}</span>}
+        : <span>{`User have no active ${ title }`}</span>}
     </div>
   );
 }
