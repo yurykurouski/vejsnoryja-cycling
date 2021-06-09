@@ -72,13 +72,12 @@ export default function LastActivities({
       {modalOpen && <Modal
         heading="Delete this event?"
         handleCloseModal={handleCloseModal}
-        component={
-          <ModalDialog
-            onYes={handleYesClick}
-            onNo={handleCloseModal}
-          />
-        }
-      />}
+      >
+        <ModalDialog
+          onYes={handleYesClick}
+          onNo={handleCloseModal}
+        />
+      </Modal>}
     </>
   );
 }

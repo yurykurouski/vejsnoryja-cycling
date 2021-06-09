@@ -8,9 +8,9 @@ import { ESCAPE_KEYCODE } from '../../../constants';
 import './modal.css';
 
 export default function Modal({
-  component: Component,
   heading,
   handleCloseModal,
+  children,
 }) {
   const modalRoot = document.getElementById('modal-root');
   const el = document.createElement('div');
@@ -45,7 +45,7 @@ export default function Modal({
       <div className="modal-window">
         <h3 className="modal-window__heading">{heading}</h3>
 
-        {Component}
+        {children}
 
       </div>
     </ClickAwayListener>,
@@ -54,7 +54,7 @@ export default function Modal({
 }
 
 Modal.propTypes = {
-  component: PropTypes.func.isRequired,
+  children: PropTypes.object.isRequired,
   handleCloseModal: PropTypes.func.isRequired,
   heading: PropTypes.string.isRequired,
 };
