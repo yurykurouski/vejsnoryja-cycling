@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Switch, Route, Redirect } from 'react-router-dom';
@@ -10,29 +10,14 @@ import MyProfile from './tabs/my-profile/MyProfile';
 import MyAccount from './tabs/my-account/MyAccount';
 import ActionStatus from '../../../../constants/store/action-status';
 import SettingsFields from '../../../../constants/components-fields/settings-fields';
-import {
-  addNewGear,
-  getUserGear,
-  deleteUserGear,
-  editUserGear,
-} from '../../../../store/gear/actions';
 
 import './settings-page.css';
 
 function SettingsPage({
-  addNewGear,
-  getUserGear,
-  deleteUserGear,
-  editUserGear,
-  gear,
   gearStatus,
   infoStatus,
   userStatus,
 }) {
-  useEffect(() => {
-    getUserGear();
-  }, [getUserGear]);
-
   return (
     <div className="content__settings first-layer-card">
       <h2 className="settings__heading card-heading">Settings</h2>
@@ -51,13 +36,7 @@ function SettingsPage({
           </Route>
 
           <Route path="/settings/my-gear">
-            <MyGear
-              addNewGear={addNewGear}
-              getUserGear={getUserGear}
-              gear={gear}
-              deleteUserGear={deleteUserGear}
-              editUserGear={editUserGear}
-            />
+            <MyGear />
           </Route>
 
           <Route path="/settings/my-account">
@@ -75,11 +54,6 @@ function SettingsPage({
 }
 
 SettingsPage.propTypes = {
-  addNewGear: PropTypes.func.isRequired,
-  getUserGear: PropTypes.func.isRequired,
-  deleteUserGear: PropTypes.func.isRequired,
-  editUserGear: PropTypes.func.isRequired,
-  gear: PropTypes.arrayOf(PropTypes.object).isRequired,
   gearStatus: PropTypes.string.isRequired,
   infoStatus: PropTypes.string.isRequired,
   userStatus: PropTypes.string.isRequired,
@@ -88,19 +62,9 @@ SettingsPage.propTypes = {
 function mapStateToProps(state) {
   return {
     infoStatus: state.userInfo.status,
-    gear: state.gear.gear,
     gearStatus: state.gear.status,
     userStatus: state.currentUser.status,
   };
 }
 
-function mapDispatchToProps(dispatch) {
-  return {
-    addNewGear: (data) => dispatch(addNewGear(data)),
-    getUserGear: () => dispatch(getUserGear()),
-    deleteUserGear: (id) => dispatch(deleteUserGear(id)),
-    editUserGear: (data) => dispatch(editUserGear(data)),
-  };
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(SettingsPage);
+export default connect(mapStateToProps)(SettingsPage);
