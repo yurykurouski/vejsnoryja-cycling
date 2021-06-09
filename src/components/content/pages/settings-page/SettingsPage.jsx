@@ -9,7 +9,6 @@ import Loader from '../../../common/loader/Loader';
 import MyProfile from './tabs/my-profile/MyProfile';
 import MyAccount from './tabs/my-account/MyAccount';
 import ActionStatus from '../../../../constants/store/action-status';
-import { updateUserInfo } from '../../../../store/user-info/actions';
 import SettingsFields from '../../../../constants/components-fields/settings-fields';
 import {
   addNewGear,
@@ -21,10 +20,7 @@ import {
 import './settings-page.css';
 
 function SettingsPage({
-  userId,
-  updateUserInfo,
   addNewGear,
-  userInfo,
   getUserGear,
   deleteUserGear,
   editUserGear,
@@ -51,11 +47,7 @@ function SettingsPage({
           </Route>
 
           <Route path="/settings/my-profile">
-            <MyProfile
-              userId={userId}
-              userInfo={userInfo}
-              updateUserInfo={updateUserInfo}
-            />
+            <MyProfile />
           </Route>
 
           <Route path="/settings/my-gear">
@@ -83,13 +75,10 @@ function SettingsPage({
 }
 
 SettingsPage.propTypes = {
-  updateUserInfo: PropTypes.func.isRequired,
   addNewGear: PropTypes.func.isRequired,
   getUserGear: PropTypes.func.isRequired,
   deleteUserGear: PropTypes.func.isRequired,
   editUserGear: PropTypes.func.isRequired,
-  userId: PropTypes.string.isRequired,
-  userInfo: PropTypes.object.isRequired,
   gear: PropTypes.arrayOf(PropTypes.object).isRequired,
   gearStatus: PropTypes.string.isRequired,
   infoStatus: PropTypes.string.isRequired,
@@ -98,8 +87,6 @@ SettingsPage.propTypes = {
 
 function mapStateToProps(state) {
   return {
-    userId: state.currentUser.user,
-    userInfo: state.userInfo.userInfo,
     infoStatus: state.userInfo.status,
     gear: state.gear.gear,
     gearStatus: state.gear.status,
@@ -109,7 +96,6 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    updateUserInfo: (field) => dispatch(updateUserInfo(field)),
     addNewGear: (data) => dispatch(addNewGear(data)),
     getUserGear: () => dispatch(getUserGear()),
     deleteUserGear: (id) => dispatch(deleteUserGear(id)),

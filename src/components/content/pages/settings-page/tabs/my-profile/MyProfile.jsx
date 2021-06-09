@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
 import ProfileField from './profile-field/ProfileField';
 import UserAvatar from '../../../../../common/user-avatar/UserAvatar';
+import { updateUserInfo } from '../../../../../../store/user-info/actions';
 
 import './my-profile.css';
 
-export default function MyProfile({ updateUserInfo, userInfo }) {
+function MyProfile({ updateUserInfo, userInfo }) {
   const [editedFields, handleClick] = useState([]);
 
   return (
@@ -50,3 +52,18 @@ MyProfile.propTypes = {
   updateUserInfo: PropTypes.func.isRequired,
   userInfo: PropTypes.object.isRequired,
 };
+
+function mapStateToProps(state) {
+  return {
+    userId: state.currentUser.user,
+    userInfo: state.userInfo.userInfo,
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    updateUserInfo: (field) => dispatch(updateUserInfo(field)),
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(MyProfile);
