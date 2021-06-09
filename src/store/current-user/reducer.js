@@ -1,4 +1,5 @@
 import * as types from './types';
+import Utils from '../../utils';
 import ActionStatus from '../../constants/store/action-status';
 
 const initialState = {
@@ -25,9 +26,10 @@ export default function currentUser(state = initialState, action) {
     }
 
     case types.LOGIN_USER_FAILURE: {
+      const normalized = Utils.normalizeErrorMessage(action.error.message);
       return {
         ...state,
-        authErrors: { ...state.authErrors, password: action.error.message },
+        authErrors: { ...state.authErrors, password: normalized },
         status: ActionStatus.FAILED,
       };
     }
@@ -63,17 +65,19 @@ export default function currentUser(state = initialState, action) {
 
     case types.REGISTER_USER_FAILURE:
     case types.CHANGE_USER_EMAIL_FAILURE: {
+      const normalized = Utils.normalizeErrorMessage(action.error.message);
       return {
         ...state,
-        authErrors: { ...state.authErrors, email: action.error.message },
+        authErrors: { ...state.authErrors, email: normalized },
         status: ActionStatus.FAILED,
       };
     }
 
     case types.CHANGE_USER_PASSWORD_FAILURE: {
+      const normalized = Utils.normalizeErrorMessage(action.error.message);
       return {
         ...state,
-        authErrors: { ...state.authErrors, password: action.error.message },
+        authErrors: { ...state.authErrors, password: normalized },
         status: ActionStatus.SUCCEDED,
       };
     }

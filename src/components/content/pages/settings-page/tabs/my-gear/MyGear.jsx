@@ -3,9 +3,9 @@ import * as Yup from 'yup';
 import PropTypes from 'prop-types';
 
 import GearCard from './gear-card/GearCard';
+import Utils from '../../../../../../utils';
 import MyGearTable from './table/MyGearTable';
 import Modal from '../../../../../common/modal/Modal';
-import makeInputTemplateFromState from '../../../../../../utils';
 import ModalForm from '../../../../../common/modal/form/ModalForm';
 import ModalDialog from '../../../../../common/modal/dialog/ModalDialog';
 import SettingsFields from '../../../../../../constants/components-fields/settings-fields';
@@ -66,7 +66,7 @@ export default function MyGear({
   const filterGearbyId = () => {
     const filtered = gear.find((el) => el._id === gearIdToEdit);
 
-    return makeInputTemplateFromState(filtered);
+    return Utils.makeInputTemplateFromState(filtered);
   };
 
   const handleEditModalSubmit = async (data) => {

@@ -24,14 +24,6 @@ export default function gear(state = initialState, action) {
       };
     }
 
-    // case types.GET_USER_ACTIVE_GEAR_SUCESS: {
-    //   return {
-    //     ...state,
-    //     gear: action.payload,
-    //     status: ActionStatus.SUCCEDED,
-    //   };
-    // }
-
     case types.SET_ACTIVE_GEAR_SUCESS: {
       const updatedGear = state.gear.map((bike) => {
         if (bike._id === action.payload._id) return action.payload;
