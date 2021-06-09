@@ -89,49 +89,45 @@ export default function MyGear({
       {modalOpen && <Modal
         heading="Add a bike"
         handleCloseModal={handleCloseModal}
-        component={
-          <ModalForm
-            validationSchema={validationSchema}
-            handleModalSubmit={handleModalSubmit}
-            fields={SettingsFields.ADD_BIKE}
-            btnText="Save bike"
-          />
-        }
-      />}
+      >
+        <ModalForm
+          validationSchema={validationSchema}
+          handleModalSubmit={handleModalSubmit}
+          fields={SettingsFields.ADD_BIKE}
+          btnText="Save bike"
+        />
+      </Modal>}
 
       {gearIdToEdit && <Modal
         heading="Edit your bike info"
         handleCloseModal={handleCloseModal}
-        component={
-          <ModalForm
-            validationSchema={validationSchema}
-            handleModalSubmit={handleEditModalSubmit}
-            fields={filterGearbyId()}
-            btnText="Save bike"
-          />
-        }
-      />}
+      >
+        <ModalForm
+          validationSchema={validationSchema}
+          handleModalSubmit={handleEditModalSubmit}
+          fields={filterGearbyId()}
+          btnText="Save bike"
+        />
+      </Modal>}
 
       {gearIdToDelete && <Modal
         heading="You sure?"
         handleCloseModal={handleCloseModal}
-        component={
-          <ModalDialog
-            onYes={handleYesClick}
-            onNo={handleCloseModal}
-          />
-        }
-      />}
+      >
+        <ModalDialog
+          onYes={handleYesClick}
+          onNo={handleCloseModal}
+        />
+      </Modal>}
 
       {gearIdToCard && <Modal
         heading="Your bike"
         handleCloseModal={handleCloseModal}
-        component={
-          <GearCard
-            handleModalCardOpen={handleModalCardOpen}
-          />
-        }
-      />}
+      >
+        <GearCard
+          handleModalCardOpen={handleModalCardOpen}
+        />
+      </Modal>}
 
       <MyGearTable
         deleteUserGear={handleDeleteButtonClick}
