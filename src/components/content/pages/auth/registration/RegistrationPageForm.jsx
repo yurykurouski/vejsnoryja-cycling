@@ -1,18 +1,35 @@
-import { Formik } from 'formik';
 import React from 'react';
+import * as Yup from 'yup';
+import { Formik } from 'formik';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
 
+import { MIN_PASSWORD_LENGTH, PASSWORD_REGEX } from '../../../../../constants';
 import { registerUser, authUser } from '../../../../../store/current-user/actions';
 import ValidationErrMsg from '../../../../common/validation-err-msg/ValidationErrMsg';
 
 function RegistrationPageForm({
-  validationSchema,
   registerUser,
   authUser,
   authErrors,
 }) {
+  const validationSchema = Yup.object().shape({
+    email: Yup
+      .string()
+      .email('Email invalid format.')
+      .required('Email cannot be empty.'),
+    password: Yup
+      .string()
+      .min(8, `Password should contain at least ${ MIN_PASSWORD_LENGTH } characters`)
+      .matches(PASSWORD_REGEX, 'Password invalid format.')
+      .required('Password can not be empty.'),
+    repeatPass: Yup
+      .string()
+      .oneOf([Yup.ref('password'), null], 'Passwords does not match.')
+      .required('Confirm your password.'),
+  });
+
   const submitForm = async (values) => {
     await registerUser(values);
     authUser();
@@ -101,7 +118,6 @@ function RegistrationPageForm({
 }
 
 RegistrationPageForm.propTypes = {
-  validationSchema: PropTypes.object.isRequired,
   registerUser: PropTypes.func.isRequired,
   authUser: PropTypes.func.isRequired,
   authErrors: PropTypes.shape({
