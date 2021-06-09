@@ -104,4 +104,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapDispatchToProps)(LastActivities);
+export default connect(null, mapDispatchToProps)(LastActivities);
