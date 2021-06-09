@@ -14,30 +14,18 @@ function MyProfile({ updateUserInfo, userInfo }) {
   return (
     <div className="settings__my-profile first-layer-card_hovered">
       <div className="my-profile__user-info">
-        {Object.entries(userInfo).map((value) => {
-          if (editedFields.includes(value[0])) {
-            return (
-              <ProfileField
-                key={value[0]}
-                title={value[0]}
-                value={value[1]}
-                handleClick={handleClick}
-                editedFields={editedFields}
-                updateUserInfo={updateUserInfo}
-                inEdit
-              />
-            );
-          } return (
-            <ProfileField
-              key={value[0]}
-              title={value[0]}
-              value={value[1]}
-              handleClick={handleClick}
-              editedFields={editedFields}
-              inEdit={false}
-            />
-          );
-        })}
+        {Object.entries(userInfo).map((value) => (
+          <ProfileField
+            key={value[0]}
+            title={value[0]}
+            value={value[1]}
+            handleClick={handleClick}
+            editedFields={editedFields}
+            updateUserInfo={editedFields.includes(value[0]) ? updateUserInfo : undefined}
+            inEdit={editedFields.includes(value[0])}
+          />
+        ))}
+
       </div>
       <div className="my-profile__user-avatar">
         <div className="my-profile__user-avatar-wrap">
