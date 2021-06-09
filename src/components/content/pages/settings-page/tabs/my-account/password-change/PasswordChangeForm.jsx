@@ -105,4 +105,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapDispatchToProps)(PasswordChangeForm);
+export default connect(null, mapDispatchToProps)(PasswordChangeForm);
