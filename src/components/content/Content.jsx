@@ -12,7 +12,7 @@ import EventPage from '../common/event-page/EventPage';
 import UserProfile from './pages/user-profile/UserProfile';
 import SettingsPage from './pages/settings-page/SettingsPage';
 
-import RegistrationPage from './pages/auth/registration/RegistrationPage';
+import RegistrationPage from './pages/auth/registration';
 
 import './content.css';
 
