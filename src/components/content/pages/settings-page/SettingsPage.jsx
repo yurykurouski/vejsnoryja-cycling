@@ -11,7 +11,6 @@ import MyAccount from './tabs/my-account/MyAccount';
 import ActionStatus from '../../../../constants/store/action-status';
 import { updateUserInfo } from '../../../../store/user-info/actions';
 import SettingsFields from '../../../../constants/components-fields/settings-fields';
-import { changeUserEmail, changeUserPassword } from '../../../../store/current-user/actions';
 import {
   addNewGear,
   getUserGear,
@@ -32,10 +31,6 @@ function SettingsPage({
   gear,
   gearStatus,
   infoStatus,
-  changeUserEmail,
-  changeUserPassword,
-  userEmail,
-  authErrors,
   userStatus,
 }) {
   useEffect(() => {
@@ -74,12 +69,7 @@ function SettingsPage({
           </Route>
 
           <Route path="/settings/my-account">
-            <MyAccount
-              changeUserEmail={changeUserEmail}
-              changeUserPassword={changeUserPassword}
-              userEmail={userEmail}
-              authErrors={authErrors}
-            />
+            <MyAccount />
           </Route>
 
         </Switch>
@@ -98,27 +88,21 @@ SettingsPage.propTypes = {
   getUserGear: PropTypes.func.isRequired,
   deleteUserGear: PropTypes.func.isRequired,
   editUserGear: PropTypes.func.isRequired,
-  changeUserEmail: PropTypes.func.isRequired,
-  changeUserPassword: PropTypes.func.isRequired,
   userId: PropTypes.string.isRequired,
   userInfo: PropTypes.object.isRequired,
   gear: PropTypes.arrayOf(PropTypes.object).isRequired,
   gearStatus: PropTypes.string.isRequired,
   infoStatus: PropTypes.string.isRequired,
   userStatus: PropTypes.string.isRequired,
-  userEmail: PropTypes.string.isRequired,
-  authErrors: PropTypes.object.isRequired,
 };
 
 function mapStateToProps(state) {
   return {
     userId: state.currentUser.user,
-    userEmail: state.currentUser.userEmail,
     userInfo: state.userInfo.userInfo,
     infoStatus: state.userInfo.status,
     gear: state.gear.gear,
     gearStatus: state.gear.status,
-    authErrors: state.currentUser.authErrors,
     userStatus: state.currentUser.status,
   };
 }
@@ -130,8 +114,6 @@ function mapDispatchToProps(dispatch) {
     getUserGear: () => dispatch(getUserGear()),
     deleteUserGear: (id) => dispatch(deleteUserGear(id)),
     editUserGear: (data) => dispatch(editUserGear(data)),
-    changeUserEmail: (data) => dispatch(changeUserEmail(data)),
-    changeUserPassword: (data) => dispatch(changeUserPassword(data)),
   };
 }
 

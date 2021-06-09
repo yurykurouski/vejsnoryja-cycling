@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
 import Modal from '../../../../common/modal/Modal';
 import EventCard from '../../../../common/event-card/EventCard';
 import ModalDialog from '../../../../common/modal/dialog/ModalDialog';
+import { deleteEventById, userInOutEvent } from '../../../../../store/events/actions';
 
-export default function LastActivities({
+function LastActivities({
   userId,
   events,
   deleteEventById,
@@ -94,3 +96,12 @@ LastActivities.propTypes = {
   userInOutEvent: PropTypes.func.isRequired,
   userName: PropTypes.string,
 };
+
+function mapDispatchToProps(dispatch) {
+  return {
+    deleteEventById: (id) => dispatch(deleteEventById(id)),
+    userInOutEvent: (data) => dispatch(userInOutEvent(data)),
+  };
+}
+
+export default connect(mapDispatchToProps)(LastActivities);
