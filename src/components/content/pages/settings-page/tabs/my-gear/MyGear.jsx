@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import * as Yup from 'yup';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
 import GearCard from './gear-card/GearCard';
 import Utils from '../../../../../../utils';
@@ -9,19 +10,29 @@ import Modal from '../../../../../common/modal/Modal';
 import ModalForm from '../../../../../common/modal/form/ModalForm';
 import ModalDialog from '../../../../../common/modal/dialog/ModalDialog';
 import SettingsFields from '../../../../../../constants/components-fields/settings-fields';
+import {
+  addNewGear,
+  getUserGear,
+  deleteUserGear,
+  editUserGear,
+} from '../../../../../../store/gear/actions';
 
 import './my-gear.css';
 
-export default function MyGear({
+function MyGear({
   addNewGear,
   deleteUserGear,
   editUserGear,
   gear,
 }) {
-  const [modalOpen, setModalOpen] = useState(false);
+  const [addGearModal, setAddGearModalOpen] = useState(false);
   const [gearIdToDelete, setDeleteDialogOpen] = useState(false);
   const [gearIdToEdit, setEditDialogOpen] = useState(false);
   const [gearIdToCard, setCardDialogOpen] = useState(false);
+
+  useEffect(() => {
+    getUserGear();
+  }, [getUserGear]);
 
   const validationSchema = Yup.object().shape({
     name: Yup
@@ -34,11 +45,11 @@ export default function MyGear({
   });
 
   const handleAddBikeClick = () => {
-    setModalOpen(true);
+    setAddGearModalOpen(true);
   };
 
   const handleCloseModal = () => {
-    setModalOpen(false);
+    setAddGearModalOpen(false);
     setDeleteDialogOpen(false);
     setEditDialogOpen(false);
     setCardDialogOpen(false);
@@ -86,7 +97,7 @@ export default function MyGear({
         Add bike
       </button>
 
-      {modalOpen && <Modal
+      {addGearModal && <Modal
         heading="Add a bike"
         handleCloseModal={handleCloseModal}
       >
@@ -146,3 +157,20 @@ MyGear.propTypes = {
   editUserGear: PropTypes.func.isRequired,
   gear: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
+
+function mapStateToProps(state) {
+  return {
+    gear: state.gear.gear,
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    addNewGear: (data) => dispatch(addNewGear(data)),
+    getUserGear: () => dispatch(getUserGear()),
+    deleteUserGear: (id) => dispatch(deleteUserGear(id)),
+    editUserGear: (data) => dispatch(editUserGear(data)),
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(MyGear);

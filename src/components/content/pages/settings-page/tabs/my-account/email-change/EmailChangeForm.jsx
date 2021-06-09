@@ -2,11 +2,13 @@ import React from 'react';
 import * as Yup from 'yup';
 import { Formik } from 'formik';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
 import Input from '../../../../../../common/input/Input';
+import { changeUserEmail } from '../../../../../../../store/current-user/actions';
 import ValidationErrMsg from '../../../../../../common/validation-err-msg/ValidationErrMsg';
 
-export default function EmailChangeForm({ submitForm, userEmail, authErrors }) {
+function EmailChangeForm({ changeUserEmail, userEmail, authErrors }) {
   const validationSchema = Yup.object().shape({
     email: Yup
       .string()
@@ -18,7 +20,7 @@ export default function EmailChangeForm({ submitForm, userEmail, authErrors }) {
   });
 
   const submitEmailChange = async (data, actions) => {
-    await submitForm(data);
+    await changeUserEmail(data);
 
     actions.resetForm();
   };
@@ -75,7 +77,21 @@ export default function EmailChangeForm({ submitForm, userEmail, authErrors }) {
 }
 
 EmailChangeForm.propTypes = {
-  submitForm: PropTypes.func.isRequired,
+  changeUserEmail: PropTypes.func.isRequired,
   userEmail: PropTypes.string.isRequired,
   authErrors: PropTypes.object.isRequired,
 };
+
+function mapStateToProps(state) {
+  return {
+    userEmail: state.currentUser.userEmail,
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    changeUserEmail: (data) => dispatch(changeUserEmail(data)),
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(EmailChangeForm);

@@ -18,7 +18,7 @@ import { getUserActiveGear } from '../../../../store/gear/actions';
 import { logoutUser } from '../../../../store/current-user/actions';
 import ActionStatus from '../../../../constants/store/action-status';
 import ProfileFields from '../../../../constants/components-fields/profile-fields';
-import { deleteEventById, updateEventById, userInOutEvent } from '../../../../store/events/actions';
+import { getAllEvents, updateEventById } from '../../../../store/events/actions';
 
 import './user-profile.css';
 
@@ -32,82 +32,80 @@ function UserProfile({
   logoutUser,
   getUserInfo,
   getUserActiveGear,
-  deleteEventById,
   updateEventById,
-  userInOutEvent,
+  getAllEvents,
 }) {
   const eventID = useRouteMatch('/profile/edit-event/:eventID')?.params.eventID;
   const userId = useRouteMatch('/profile/:userId')?.params.userId;
+
   useEffect(() => {
     getUserActiveGear(userId);
     getUserInfo(userId);
+    getAllEvents();
   }, [getUserActiveGear, getUserInfo, userId]);
 
   return (
     <Switch>
       <>
-        {
-          eventID
-            ? <Route exact path="/profile/edit-event/:eventID">
-              <EventPage
-                event={events.find((event) => event._id === eventID)}
-                currentUser={userId}
-                saveEvent={updateEventById}
-              />
-            </Route>
+        {eventID
+          ? <Route exact path="/profile/edit-event/:eventID">
+            <EventPage
+              event={events.find((event) => event._id === eventID)}
+              currentUser={userId}
+              saveEvent={updateEventById}
+            />
+          </Route>
 
-            : <div className="content__user-profile first-layer-card">
-              <span className="user-profile__header">
-                <h2 className="user-profile__heading card-heading">
-                  {currentUserId === userId
-                    ? 'Your profile'
-                    : `${ userInfo.Name }'s profile`}
-                </h2>
-                <button
-                  onClick={logoutUser}
-                  type="button"
-                  className="user-profile__logout-btn submit-btn sign-out-btn"
-                >
-                  Sign out
-                </button>
-              </span>
+          : <div className="content__user-profile first-layer-card">
+            <span className="user-profile__header">
+              <h2 className="user-profile__heading card-heading">
+                {currentUserId === userId
+                  ? 'Your profile'
+                  : `${ userInfo.Name }'s profile`}
+              </h2>
+              <button
+                onClick={logoutUser}
+                type="button"
+                className="user-profile__logout-btn submit-btn sign-out-btn"
+              >
+                Sign out
+              </button>
+            </span>
 
-              <div className="user-profile__main second-layer-card">
+            <div className="user-profile__main second-layer-card">
 
-                <Tabs tabs={ProfileFields.PROFILE_TABS(userId)} />
+              <Tabs tabs={ProfileFields.PROFILE_TABS(userId)} />
 
-                <div className="user-profile__tab-content-wrap">
-                  <Route path="/profile/:userId">
-                    <Redirect to={`/profile/${ userId }/last-activities`} />
-                  </Route>
+              <div className="user-profile__tab-content-wrap">
+                <Route path="/profile/:userId">
+                  <Redirect to={`/profile/${ userId }/last-activities`} />
+                </Route>
 
-                  <Route exact path="/profile/:userId/last-activities">
-                    <LastActivities
-                      deleteEventById={deleteEventById}
-                      userId={userId}
-                      events={events}
-                      currentUserId={currentUserId}
-                      userInOutEvent={userInOutEvent}
-                      userName={userInfo.Name}
+                <Route exact path="/profile/:userId/last-activities">
+                  <LastActivities
+                    userId={userId}
+                    events={events}
+                    currentUserId={currentUserId}
+                    userName={userInfo.Name}
+                  />
+                </Route>
+
+                <Route exact path="/profile/:userId/info">
+                  <div className="profile-information-wrap first-layer-card">
+                    <InfoSection
+                      info={userInfo}
+                      title={ProfileFields.INFORMATION_SUBTITLE_INFO()}
                     />
-                  </Route>
-
-                  <Route exact path="/profile/:userId/info">
-                    <div className="profile-information-wrap first-layer-card">
-                      <InfoSection
-                        info={userInfo}
-                        title={ProfileFields.INFORMATION_SUBTITLE_INFO()}
-                      />
-                      <InfoSection
-                        info={gear[0]}
-                        title={ProfileFields.INFORMATION_SUBTITLE_GEAR()}
-                      />
-                    </div>
-                  </Route>
-                </div>
+                    <InfoSection
+                      info={gear[0]}
+                      title={ProfileFields.INFORMATION_SUBTITLE_GEAR()}
+                    />
+                  </div>
+                </Route>
               </div>
             </div>
-        }
+          </div>}
+
         {(eventsStatus === ActionStatus.LOADING
           || gearStatus === ActionStatus.LOADING) && <Loader />}
       </>
@@ -125,9 +123,8 @@ UserProfile.propTypes = {
   logoutUser: PropTypes.func.isRequired,
   getUserInfo: PropTypes.func.isRequired,
   getUserActiveGear: PropTypes.func.isRequired,
-  deleteEventById: PropTypes.func.isRequired,
   updateEventById: PropTypes.func.isRequired,
-  userInOutEvent: PropTypes.func.isRequired,
+  getAllEvents: PropTypes.func.isRequired,
 };
 
 function mapStateToProps(state) {
@@ -147,8 +144,7 @@ function mapDispatchToProps(dispatch) {
     updateEventById: (data) => dispatch(updateEventById(data)),
     getUserActiveGear: (id) => dispatch(getUserActiveGear(id)),
     getUserInfo: (id) => dispatch(getUserInfo(id)),
-    deleteEventById: (id) => dispatch(deleteEventById(id)),
-    userInOutEvent: (data) => dispatch(userInOutEvent(data)),
+    getAllEvents: () => dispatch(getAllEvents()),
   };
 }
 

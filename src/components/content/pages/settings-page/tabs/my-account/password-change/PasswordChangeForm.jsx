@@ -2,11 +2,14 @@ import React from 'react';
 import * as Yup from 'yup';
 import { Formik } from 'formik';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+
 import Input from '../../../../../../common/input/Input';
+import { changeUserPassword } from '../../../../../../../store/current-user/actions';
 import { MIN_PASSWORD_LENGTH, PASSWORD_REGEX } from '../../../../../../../constants';
 import ValidationErrMsg from '../../../../../../common/validation-err-msg/ValidationErrMsg';
 
-export default function PasswordChangeForm({ submitForm, authErrors }) {
+function PasswordChangeForm({ changeUserPassword, authErrors }) {
   const validationSchema = Yup.object().shape({
     password: Yup
       .string()
@@ -22,7 +25,7 @@ export default function PasswordChangeForm({ submitForm, authErrors }) {
   });
 
   const submitPasswordChange = async (data, actions) => {
-    await submitForm(data);
+    await changeUserPassword(data);
 
     actions.resetForm();
   };
@@ -92,6 +95,14 @@ export default function PasswordChangeForm({ submitForm, authErrors }) {
 }
 
 PasswordChangeForm.propTypes = {
-  submitForm: PropTypes.func.isRequired,
+  changeUserPassword: PropTypes.func.isRequired,
   authErrors: PropTypes.object.isRequired,
 };
+
+function mapDispatchToProps(dispatch) {
+  return {
+    changeUserPassword: (data) => dispatch(changeUserPassword(data)),
+  };
+}
+
+export default connect(null, mapDispatchToProps)(PasswordChangeForm);
