@@ -6,7 +6,7 @@ import { Switch, Route } from 'react-router-dom';
 import PublicRoute from './routes/PublicRoute';
 import PrivateRoute from './routes/PrivateRoute';
 import MainPage from './pages/main-page/MainPage';
-import LoginPage from './pages/auth/login/LoginPage';
+import LoginPage from './pages/auth/login';
 import { addEvent } from '../../store/events/actions';
 import EventPage from '../common/event-page/EventPage';
 import UserProfile from './pages/user-profile/UserProfile';

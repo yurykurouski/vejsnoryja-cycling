@@ -2,27 +2,27 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
+import LoginPageForm from './LoginPageForm';
 import Loader from '../../../../common/loader/Loader';
 import ActionStatus from '../../../../../constants/store/action-status';
 
 import '../auth-pages.css';
-import RegistrationPageForm from './RegistrationPageForm';
 
-function RegistrationPage({
+function LoginPage({
   status,
 }) {
   return (
-    <div className="content__registration-page auth-page first-layer-card">
-      <h2 className="registration-page__heading auth-page__heading card-heading">Create new account</h2>
+    <div className="content__login-page auth-page first-layer-card">
+      <h2 className="login-page__heading auth-page__heading card-heading">Sign in</h2>
 
-      <RegistrationPageForm />
+      <LoginPageForm />
 
       {status === ActionStatus.LOADING && <Loader />}
     </div>
   );
 }
 
-RegistrationPage.propTypes = {
+LoginPage.propTypes = {
   status: PropTypes.string.isRequired,
 };
 
@@ -32,4 +32,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(RegistrationPage);
+export default connect(mapStateToProps)(LoginPage);
