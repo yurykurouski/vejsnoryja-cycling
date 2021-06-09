@@ -129,7 +129,7 @@ function RegistrationPage({
 }
 
 RegistrationPage.defaultProps = {
-  status: undefined,
+  status: null,
 };
 
 RegistrationPage.propTypes = {

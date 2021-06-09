@@ -6,8 +6,8 @@ const initialState = {
   user: null,
   userEmail: null,
   authErrors: {
-    email: '',
-    password: '',
+    email: null,
+    password: null,
   },
   status: ActionStatus.IDLE,
 };
@@ -83,7 +83,7 @@ export default function currentUser(state = initialState, action) {
       return {
         ...state,
         isAuthenticated: false,
-        user: null,
+        user: undefined,
         status: ActionStatus.SUCCEDED,
       };
     }

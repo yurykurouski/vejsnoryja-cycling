@@ -28,7 +28,7 @@ export default function IconButton({
 }
 
 IconButton.defaultProps = {
-  color: undefined,
+  color: 'var(--accent-color_light-blue)',
 };
 
 IconButton.propTypes = {

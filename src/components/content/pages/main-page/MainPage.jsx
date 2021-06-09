@@ -49,7 +49,7 @@ function MainPage({
 }
 
 MainPage.defaultProps = {
-  userName: undefined,
+  userName: null,
   userId: null,
   events: [],
 };

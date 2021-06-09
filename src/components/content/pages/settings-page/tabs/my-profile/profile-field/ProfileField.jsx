@@ -80,7 +80,6 @@ export default function ProfileField({
 }
 
 ProfileField.defaultProps = {
-  inEdit: undefined,
   updateUserInfo: undefined,
 };
 
@@ -89,6 +88,6 @@ ProfileField.propTypes = {
   value: PropTypes.string.isRequired,
   handleClick: PropTypes.func.isRequired,
   editedFields: PropTypes.arrayOf(PropTypes.string).isRequired,
-  inEdit: PropTypes.bool,
+  inEdit: PropTypes.bool.isRequired,
   updateUserInfo: PropTypes.func,
 };

@@ -104,7 +104,7 @@ function LoginPage({
 }
 
 LoginPage.defaultProps = {
-  status: undefined,
+  status: null,
 };
 
 LoginPage.propTypes = {

@@ -15,12 +15,9 @@ function SidebarProfile({ isAuthenticated, userId, setActiveLinkClass }) {
   );
 }
 
-function mapStateToProps(state) {
-  return {
-    isAuthenticated: state.currentUser.isAuthenticated,
-    userId: state.currentUser.user,
-  };
-}
+SidebarProfile.defaultProps = {
+  userId: null,
+};
 
 SidebarProfile.propTypes = {
   isAuthenticated: PropTypes.bool.isRequired,
@@ -28,8 +25,11 @@ SidebarProfile.propTypes = {
   setActiveLinkClass: PropTypes.func.isRequired,
 };
 
-SidebarProfile.defaultProps = {
-  userId: null,
-};
+function mapStateToProps(state) {
+  return {
+    isAuthenticated: state.currentUser.isAuthenticated,
+    userId: state.currentUser.user,
+  };
+}
 
 export default connect(mapStateToProps)(SidebarProfile);

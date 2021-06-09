@@ -32,6 +32,7 @@ export default function MyProfile({ updateUserInfo, userInfo }) {
               value={value[1]}
               handleClick={handleClick}
               editedFields={editedFields}
+              inEdit={false}
             />
           );
         })}
