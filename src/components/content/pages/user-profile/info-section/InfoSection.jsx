@@ -30,11 +30,7 @@ export default function InfoSection({ info, title }) {
   );
 }
 
-InfoSection.defaultProps = {
-  info: {},
-};
-
 InfoSection.propTypes = {
-  info: PropTypes.object,
+  info: PropTypes.object.isRequired,
   title: PropTypes.string.isRequired,
 };
