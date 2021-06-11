@@ -29,7 +29,7 @@ function MyProfile({ updateUserInfo, userInfo }) {
       </div>
       <div className="my-profile__user-avatar">
         <div className="my-profile__user-avatar-wrap">
-          <UserAvatar userInfo={userInfo} />
+          <UserAvatar />
         </div>
       </div>
     </div>

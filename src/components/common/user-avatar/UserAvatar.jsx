@@ -1,4 +1,5 @@
 import React from 'react';
+
 import './user-avatar.css';
 
 export default function UserAvatar() {
