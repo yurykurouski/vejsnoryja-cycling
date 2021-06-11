@@ -1,0 +1,26 @@
+.theme-toggler-wrap {
+  display: flex;
+  height: 2.5rem;
+  align-items: top;
+  justify-content: flex-end;
+  background: right 25px bottom  no-repeat var(--theme-toggler-bgr-image);
+  background-size: 15%;
+  cursor: pointer;
+}
+
+.theme-toggler-wrap:hover{
+  color: var(--font-color-main_active);
+}
+
+.theme-toggler-icon {
+  transition: all .5s ease-out;
+  font-size: 1rem;
+}
+
+.theme-toggler-icon_light {
+  transform: rotate(0deg) translateX(-50px);
+}
+
+.theme-toggler-icon_dark {
+  transform: rotate(90deg) rotate(135deg);
+}

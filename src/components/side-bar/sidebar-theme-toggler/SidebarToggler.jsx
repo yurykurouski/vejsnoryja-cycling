@@ -3,7 +3,7 @@ import { Icon } from '@material-ui/core';
 
 import themeService from '../../../services/theme-service';
 
-import './theme-togler.css';
+import './theme-toggler.css';
 
 export default function SidebarToggler() {
   const [currentSchema, setCurrentSchema] = useState(localStorage.getItem('currentSchema'));
@@ -15,8 +15,8 @@ export default function SidebarToggler() {
   };
 
   return (
-    <div className="theme-togler-wrap" role="button" onClick={toggleTheme} tabIndex={0} title="Toggle theme">
-      <Icon className={`theme-toggler-icon theme-toggler-icon_${ currentSchema }`}>
+    <div className="theme-toggler-wrap" role="button" onClick={toggleTheme} tabIndex={0} title="Toggle theme">
+      <Icon className={`theme-toggler-icon theme-toggler-icon_${ currentSchema }`} fontSize="small">
         {currentSchema === 'light' ? 'dark_mode' : 'light_mode'}
       </Icon>
     </div>
