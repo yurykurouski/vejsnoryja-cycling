@@ -15,6 +15,7 @@ import SettingsPage from './pages/settings-page/SettingsPage';
 import RegistrationPage from './pages/auth/registration';
 
 import './content.css';
+import NotFound from './pages/not-found/NotFound';
 
 function Content({ addEvent }) {
   return (
@@ -39,7 +40,7 @@ function Content({ addEvent }) {
           <PrivateRoute path="/settings" component={SettingsPage} />
 
           <Route path="*">
-            <div>You gone too far, folk (404) </div>
+            <NotFound />
           </Route>
         </Switch>
 
