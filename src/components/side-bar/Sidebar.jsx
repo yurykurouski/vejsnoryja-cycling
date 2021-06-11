@@ -6,6 +6,7 @@ import SidebarLogo from './sidebar-logo/SidebarLogo';
 import SidebarProfile from './sidebar-profile/SidebarProfile';
 
 import './sidebar.css';
+import SidebarToggler from './sidebar-theme-toggler/SidebarToggler';
 
 export default function Sidebar() {
   const currentPage = useRouteMatch('/:page')?.params.page;
@@ -28,7 +29,7 @@ export default function Sidebar() {
               <Link to="/settings" className={setActiveLinkClass('settings')}>Settings</Link>
             </li>
             <li className="sidebar__nav-item">
-              <a href="#!" className="nav-item__link link">Smthng else</a>
+              <SidebarToggler />
             </li>
           </ul>
         </nav>

@@ -22,7 +22,7 @@ function MainPage({
   }, [getAllEvents]);
 
   return (
-    <div className="content__main-page">
+    <div className="content__main-page first-layer-card">
 
       <h2 className="main-page__heading card-heading">Upcoming Events</h2>
 

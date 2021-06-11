@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 
 import Content from './content/Content';
 import Sidebar from './side-bar/Sidebar';
+import themeService from '../services/theme-service';
 import FloatCard from './common/float-card/FloatCard';
 import AddButton from './common/add-button/AddButton';
 import { authUser } from '../store/current-user/actions';
@@ -20,6 +21,7 @@ function App({
   const token = localStorage.getItem('token');
 
   useEffect(() => {
+    themeService.setTheme();
     if (!isAuthenticated && token) {
       authUser();
       getUserInfo(userId);

@@ -12,6 +12,8 @@ import TableContainer from '@material-ui/core/TableContainer';
 import ActiveToggler from '../actions/ActiveToggler';
 import IconButton from '../../../../../../common/icon-button/IconButton';
 
+import './my-gear-table.css';
+
 const useStyles = makeStyles({
   container: {
     marginTop: 10,

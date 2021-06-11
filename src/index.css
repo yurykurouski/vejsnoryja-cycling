@@ -1,18 +1,38 @@
-body {
-  margin: 5px 10px;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+html {
+  transition: color .3s ease-out, background-color .3s ease-out;
+}
+
+html {
   --background-main-color: #ffffff;
   --font-color-main: black;
   --font-color-main_active: #ff0000;
   --font-color-main_unactive: rgba(0, 0, 0, 0.6);
   --font-color-main_hover-bg: rgba(255, 0, 0, .08);
   --accent-color_light-blue: #146bff;
-  --fab-bgr-color: #ffffff;
+  --fab-bgr-color: rgba(255, 255, 2555, .7);
   --surface-overlay-color: rgba(33, 33, 33, .03);
   --surface-overlay-color_second-level: rgba(33, 33, 33, .05);
+  --main-page-heading-bgr: #fff;
+}
+
+html[theme="dark"] {
+  --background-main-color: #121212;
+  --surface-overlay-color: rgba(255, 255, 255, .03);
+  --surface-overlay-color_second-level: rgba(255, 255, 255, .05);
+  --font-color-main: rgba(255, 255, 255, 0.8);
+  --font-color-main_active: #ff0000;
+  --font-color-main_unactive: rgba(255, 255, 255, 0.2);
+  --fab-bgr-color: rgba(35, 35, 35, .7);
+  --main-page-heading-bgr: rgba(28, 28, 28);
+}
+
+body {
+  margin: 5px 10px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   background-color: var(--background-main-color);
+  color: var(--font-color-main);
 }
 
 h1, h2, h3, h4, h5, ol, ul, li, p {
@@ -22,7 +42,6 @@ h1, h2, h3, h4, h5, ol, ul, li, p {
 
 .link {
   text-decoration: none;
-  color: black;
 }
 
 #root {
