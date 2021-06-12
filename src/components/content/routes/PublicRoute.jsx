@@ -25,7 +25,10 @@ PublicRoute.defaultProps = {
 };
 
 PublicRoute.propTypes = {
-  component: PropTypes.object.isRequired,
+  component: PropTypes.oneOfType([
+    PropTypes.object,
+    PropTypes.func,
+  ]).isRequired,
   isAuthenticated: PropTypes.bool.isRequired,
   userId: PropTypes.string,
   restricted: PropTypes.bool.isRequired,

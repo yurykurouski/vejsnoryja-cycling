@@ -1,21 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Switch, Route } from 'react-router-dom';
+import { Switch } from 'react-router-dom';
 
+import LoginPage from './pages/auth/login';
 import PublicRoute from './routes/PublicRoute';
 import PrivateRoute from './routes/PrivateRoute';
+import NotFound from './pages/not-found/NotFound';
 import MainPage from './pages/main-page/MainPage';
-import LoginPage from './pages/auth/login';
 import { addEvent } from '../../store/events/actions';
 import EventPage from '../common/event-page/EventPage';
+import RegistrationPage from './pages/auth/registration';
 import UserProfile from './pages/user-profile/UserProfile';
 import SettingsPage from './pages/settings-page/SettingsPage';
 
-import RegistrationPage from './pages/auth/registration';
-
 import './content.css';
-import NotFound from './pages/not-found/NotFound';
 
 function Content({ addEvent }) {
   return (
@@ -23,11 +22,7 @@ function Content({ addEvent }) {
       <div className="content__wrap">
 
         <Switch>
-          <Route
-            exact
-            path="/"
-            component={() => <MainPage />}
-          />
+          <PublicRoute exact path="/" restricted={false} component={MainPage} />
 
           <PrivateRoute path="/new-event" component={EventPage} saveEvent={addEvent} />
 
@@ -39,9 +34,7 @@ function Content({ addEvent }) {
 
           <PrivateRoute path="/settings" component={SettingsPage} />
 
-          <Route path="*">
-            <NotFound />
-          </Route>
+          <PublicRoute path="*" restricted={false} component={NotFound} />
         </Switch>
 
       </div>
