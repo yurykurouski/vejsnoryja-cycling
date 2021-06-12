@@ -7,6 +7,16 @@
   margin-top: 10px;
 }
 
+.MuiTableCell-body,
+.MuiTableCell-head{
+  color: var(--font-color-main) !important;
+}
+
+.MuiTableCell-root{
+  border-bottom: 1px solid
+  var(--font-color-main_unactive) !important;
+}
+
 .bikes__bike-name {
   font-size: 18px;
   cursor: pointer;

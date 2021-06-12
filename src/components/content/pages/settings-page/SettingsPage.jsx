@@ -22,7 +22,7 @@ function SettingsPage({
     <div className="content__settings first-layer-card">
       <h2 className="settings__heading card-heading">Settings</h2>
 
-      <div className="settings__main second-layer-card">
+      <div className="settings__main">
 
         <Tabs tabs={SettingsFields.SETTINGS_TABS} />
 

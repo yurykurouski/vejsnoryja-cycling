@@ -72,7 +72,7 @@ function UserProfile({
               </button>
             </span>
 
-            <div className="user-profile__main second-layer-card">
+            <div className="user-profile__main">
 
               <Tabs tabs={ProfileFields.PROFILE_TABS(userId)} />
 

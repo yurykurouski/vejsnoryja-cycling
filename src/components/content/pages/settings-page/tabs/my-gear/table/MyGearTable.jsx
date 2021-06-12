@@ -6,19 +6,10 @@ import TableRow from '@material-ui/core/TableRow';
 import TableCell from '@material-ui/core/TableCell';
 import TableBody from '@material-ui/core/TableBody';
 import TableHead from '@material-ui/core/TableHead';
-import { makeStyles } from '@material-ui/core/styles';
 import TableContainer from '@material-ui/core/TableContainer';
 
 import ActiveToggler from '../actions/ActiveToggler';
 import IconButton from '../../../../../../common/icon-button/IconButton';
-
-import './my-gear-table.css';
-
-const useStyles = makeStyles({
-  container: {
-    marginTop: 10,
-  },
-});
 
 export default function MyGearTable({
   gear,
@@ -26,11 +17,9 @@ export default function MyGearTable({
   editUserGear,
   handleClickOnGear,
 }) {
-  const classes = useStyles();
-
   return (
-    <TableContainer className={`my-gear__bikes first-layer-card ${ classes.container }`}>
-      <Table aria-label="simple table">
+    <TableContainer className="my-gear__bikes first-layer-card">
+      <Table aria-label="simple table" styles={{ color: 'var(--font-color-main)' }}>
         <TableHead>
           <TableRow>
             <TableCell align="left">Active</TableCell>

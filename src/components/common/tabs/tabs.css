@@ -26,5 +26,4 @@
 
 .tab_active {
   color: var(--font-color-main_active);
-  background-color: var(--font-color-main_hover-bg);
 }
