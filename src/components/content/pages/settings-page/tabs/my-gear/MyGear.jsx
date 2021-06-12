@@ -23,6 +23,7 @@ function MyGear({
   addNewGear,
   deleteUserGear,
   editUserGear,
+  getUserGear,
   gear,
 }) {
   const [addGearModal, setAddGearModalOpen] = useState(false);
@@ -94,7 +95,7 @@ function MyGear({
         onClick={handleAddBikeClick}
         type="button"
       >
-        Add bike
+        Add a bike
       </button>
 
       {addGearModal && <Modal
@@ -155,6 +156,7 @@ MyGear.propTypes = {
   addNewGear: PropTypes.func.isRequired,
   deleteUserGear: PropTypes.func.isRequired,
   editUserGear: PropTypes.func.isRequired,
+  getUserGear: PropTypes.func.isRequired,
   gear: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 

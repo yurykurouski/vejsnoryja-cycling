@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Radio from '@material-ui/core/Radio';
 
-import { setActiveGear } from '../../../../../../../store/gear/actions';
+import { setActiveGear } from '../../../../../../../../store/gear/actions';
 
 function ActiveToggler({ bike, setActiveGear }) {
   const handleChange = async () => {

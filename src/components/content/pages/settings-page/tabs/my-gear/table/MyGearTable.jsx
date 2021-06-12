@@ -8,7 +8,7 @@ import TableBody from '@material-ui/core/TableBody';
 import TableHead from '@material-ui/core/TableHead';
 import TableContainer from '@material-ui/core/TableContainer';
 
-import ActiveToggler from '../actions/ActiveToggler';
+import ActiveToggler from './actions/ActiveToggler';
 import IconButton from '../../../../../../common/icon-button/IconButton';
 
 export default function MyGearTable({
@@ -29,13 +29,13 @@ export default function MyGearTable({
         </TableHead>
         <TableBody>
 
-          {gear.map((bike) => (
-            <TableRow key={bike._id}>
+          {gear[0] && gear.map((bike) => (
+            <TableRow key={bike?._id}>
               <TableCell align="left">
                 <ActiveToggler bike={bike} />
               </TableCell>
               <TableCell align="center" component="th" scope="row">
-                <span className="bikes__bike-name" onClick={() => handleClickOnGear(bike._id)} role="link" tabIndex={0}>{bike.name}</span>
+                <span className="bikes__bike-name" onClick={() => handleClickOnGear(bike._id)} role="link" tabIndex={0}>{bike?.name}</span>
               </TableCell>
               <TableCell align="right">
                 <IconButton
@@ -54,6 +54,7 @@ export default function MyGearTable({
 
             </TableRow>
           ))}
+
         </TableBody>
       </Table>
     </TableContainer>
