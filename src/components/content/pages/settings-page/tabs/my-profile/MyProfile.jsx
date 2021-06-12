@@ -1,15 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import ProfileField from './profile-field/ProfileField';
 import UserAvatar from '../../../../../common/user-avatar/UserAvatar';
-import { updateUserInfo } from '../../../../../../store/user-info/actions';
+import { updateUserInfo, getUserInfo } from '../../../../../../store/user-info/actions';
 
 import './my-profile.css';
 
-function MyProfile({ updateUserInfo, userInfo }) {
+function MyProfile({
+  updateUserInfo,
+  userInfo,
+  userId,
+  getUserInfo,
+}) {
   const [editedFields, handleClick] = useState([]);
+  useEffect(() => {
+    getUserInfo(userId);
+  }, [getUserInfo, userId]);
 
   return (
     <div className="settings__my-profile first-layer-card_hovered">
@@ -38,7 +46,9 @@ function MyProfile({ updateUserInfo, userInfo }) {
 
 MyProfile.propTypes = {
   updateUserInfo: PropTypes.func.isRequired,
+  getUserInfo: PropTypes.func.isRequired,
   userInfo: PropTypes.object.isRequired,
+  userId: PropTypes.string.isRequired,
 };
 
 function mapStateToProps(state) {
@@ -51,6 +61,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     updateUserInfo: (field) => dispatch(updateUserInfo(field)),
+    getUserInfo: (id) => dispatch(getUserInfo(id)),
   };
 }
 
