@@ -33,4 +33,10 @@ export default class Utils{
   
     return res;
   }
+
+  static filterGearbyId(gear, id) {
+    const filtered = gear.find((el) => el._id === id);
+
+    return this.makeInputTemplateFromState(filtered);
+  }
 }
