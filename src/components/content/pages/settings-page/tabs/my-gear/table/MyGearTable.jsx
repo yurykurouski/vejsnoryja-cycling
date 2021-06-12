@@ -1,62 +1,109 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
 import Table from '@material-ui/core/Table';
-import TableRow from '@material-ui/core/TableRow';
-import TableCell from '@material-ui/core/TableCell';
 import TableBody from '@material-ui/core/TableBody';
-import TableHead from '@material-ui/core/TableHead';
 import TableContainer from '@material-ui/core/TableContainer';
 
-import ActiveToggler from '../actions/ActiveToggler';
-import IconButton from '../../../../../../common/icon-button/IconButton';
-
-export default function MyGearTable({
-  gear,
+import GearCard from '../gear-card/GearCard';
+import Utils from '../../../../../../../utils';
+import TableHeading from './table-fields/TableHeading';
+import Modal from '../../../../../../common/modal/Modal';
+import TableUserGear from './table-fields/TableUserGear';
+import ModalForm from '../../../../../../common/modal/form/ModalForm';
+import ModalDialog from '../../../../../../common/modal/dialog/ModalDialog';
+import {
   deleteUserGear,
   editUserGear,
-  handleClickOnGear,
+} from '../../../../../../../store/gear/actions';
+
+function MyGearTable({
+  gear,
+  editUserGear,
+  deleteUserGear,
+  validationSchema,
 }) {
+  const [gearIdToDelete, setDeleteDialogOpen] = useState(false);
+  const [gearIdToEdit, setEditDialogOpen] = useState(false);
+  const [gearIdToCard, setCardDialogOpen] = useState(false);
+
+  const handleCloseModal = () => {
+    setDeleteDialogOpen(false);
+    setEditDialogOpen(false);
+    setCardDialogOpen(false);
+  };
+
+  const handleDeleteButtonClick = (id) => {
+    setDeleteDialogOpen(id);
+  };
+
+  const handleYesClick = async () => {
+    await deleteUserGear(gearIdToDelete);
+    setDeleteDialogOpen(false);
+  };
+
+  const handleEditButtonClick = async (id) => {
+    setEditDialogOpen(id);
+  };
+
+  const handleEditModalSubmit = async (data) => {
+    await editUserGear({ data, id: gearIdToEdit });
+    setEditDialogOpen(false);
+  };
+
+  const handleModalCardOpen = () => gear.find((el) => el._id === gearIdToCard);
+
   return (
-    <TableContainer className="my-gear__bikes first-layer-card">
-      <Table aria-label="simple table" styles={{ color: 'var(--font-color-main)' }}>
-        <TableHead>
-          <TableRow>
-            <TableCell align="left">Active</TableCell>
-            <TableCell align="center">Bike name</TableCell>
-            <TableCell align="right">Action</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
+    <>
+      <TableContainer className="my-gear__bikes first-layer-card">
+        <Table aria-label="simple table" styles={{ color: 'var(--font-color-main)' }}>
+          <TableHeading />
 
-          {gear.map((bike) => (
-            <TableRow key={bike._id}>
-              <TableCell align="left">
-                <ActiveToggler bike={bike} />
-              </TableCell>
-              <TableCell align="center" component="th" scope="row">
-                <span className="bikes__bike-name" onClick={() => handleClickOnGear(bike._id)} role="link" tabIndex={0}>{bike.name}</span>
-              </TableCell>
-              <TableCell align="right">
-                <IconButton
-                  onClick={() => editUserGear(bike._id)}
-                  btnTitle="Edit that bike"
-                  btnIcon="edit"
-                />
-                <IconButton
-                  onClick={() => deleteUserGear(bike._id)}
-                  btnTitle="Delete that bike"
-                  btnIcon="delete"
-                  color="red"
-                />
+          <TableBody>
 
-              </TableCell>
+            <TableUserGear
+              gear={gear}
+              setCardDialogOpen={setCardDialogOpen}
+              handleEditButtonClick={handleEditButtonClick}
+              handleDeleteButtonClick={handleDeleteButtonClick}
+            />
 
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
+          </TableBody>
+        </Table>
+      </TableContainer>
+
+      {gearIdToDelete && <Modal
+        heading="You sure?"
+        handleCloseModal={handleCloseModal}
+      >
+        <ModalDialog
+          onYes={handleYesClick}
+          onNo={handleCloseModal}
+        />
+      </Modal>}
+
+      {gearIdToEdit && <Modal
+        heading="Edit your bike info"
+        handleCloseModal={handleCloseModal}
+      >
+        <ModalForm
+          validationSchema={validationSchema}
+          handleModalSubmit={handleEditModalSubmit}
+          fields={Utils.filterGearbyId(gear, gearIdToEdit)}
+          btnText="Save bike"
+        />
+      </Modal>}
+
+      {gearIdToCard && <Modal
+        heading="Your bike"
+        handleCloseModal={handleCloseModal}
+      >
+        <GearCard
+          handleModalCardOpen={handleModalCardOpen}
+        />
+      </Modal>}
+    </>
   );
 }
 
@@ -64,5 +111,14 @@ MyGearTable.propTypes = {
   gear: PropTypes.arrayOf(PropTypes.object).isRequired,
   deleteUserGear: PropTypes.func.isRequired,
   editUserGear: PropTypes.func.isRequired,
-  handleClickOnGear: PropTypes.func.isRequired,
+  validationSchema: PropTypes.object.isRequired,
 };
+
+function mapDispatchToProps(dispatch) {
+  return {
+    deleteUserGear: (id) => dispatch(deleteUserGear(id)),
+    editUserGear: (data) => dispatch(editUserGear(data)),
+  };
+}
+
+export default connect(null, mapDispatchToProps)(MyGearTable);

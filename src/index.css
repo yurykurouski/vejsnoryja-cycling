@@ -4,16 +4,15 @@ html {
 
 html {
   --background-main-color: #ffffff;
+  --surface-overlay-color: rgba(33, 33, 33, .03);
+  --surface-overlay-color_second-level: rgba(33, 33, 33, .05);
   --font-color-main: black;
   --font-color-main_active: #ff0000;
   --font-color-main_unactive: rgba(0, 0, 0, 0.6);
   --font-color-main_hover-bg: rgba(255, 0, 0, .08);
   --accent-color_light-blue: #146bff;
-  --fab-bgr-color: rgba(255, 255, 2555, .7);
-  --surface-overlay-color: rgba(33, 33, 33, .03);
-  --surface-overlay-color_second-level: rgba(33, 33, 33, .05);
   --main-page-heading-bgr: #fff;
-
+  --fab-bgr-color: rgba(255, 255, 2555, .7);
   --theme-toggler-bgr-image: url("./assets/icons/tent-icon.svg");
 }
 
@@ -24,10 +23,9 @@ html[theme="dark"] {
   --font-color-main: rgba(255, 255, 255, 0.8);
   --font-color-main_active: #ff0000;
   --font-color-main_unactive: rgba(255, 255, 255, 0.2);
-  --fab-bgr-color: rgba(35, 35, 35, .7);
-  --main-page-heading-bgr: rgba(28, 28, 28);
   --accent-color_light-blue: #0050d9;
-
+  --main-page-heading-bgr: rgba(28, 28, 28);
+  --fab-bgr-color: rgba(35, 35, 35, .7);
   --theme-toggler-bgr-image: url("./assets/icons/river-icon.svg");
 }
 

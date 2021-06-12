@@ -63,4 +63,21 @@ export default class SettingsFields {
       },
     ];
   }
+
+  static get TABLE_COLUMNS() {
+    return [
+      {
+        title: 'Active',
+        align: 'left',
+      },
+      {
+        title: 'Bike name',
+        align: 'center',
+      },
+      {
+        title: 'Action',
+        align: 'right',
+      },
+    ];
+  }
 }
