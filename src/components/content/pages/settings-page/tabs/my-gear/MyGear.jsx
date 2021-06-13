@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import * as Yup from 'yup';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -9,7 +9,6 @@ import ModalForm from '../../../../../common/modal/form/ModalForm';
 import SettingsFields from '../../../../../../constants/components-fields/settings-fields';
 import {
   addNewGear,
-  getUserGear,
 } from '../../../../../../store/gear/actions';
 
 import './my-gear.css';
@@ -17,13 +16,8 @@ import './my-gear.css';
 function MyGear({
   gear,
   addNewGear,
-  getUserGear,
 }) {
   const [addGearModal, setAddGearModalOpen] = useState(false);
-
-  useEffect(() => {
-    getUserGear();
-  }, [getUserGear]);
 
   const validationSchema = Yup.object().shape({
     name: Yup
@@ -82,7 +76,6 @@ function MyGear({
 
 MyGear.propTypes = {
   addNewGear: PropTypes.func.isRequired,
-  getUserGear: PropTypes.func.isRequired,
   gear: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
@@ -95,7 +88,6 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     addNewGear: (data) => dispatch(addNewGear(data)),
-    getUserGear: () => dispatch(getUserGear()),
   };
 }
 

@@ -17,7 +17,6 @@ export default function userInfo(state = initialState, action) {
       };
     }
 
-    case types.UPDATE_USER_INFO_REQUEST:
     case types.GET_USER_INFO_REQUEST: {
       return {
         ...state,

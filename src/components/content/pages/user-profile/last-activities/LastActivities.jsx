@@ -41,35 +41,33 @@ function LastActivities({
 
   return (
     <>
-      <ul className="main-page__events">
-        {events.map((event) => {
-          const match = event.whosIn.find((user) => user.userId === currentUserId);
+      {events.map((event) => {
+        const match = event.whosIn.find((user) => user.userId === currentUserId);
 
-          if (event.author === userId) {
-            if (currentUserId === userId) {
-              return (
-                <EventCard
-                  event={event}
-                  key={event._id}
-                  btnTitle="Edit"
-                  btnIcon="edit"
-                  onClick={() => handleClick(event)}
-                  deleteEvent={() => handleDeleteClick(event._id)}
-                />
-              );
-            }
+        if (event.author === userId) {
+          if (currentUserId === userId) {
             return (
               <EventCard
                 event={event}
                 key={event._id}
-                btnTitle={match ? "I'm Out" : "I'm In"}
-                btnIcon={match ? 'remove_done' : 'done_outline'}
-                onClick={() => userInOutEvent({ eventId: event._id, userName })}
+                btnTitle="Edit"
+                btnIcon="edit"
+                onClick={() => handleClick(event)}
+                deleteEvent={() => handleDeleteClick(event._id)}
               />
             );
-          } return null;
-        })}
-      </ul>
+          }
+          return (
+            <EventCard
+              event={event}
+              key={event._id}
+              btnTitle={match ? "I'm Out" : "I'm In"}
+              btnIcon={match ? 'remove_done' : 'done_outline'}
+              onClick={() => userInOutEvent({ eventId: event._id, userName })}
+            />
+          );
+        } return null;
+      })}
 
       {modalOpen && <Modal
         heading="Delete this event?"

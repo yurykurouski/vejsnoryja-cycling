@@ -1,10 +1,10 @@
 .loader {
-  display: flex;
+  /* display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: center; */
   background-color: rgba(1, 1, 1, 0.05);
   border-radius: 5px;
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
@@ -23,6 +23,9 @@
 }
 
 .loader__spinner {
+  position: fixed;
+  left: 50%;
+  top: 50%;
   display: block;
   width: 20px;
   height: 20px;

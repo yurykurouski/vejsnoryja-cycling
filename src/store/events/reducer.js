@@ -11,7 +11,7 @@ export default function events(state = initialState, action) {
     case types.CREATE_NEW_EVENT_SUCESS: {
       return {
         ...state,
-        events: [...state.events, action.payload],
+        events: [action.payload, ...state.events],
         status: ActionStatus.SUCCEDED,
       };
     }
@@ -62,7 +62,6 @@ export default function events(state = initialState, action) {
       };
     }
 
-    case types.EVENT_USER_IN_OUT_REQUEST:
     case types.DELETE_EVENT_BY_ID_REQUEST:
     case types.UPDATE_EVENT_BY_ID_REQUEST:
     case types.GET_ALL_EVENTS_REQUEST:

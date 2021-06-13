@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Switch, Route, Redirect } from 'react-router-dom';
@@ -12,12 +12,21 @@ import ActionStatus from '../../../../constants/store/action-status';
 import SettingsFields from '../../../../constants/components-fields/settings-fields';
 
 import './settings-page.css';
+import { getUserInfo } from '../../../../store/user-info/actions';
+import { getUserGear } from '../../../../store/gear/actions';
 
 function SettingsPage({
   gearStatus,
   infoStatus,
   userStatus,
+  userId,
+  getUserInfo,
+  getUserGear,
 }) {
+  useEffect(() => {
+    getUserInfo(userId);
+    getUserGear();
+  }, [getUserInfo, getUserGear, userId]);
   return (
     <div className="content__settings first-layer-card">
       <h2 className="settings__heading card-heading">Settings</h2>
@@ -31,24 +40,25 @@ function SettingsPage({
             <Redirect to="/settings/my-profile" />
           </Route>
 
-          <Route path="/settings/my-profile">
-            <MyProfile />
-          </Route>
+          {(gearStatus === ActionStatus.LOADING
+            || infoStatus === ActionStatus.LOADING
+            || userStatus === ActionStatus.LOADING)
+            ? <Loader />
+            : <>
+              <Route path="/settings/my-profile">
+                <MyProfile />
+              </Route>
 
-          <Route path="/settings/my-gear">
-            <MyGear />
-          </Route>
+              <Route path="/settings/my-gear">
+                <MyGear />
+              </Route>
 
-          <Route path="/settings/my-account">
-            <MyAccount />
-          </Route>
-
+              <Route path="/settings/my-account">
+                <MyAccount />
+              </Route>
+            </>}
         </Switch>
-
       </div>
-      {(gearStatus === ActionStatus.LOADING
-        || infoStatus === ActionStatus.LOADING
-        || userStatus === ActionStatus.LOADING) && <Loader />}
     </div>
   );
 }
@@ -57,6 +67,9 @@ SettingsPage.propTypes = {
   gearStatus: PropTypes.string.isRequired,
   infoStatus: PropTypes.string.isRequired,
   userStatus: PropTypes.string.isRequired,
+  getUserInfo: PropTypes.func.isRequired,
+  getUserGear: PropTypes.func.isRequired,
+  userId: PropTypes.string.isRequired,
 };
 
 function mapStateToProps(state) {
@@ -64,7 +77,15 @@ function mapStateToProps(state) {
     infoStatus: state.userInfo.status,
     gearStatus: state.gear.status,
     userStatus: state.currentUser.status,
+    userId: state.currentUser.user,
   };
 }
 
-export default connect(mapStateToProps)(SettingsPage);
+function mapDispatchToProps(dispatch) {
+  return {
+    getUserInfo: (id) => dispatch(getUserInfo(id)),
+    getUserGear: () => dispatch(getUserGear()),
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SettingsPage);
