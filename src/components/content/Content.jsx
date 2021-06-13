@@ -3,16 +3,16 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Switch } from 'react-router-dom';
 
-import LoginPage from './pages/auth/login';
-import PublicRoute from './routes/PublicRoute';
-import PrivateRoute from './routes/PrivateRoute';
-import NotFound from './pages/not-found/NotFound';
-import MainPage from './pages/main-page/MainPage';
+import LoginPage from '../pages/auth/login';
+import PublicRoute from '../routes/PublicRoute';
+import PrivateRoute from '../routes/PrivateRoute';
+import NotFound from '../pages/not-found/NotFound';
+import MainPage from '../pages/main-page/MainPage';
 import { addEvent } from '../../store/events/actions';
 import EventPage from '../common/event-page/EventPage';
-import RegistrationPage from './pages/auth/registration';
-import UserProfile from './pages/user-profile/UserProfile';
-import SettingsPage from './pages/settings-page/SettingsPage';
+import RegistrationPage from '../pages/auth/registration';
+import UserProfile from '../pages/user-profile/UserProfile';
+import SettingsPage from '../pages/settings-page/SettingsPage';
 
 import './content.css';
 

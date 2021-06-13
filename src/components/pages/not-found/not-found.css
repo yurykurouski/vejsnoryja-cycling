@@ -1,0 +1,7 @@
+.not-found-page{
+  height: 100%;
+  width: 100%;
+  background: no-repeat url("../../../assets/images/notfound-bgr.jpg");
+  background-size: 100%;
+  border-radius: 5px;
+}
