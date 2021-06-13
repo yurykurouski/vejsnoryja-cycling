@@ -9,17 +9,17 @@ export default class EventsService {
     }
   }
 
-  static async getAllEvents() {
+  static async getAllEvents(items) {
     try {
-      return await requestService.getSecured(process.env.REACT_APP_API_GET_ALL_EVENTS_URL);
+      return await requestService.getSecured(`${ process.env.REACT_APP_API_GET_ALL_EVENTS_URL }${ items }`);
     } catch (err) {
       throw new Error(err);
     }
   }
 
-  static async getEventsByUser(id) {
+  static async getEventsByUser(query) {
     try {
-      return await requestService.getSecured(`${ process.env.REACT_APP_API_GET_EVENTS_BY_USER_URL }${ id }`);
+      return await requestService.getSecured(`${ process.env.REACT_APP_API_GET_EVENTS_BY_USER_URL }${ query.userId }&items=${ query.eventsQuanity }`);
     } catch (err) {
       throw new Error(err);
     }
