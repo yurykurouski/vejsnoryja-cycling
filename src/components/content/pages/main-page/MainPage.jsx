@@ -20,7 +20,6 @@ function MainPage({
   useEffect(() => {
     getAllEvents();
   }, [getAllEvents]);
-
   return (
     <div className="content__main-page first-layer-card">
 

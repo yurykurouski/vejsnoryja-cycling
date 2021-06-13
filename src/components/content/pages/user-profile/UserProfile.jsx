@@ -43,7 +43,6 @@ function UserProfile({
     getUserInfo(userId);
     getAllEvents();
   }, [getUserActiveGear, getUserInfo, userId]);
-
   return (
     <Switch>
       <>

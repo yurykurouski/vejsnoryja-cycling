@@ -11,7 +11,6 @@ import '../auth-pages.css';
 function LoginPage({
   status,
 }) {
-  console.log(status);
   return (
     <div className="content__login-page auth-page first-layer-card">
       <h2 className="login-page__heading auth-page__heading card-heading">Sign in</h2>
