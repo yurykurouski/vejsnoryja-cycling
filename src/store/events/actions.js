@@ -7,11 +7,11 @@ export const addEvent = createAsyncThunk(
 );
 
 export const getAllEvents = createAsyncThunk(
-  types.GET_ALL_EVENTS, () => EventsService.getAllEvents(),
+  types.GET_ALL_EVENTS, (items) => EventsService.getAllEvents(items),
 );
 
 export const getEventsByUser = createAsyncThunk(
-  types.GET_EVENTS_BY_USER, (id) => EventsService.getEventsByUser(id),
+  types.GET_EVENTS_BY_USER, (query) => EventsService.getEventsByUser(query),
 );
 
 export const updateEventById = createAsyncThunk(

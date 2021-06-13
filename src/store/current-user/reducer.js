@@ -92,8 +92,6 @@ export default function currentUser(state = initialState, action) {
       };
     }
 
-    case types.CHANGE_USER_PASSWORD_REQUEST:
-    case types.CHANGE_USER_EMAIL_REQUEST:
     case types.REGISTER_USER_REQUEST:
     case types.LOGIN_USER.REQUEST:
     case types.AUTH_USER_REQUEST: {

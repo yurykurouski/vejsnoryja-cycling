@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import {
   Switch,
@@ -7,6 +7,7 @@ import {
   useRouteMatch,
 } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import InfiniteScroll from 'react-infinite-scroll-component';
 
 import Tabs from '../../common/tabs/Tabs';
 import Loader from '../../common/loader/Loader';
@@ -24,26 +25,32 @@ import './user-profile.css';
 
 function UserProfile({
   events,
+  status,
   gear,
-  eventsStatus,
-  gearStatus,
   userInfo,
   currentUserId,
   logoutUser,
   getUserInfo,
   getUserActiveGear,
   updateEventById,
-  getAllEvents,
+  getEventsByUser,
 }) {
   const eventID = useRouteMatch('/profile/edit-event/:eventID')?.params.eventID;
   const userId = useRouteMatch('/profile/:userId')?.params.userId;
+  const [eventsQuanity, setEventsQuanity] = useState(INITIAL_EVENTS_NUMBER_ON_PAGE);
 
   useEffect(() => {
     getUserActiveGear(userId);
     getUserInfo(userId);
-    getAllEvents();
-  }, [getUserActiveGear, getUserInfo, userId]);
+  }, [userId]);
 
+  useEffect(() => {
+    getEventsByUser({ userId, eventsQuanity });
+  }, []);
+
+  const fetchMoreData = () => {
+    setEventsQuanity(eventsQuanity + INITIAL_EVENTS_NUMBER_ON_PAGE);
+  };
   return (
     <Switch>
       <>
@@ -82,12 +89,22 @@ function UserProfile({
                 </Route>
 
                 <Route exact path="/profile/:userId/last-activities">
-                  <LastActivities
-                    userId={userId}
-                    events={events}
-                    currentUserId={currentUserId}
-                    userName={userInfo.Name}
-                  />
+                  {(events.length === 0 && status === ActionStatus.LOADING)
+                    ? <Loader />
+                    : <InfiniteScroll
+                        className="main-page__events"
+                        dataLength={events.length}
+                        next={fetchMoreData}
+                        hasMore
+                    >
+                      <LastActivities
+                        userId={userId}
+                        events={events}
+                        currentUserId={currentUserId}
+                        userName={userInfo.Name}
+                      />
+                    </InfiniteScroll>}
+
                 </Route>
 
                 <Route exact path="/profile/:userId/info">
@@ -103,11 +120,9 @@ function UserProfile({
                   </div>
                 </Route>
               </div>
+              {status === ActionStatus.LOADING && <Loader />}
             </div>
           </div>}
-
-        {(eventsStatus === ActionStatus.LOADING
-          || gearStatus === ActionStatus.LOADING) && <Loader />}
       </>
     </Switch>
   );
@@ -116,21 +131,20 @@ function UserProfile({
 UserProfile.propTypes = {
   events: PropTypes.arrayOf(PropTypes.object).isRequired,
   gear: PropTypes.PropTypes.arrayOf(PropTypes.object).isRequired,
-  eventsStatus: PropTypes.string.isRequired,
-  gearStatus: PropTypes.string.isRequired,
   userInfo: PropTypes.object.isRequired,
   currentUserId: PropTypes.string.isRequired,
   logoutUser: PropTypes.func.isRequired,
   getUserInfo: PropTypes.func.isRequired,
   getUserActiveGear: PropTypes.func.isRequired,
   updateEventById: PropTypes.func.isRequired,
-  getAllEvents: PropTypes.func.isRequired,
+  getEventsByUser: PropTypes.func.isRequired,
+  status: PropTypes.string.isRequired,
 };
 
 function mapStateToProps(state) {
   return {
     events: state.events.events,
-    eventsStatus: state.events.status,
+    status: state.events.status,
     gear: state.gear.gear,
     gearStatus: state.gear.status,
     userInfo: state.userInfo.userInfo,
@@ -144,7 +158,7 @@ function mapDispatchToProps(dispatch) {
     updateEventById: (data) => dispatch(updateEventById(data)),
     getUserActiveGear: (id) => dispatch(getUserActiveGear(id)),
     getUserInfo: (id) => dispatch(getUserInfo(id)),
-    getAllEvents: () => dispatch(getAllEvents()),
+    getEventsByUser: (query) => dispatch(getEventsByUser(query)),
   };
 }
 

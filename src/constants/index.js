@@ -3,3 +3,4 @@ export const PASSWORD_REGEX = /(([A-Za-z]+\d+)|(\d+[A-Za-z]+))[A-Za-z\d]/;
 
 export const SUBMIT_KEYCODE = 13;
 export const ESCAPE_KEYCODE = 27;
+export const INITIAL_EVENTS_NUMBER_ON_PAGE = 5;
