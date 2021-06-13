@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
@@ -11,13 +11,8 @@ import './my-profile.css';
 function MyProfile({
   updateUserInfo,
   userInfo,
-  userId,
-  getUserInfo,
 }) {
   const [editedFields, handleClick] = useState([]);
-  useEffect(() => {
-    getUserInfo(userId);
-  }, [getUserInfo, userId]);
 
   return (
     <div className="settings__my-profile first-layer-card_hovered">
@@ -46,14 +41,11 @@ function MyProfile({
 
 MyProfile.propTypes = {
   updateUserInfo: PropTypes.func.isRequired,
-  getUserInfo: PropTypes.func.isRequired,
   userInfo: PropTypes.object.isRequired,
-  userId: PropTypes.string.isRequired,
 };
 
 function mapStateToProps(state) {
   return {
-    userId: state.currentUser.user,
     userInfo: state.userInfo.userInfo,
   };
 }

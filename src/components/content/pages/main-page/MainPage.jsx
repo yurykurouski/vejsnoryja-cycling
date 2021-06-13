@@ -26,23 +26,23 @@ function MainPage({
 
       <h2 className="main-page__heading card-heading">Upcoming Events</h2>
 
-      <ul className="main-page__events">
-        {events.map((event) => {
-          const match = event.whosIn.find((user) => user.userId === userId);
+      {status === ActionStatus.LOADING
+        ? <Loader />
+        : <ul className="main-page__events">
+          {events.map((event) => {
+            const match = event.whosIn.find((user) => user.userId === userId);
 
-          return (
-            <EventCard
-              event={event}
-              key={event._id}
-              onClick={() => userInOutEvent({ eventId: event._id, userName })}
-              btnTitle={match ? "I'm Out" : "I'm In"}
-              btnIcon={match ? 'remove_done' : 'done_outline'}
-            />
-          );
-        })}
-      </ul>
-
-      {status === ActionStatus.LOADING && <Loader />}
+            return (
+              <EventCard
+                event={event}
+                key={event._id}
+                onClick={() => userInOutEvent({ eventId: event._id, userName })}
+                btnTitle={match ? "I'm Out" : "I'm In"}
+                btnIcon={match ? 'remove_done' : 'done_outline'}
+              />
+            );
+          })}
+        </ul>}
 
     </div>
   );

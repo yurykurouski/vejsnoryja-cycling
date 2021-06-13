@@ -1,7 +1,6 @@
 .content__user-profile {
-  height: calc(100% - 25px);
+  height: 100%;
   margin-top: 5px;
-  padding-top: 15px;
   padding-bottom: 5px;
 }
 

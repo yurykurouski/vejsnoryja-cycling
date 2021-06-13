@@ -77,37 +77,39 @@ function UserProfile({
               <Tabs tabs={ProfileFields.PROFILE_TABS(userId)} />
 
               <div className="user-profile__tab-content-wrap">
-                <Route path="/profile/:userId">
-                  <Redirect to={`/profile/${ userId }/last-activities`} />
-                </Route>
+                {(eventsStatus === ActionStatus.LOADING
+                  || gearStatus === ActionStatus.LOADING)
+                  ? <Loader />
+                  : <>
+                    <Route path="/profile/:userId">
+                      <Redirect to={`/profile/${ userId }/last-activities`} />
+                    </Route>
 
-                <Route exact path="/profile/:userId/last-activities">
-                  <LastActivities
-                    userId={userId}
-                    events={events}
-                    currentUserId={currentUserId}
-                    userName={userInfo.Name}
-                  />
-                </Route>
+                    <Route exact path="/profile/:userId/last-activities">
+                      <LastActivities
+                        userId={userId}
+                        events={events}
+                        currentUserId={currentUserId}
+                        userName={userInfo.Name}
+                      />
+                    </Route>
 
-                <Route exact path="/profile/:userId/info">
-                  <div className="profile-information-wrap first-layer-card">
-                    <InfoSection
-                      info={userInfo}
-                      title={ProfileFields.INFORMATION_SUBTITLE_INFO()}
-                    />
-                    <InfoSection
-                      info={gear[0]}
-                      title={ProfileFields.INFORMATION_SUBTITLE_GEAR()}
-                    />
-                  </div>
-                </Route>
+                    <Route exact path="/profile/:userId/info">
+                      <div className="profile-information-wrap first-layer-card">
+                        <InfoSection
+                          info={userInfo}
+                          title={ProfileFields.INFORMATION_SUBTITLE_INFO()}
+                        />
+                        <InfoSection
+                          info={gear[0]}
+                          title={ProfileFields.INFORMATION_SUBTITLE_GEAR()}
+                        />
+                      </div>
+                    </Route>
+                  </>}
               </div>
             </div>
           </div>}
-
-        {(eventsStatus === ActionStatus.LOADING
-          || gearStatus === ActionStatus.LOADING) && <Loader />}
       </>
     </Switch>
   );
