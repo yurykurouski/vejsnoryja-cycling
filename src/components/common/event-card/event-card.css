@@ -23,7 +23,19 @@
   justify-content: space-between;
   flex-direction: column;
   gap: 5px;
-  max-width: 50%;
+}
+
+.event-card__main__heading {
+  display: flex;
+  gap: .5em;
+}
+
+.event-card__title{
+  overflow-wrap: break-word;
+}
+
+.date-header__day {
+  font-weight: 600;
 }
 
 .event-card__part{
@@ -40,15 +52,6 @@
   align-items: center;
 }
 
-.event-card__main__heading {
-  display: flex;
-  gap: .5em;
-}
-
-.date-header__day {
-  font-weight: 600;
-}
-
 .event-details {
   display: flex;
   align-items: center;
@@ -59,6 +62,7 @@
   font-family: "Roboto";
   font-size: 16px;
   font-weight: 400;
+  overflow-wrap: break-word;
 }
 
 .event-card__main__whos-in {

@@ -22,17 +22,6 @@
   gap: 20px;
 }
 
-.form__terrain-level-wrap {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 20px;
-}
-
-.form__terrain-level-wrap .input__label {
-  width: 100%;
-}
-
 .form__input_title {
   width: 100%;
 }

@@ -73,7 +73,7 @@ export default function EventCard({
               {date}
             </Moment>
             /
-            <b>{title}</b>
+            <b className="event-card__title">{title}</b>
           </span>
 
           <div className="event-card__details">
