@@ -10,6 +10,7 @@ import { INITIAL_EVENTS_NUMBER_ON_PAGE } from '../../../constants';
 import { getAllEvents, userInOutEvent } from '../../../store/events/actions';
 
 import './main-page.css';
+import SortingPanel from '../../common/sorting-panel/SortingPanel';
 
 function MainPage({
   events,
@@ -41,6 +42,8 @@ function MainPage({
             next={fetchMoreData}
             hasMore
         >
+          <SortingPanel className="main-page__sorting-type-selector" />
+
           {events.map((event) => {
             const match = event.whosIn.find((user) => user.userId === userId);
 

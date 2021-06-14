@@ -25,3 +25,8 @@ export const deleteEventById = createAsyncThunk(
 export const userInOutEvent = createAsyncThunk(
   types.EVENT_USER_IN_OUT, (data) => EventsService.userInOutEvent(data),
 );
+
+export const changeEventsSortingType = (sortingType) => ({
+  sortingType,
+  type: types.CHANGE_EVENTS_SORTING_TYPE,
+});

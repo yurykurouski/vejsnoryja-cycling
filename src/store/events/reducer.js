@@ -1,8 +1,10 @@
 import * as types from './types';
 import ActionStatus from '../../constants/store/action-status';
+import Utils from '../../utils';
 
 const initialState = {
   events: [],
+  sortingType: 'Date: Newest to Oldest',
   status: ActionStatus.IDLE,
 };
 
@@ -18,9 +20,10 @@ export default function events(state = initialState, action) {
 
     case types.GET_ALL_EVENTS_SUCESS:
     case types.GET_EVENTS_BY_USER_SUCESS: {
+      const sortedEvents = Utils.sortEventsBySortingType(action.payload, state.sortingType);
       return {
         ...state,
-        events: action.payload,
+        events: sortedEvents,
         status: ActionStatus.SUCCEDED,
       };
     }
@@ -59,6 +62,15 @@ export default function events(state = initialState, action) {
         ...state,
         events: updatedEvents,
         status: ActionStatus.SUCCEDED,
+      };
+    }
+
+    case types.CHANGE_EVENTS_SORTING_TYPE: {
+      const sortedEvents = Utils.sortEventsBySortingType(state.events, action.sortingType);
+      return {
+        ...state,
+        events: sortedEvents,
+        sortingType: action.sortingType,
       };
     }
 

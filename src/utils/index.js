@@ -39,4 +39,21 @@ export default class Utils{
 
     return this.makeInputTemplateFromState(filtered);
   }
+
+  static sortEventsBySortingType(events, sortingType) {
+    switch (sortingType) {
+      default:
+      case 'Date: Ascending':
+        return [...events].sort((a, b) => new Date(a.date) - new Date(b.date));
+      
+      case 'Date: Descending':
+        return [...events].sort((a, b) => new Date(b.date) - new Date(a.date));
+      
+      case 'Distance: Ascending':
+        return [...events].sort((a, b) => new Date(a.distance) - new Date(b.distance));
+      
+      case 'Distance: Descending':
+        return [...events].sort((a, b) => new Date(b.distance) - new Date(a.distance));
+    }
+  }
 }
