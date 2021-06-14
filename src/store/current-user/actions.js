@@ -15,11 +15,11 @@ export const loginUser = createAsyncThunk(
 );
 
 export const changeUserEmail = createAsyncThunk(
-  types.CHANGE_USER_EMAIL, (data) => AuthService.changeEmail(data),
+  types.CHANGE_USER_EMAIL, (data) => AuthService.changeAuthData(data),
 );
 
 export const changeUserPassword = createAsyncThunk(
-  types.CHANGE_USER_PASSWORD, (data) => AuthService.changePassword(data),
+  types.CHANGE_USER_PASSWORD, (data) => AuthService.changeAuthData(data),
 );
 
 export const logoutUser = () => ({

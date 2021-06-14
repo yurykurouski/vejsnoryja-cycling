@@ -37,7 +37,7 @@ export default class AuthService {
     }
   }
 
-  static async changeEmail(data) {
+  static async changeAuthData(data) {
     try {
       const response = await requestService.patchSecured(
         process.env.REACT_APP_API_CHANGE_USER_EMAIL_SETTINGS_URL, data,
@@ -48,20 +48,6 @@ export default class AuthService {
       }
 
       return response;
-    } catch (err) {
-      throw new Error(err);
-    }
-  }
-
-  // TODO нужно будет обьединить методы
-  static async changePassword(data) {
-    try {
-      const response = await requestService.patchSecured(
-        process.env.REACT_APP_API_CHANGE_USER_PASSWORD_SETTINGS_URL, data,
-      );
-      if (response.message) {
-        throw new Error(response.message);
-      }
     } catch (err) {
       throw new Error(err);
     }

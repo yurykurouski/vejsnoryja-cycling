@@ -23,9 +23,6 @@ export default function Sidebar() {
             <SidebarProfile setActiveLinkClass={setActiveLinkClass} />
 
             <li className="sidebar__nav-item">
-              <a href="#!" className={setActiveLinkClass('worksop')}>Workshop</a>
-            </li>
-            <li className="sidebar__nav-item">
               <Link to="/settings" className={setActiveLinkClass('settings')}>Settings</Link>
             </li>
             <li className="sidebar__nav-item">
