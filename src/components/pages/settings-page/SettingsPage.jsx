@@ -12,8 +12,8 @@ import ActionStatus from '../../../constants/store/action-status';
 import SettingsFields from '../../../constants/components-fields/settings-fields';
 
 import './settings-page.css';
-import { getUserInfo } from '../../../../store/user-info/actions';
-import { getUserGear } from '../../../../store/gear/actions';
+import { getUserInfo } from '../../../store/user-info/actions';
+import { getUserGear } from '../../../store/gear/actions';
 
 function SettingsPage({
   gearStatus,

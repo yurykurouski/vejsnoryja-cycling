@@ -9,7 +9,6 @@ import ModalForm from '../../../../common/modal/form/ModalForm';
 import SettingsFields from '../../../../../constants/components-fields/settings-fields';
 import {
   addNewGear,
-  getUserGear,
 } from '../../../../../store/gear/actions';
 
 import './my-gear.css';

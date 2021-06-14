@@ -1,17 +1,10 @@
 .content__settings {
   height: 100%;
-  padding-bottom: 5px;
-  margin-top: 5px;
-}
-
-.settings__heading {
-  margin-left: 30px;
-  margin-bottom: 30px;
+  padding: 5px;
 }
 
 .settings__main {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  margin: 0 5px;
 }

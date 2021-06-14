@@ -18,8 +18,9 @@ import { getUserInfo } from '../../../store/user-info/actions';
 import { getUserActiveGear } from '../../../store/gear/actions';
 import { logoutUser } from '../../../store/current-user/actions';
 import ActionStatus from '../../../constants/store/action-status';
+import { INITIAL_EVENTS_NUMBER_ON_PAGE } from '../../../constants';
 import ProfileFields from '../../../constants/components-fields/profile-fields';
-import { getAllEvents, updateEventById } from '../../../store/events/actions';
+import { getEventsByUser, updateEventById } from '../../../store/events/actions';
 
 import './user-profile.css';
 

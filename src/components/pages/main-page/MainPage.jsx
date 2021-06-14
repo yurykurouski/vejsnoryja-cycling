@@ -6,6 +6,7 @@ import InfiniteScroll from 'react-infinite-scroll-component';
 import Loader from '../../common/loader/Loader';
 import EventCard from '../../common/event-card/EventCard';
 import ActionStatus from '../../../constants/store/action-status';
+import { INITIAL_EVENTS_NUMBER_ON_PAGE } from '../../../constants';
 import { getAllEvents, userInOutEvent } from '../../../store/events/actions';
 
 import './main-page.css';

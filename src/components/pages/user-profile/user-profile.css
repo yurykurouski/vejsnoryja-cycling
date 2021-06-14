@@ -1,7 +1,6 @@
 .content__user-profile {
   height: 100%;
-  margin-top: 5px;
-  padding-bottom: 5px;
+  padding: 5px;
 }
 
 .user-profile__header {
@@ -9,19 +8,12 @@
   align-items: center;
   justify-content: space-between;
   margin: 0 5px;
-  padding: 5px;
-}
-
-.user-profile__heading {
-  margin-left: 20px;
-  margin-bottom: 25px;
 }
 
 .user-profile__main {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  margin: 0 5px;
   padding-top: 5px;
 }
 
