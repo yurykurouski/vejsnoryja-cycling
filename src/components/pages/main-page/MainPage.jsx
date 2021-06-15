@@ -57,7 +57,7 @@ function MainPage({
                   btnIcon={match ? 'remove_done' : 'done_outline'}
                 />
               );
-            } return undefined;
+            } return null;
           })}
         </InfiniteScroll>}
 

@@ -7,6 +7,7 @@ import Modal from '../../../common/modal/Modal';
 import EventCard from '../../../common/event-card/EventCard';
 import ModalDialog from '../../../common/modal/dialog/ModalDialog';
 import { deleteEventById, userInOutEvent } from '../../../../store/events/actions';
+import SortingPanel from '../../../common/sorting-panel/SortingPanel';
 
 function LastActivities({
   userId,
@@ -15,6 +16,7 @@ function LastActivities({
   currentUserId,
   userInOutEvent,
   userName,
+  filters,
 }) {
   const [modalOpen, setModalOpen] = useState(false);
   const [eventToDelete, setEventToDelete] = useState(null);
@@ -41,31 +43,34 @@ function LastActivities({
 
   return (
     <>
+      <SortingPanel className="user-profile__sorting-type-selector" />
+
       {events.map((event) => {
         const match = event.whosIn.find((user) => user.userId === currentUserId);
-
-        if (event.author === userId) {
-          if (currentUserId === userId) {
+        if ((filters.includes(event.terrain || event.level) || filters.length === 0)) {
+          if (event.author === userId) {
+            if (currentUserId === userId) {
+              return (
+                <EventCard
+                  event={event}
+                  key={event._id}
+                  btnTitle="Edit"
+                  btnIcon="edit"
+                  onClick={() => handleClick(event)}
+                  deleteEvent={() => handleDeleteClick(event._id)}
+                />
+              );
+            }
             return (
               <EventCard
                 event={event}
                 key={event._id}
-                btnTitle="Edit"
-                btnIcon="edit"
-                onClick={() => handleClick(event)}
-                deleteEvent={() => handleDeleteClick(event._id)}
+                btnTitle={match ? "I'm Out" : "I'm In"}
+                btnIcon={match ? 'remove_done' : 'done_outline'}
+                onClick={() => userInOutEvent({ eventId: event._id, userName })}
               />
             );
-          }
-          return (
-            <EventCard
-              event={event}
-              key={event._id}
-              btnTitle={match ? "I'm Out" : "I'm In"}
-              btnIcon={match ? 'remove_done' : 'done_outline'}
-              onClick={() => userInOutEvent({ eventId: event._id, userName })}
-            />
-          );
+          } return null;
         } return null;
       })}
 
@@ -93,7 +98,14 @@ LastActivities.propTypes = {
   currentUserId: PropTypes.string.isRequired,
   userInOutEvent: PropTypes.func.isRequired,
   userName: PropTypes.string,
+  filters: PropTypes.array.isRequired,
 };
+
+function mapStateToProps(state) {
+  return {
+    filters: state.events.filters,
+  };
+}
 
 function mapDispatchToProps(dispatch) {
   return {
@@ -102,4 +114,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(null, mapDispatchToProps)(LastActivities);
+export default connect(mapStateToProps, mapDispatchToProps)(LastActivities);
