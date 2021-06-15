@@ -1,3 +1,10 @@
-.sorting-panel-wrap{
+.sorting-panel-wrap {
   display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.sorting-panel-label.input__label{
+  flex-direction: initial;
+  gap: 1rem;
 }

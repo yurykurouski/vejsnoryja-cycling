@@ -11,9 +11,3 @@
   list-style-type: none;
   overflow:unset !important;
 }
-
-.main-page__sorting-type-selector{
-  position: sticky;
-  top: -31px;
-  z-index: 99;
-}

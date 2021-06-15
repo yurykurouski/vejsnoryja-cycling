@@ -30,3 +30,8 @@ export const changeEventsSortingType = (sortingType) => ({
   sortingType,
   type: types.CHANGE_EVENTS_SORTING_TYPE,
 });
+
+export const changeEventsFilteringType = (filter) => ({
+  filter,
+  type: types.CHANGE_EVENTS_FILTERS,
+});

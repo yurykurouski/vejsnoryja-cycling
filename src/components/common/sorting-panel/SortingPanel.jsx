@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
-import SortingPanelFields from '../../../constants/components-fields/sorting-panel-fields';
 import Input from '../input/Input';
 import { changeEventsSortingType } from '../../../store/events/actions';
+import SortingPanelFields from '../../../constants/components-fields/sorting-panel-fields';
 
 import './sorting-panel.css';
 
@@ -13,24 +13,22 @@ function SortingPanel({
   sorting,
   changeEventsSortingType,
 }) {
-  const [value, setValue] = useState(sorting);
+  const [inputValue, setInputValue] = useState(sorting);
 
   const handleChange = (e) => {
     const sortingType = e.target.value;
 
-    setValue(sortingType);
+    setInputValue(sortingType);
     changeEventsSortingType(sortingType);
   };
-
   return (
     <div className={`${ className } sorting-panel-wrap`}>
       <Input
         {...SortingPanelFields.INPUT_TYPE}
-        // customLabelClass={className}
+        customLabelClass="sorting-panel-label"
         onChange={handleChange}
-        value={value}
+        value={inputValue}
       />
-      filters
     </div>
   );
 }
@@ -44,6 +42,7 @@ SortingPanel.propTypes = {
 function mapStateToProps(state) {
   return {
     sorting: state.events.sortingType,
+    filters: state.events.filters,
   };
 }
 

@@ -5,6 +5,7 @@ import Utils from '../../utils';
 const initialState = {
   events: [],
   sortingType: 'Date: Newest to Oldest',
+  filters: [],
   status: ActionStatus.IDLE,
 };
 
@@ -71,6 +72,26 @@ export default function events(state = initialState, action) {
         ...state,
         events: sortedEvents,
         sortingType: action.sortingType,
+      };
+    }
+
+    case types.CHANGE_EVENTS_FILTERS: {
+      let updatedFilters = [...state.filters];
+
+      if (state.filters.includes(action.filter)) {
+        updatedFilters = state.filters.filter((filter) => filter !== action.filter);
+      } else {
+        updatedFilters.push(action.filter);
+      }
+
+      // const updatedEvents = state.events.filter(
+      //   (event) => updatedFilters.includes(event.terrain || event.level),
+      // );
+
+      return {
+        ...state,
+        filters: updatedFilters,
+        // events: updatedEvents,
       };
     }
 

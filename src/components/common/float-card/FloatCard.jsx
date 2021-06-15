@@ -4,7 +4,7 @@ import './FloatCard.css';
 
 export default function FloatCard() {
   return (
-    <aside className="float-card">
+    <div className="float-card">
       <ul className="float-card__elements">
         <li className="float-card__element">
           <a href="https://t.me/vejsnoryanbot" className="float-card__link link" title="Our Telegram bot and chat">
@@ -35,6 +35,6 @@ export default function FloatCard() {
           </a>
         </li>
       </ul>
-    </aside>
+    </div>
   );
 }

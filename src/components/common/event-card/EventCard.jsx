@@ -82,7 +82,7 @@ export default function EventCard({
                 style={{ opacity: 0.9 }}
                 title="Distance"
               >
-                directions_bike
+                straighten
               </Icon>
               {`${distance}km`}
             </span>}
