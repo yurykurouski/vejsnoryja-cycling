@@ -51,6 +51,7 @@ export default function ProfileField({
             onKeyDown={handleSubmitKeyDown}
             value={inputValue}
             className="my-profile__input form__input"
+            autoFocus
           />
           <button
             type="button"
