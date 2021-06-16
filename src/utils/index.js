@@ -1,5 +1,4 @@
 /* eslint-disable */
-import { matchSorter } from 'match-sorter'
 import Gear from '../constants/gear/gear-helper';
 import SettingsFields from '../constants/components-fields/settings-fields';
 
