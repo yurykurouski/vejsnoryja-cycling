@@ -8,6 +8,7 @@ import EventCard from '../../../common/event-card/EventCard';
 import ModalDialog from '../../../common/modal/dialog/ModalDialog';
 import { deleteEventById, userInOutEvent } from '../../../../store/events/actions';
 import SortingPanel from '../../../common/sorting-panel/SortingPanel';
+import Utils from '../../../../utils';
 
 function LastActivities({
   userId,
@@ -45,34 +46,33 @@ function LastActivities({
     <>
       <SortingPanel className="user-profile__sorting-type-selector" />
 
-      {events.map((event) => {
-        const match = event.whosIn.find((user) => user.userId === currentUserId);
-        if ((filters.includes(event.terrain || event.level) || filters.length === 0)) {
-          if (event.author === userId) {
-            if (currentUserId === userId) {
-              return (
-                <EventCard
-                  event={event}
-                  key={event._id}
-                  btnTitle="Edit"
-                  btnIcon="edit"
-                  onClick={() => handleClick(event)}
-                  deleteEvent={() => handleDeleteClick(event._id)}
-                />
-              );
-            }
+      {Utils.filterEvents(events, filters)
+        .filter((event) => event.author === userId)
+        .map((event) => {
+          const match = event.whosIn.find((user) => user.userId === currentUserId);
+
+          if (currentUserId === userId) {
             return (
               <EventCard
                 event={event}
                 key={event._id}
-                btnTitle={match ? "I'm Out" : "I'm In"}
-                btnIcon={match ? 'remove_done' : 'done_outline'}
-                onClick={() => userInOutEvent({ eventId: event._id, userName })}
+                btnTitle="Edit"
+                btnIcon="edit"
+                onClick={() => handleClick(event)}
+                deleteEvent={() => handleDeleteClick(event._id)}
               />
             );
-          } return null;
-        } return null;
-      })}
+          }
+          return (
+            <EventCard
+              event={event}
+              key={event._id}
+              btnTitle={match ? "I'm Out" : "I'm In"}
+              btnIcon={match ? 'remove_done' : 'done_outline'}
+              onClick={() => userInOutEvent({ eventId: event._id, userName })}
+            />
+          );
+        })}
 
       {modalOpen && <Modal
         heading="Delete this event?"

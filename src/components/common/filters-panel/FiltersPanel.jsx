@@ -27,7 +27,7 @@ function FiltersPanel({
           tabIndex={0}
         >
           <FilterIcon
-            icon={filter.icon}
+            icon={filter.value}
             isActive={filters.includes(filter.value)}
           />
         </div>

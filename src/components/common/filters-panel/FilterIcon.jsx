@@ -12,32 +12,36 @@ export default function FilterIcon({ icon, isActive }) {
   const iconColor = isActive ? 'var(--accent-color_light-blue)' : 'var(--font-color-main)';
   return (
     <>
-      {icon === 'mostlyFlatIcon' && <MostlyFlatIcon
+      {icon === 'Mostly flat' && <MostlyFlatIcon
         fill={iconColor}
       />}
-      {icon === 'gravelIcon' && <GravelIcon
+      {icon === 'Gravel' && <GravelIcon
         fill={iconColor}
       />}
-      {icon === 'rollingHillsIcon' && <RollingHillsIcon
+      {icon === 'Rolling hills' && <RollingHillsIcon
         fill={iconColor}
       />}
-      {icon === 'killerKlimbIcon' && <KillerKlimbIcon
+      {icon === 'Killer Climbs' && <KillerKlimbIcon
         fill={iconColor}
       />}
-      {icon === 'casualIcon' && <CasualIcon
+      {icon === 'Casual' && <CasualIcon
         fill={iconColor}
       />}
-      {icon === 'tempoIcon' && <TempoIcon
+      {icon === 'Tempo' && <TempoIcon
         fill={iconColor}
       />}
-      {icon === 'raceIcon' && <RaceIcon
+      {icon === 'Race' && <RaceIcon
         fill={iconColor}
       />}
     </>
   );
 }
 
+FilterIcon.defaultProps = {
+  isActive: false,
+};
+
 FilterIcon.propTypes = {
   icon: PropTypes.string.isRequired,
-  isActive: PropTypes.bool.isRequired,
+  isActive: PropTypes.bool,
 };

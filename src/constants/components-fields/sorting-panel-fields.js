@@ -23,37 +23,30 @@ export default class SortingPanelFields {
       {
         type: 'terrain',
         value: 'Mostly flat',
-        icon: 'mostlyFlatIcon',
       },
       {
         type: 'terrain',
         value: 'Gravel',
-        icon: 'gravelIcon',
       },
       {
         type: 'terrain',
         value: 'Rolling hills',
-        icon: 'rollingHillsIcon',
       },
       {
         type: 'terrain',
         value: 'Killer Climbs',
-        icon: 'killerKlimbIcon',
       },
       {
         type: 'level',
         value: 'Casual',
-        icon: 'casualIcon',
       },
       {
         type: 'level',
         value: 'Tempo',
-        icon: 'tempoIcon',
       },
       {
         type: 'level',
         value: 'Race',
-        icon: 'raceIcon',
       },
     ];
   }

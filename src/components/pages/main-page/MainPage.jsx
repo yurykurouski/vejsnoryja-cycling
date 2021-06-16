@@ -3,13 +3,13 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import InfiniteScroll from 'react-infinite-scroll-component';
 
+import Utils from '../../../utils';
 import Loader from '../../common/loader/Loader';
 import EventCard from '../../common/event-card/EventCard';
 import ActionStatus from '../../../constants/store/action-status';
 import { INITIAL_EVENTS_NUMBER_ON_PAGE } from '../../../constants';
 import SortingPanel from '../../common/sorting-panel/SortingPanel';
 import { getAllEvents, userInOutEvent } from '../../../store/events/actions';
-
 import './main-page.css';
 
 function MainPage({
@@ -45,20 +45,20 @@ function MainPage({
 
           <SortingPanel className="main-page__sorting-type-selector" />
 
-          {events.map((event) => {
+          {Utils.filterEvents(events, filters).map((event) => {
             const match = event.whosIn.find((user) => user.userId === userId);
-            if ((filters.includes(event.terrain || event.level) || filters.length === 0)) {
-              return (
-                <EventCard
-                  event={event}
-                  key={event._id}
-                  onClick={() => userInOutEvent({ eventId: event._id, userName })}
-                  btnTitle={match ? "I'm Out" : "I'm In"}
-                  btnIcon={match ? 'remove_done' : 'done_outline'}
-                />
-              );
-            } return null;
+
+            return (
+              <EventCard
+                event={event}
+                key={event._id}
+                onClick={() => userInOutEvent({ eventId: event._id, userName })}
+                btnTitle={match ? "I'm Out" : "I'm In"}
+                btnIcon={match ? 'remove_done' : 'done_outline'}
+              />
+            );
           })}
+
         </InfiniteScroll>}
 
       {status === ActionStatus.LOADING && <Loader />}

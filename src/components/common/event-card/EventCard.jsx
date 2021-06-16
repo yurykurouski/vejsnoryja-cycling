@@ -11,6 +11,7 @@ import UserAvatar from '../user-avatar/UserAvatar';
 import EventCardDate from './event-card-date/EventCardDate';
 
 import './event-card.css';
+import FilterIcon from '../filters-panel/FilterIcon';
 
 export default function EventCard({
   btnTitle,
@@ -84,26 +85,20 @@ export default function EventCard({
               >
                 straighten
               </Icon>
-              {`${distance}km`}
+              {`${ distance }km`}
             </span>}
 
             {terrain && <span className="event-card__main__terrain event-details">
-              <Icon
-                style={{ opacity: 0.9 }}
-                title="Terrain"
-              >
-                terrain
-              </Icon>
+              <div className="event-details__icon-wrap">
+                <FilterIcon icon={terrain} />
+              </div>
               {terrain}
             </span>}
 
             {level && <span className="event-card__main__level event-details">
-              <Icon
-                style={{ opacity: 0.9 }}
-                title="Level/Event type"
-              >
-                speed
-              </Icon>
+              <div className="event-details__icon-wrap">
+                <FilterIcon icon={level} />
+              </div>
               {level}
             </span>}
           </div>

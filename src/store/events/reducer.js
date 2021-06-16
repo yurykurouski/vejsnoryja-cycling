@@ -84,14 +84,9 @@ export default function events(state = initialState, action) {
         updatedFilters.push(action.filter);
       }
 
-      // const updatedEvents = state.events.filter(
-      //   (event) => updatedFilters.includes(event.terrain || event.level),
-      // );
-
       return {
         ...state,
         filters: updatedFilters,
-        // events: updatedEvents,
       };
     }
 

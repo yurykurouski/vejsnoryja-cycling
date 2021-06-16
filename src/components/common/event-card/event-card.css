@@ -49,7 +49,11 @@
 .event-card__details{
   display: flex;
   gap: 1rem;
-  align-items: center;
+}
+
+.event-details__icon-wrap{
+  width: 1.5em;
+  height: 1.5em;
 }
 
 .event-details {
