@@ -49,7 +49,7 @@ export default function Input({
 }
 
 Input.defaultProps = {
-  customInputClass: undefined,
+  customInputClass: '',
   customLabelClass: '',
   options: undefined,
   handleChange: undefined,

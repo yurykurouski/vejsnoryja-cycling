@@ -5,7 +5,7 @@ html {
 html {
   --background-main-color: #ffffff;
   --surface-overlay-color: rgba(33, 33, 33, .03);
-  --surface-overlay-color_second-level: rgba(33, 33, 33, .05);
+  --surface-overlay-color_second-level: rgba(33, 33, 33, .07);
   --font-color-main: black;
   --font-color-main_active: #ff0000;
   --font-color-main_unactive: rgba(0, 0, 0, 0.6);
@@ -52,6 +52,9 @@ h1, h2, h3, h4, h5, ol, ul, li, p {
   grid-template-columns: 80%;
   height: calc(100vh - 10px);
   justify-content: center;
+  background-image: url(./assets/images/johan/root.jpg);
+  background-attachment: fixed;
+  overflow-y: scroll;
 }
 
 .card-heading {
@@ -99,7 +102,7 @@ h1, h2, h3, h4, h5, ol, ul, li, p {
   opacity: .9;
   border: none;
   border-radius: 2px;
-  transition: background .1s ease-out, opacity .1s ease-out, color .3s ease-out;
+  transition: background-color .1s ease-out, opacity .1s ease-out, color .3s ease-out;
   cursor: pointer;
 }
 

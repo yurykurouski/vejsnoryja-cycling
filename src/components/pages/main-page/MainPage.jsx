@@ -10,6 +10,7 @@ import ActionStatus from '../../../constants/store/action-status';
 import { INITIAL_EVENTS_NUMBER_ON_PAGE } from '../../../constants';
 import SortingPanel from '../../common/sorting-panel/SortingPanel';
 import { getAllEvents, userInOutEvent } from '../../../store/events/actions';
+
 import './main-page.css';
 
 function MainPage({

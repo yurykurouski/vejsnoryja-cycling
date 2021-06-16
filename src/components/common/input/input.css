@@ -2,7 +2,7 @@
   height: 1.5em;
   border: 1px solid var(--accent-color_light-blue);
   outline: none;
-  border-radius: 2px;
+  border-radius: 5px;
   box-sizing: border-box;
   background-color: var(--background-main-color);
   color: var(--font-color-main);
@@ -13,6 +13,10 @@
 
 .form__input:focus {
   box-shadow: 0 0 1px .5px var(--accent-color_light-blue);
+}
+
+.form__input[type="select"]{
+  cursor: pointer;
 }
 
 .form__title-wrap {

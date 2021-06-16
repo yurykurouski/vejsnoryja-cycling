@@ -2,17 +2,19 @@
   display: flex;
   align-items: center;
   gap: 1rem;
+  padding: 0 5px;
 }
 
 .sorting-panel-label.input__label {
-  flex-direction: initial;
+  flex-direction: row;
   gap: 1rem;
 }
 
 .sorting-panel__active-filters {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
+  flex-wrap: wrap;
   gap: 1rem;
   padding: 2px;
   border-radius: 1rem;
