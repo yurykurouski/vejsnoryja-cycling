@@ -25,3 +25,5 @@ yarn-error.log*
 
 key.pem
 crt.pem
+# Local Netlify folder
+.netlify
