@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { useRouteMatch } from 'react-router-dom';
 
 import FilterIcon from './FilterIcon';
 import { changeEventsFilteringType } from '../../../store/events/actions';
@@ -15,8 +16,19 @@ function FiltersPanel({
   const handleClick = (filter) => {
     changeEventsFilteringType(filter);
   };
+
+  const currentPage = String(useRouteMatch('/:page')?.params.page);
+
+  const makeClass = () => {
+    if (currentPage === 'undefined' || currentPage === 'profile') {
+      return 'sorting-panel__filters sorting-panel_visible';
+    }
+
+    return 'sorting-panel__filters';
+  };
+
   return (
-    <div className="sorting-panel__filters">
+    <div className={makeClass()}>
       {SortingPanelFields.FILTERS.map((filter) => (
         <div
           role="button"

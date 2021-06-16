@@ -8,4 +8,4 @@ export const EVENT_PAGE_MAX_DESCRIPTION_LENGTH = 350;
 
 export const SUBMIT_KEYCODE = 13;
 export const ESCAPE_KEYCODE = 27;
-export const INITIAL_EVENTS_NUMBER_ON_PAGE = 5;
+export const INITIAL_EVENTS_NUMBER_ON_PAGE = 10;
