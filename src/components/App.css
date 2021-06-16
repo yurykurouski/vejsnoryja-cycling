@@ -1,20 +1,39 @@
 .app {
   display: grid;
-  grid-template-areas: "menu content float" "empty content addbtn";
+  grid-template-areas: "menu content float";
   grid-template-columns: minmax(max-content, 15%) minmax(min-content, 1fr) max-content;
+  grid-template-rows: 100%;
   height: 100%;
   column-gap: 10px;
+}
+
+.sidebar-wrap{
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  height: 100%;
 }
 
 .add-btn_container {
   position: sticky;
   bottom: 20px;
-  grid-area: addbtn;
-  margin-top: auto;
-  margin-bottom: 15px;
-  display: flex;
+  display: none;
+  justify-content: flex-end;
   flex-direction: column;
   align-items: center;
+  margin-left: auto;
   gap: 15px;
   padding: 5px;
+}
+
+.float-cards {
+  grid-area: float;
+  position: sticky;
+  top: 5px;
+}
+
+@media only screen and (max-width: 600px){
+  .add-btn_container {
+    display: flex;
+  }
 }

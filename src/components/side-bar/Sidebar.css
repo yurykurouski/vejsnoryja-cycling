@@ -19,7 +19,13 @@
 }
 
 .sidebar__nav-item {
+  border-radius: 30px;
   width: 100%;
+}
+
+.link.sidebar__new-event{
+  color: var(--accent-color_light-blue) ;
+  font-weight: 600 !important;
 }
 
 .nav-item__link {
@@ -29,7 +35,7 @@
   height: 1.5em;
   font-weight: 500;
   color: var(--font-color-main);
-  border-radius: 30px;
+  border-radius: inherit;
   padding-right: 10px;
   transition: color .3s ease-out;
   animation: .3s linear fadein;

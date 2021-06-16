@@ -7,6 +7,8 @@ import Modal from '../../../common/modal/Modal';
 import EventCard from '../../../common/event-card/EventCard';
 import ModalDialog from '../../../common/modal/dialog/ModalDialog';
 import { deleteEventById, userInOutEvent } from '../../../../store/events/actions';
+import SortingPanel from '../../../common/sorting-panel/SortingPanel';
+import Utils from '../../../../utils';
 
 function LastActivities({
   userId,
@@ -15,6 +17,7 @@ function LastActivities({
   currentUserId,
   userInOutEvent,
   userName,
+  filters,
 }) {
   const [modalOpen, setModalOpen] = useState(false);
   const [eventToDelete, setEventToDelete] = useState(null);
@@ -41,10 +44,13 @@ function LastActivities({
 
   return (
     <>
-      {events.map((event) => {
-        const match = event.whosIn.find((user) => user.userId === currentUserId);
+      <SortingPanel className="user-profile__sorting-type-selector" />
 
-        if (event.author === userId) {
+      {Utils.filterEvents(events, filters)
+        .filter((event) => event.author === userId)
+        .map((event) => {
+          const match = event.whosIn.find((user) => user.userId === currentUserId);
+
           if (currentUserId === userId) {
             return (
               <EventCard
@@ -66,8 +72,7 @@ function LastActivities({
               onClick={() => userInOutEvent({ eventId: event._id, userName })}
             />
           );
-        } return null;
-      })}
+        })}
 
       {modalOpen && <Modal
         heading="Delete this event?"
@@ -93,7 +98,14 @@ LastActivities.propTypes = {
   currentUserId: PropTypes.string.isRequired,
   userInOutEvent: PropTypes.func.isRequired,
   userName: PropTypes.string,
+  filters: PropTypes.array.isRequired,
 };
+
+function mapStateToProps(state) {
+  return {
+    filters: state.events.filters,
+  };
+}
 
 function mapDispatchToProps(dispatch) {
   return {
@@ -102,4 +114,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(null, mapDispatchToProps)(LastActivities);
+export default connect(mapStateToProps, mapDispatchToProps)(LastActivities);

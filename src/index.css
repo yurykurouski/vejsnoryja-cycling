@@ -74,11 +74,8 @@ h1, h2, h3, h4, h5, ol, ul, li, p {
   transition: background-color .3s ease-out;
 }
 
+.second-layer-card,
 .first-layer-card_hovered:hover {
-  background-color: var(--surface-overlay-color_second-level);
-}
-
-.second-layer-card {
   background-color: var(--surface-overlay-color_second-level);
 }
 

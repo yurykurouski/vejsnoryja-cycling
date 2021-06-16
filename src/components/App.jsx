@@ -9,6 +9,7 @@ import FloatCard from './common/float-card/FloatCard';
 import AddButton from './common/add-button/AddButton';
 import { authUser } from '../store/current-user/actions';
 import { getUserInfo } from '../store/user-info/actions';
+import FiltersPanel from './common/filters-panel/FiltersPanel';
 
 import './app.css';
 
@@ -30,12 +31,18 @@ function App({
 
   return (
     <div className="app">
-      <Sidebar />
-
+      <div className="sidebar-wrap">
+        <Sidebar />
+        <AddButton />
+      </div>
       <Content />
 
-      <FloatCard />
-      <AddButton />
+      <aside className="float-cards">
+        <FloatCard />
+
+        <FiltersPanel />
+      </aside>
+
     </div>
   );
 }

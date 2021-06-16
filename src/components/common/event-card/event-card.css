@@ -12,12 +12,17 @@
   width: min-content;
 }
 
+.event-card__buttons{
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
 .event-card__main {
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   flex-direction: column;
   gap: 5px;
-  max-width: 50%;
 }
 
 .event-card__main__heading {
@@ -25,8 +30,30 @@
   gap: .5em;
 }
 
+.event-card__title{
+  overflow-wrap: break-word;
+}
+
 .date-header__day {
   font-weight: 600;
+}
+
+.event-card__part{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 34px;
+  gap: 1rem;
+}
+
+.event-card__details{
+  display: flex;
+  gap: 1rem;
+}
+
+.event-details__icon-wrap{
+  width: 1.5em;
+  height: 1.5em;
 }
 
 .event-details {
@@ -39,13 +66,17 @@
   font-family: "Roboto";
   font-size: 16px;
   font-weight: 400;
+  overflow-wrap: break-word;
 }
 
 .event-card__main__whos-in {
   display: flex;
+  width: min-content;
+  border-radius: 34px;
+  background-color: var(--surface-overlay-color_second-level);
+  padding: 2px;
   gap: 5px;
   height: 34px;
-  margin-top: auto;
 }
 
 .whos-in__avatar-wrap {

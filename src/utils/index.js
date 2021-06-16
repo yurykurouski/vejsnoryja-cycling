@@ -1,8 +1,9 @@
 /* eslint-disable */
+import { matchSorter } from 'match-sorter'
 import Gear from '../constants/gear/gear-helper';
 import SettingsFields from '../constants/components-fields/settings-fields';
 
-export default class Utils{
+export default class Utils {
   static normalizeErrorMessage(message) {
     return message.split('Error: ')[1];
   }
@@ -30,7 +31,7 @@ export default class Utils{
         }
       }
     }
-  
+
     return res;
   }
 
@@ -38,5 +39,36 @@ export default class Utils{
     const filtered = gear.find((el) => el._id === id);
 
     return this.makeInputTemplateFromState(filtered);
+  }
+
+  static sortEventsBySortingType(events, sortingType) {
+    switch (sortingType) {
+      default:
+      case 'Date: Ascending':
+        return [...events].sort((a, b) => new Date(a.date) - new Date(b.date));
+
+      case 'Date: Descending':
+        return [...events].sort((a, b) => new Date(b.date) - new Date(a.date));
+
+      case 'Distance: Ascending':
+        return [...events].sort((a, b) => new Date(a.distance) - new Date(b.distance));
+
+      case 'Distance: Descending':
+        return [...events].sort((a, b) => new Date(b.distance) - new Date(a.distance));
+    }
+  }
+
+  static filterEvents(events, filters) {
+    if (filters.length === 0) return events;
+
+    const singleFilter = events.filter((event) => {
+      return (filters.includes(event.terrain) || filters.includes(event.level))
+    });
+
+    const multiplyFilters = singleFilter.filter((event) => {
+      return (filters.includes(event.level) && filters.includes(event.terrain))
+    })
+
+    return multiplyFilters.length > 0 ? multiplyFilters : singleFilter;
   }
 }

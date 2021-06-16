@@ -22,9 +22,7 @@ export default function Distance({
         className="form__input form__input_distance"
       />
 
-      {(errors && touched) ? (
-        <ValidationErrMsg errorMsg={errors} />
-      ) : null}
+      {(errors && touched) && <ValidationErrMsg errorMsg={errors} />}
     </label>
   );
 }

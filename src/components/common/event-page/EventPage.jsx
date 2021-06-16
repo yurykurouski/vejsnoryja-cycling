@@ -9,6 +9,12 @@ import EventForm from './event-form/EventForm';
 import { addEvent } from '../../../store/events/actions';
 
 import './event-page.css';
+import {
+  EVENT_PAGE_MAX_ADRESS_LENGTH,
+  EVENT_PAGE_MAX_TITLE_LENGTH,
+  EVENT_PAGE_MAX_DISTANCE_LENGTH,
+  EVENT_PAGE_MAX_DESCRIPTION_LENGTH,
+} from '../../../constants';
 
 function EventPage({
   saveEvent,
@@ -21,17 +27,23 @@ function EventPage({
   const validationSchema = Yup.object().shape({
     title: Yup
       .string()
+      .max(EVENT_PAGE_MAX_TITLE_LENGTH, 'Title is too long')
       .required('Title cannot be blank'),
     adress: Yup
       .string()
+      .max(EVENT_PAGE_MAX_ADRESS_LENGTH, 'Adress is too long')
       .required('Adress cannot be blank'),
     date: Yup
       .date(),
+    description: Yup
+      .string()
+      .max(EVENT_PAGE_MAX_DESCRIPTION_LENGTH, 'Description is too long'),
     distance: Yup
       .number()
+      .max(EVENT_PAGE_MAX_DISTANCE_LENGTH, 'Distance is too long')
+      .required('Distance cannot be blank')
       .typeError('You must specify a number'),
   });
-
   const handleSubmit = (newEvent, actions) => {
     saveEvent({ ...newEvent, markerData, _id: event._id });
 

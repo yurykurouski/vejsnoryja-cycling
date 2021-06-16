@@ -3,12 +3,13 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import InfiniteScroll from 'react-infinite-scroll-component';
 
+import Utils from '../../../utils';
 import Loader from '../../common/loader/Loader';
 import EventCard from '../../common/event-card/EventCard';
 import ActionStatus from '../../../constants/store/action-status';
 import { INITIAL_EVENTS_NUMBER_ON_PAGE } from '../../../constants';
+import SortingPanel from '../../common/sorting-panel/SortingPanel';
 import { getAllEvents, userInOutEvent } from '../../../store/events/actions';
-
 import './main-page.css';
 
 function MainPage({
@@ -18,6 +19,7 @@ function MainPage({
   userName,
   userId,
   status,
+  filters,
 }) {
   const [eventsQuanity, setEventsQuanity] = useState(INITIAL_EVENTS_NUMBER_ON_PAGE);
 
@@ -28,7 +30,6 @@ function MainPage({
   const fetchMoreData = () => {
     setEventsQuanity(eventsQuanity + INITIAL_EVENTS_NUMBER_ON_PAGE);
   };
-
   return (
     <div className="content__main-page first-layer-card">
 
@@ -41,7 +42,10 @@ function MainPage({
             next={fetchMoreData}
             hasMore
         >
-          {events.map((event) => {
+
+          <SortingPanel className="main-page__sorting-type-selector" />
+
+          {Utils.filterEvents(events, filters).map((event) => {
             const match = event.whosIn.find((user) => user.userId === userId);
 
             return (
@@ -54,6 +58,7 @@ function MainPage({
               />
             );
           })}
+
         </InfiniteScroll>}
 
       {status === ActionStatus.LOADING && <Loader />}
@@ -75,6 +80,7 @@ MainPage.propTypes = {
   userName: PropTypes.string,
   userId: PropTypes.string,
   status: PropTypes.string.isRequired,
+  filters: PropTypes.array.isRequired,
 };
 
 function mapStateToProps(state) {
@@ -83,6 +89,7 @@ function mapStateToProps(state) {
     status: state.events.status,
     userName: state.userInfo.userInfo.Name,
     userId: state.currentUser.user,
+    filters: state.events.filters,
   };
 }
 

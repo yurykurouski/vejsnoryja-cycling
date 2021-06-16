@@ -11,6 +11,7 @@ import UserAvatar from '../user-avatar/UserAvatar';
 import EventCardDate from './event-card-date/EventCardDate';
 
 import './event-card.css';
+import FilterIcon from '../filters-panel/FilterIcon';
 
 export default function EventCard({
   btnTitle,
@@ -25,6 +26,7 @@ export default function EventCard({
     title,
     level,
     distance,
+    terrain,
     markerData,
     adress,
     whosIn,
@@ -36,81 +38,94 @@ export default function EventCard({
       <div className="event-card__aside">
         <EventCardDate customClass="event-card__date_date" date={date} />
 
-        {deleteEvent && <IconButton
-          onClick={deleteEvent}
-          btnTitle="Delete this event"
-          btnIcon="delete"
-          color="red"
-        />}
+        <div className="event-card__buttons">
+          {deleteEvent && <IconButton
+            onClick={deleteEvent}
+            btnTitle="Delete this event"
+            btnIcon="delete"
+            color="red"
+          />}
 
-        {isAuthenticated && <IconButton
-          onClick={onClick}
-          btnTitle={btnTitle}
-          btnIcon={btnIcon}
-        />}
+          {isAuthenticated && <IconButton
+            onClick={onClick}
+            btnTitle={btnTitle}
+            btnIcon={btnIcon}
+          />}
 
+        </div>
       </div>
 
       <div className="event-card__main">
-        <span className="event-card__main__heading">
-          <Moment
-            element="span"
-            format="dddd"
-            className="date-header__day"
-          >
-            {date}
-          </Moment>
+        <div className="event-card__part_top event-card__part">
+          <span className="event-card__main__heading">
+            <Moment
+              element="span"
+              format="dddd"
+              className="date-header__day"
+            >
+              {date}
+            </Moment>
 
-          <Moment
-            element="span"
-            format="h:mm"
-            className="date-header__start-time"
-          >
-            {date}
-          </Moment>
-          /
-          <b>{title}</b>
-        </span>
+            <Moment
+              element="span"
+              format="h:mm"
+              className="date-header__start-time"
+            >
+              {date}
+            </Moment>
+            /
+            <b className="event-card__title">{title}</b>
+          </span>
 
-        {distance && <span className="event-card__main__distance event-details">
-          <Icon
-            style={{ opacity: 0.9 }}
-            title="Distance"
-          >
-            directions_bike
-          </Icon>
-          {distance}
-        </span>}
+          <div className="event-card__details">
+            {distance && <span className="event-card__main__distance event-details">
+              <Icon
+                style={{ opacity: 0.9 }}
+                title="Distance"
+              >
+                straighten
+              </Icon>
+              {`${ distance }km`}
+            </span>}
 
-        {level && <span className="event-card__main__level event-details">
-          <Icon
-            style={{ opacity: 0.9 }}
-            title="Level/Event type"
-          >
-            speed
-          </Icon>
-          {level}
-        </span>}
+            {terrain && <span className="event-card__main__terrain event-details">
+              <div className="event-details__icon-wrap">
+                <FilterIcon icon={terrain} />
+              </div>
+              {terrain}
+            </span>}
 
-        {adress && <address className="event-card__main__adress event-details">
-          <Icon
-            style={{ opacity: 0.9 }}
-            title="Adress"
-          >
-            place
-          </Icon>
-          {adress}
-        </address>}
+            {level && <span className="event-card__main__level event-details">
+              <div className="event-details__icon-wrap">
+                <FilterIcon icon={level} />
+              </div>
+              {level}
+            </span>}
+          </div>
+        </div>
 
-        <span className="event-card__main__whos-in">
-          {whosIn.map((user) => (
-            <div key={user.userId} className="whos-in__avatar-wrap" title={user.userName}>
-              <Link to={`/profile/${ user.userId }/last-activities`}>
-                <UserAvatar />
-              </Link>
-            </div>
-          ))}
-        </span>
+        <div className="event-card__part_bottom event-card__part">
+          {adress && <address className="event-card__main__adress event-details">
+            <Icon
+              style={{ opacity: 0.9 }}
+              title="Adress"
+            >
+              place
+            </Icon>
+            {adress}
+          </address>}
+
+          {whosIn.length > 0 && <span className="event-card__main__whos-in">
+            {whosIn.map((user) => (
+              <div key={user.userId} className="whos-in__avatar-wrap" title={user.userName}>
+                <Link to={`/profile/${ user.userId }/last-activities`}>
+                  <UserAvatar />
+                </Link>
+              </div>
+            ))}
+          </span>}
+
+        </div>
       </div>
 
       <EventMap

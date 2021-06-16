@@ -21,7 +21,7 @@ function RegistrationPageForm({
       .required('Email cannot be empty.'),
     password: Yup
       .string()
-      .min(8, `Password should contain at least ${ MIN_PASSWORD_LENGTH } characters`)
+      .min(MIN_PASSWORD_LENGTH, `Password should contain at least ${ MIN_PASSWORD_LENGTH } characters`)
       .matches(PASSWORD_REGEX, 'Password invalid format.')
       .required('Password can not be empty.'),
     repeatPass: Yup
