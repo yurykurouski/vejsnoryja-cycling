@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './FloatCard.css';
+import './floatCard.css';
 
 export default function FloatCard() {
   return (
