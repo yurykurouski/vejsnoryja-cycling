@@ -8,10 +8,12 @@
 }
 
 .sidebar-wrap{
+  position: sticky;
+  top: 15px;
   display: flex;
   justify-content: space-between;
   flex-direction: column;
-  height: 100%;
+  height: fit-content;
 }
 
 .add-btn_container {

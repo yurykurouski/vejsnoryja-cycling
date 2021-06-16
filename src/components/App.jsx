@@ -11,7 +11,7 @@ import { authUser } from '../store/current-user/actions';
 import { getUserInfo } from '../store/user-info/actions';
 import FiltersPanel from './common/filters-panel/FiltersPanel';
 
-import './app.css';
+import './App.css';
 
 function App({
   currentUser,

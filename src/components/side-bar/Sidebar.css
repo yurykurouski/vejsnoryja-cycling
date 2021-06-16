@@ -1,9 +1,6 @@
 .sidebar__nav {
   grid-area: menu;
-  position: sticky;
-  top: 10px;
   min-width: 200px;
-  margin-top: 5px;
   height: fit-content;
 }
 

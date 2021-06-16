@@ -6,7 +6,7 @@ import SidebarLogo from './sidebar-logo/SidebarLogo';
 import SidebarProfile from './sidebar-profile/SidebarProfile';
 import SidebarToggler from './sidebar-theme-toggler/SidebarToggler';
 
-import './sidebar.css';
+import './Sidebar.css';
 
 export default function Sidebar() {
   const currentPage = useRouteMatch('/:page')?.params.page;

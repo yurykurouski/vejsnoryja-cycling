@@ -30,7 +30,7 @@ html[theme="dark"] {
 }
 
 body {
-  margin: 5px 10px;
+  margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -50,11 +50,8 @@ h1, h2, h3, h4, h5, ol, ul, li, p {
 #root {
   display: grid;
   grid-template-columns: 80%;
-  height: calc(100vh - 10px);
+  margin-top: 10px;
   justify-content: center;
-  background-image: url(./assets/images/johan/root.jpg);
-  background-attachment: fixed;
-  overflow-y: scroll;
 }
 
 .card-heading {
