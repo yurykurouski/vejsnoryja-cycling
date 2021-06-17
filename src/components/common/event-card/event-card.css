@@ -29,6 +29,9 @@
 .event-card__main__heading {
   display: flex;
   gap: .5em;
+  background-color: var(--surface-overlay-color_second-level);
+  border-radius: 1em;
+  padding: 0 5px;
 }
 
 .event-card__title{

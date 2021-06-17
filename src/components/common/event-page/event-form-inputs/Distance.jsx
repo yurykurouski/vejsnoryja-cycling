@@ -34,7 +34,10 @@ Distance.defaultProps = {
 
 Distance.propTypes = {
   onChange: PropTypes.func.isRequired,
-  value: PropTypes.string.isRequired,
+  value: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+  ]).isRequired,
   errors: PropTypes.string,
   touched: PropTypes.bool,
 };

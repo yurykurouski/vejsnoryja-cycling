@@ -19,7 +19,7 @@ function EmailChangeForm({ changeUserEmail, userEmail, authErrors }) {
       .required('Password can not be empty.'),
   });
 
-  const submitEmailChange = async (data, authErrors, actions) => {
+  const submitEmailChange = async (data, actions) => {
     await changeUserEmail(data);
 
     actions.resetForm();
