@@ -1,6 +1,6 @@
 .error-message {
   width: fit-content;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 500;
   color: var(--font-color-main_active);
   opacity: .8;

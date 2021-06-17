@@ -46,6 +46,8 @@ export default function EventForm({
         <EventDate
           onChange={handleChange}
           value={date}
+          errors={errors.date}
+          touched={touched.date}
         />
       </div>
 

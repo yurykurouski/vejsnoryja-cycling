@@ -14,6 +14,7 @@ import {
   EVENT_PAGE_MAX_TITLE_LENGTH,
   EVENT_PAGE_MAX_DISTANCE_LENGTH,
   EVENT_PAGE_MAX_DESCRIPTION_LENGTH,
+  CURRENT_DATE,
 } from '../../../constants';
 
 function EventPage({
@@ -34,7 +35,8 @@ function EventPage({
       .max(EVENT_PAGE_MAX_ADRESS_LENGTH, 'Adress is too long')
       .required('Adress cannot be blank'),
     date: Yup
-      .date(),
+      .date()
+      .min(CURRENT_DATE, 'Date should not to be in past.'),
     description: Yup
       .string()
       .max(EVENT_PAGE_MAX_DESCRIPTION_LENGTH, 'Description is too long'),
@@ -68,7 +70,7 @@ function EventPage({
       lng: coords.lng,
     });
   };
-
+  console.log(CURRENT_DATE);
   return (
     <div className="content__new-event first-layer-card">
       <h2 className="new-event__heading card-heading">{event ? 'Edit event' : 'Create new Event'}</h2>
@@ -77,7 +79,7 @@ function EventPage({
           title: event.title ? event.title : '',
           adress: event.adress ? event.adress : '',
           description: event.description ? event.description : '',
-          date: event.date ? event.date : '2021-03-25T11:00',
+          date: event.date ? event.date : CURRENT_DATE,
           terrain: event.terrain ? event.terrain : 'Mostly flat',
           level: event.level ? event.level : 'Casual',
           distance: event.distance ? event.distance : '',

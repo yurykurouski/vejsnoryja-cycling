@@ -50,10 +50,10 @@ export default class Utils {
         return [...events].sort((a, b) => new Date(b.date) - new Date(a.date));
 
       case 'Distance: Ascending':
-        return [...events].sort((a, b) => new Date(a.distance) - new Date(b.distance));
+        return [...events].sort((a, b) => a.distance - b.distance);
 
       case 'Distance: Descending':
-        return [...events].sort((a, b) => new Date(b.distance) - new Date(a.distance));
+        return [...events].sort((a, b) => b.distance - a.distance);
     }
   }
 
@@ -61,11 +61,11 @@ export default class Utils {
     if (filters.length === 0) return events;
 
     const singleFilter = events.filter((event) => {
-      return (filters.includes(event.terrain) || filters.includes(event.level))
+      return (filters.includes(event.terrain) || filters.includes(event.level));
     });
 
     const multiplyFilters = singleFilter.filter((event) => {
-      return (filters.includes(event.level) && filters.includes(event.terrain))
+      return (filters.includes(event.level) && filters.includes(event.terrain));
     })
 
     return multiplyFilters.length > 0 ? multiplyFilters : singleFilter;
