@@ -47,7 +47,7 @@ function UserProfile({
 
   useEffect(() => {
     getEventsByUser({ userId, eventsQuanity });
-  }, []);
+  }, [userId]);
 
   const fetchMoreData = () => {
     setEventsQuanity(eventsQuanity + INITIAL_EVENTS_NUMBER_ON_PAGE);

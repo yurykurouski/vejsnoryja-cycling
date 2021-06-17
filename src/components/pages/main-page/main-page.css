@@ -7,7 +7,7 @@
 .main-page__events {
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 1rem;
   list-style-type: none;
   overflow:unset !important;
 }

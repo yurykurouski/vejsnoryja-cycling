@@ -12,6 +12,7 @@ import EventCardDate from './event-card-date/EventCardDate';
 
 import './event-card.css';
 import FilterIcon from '../filters-panel/FilterIcon';
+import Utils from '../../../utils';
 
 export default function EventCard({
   btnTitle,
@@ -107,12 +108,16 @@ export default function EventCard({
         <div className="event-card__part_bottom event-card__part">
           {adress && <address className="event-card__main__adress event-details">
             <Icon
-              style={{ opacity: 0.9 }}
-              title="Adress"
+              style={markerData ? { opacity: 0.9, color: 'var(--accent-color_light-blue)' } : { opacity: 0.9 }}
+              title="Address"
             >
-              place
+              {markerData ? 'pin_drop' : 'place'}
             </Icon>
-            {adress}
+            {markerData
+              ? <a href={Utils.makeGMapsLink(markerData)} target="_blank" rel="noreferrer" className="event-card__link">
+                {adress}
+              </a>
+              : adress}
           </address>}
 
           {whosIn.length > 0 && <span className="event-card__main__whos-in">

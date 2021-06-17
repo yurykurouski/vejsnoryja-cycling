@@ -6,10 +6,10 @@
   padding: 5px;
 }
 
-.field-value_noselect {
-  cursor: default !important;
+.field-field__value.field-value_noselect {
+  cursor: default;
 }
 
-.field-value_noselect:hover {
-  background-color: transparent !important;
+.field-field__value.field-value_noselect:hover {
+  background-color: transparent;
 }

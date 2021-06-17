@@ -2,7 +2,8 @@
   display: flex;
   align-items: center;
   gap: 1rem;
-  padding: 0 5px;
+  padding: 5px;
+  height: 32px;
 }
 
 .sorting-panel-label.input__label {

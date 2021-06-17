@@ -67,7 +67,12 @@
   font-family: "Roboto";
   font-size: 16px;
   font-weight: 400;
+  
   overflow-wrap: break-word;
+}
+
+.event-card__link{
+  color: var(--font-color-main);
 }
 
 .event-card__main__whos-in {

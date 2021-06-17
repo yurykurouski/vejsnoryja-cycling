@@ -70,7 +70,6 @@ function EventPage({
       lng: coords.lng,
     });
   };
-  console.log(CURRENT_DATE);
   return (
     <div className="content__new-event first-layer-card">
       <h2 className="new-event__heading card-heading">{event ? 'Edit event' : 'Create new Event'}</h2>

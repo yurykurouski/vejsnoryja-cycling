@@ -66,8 +66,12 @@ export default class Utils {
 
     const multiplyFilters = singleFilter.filter((event) => {
       return (filters.includes(event.level) && filters.includes(event.terrain));
-    })
+    });
 
-    return multiplyFilters.length > 0 ? multiplyFilters : singleFilter;
+    return filters.includes('Race') || filters.includes('Tempo') || filters.includes('Casual') ? multiplyFilters : singleFilter;
+  }
+
+  static makeGMapsLink(coords) {
+    return `https://www.google.com/maps/place/${ coords.lat },${ coords.lng }`;
   }
 }
